@@ -3,6 +3,6 @@ import type { MetadataRoute } from "next";
 export default function robots(): MetadataRoute.Robots {
   return {
     rules: { userAgent: "*", allow: "/" },
-    sitemap: "https://runex-logistics.tony0826.chatgpt.site/sitemap.xml",
+    sitemap: "https://www.runexlogi.com/sitemap.xml",
   };
 }
