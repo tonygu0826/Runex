@@ -98,6 +98,19 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 - `npm run validate:artifact`: recheck an existing artifact's manifest and ESM `default.fetch` export
 - `npm run db:generate`: generate Drizzle migrations after schema changes
 
+## Deploy to your own Cloudflare account
+
+This repository can be deployed as a Cloudflare Worker with static assets.
+
+- Build command: `npm run build`
+- Deploy command: `npx wrangler deploy --config wrangler.jsonc`
+- One-command local deployment: `npm run deploy:cloudflare`
+
+For automatic deployments, import this GitHub repository from Cloudflare's
+Workers & Pages dashboard and use the build and deploy commands above. The
+Worker name is `runex-logistics`. After the first successful deployment, add
+`www.runexlogi.com` as a custom domain in the Worker's settings.
+
 Use build and validation commands for targeted diagnosis after a remote failure, not as part of the normal checkpoint path.
 
 The timeout defaults can be overridden for a controlled canary with `SITES_INSTALL_TIMEOUT`, `SITES_INSTALL_KILL_AFTER`, `SITES_BUILD_TIMEOUT`, and `SITES_BUILD_KILL_AFTER`. A timeout fails the command; the helpers never retry an unchanged install or build.
