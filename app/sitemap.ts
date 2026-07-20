@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { articles } from "./insights/articles";
 
-const baseUrl = "https://runex-logistics.tony0826.chatgpt.site";
+const baseUrl = "https://www.runexlogi.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
