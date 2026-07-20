@@ -19,7 +19,7 @@ const nunitoSans = Nunito_Sans({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://runex-logistics.tony0826.chatgpt.site"),
+  metadataBase: new URL("https://www.runexlogi.com"),
   title: "Runex Logistics Inc. | Warehousing, Fulfillment & Transportation",
   description: "Runex Logistics provides warehousing, 3PL fulfillment, FBA preparation and transportation services across Canada.",
   alternates: { canonical: "/" },
@@ -28,9 +28,6 @@ export const metadata: Metadata = {
     title: "Runex Logistics Inc.",
     description: "Warehousing, 3PL fulfillment, FBA preparation and transportation across Canada.",
     siteName: "Runex Logistics Inc.",
-  },
-  other: {
-    "codex-preview": "development",
   },
   icons: {
     icon: "/runex-mark.svg",
@@ -47,8 +44,8 @@ export default function RootLayout({
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Runex Logistics Inc.",
-    url: "https://runex-logistics.tony0826.chatgpt.site",
-    logo: "https://runex-logistics.tony0826.chatgpt.site/runex-mark.svg",
+    url: "https://www.runexlogi.com",
+    logo: "https://www.runexlogi.com/runex-mark.svg",
     email: "tony@fengyecang.com",
     areaServed: "Canada",
   };
