@@ -162,7 +162,7 @@ const sections = generated.sections.map((section, index) => {
   const normalized = {
     heading: requireString(section.heading, `section ${index + 1} heading`, 5),
     paragraphs: section.paragraphs.map((paragraph, paragraphIndex) =>
-      requireString(paragraph, `section ${index + 1} paragraph ${paragraphIndex + 1}`, 40),
+      requireString(paragraph, `section ${index + 1} paragraph ${paragraphIndex + 1}`, 12),
     ),
   };
   if (Array.isArray(section.bullets) && section.bullets.length) {
