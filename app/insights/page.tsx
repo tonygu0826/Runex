@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function InsightsPage() {
   return (
     <main className="insights-page">
-      <SiteHeader />
+      <SiteHeader current="Insights" />
       <section className="insights-hero">
         <p className="eyebrow"><span /> Runex knowledge centre</p>
         <h1>Practical logistics insights.</h1>

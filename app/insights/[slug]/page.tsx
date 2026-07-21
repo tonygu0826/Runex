@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow, SiteFooter, SiteHeader } from "../../components/site-chrome";
 import { articles, getArticle } from "../articles";
@@ -48,11 +49,11 @@ export default async function ArticlePage({ params }: PageProps) {
 
   return (
     <main className="article-page">
-      <SiteHeader />
+      <SiteHeader current="Insights" />
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <article>
         <header className="article-hero">
-          <a className="article-back" href="/insights">← All insights</a>
+          <Link className="article-back" href="/insights">← All insights</Link>
           <p className="eyebrow"><span /> {article.category}</p>
           <h1>{article.title}</h1>
           <p>{article.description}</p>

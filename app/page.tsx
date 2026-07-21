@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { Arrow, SiteFooter, SiteHeader } from "./components/site-chrome";
 import { articles } from "./insights/articles";
 
@@ -43,7 +44,7 @@ const solutionCards = [
 export default function Home() {
   return (
     <main id="top">
-      <SiteHeader />
+      <SiteHeader current="Home" />
 
       <section className="hero" aria-labelledby="hero-title">
         <div className="hero-content">
@@ -53,8 +54,8 @@ export default function Home() {
             Warehousing, 3PL fulfillment, FBA prep and transportation managed by one responsive logistics team.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="#contact">Get a Quote <Arrow /></a>
-            <a className="button button-secondary" href="#services">Explore Services <Arrow /></a>
+            <a className="button button-primary" href="/contact">Get a Quote <Arrow /></a>
+            <a className="button button-secondary" href="/solutions">Explore Solutions <Arrow /></a>
           </div>
         </div>
         <div className="hero-image" role="img" aria-label="Modern distribution warehouse with forklift and loading dock">
@@ -85,7 +86,7 @@ export default function Home() {
               <div className="service-meta"><span>{service.number}</span><small>{service.label}</small></div>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
-              <a href="#contact">Discuss your needs <Arrow /></a>
+              <a href="/solutions">View solutions <Arrow /></a>
             </article>
           ))}
         </div>
@@ -103,7 +104,7 @@ export default function Home() {
               <span>0{index + 1}</span>
               <div><small>{solution.type}</small><h3>{solution.title}</h3></div>
               <p>{solution.text}</p>
-              <a href="#contact" aria-label={`Discuss ${solution.type.toLowerCase()} logistics`}><Arrow /></a>
+              <a href="/contact" aria-label={`Discuss ${solution.type.toLowerCase()} logistics`}><Arrow /></a>
             </article>
           ))}
         </div>
@@ -114,7 +115,7 @@ export default function Home() {
           <p className="eyebrow"><span /> One connected workflow</p>
           <h2 id="operations-title">From arrival to final delivery, every step has an owner.</h2>
           <p>Runex keeps warehouse work and transportation aligned, so freight does not sit waiting for the next team to take over.</p>
-          <a className="button button-primary" href="#contact">Plan your workflow <Arrow /></a>
+          <a className="button button-primary" href="/contact">Plan your workflow <Arrow /></a>
         </div>
         <div className="process" aria-label="Runex logistics process">
           <div><b>01</b><span /><h3>Receive</h3><p>Confirm arrival and match freight to the operating plan.</p></div>
@@ -149,7 +150,7 @@ export default function Home() {
       <section className="home-insights section-shell" aria-labelledby="home-insights-title">
         <div className="home-insights-heading">
           <div><p className="eyebrow dark"><span /> Insights</p><h2 id="home-insights-title">Logistics answers your team can use.</h2></div>
-          <a href="/insights">View all articles <Arrow /></a>
+          <Link href="/insights">View all articles <Arrow /></Link>
         </div>
         <div className="home-article-grid">
           {articles.map((article) => (
