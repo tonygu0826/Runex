@@ -15,6 +15,13 @@
   "assets": {
     "directory": "dist/client"
   },
+  "send_email": [
+    {
+      "name": "CONTACT_EMAIL",
+      "destination_address": "tonygu0826@gmail.com",
+      "allowed_sender_addresses": ["info@runexlogi.com"]
+    }
+  ],
   "observability": {
     "enabled": true
   }

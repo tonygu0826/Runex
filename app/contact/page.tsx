@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Arrow, SiteFooter, SiteHeader } from "../components/site-chrome";
+import { ContactForm } from "./contact-form";
 
 export const metadata: Metadata = {
   title: "Contact Runex Logistics | Request a Logistics Quote",
@@ -31,8 +32,9 @@ export default function ContactPage() {
           <p className="eyebrow dark"><span /> Start a conversation</p>
           <h2 id="contact-heading">Send the operating details to our team.</h2>
           <p>The more we understand about the inbound freight, required warehouse work and outbound plan, the more useful our first response can be.</p>
-          <a className="contact-link light" href="mailto:tony@fengyecang.com?subject=Runex%20Logistics%20Quote%20Request">
-            <span><small>EMAIL OUR TEAM</small><strong>tony@fengyecang.com</strong></span>
+          <ContactForm />
+          <a className="contact-link light contact-email-link" href="mailto:info@runexlogi.com?subject=Runex%20Logistics%20Quote%20Request">
+            <span><small>PREFER EMAIL?</small><strong>info@runexlogi.com</strong></span>
             <i><Arrow /></i>
           </a>
         </div>
