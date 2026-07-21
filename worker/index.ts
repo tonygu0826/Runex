@@ -29,8 +29,8 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
-    if (url.hostname === "runexlogi.com") {
-      url.hostname = "www.runexlogi.com";
+    if (url.hostname === "www.runexlogi.com") {
+      url.hostname = "runexlogi.com";
       return Response.redirect(url.toString(), 301);
     }
 

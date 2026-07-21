@@ -26,7 +26,7 @@ export default async function ArticlePage({ params }: PageProps) {
   const article = getArticle(slug);
   if (!article) notFound();
 
-  const articleUrl = `https://runex-logistics.tony0826.chatgpt.site/insights/${article.slug}`;
+  const articleUrl = `https://runexlogi.com/insights/${article.slug}`;
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -37,7 +37,7 @@ export default async function ArticlePage({ params }: PageProps) {
       dateModified: article.publishedAt,
       mainEntityOfPage: articleUrl,
       author: { "@type": "Organization", name: "Runex Logistics Inc." },
-      publisher: { "@type": "Organization", name: "Runex Logistics Inc.", logo: { "@type": "ImageObject", url: "https://runex-logistics.tony0826.chatgpt.site/runex-mark.svg" } },
+      publisher: { "@type": "Organization", name: "Runex Logistics Inc.", logo: { "@type": "ImageObject", url: "https://runexlogi.com/runex-mark.svg" } },
     },
     {
       "@context": "https://schema.org",
