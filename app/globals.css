@@ -221,6 +221,9 @@ button, input, textarea, select { font: inherit; }
 .article-hero > p:not(.eyebrow) { max-width: 850px; margin: 30px 0; color: #c5d0d9; font-size: 19px; line-height: 1.65; }
 .article-hero > div { display: flex; flex-wrap: wrap; gap: 18px; color: #9dafbd; font-size: 11px; }
 .article-hero > div span + span, .article-hero > div time + span, .article-hero > div span:last-child { padding-left: 18px; border-left: 1px solid rgba(255,255,255,.24); }
+.article-featured-image { max-width: 1180px; margin: 0 auto; padding: 48px 24px 0; background: white; }
+.article-featured-image img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; box-shadow: 0 24px 60px rgba(0,27,53,.14); }
+.article-featured-image figcaption { margin-top: 12px; color: var(--steel); font-size: 12px; line-height: 1.6; }
 .article-layout { display: grid; grid-template-columns: 260px minmax(0, 820px); gap: 90px; justify-content: center; padding: 90px 24px 120px; background: white; }
 .article-layout aside { position: sticky; top: 28px; align-self: start; display: grid; gap: 0; padding: 24px 0; border-top: 2px solid var(--orange); }
 .article-layout aside small { margin-bottom: 18px; color: var(--steel); font-size: 9px; font-weight: 800; letter-spacing: .16em; }
