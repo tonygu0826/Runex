@@ -18,7 +18,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${article.title} | Runex Logistics`,
     description: article.description,
     alternates: { canonical: `/insights/${article.slug}` },
-    openGraph: { type: "article", title: article.title, description: article.description, publishedTime: article.publishedAt },
+    openGraph: {
+      type: "article",
+      title: article.title,
+      description: article.description,
+      publishedTime: article.publishedAt,
+      images: article.image ? [{ url: article.image, alt: article.imageAlt }] : undefined,
+    },
   };
 }
 
@@ -37,6 +43,7 @@ export default async function ArticlePage({ params }: PageProps) {
       datePublished: article.publishedAt,
       dateModified: article.publishedAt,
       mainEntityOfPage: articleUrl,
+      image: article.image ? `https://runexlogi.com${article.image}` : undefined,
       author: { "@type": "Organization", name: "Runex Logistics Inc." },
       publisher: { "@type": "Organization", name: "Runex Logistics Inc.", logo: { "@type": "ImageObject", url: "https://runexlogi.com/runex-mark.svg" } },
     },
@@ -59,6 +66,12 @@ export default async function ArticlePage({ params }: PageProps) {
           <p>{article.description}</p>
           <div><time dateTime={article.publishedAt}>{article.publishedAt}</time><span>{article.readTime}</span><span>Runex Logistics Inc.</span></div>
         </header>
+        {article.image && (
+          <figure className="article-featured-image">
+            <img src={article.image} alt={article.imageAlt || ""} width="1600" height="900" loading="eager" />
+            {article.imageCaption && <figcaption>{article.imageCaption}</figcaption>}
+          </figure>
+        )}
         <div className="article-layout">
           <aside>
             <small>IN THIS GUIDE</small>
