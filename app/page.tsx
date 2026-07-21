@@ -8,18 +8,21 @@ const serviceCards = [
     title: "Warehousing & 3PL",
     text: "Flexible storage, inventory control, pick and pack, cross-docking and distribution built around your operation.",
     label: "Storage to delivery",
+    href: "/solutions/warehousing-fulfillment-canada",
   },
   {
     number: "02",
     title: "FBA & E-commerce",
     text: "FBA preparation, labeling, inspection, returns and fulfillment that keep marketplace orders moving.",
     label: "Marketplace ready",
+    href: "/solutions/fba-ecommerce-prep-canada",
   },
   {
     number: "03",
     title: "Transportation",
     text: "Reliable pickup, transfer and final-mile coordination with one team keeping every handoff visible.",
     label: "Canada-wide reach",
+    href: "/solutions/transportation-cross-docking-canada",
   },
 ];
 
@@ -28,16 +31,19 @@ const solutionCards = [
     type: "IMPORTERS & DISTRIBUTORS",
     title: "Keep inbound freight moving",
     text: "Coordinate receiving, pallet handling, short- or long-term storage and onward distribution without adding another handoff.",
+    href: "/solutions/transportation-cross-docking-canada",
   },
   {
     type: "E-COMMERCE BRANDS",
     title: "Prepare every order correctly",
     text: "Handle labeling, FBA prep, pick and pack, returns and replenishment with a workflow designed for marketplace requirements.",
+    href: "/solutions/fba-ecommerce-prep-canada",
   },
   {
     type: "GROWING OPERATIONS",
     title: "Add capacity without adding complexity",
     text: "Use flexible warehouse space and coordinated transportation while keeping one point of contact across the operation.",
+    href: "/solutions/warehousing-fulfillment-canada",
   },
 ];
 
@@ -86,7 +92,7 @@ export default function Home() {
               <div className="service-meta"><span>{service.number}</span><small>{service.label}</small></div>
               <h3>{service.title}</h3>
               <p>{service.text}</p>
-              <a href="/solutions">View solutions <Arrow /></a>
+              <Link href={service.href}>Explore this service <Arrow /></Link>
             </article>
           ))}
         </div>
@@ -104,7 +110,7 @@ export default function Home() {
               <span>0{index + 1}</span>
               <div><small>{solution.type}</small><h3>{solution.title}</h3></div>
               <p>{solution.text}</p>
-              <a href="/contact" aria-label={`Discuss ${solution.type.toLowerCase()} logistics`}><Arrow /></a>
+              <Link href={solution.href} aria-label={`Explore ${solution.type.toLowerCase()} logistics`}><Arrow /></Link>
             </article>
           ))}
         </div>
