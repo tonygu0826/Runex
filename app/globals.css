@@ -221,9 +221,6 @@ button, input, textarea, select { font: inherit; }
 .article-hero > p:not(.eyebrow) { max-width: 850px; margin: 30px 0; color: #c5d0d9; font-size: 19px; line-height: 1.65; }
 .article-hero > div { display: flex; flex-wrap: wrap; gap: 18px; color: #9dafbd; font-size: 11px; }
 .article-hero > div span + span, .article-hero > div time + span, .article-hero > div span:last-child { padding-left: 18px; border-left: 1px solid rgba(255,255,255,.24); }
-.article-featured-image { max-width: 1180px; margin: 0 auto; padding: 48px 24px 0; background: white; }
-.article-featured-image img { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: cover; object-position: center; box-shadow: 0 24px 60px rgba(0,27,53,.14); }
-.article-featured-image figcaption { margin-top: 12px; color: var(--steel); font-size: 12px; line-height: 1.6; }
 .article-layout { display: grid; grid-template-columns: 260px minmax(0, 820px); gap: 90px; justify-content: center; padding: 90px 24px 120px; background: white; }
 .article-layout aside { position: sticky; top: 28px; align-self: start; display: grid; gap: 0; padding: 24px 0; border-top: 2px solid var(--orange); }
 .article-layout aside small { margin-bottom: 18px; color: var(--steel); font-size: 9px; font-weight: 800; letter-spacing: .16em; }
@@ -237,6 +234,8 @@ button, input, textarea, select { font: inherit; }
 .article-section { scroll-margin-top: 30px; padding: 70px 0; border-bottom: 1px solid var(--line); }
 .article-section > span { color: var(--orange); font-size: 12px; font-weight: 800; }
 .article-section h2 { margin: 16px 0 28px; color: var(--navy); font-size: clamp(34px, 4vw, 50px); line-height: 1.08; letter-spacing: -.04em; }
+.article-section h2::after { content: ""; display: block; width: 44px; height: 3px; margin-top: 22px; background: var(--orange); }
+.article-section > p:first-of-type { color: #314b60; font-size: 19px; line-height: 1.8; }
 .article-section p { margin: 0 0 22px; color: #4f6170; font-size: 17px; line-height: 1.85; }
 .article-section ul { display: grid; gap: 12px; margin: 30px 0 0; padding: 0; list-style: none; }
 .article-section li { position: relative; padding-left: 28px; color: #405261; font-size: 16px; line-height: 1.6; }
