@@ -23,7 +23,6 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       title: article.title,
       description: article.description,
       publishedTime: article.publishedAt,
-      images: [{ url: "/hero-production.png", alt: `Warehouse operations for ${article.category}` }],
     },
   };
 }
@@ -43,7 +42,6 @@ export default async function ArticlePage({ params }: PageProps) {
       datePublished: article.publishedAt,
       dateModified: article.publishedAt,
       mainEntityOfPage: articleUrl,
-      image: "https://runexlogi.com/hero-production.png",
       author: { "@type": "Organization", name: "Runex Logistics Inc." },
       publisher: { "@type": "Organization", name: "Runex Logistics Inc.", logo: { "@type": "ImageObject", url: "https://runexlogi.com/runex-mark.svg" } },
     },
@@ -66,10 +64,6 @@ export default async function ArticlePage({ params }: PageProps) {
           <p>{article.description}</p>
           <div><time dateTime={article.publishedAt}>{article.publishedAt}</time><span>{article.readTime}</span><span>Runex Logistics Inc.</span></div>
         </header>
-        <figure className="article-featured-image">
-          <img src="/hero-production.png" alt={`Runex Logistics warehouse operations for ${article.category.toLowerCase()}`} width="1600" height="900" loading="eager" />
-          <figcaption>Warehouse operations supporting receiving, storage, preparation and outbound coordination.</figcaption>
-        </figure>
         <div className="article-layout">
           <aside>
             <small>IN THIS GUIDE</small>
