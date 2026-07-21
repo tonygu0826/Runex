@@ -1,56 +1,13 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { Arrow, SiteFooter, SiteHeader } from "../components/site-chrome";
+import { services } from "./services";
 
 export const metadata: Metadata = {
-  title: "3PL Warehousing, FBA Prep & Transportation | Runex Logistics",
-  description: "Explore Runex Logistics solutions for 3PL warehousing, FBA preparation, e-commerce fulfillment, cross-docking and transportation across Canada.",
+  title: "Warehousing, FBA Prep & Transportation | Runex Logistics",
+  description: "Explore three connected Runex solutions for warehousing and fulfillment, FBA and e-commerce preparation, and transportation and cross-docking across Canada.",
   alternates: { canonical: "/solutions" },
 };
-
-const services = [
-  {
-    id: "warehousing",
-    number: "01",
-    title: "3PL warehousing",
-    summary: "Flexible warehouse support for businesses that need reliable receiving, storage and outbound execution.",
-    items: ["Inbound receiving", "Pallet and inventory storage", "Inventory control", "Pick and pack", "Outbound staging"],
-  },
-  {
-    id: "fba-prep",
-    number: "02",
-    title: "FBA & e-commerce fulfillment",
-    summary: "A practical workflow for marketplace inventory, from inbound checks through preparation and dispatch.",
-    items: ["Inspection and labeling", "Repacking and carton preparation", "Order fulfillment", "Returns processing", "Replenishment coordination"],
-  },
-  {
-    id: "cross-docking",
-    number: "03",
-    title: "Cross-docking",
-    summary: "Move planned freight through the warehouse with less storage time and a clear outbound handoff.",
-    items: ["Inbound unloading", "Sorting and consolidation", "Pallet handling", "Short-term staging", "Outbound loading"],
-  },
-  {
-    id: "transportation",
-    number: "04",
-    title: "Transportation coordination",
-    summary: "Keep pickups, transfers and deliveries connected to the warehouse plan through one responsive team.",
-    items: ["Pickup coordination", "Warehouse transfers", "Distribution support", "Delivery scheduling", "Status communication"],
-  },
-  {
-    id: "value-added",
-    number: "05",
-    title: "Value-added warehouse services",
-    summary: "Complete the work freight needs before it can move to a marketplace, retailer or customer.",
-    items: ["Product inspection", "Labeling and relabeling", "Kitting", "Repacking", "Pallet preparation"],
-  },
-  {
-    id: "returns",
-    number: "06",
-    title: "Returns & exception handling",
-    summary: "Create a defined process for returned, damaged or non-compliant inventory instead of letting exceptions stall the operation.",
-    items: ["Return receiving", "Condition checks", "Exception reporting", "Restock preparation", "Disposition coordination"],
-  },
-];
 
 export default function SolutionsPage() {
   const serviceJsonLd = {
@@ -65,8 +22,8 @@ export default function SolutionsPage() {
         name: service.title,
         description: service.summary,
         provider: { "@type": "Organization", name: "Runex Logistics Inc.", url: "https://runexlogi.com" },
-        areaServed: "Canada",
-        url: `https://runexlogi.com/solutions#${service.id}`,
+        areaServed: { "@type": "Country", name: "Canada" },
+        url: `https://runexlogi.com/solutions/${service.slug}`,
       },
     })),
   };
@@ -78,26 +35,26 @@ export default function SolutionsPage() {
 
       <section className="page-hero">
         <p className="eyebrow"><span /> Connected logistics services</p>
-        <h1>One operation from receiving to delivery.</h1>
-        <p>Runex connects warehousing, inventory preparation and transportation so every handoff has a clear owner.</p>
+        <h1>3PL solutions from receiving to delivery.</h1>
+        <p>Three focused solutions connect warehousing, marketplace preparation and freight movement without cluttering the way customers navigate the site.</p>
       </section>
 
       <section className="detail-section" aria-labelledby="solutions-heading">
         <div className="detail-intro">
           <div>
             <p className="eyebrow dark"><span /> What we handle</p>
-            <h2 id="solutions-heading">3PL solutions built around the freight you actually move.</h2>
+            <h2 id="solutions-heading">Choose the workflow that matches your freight.</h2>
           </div>
-          <p>Choose the services you need today and add capacity as volume changes. Each workflow is planned around your inventory, handling requirements and outbound schedule.</p>
+          <p>Each solution has its own detailed page, direct answers and operating considerations. Start with the service you need today and connect more steps as volume changes.</p>
         </div>
         <div className="detail-grid">
           {services.map((service) => (
-            <article className="detail-card" id={service.id} key={service.id}>
+            <article className="detail-card" key={service.slug}>
               <span>{service.number}</span>
-              <h2>{service.title}</h2>
+              <h2>{service.shortTitle}</h2>
               <p>{service.summary}</p>
               <ul>{service.items.map((item) => <li key={item}>{item}</li>)}</ul>
-              <a href="/contact">Discuss this solution <Arrow /></a>
+              <Link href={`/solutions/${service.slug}`}>Explore {service.shortTitle.toLowerCase()} <Arrow /></Link>
             </article>
           ))}
         </div>
@@ -118,7 +75,7 @@ export default function SolutionsPage() {
 
       <section className="page-cta">
         <div><small>READY TO PLAN THE WORKFLOW?</small><h2>Tell us what you receive, store, prepare and deliver.</h2></div>
-        <a className="button button-primary" href="/contact">Contact Runex <Arrow /></a>
+        <Link className="button button-primary" href="/contact">Contact Runex <Arrow /></Link>
       </section>
       <SiteFooter />
     </main>

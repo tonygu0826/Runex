@@ -28,7 +28,7 @@ test("renders the production canonical URL", async () => {
 });
 
 for (const [pathname, heading, canonical] of [
-  ["/solutions", "One operation from receiving to delivery.", "https://runexlogi.com/solutions"],
+  ["/solutions", "3PL solutions from receiving to delivery.", "https://runexlogi.com/solutions"],
   ["/about", "Logistics built around operational clarity.", "https://runexlogi.com/about"],
   ["/contact", "Tell us what needs to move.", "https://runexlogi.com/contact"],
 ]) {
@@ -41,3 +41,34 @@ for (const [pathname, heading, canonical] of [
     assert.match(html, new RegExp(`href=["']${canonical.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}["']`));
   });
 }
+
+for (const [slug, heading] of [
+  ["warehousing-fulfillment-canada", "Warehousing and fulfillment in Canada"],
+  ["fba-ecommerce-prep-canada", "FBA and e-commerce preparation in Canada"],
+  ["transportation-cross-docking-canada", "Transportation and cross-docking in Canada"],
+]) {
+  test(`renders the focused service page for ${slug}`, async () => {
+    const pathname = `/solutions/${slug}`;
+    const response = await render(pathname);
+    const html = await response.text();
+
+    assert.equal(response.status, 200);
+    assert.match(html, new RegExp(`<h1[^>]*>${heading}</h1>`));
+    assert.match(html, /"@type":"Service"/);
+    assert.match(html, /"@type":"BreadcrumbList"/);
+  });
+}
+
+test("lists the three focused service pages in the sitemap", async () => {
+  const response = await render("/sitemap.xml");
+  const body = await response.text();
+
+  assert.equal(response.status, 200);
+  for (const slug of [
+    "warehousing-fulfillment-canada",
+    "fba-ecommerce-prep-canada",
+    "transportation-cross-docking-canada",
+  ]) {
+    assert.match(body, new RegExp(`https://runexlogi\\.com/solutions/${slug}`));
+  }
+});
