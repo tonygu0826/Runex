@@ -84,3 +84,17 @@ test("renders Insights as a paginated vertical article list", async () => {
   assert.match(html, /aria-current=["']page["'][^>]*>1<\/a>/);
   assert.doesNotMatch(html, /class=["']article-index-grid["']/);
 });
+
+
+test("serves an automatically updated AI content guide", async () => {
+  const response = await render("/llms.txt");
+  const body = await response.text();
+
+  assert.equal(response.status, 200);
+  assert.match(response.headers.get("content-type") ?? "", /^text\/plain\b/i);
+  assert.match(body, /# Runex Logistics Inc\./);
+  assert.match(body, /## Core service pages/);
+  assert.match(body, /## Current knowledge topics/);
+  assert.match(body, /Planning Overflow Storage Without Losing Inventory Visibility/);
+  assert.match(body, /info@runexlogi\.com/);
+});
