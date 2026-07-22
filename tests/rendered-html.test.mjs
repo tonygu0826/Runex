@@ -72,3 +72,15 @@ test("lists the three focused service pages in the sitemap", async () => {
     assert.match(body, new RegExp(`https://runexlogi\\.com/solutions/${slug}`));
   }
 });
+
+
+test("renders Insights as a paginated vertical article list", async () => {
+  const response = await render("/insights");
+  const html = await response.text();
+
+  assert.equal(response.status, 200);
+  assert.match(html, /class=["']article-index-list["']/);
+  assert.match(html, /aria-label=["']Insights pagination["']/);
+  assert.match(html, /aria-current=["']page["'][^>]*>1<\/a>/);
+  assert.doesNotMatch(html, /class=["']article-index-grid["']/);
+});
