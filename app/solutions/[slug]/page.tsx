@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow, SiteFooter, SiteHeader } from "../../components/site-chrome";
+import { articles } from "../../insights/articles";
 import { getService, services } from "../services";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -37,6 +38,14 @@ export default async function ServicePage({ params }: PageProps) {
 
   const serviceUrl = `${siteUrl}/solutions/${service.slug}`;
   const relatedServices = services.filter((item) => item.slug !== service.slug);
+  const categoryMap: Record<string, string[]> = {
+    "warehousing-fulfillment-canada": ["3PL & Warehousing", "Fulfillment"],
+    "fba-ecommerce-prep-canada": ["FBA & E-commerce", "Fulfillment"],
+    "transportation-cross-docking-canada": ["Distribution", "Supply Chain"],
+  };
+  const relatedInsights = articles
+    .filter((article) => categoryMap[service.slug]?.includes(article.category))
+    .slice(0, 3);
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -94,8 +103,10 @@ export default async function ServicePage({ params }: PageProps) {
         <aside className="service-side-nav">
           <small>ON THIS PAGE</small>
           <a href="#quick-answer">Quick answer</a>
+          <a href="#quote-preparation">Quote preparation</a>
           {service.sections.map((section, index) => <a href={`#section-${index + 1}`} key={section.heading}>0{index + 1} {section.heading}</a>)}
           <a href="#faq">Common questions</a>
+          {relatedInsights.length > 0 && <a href="#operational-insights">Related insights</a>}
           <Link className="side-cta" href="/contact">Discuss your operation <Arrow /></Link>
         </aside>
 
@@ -112,6 +123,13 @@ export default async function ServicePage({ params }: PageProps) {
               <h2 id="service-fit-title">A practical fit for</h2>
             </div>
             <ul>{service.idealFor.map((item) => <li key={item}>{item}</li>)}</ul>
+          </section>
+
+          <section className="service-quote-prep" id="quote-preparation" aria-labelledby="quote-preparation-title">
+            <small>BEFORE REQUESTING A QUOTE</small>
+            <h2 id="quote-preparation-title">Information that makes the plan more useful</h2>
+            <p>A useful operating plan starts with the freight profile, expected activity and known exceptions. Exact requirements can be confirmed after the first conversation.</p>
+            <ul>{service.planningInputs.map((item) => <li key={item}>{item}</li>)}</ul>
           </section>
 
           {service.sections.map((section, index) => (
@@ -133,6 +151,22 @@ export default async function ServicePage({ params }: PageProps) {
               </details>
             ))}
           </section>
+
+          {relatedInsights.length > 0 && (
+            <section className="service-insights" id="operational-insights" aria-labelledby="operational-insights-title">
+              <small>RELATED OPERATIONAL INSIGHTS</small>
+              <h2 id="operational-insights-title">Continue researching this workflow</h2>
+              <div>
+                {relatedInsights.map((article) => (
+                  <Link href={`/insights/${article.slug}`} key={article.slug}>
+                    <span>{article.category}</span>
+                    <strong>{article.title}</strong>
+                    <Arrow />
+                  </Link>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </section>
 
