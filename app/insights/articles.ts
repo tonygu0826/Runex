@@ -4,6 +4,7 @@ export type Article = {
   title: string;
   description: string;
   excerpt: string;
+  keywords?: string[];
   publishedAt: string;
   readTime: string;
   keyAnswer: string;
