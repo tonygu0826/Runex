@@ -79,7 +79,7 @@ export default async function ArticlePage({ params }: PageProps) {
               </section>
             ))}
             <section className="article-faq" aria-labelledby="faq-title"><small>FREQUENTLY ASKED QUESTIONS</small><h2 id="faq-title">Common questions</h2>{article.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
-            <section className="article-contact"><div><small>NEED HELP WITH YOUR OPERATION?</small><h2>Build the right logistics workflow.</h2><p>Tell Runex what you receive, store, prepare and deliver. We will help map the next step.</p></div><a className="button button-primary" href="mailto:tony@fengyecang.com?subject=Runex%20Logistics%20Inquiry">Contact our team <Arrow /></a></section>
+            <section className="article-contact"><div><small>NEED HELP WITH YOUR OPERATION?</small><h2>Build the right logistics workflow.</h2><p>Tell Runex what you receive, store, prepare and deliver. We will help map the next step.</p></div><a className="button button-primary" href="mailto:info@runexlogi.com?subject=Runex%20Logistics%20Inquiry">Contact our team <Arrow /></a></section>
           </div>
         </div>
       </article>
