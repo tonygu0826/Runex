@@ -176,8 +176,8 @@ export default function Home() {
           <h2 id="contact-title">Tell us what needs to move.</h2>
           <p>Share your storage, fulfillment or transportation requirements. We will help you map the next step.</p>
         </div>
-        <a className="contact-link" href="mailto:tony@fengyecang.com?subject=Runex%20Logistics%20Quote%20Request">
-          <span><small>EMAIL OUR TEAM</small><strong>tony@fengyecang.com</strong></span>
+        <a className="contact-link" href="mailto:info@runexlogi.com?subject=Runex%20Logistics%20Quote%20Request">
+          <span><small>EMAIL OUR TEAM</small><strong>info@runexlogi.com</strong></span>
           <i><Arrow /></i>
         </a>
       </section>
