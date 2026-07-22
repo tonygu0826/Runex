@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   alternates: { canonical: "/insights" },
 };
 
-const ARTICLES_PER_PAGE = 6;
+const ARTICLES_PER_PAGE = 4;
 
 type InsightsPageProps = {
   searchParams?: Promise<{ page?: string | string[] }>;
