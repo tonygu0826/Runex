@@ -15,6 +15,7 @@ export type LogisticsService = {
   keyAnswer: string;
   items: string[];
   idealFor: string[];
+  planningInputs: string[];
   sections: ServiceSection[];
   faq: Array<{ question: string; answer: string }>;
 };
@@ -31,6 +32,7 @@ export const services: LogisticsService[] = [
     keyAnswer: "Runex warehousing and fulfillment connects inbound receiving, storage, inventory control, picking, packing, outbound staging and returns. The workflow is designed around the products, volume, handling requirements and destination mix instead of forcing every operation into the same process.",
     items: ["Inbound receiving", "Storage and inventory control", "Pick and pack", "Outbound staging", "Returns processing"],
     idealFor: ["Importers and distributors", "Direct-to-consumer brands", "Businesses adding warehouse capacity", "Operations with changing order volume"],
+    planningInputs: ["Product and packaging profile", "Expected pallet, carton or order volume", "Receiving and storage requirements", "Outbound destinations and handling exceptions"],
     sections: [
       {
         heading: "Receive inventory against a clear plan",
@@ -72,6 +74,7 @@ export const services: LogisticsService[] = [
     keyAnswer: "FBA and e-commerce preparation turns inbound inventory into shipment-ready units, cartons or pallets. Runex can connect receiving, quantity verification, inspection, labeling, repacking, quality control, staging and dispatch while using the seller's current marketplace shipment plan as the final reference.",
     items: ["Inbound verification", "Inspection and labeling", "Kitting and repacking", "Carton and pallet prep", "Dispatch staging"],
     idealFor: ["Marketplace sellers importing into Canada", "Brands needing labeling or repacking", "Inventory with product-specific preparation", "Sellers planning replenishment shipments"],
+    planningInputs: ["Product list and expected quantities", "Current marketplace shipment plan", "Labeling, packaging and inspection instructions", "Target dispatch timing and exception contacts"],
     sections: [
       {
         heading: "Verify inventory before preparation",
@@ -113,6 +116,7 @@ export const services: LogisticsService[] = [
     keyAnswer: "Transportation and cross-docking connects inbound unloading with sorting, consolidation, brief staging and the next freight movement. It works best when quantities, destinations, pickup timing and exception rules are confirmed before arrival, giving every warehouse and carrier handoff a clear owner.",
     items: ["Inbound unloading", "Sorting and consolidation", "Short-term staging", "Pickup and transfer coordination", "Delivery scheduling"],
     idealFor: ["Import freight with confirmed destinations", "Warehouse-to-warehouse transfers", "Time-sensitive distribution", "Hybrid loads combining transfer and storage"],
+    planningInputs: ["Origin, destination and delivery constraints", "Pallet, carton, weight and dimension details", "Transfer, storage or cross-dock requirements", "Pickup timing, documents and exception contacts"],
     sections: [
       {
         heading: "Plan inbound and outbound together",
