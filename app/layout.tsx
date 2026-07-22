@@ -46,7 +46,7 @@ export default function RootLayout({
     name: "Runex Logistics Inc.",
     url: "https://runexlogi.com",
     logo: "https://runexlogi.com/runex-mark.svg",
-    email: "tony@fengyecang.com",
+    email: "info@runexlogi.com",
     areaServed: "Canada",
   };
   return (
