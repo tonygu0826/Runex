@@ -56,6 +56,9 @@ for (const [slug, heading] of [
     assert.match(html, new RegExp(`<h1[^>]*>${heading}</h1>`));
     assert.match(html, /"@type":"Service"/);
     assert.match(html, /"@type":"BreadcrumbList"/);
+    assert.match(html, /Information that makes the plan more useful/);
+    assert.match(html, /RELATED OPERATIONAL INSIGHTS/);
+    assert.match(html, /href=["']\/insights\//);
   });
 }
 
@@ -97,4 +100,16 @@ test("serves an automatically updated AI content guide", async () => {
   assert.match(body, /## Current knowledge topics/);
   assert.match(body, /Planning Overflow Storage Without Losing Inventory Visibility/);
   assert.match(body, /info@runexlogi\.com/);
+});
+
+
+test("connects an insight to its service and related guidance", async () => {
+  const response = await render("/insights/planning-overflow-storage-without-losing-inventory-visibility");
+  const html = await response.text();
+
+  assert.equal(response.status, 200);
+  assert.match(html, /Prepared and reviewed by the Runex Logistics editorial team/);
+  assert.match(html, /"@type":"BreadcrumbList"/);
+  assert.match(html, /href=["']\/solutions\/warehousing-fulfillment-canada["']/);
+  assert.match(html, /USEFUL NEXT STEPS/);
 });
