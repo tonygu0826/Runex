@@ -14,6 +14,112 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "questions-to-ask-before-switching-3pl-providers",
+    "category": "3PL & Warehousing",
+    "title": "Questions to Ask Before Switching 3PL Providers",
+    "description": "Before switching 3PL providers, ask about integration, inventory accuracy, contract terms, and operational flexibility to avoid costly disruptions.",
+    "excerpt": "Switching 3PL providers is a big decision. Ask the right questions about integration, inventory accuracy, contract terms, and operational flexibility to ensure a smooth transition.",
+    "keywords": [
+      "switching 3PL providers",
+      "3PL transition questions",
+      "warehouse provider change",
+      "3PL contract terms",
+      "inventory accuracy 3PL",
+      "3PL integration"
+    ],
+    "publishedAt": "2026-07-23",
+    "readTime": "4 min read",
+    "keyAnswer": "Before switching 3PL providers, ask about system integration capabilities, inventory accuracy guarantees, contract exit terms, and how the provider handles peak season surges. Also clarify who manages the transition and what data migration support is offered. These questions help avoid hidden costs and service disruptions.",
+    "sections": [
+      {
+        "heading": "Why Switching 3PL Providers Requires Careful Planning",
+        "paragraphs": [
+          "Moving your fulfillment to a new warehouse partner is not like changing office suppliers. A 3PL holds your inventory, processes your orders, and directly impacts your customer experience. A poorly planned switch can lead to lost stock, delayed shipments, and frustrated buyers.",
+          "The key is to ask the right operational questions before signing a contract. You want a partner who can handle your specific product types, order volumes, and seasonal spikes. Start by understanding what you need from the new provider and what you want to avoid from the old one."
+        ]
+      },
+      {
+        "heading": "How Does Your System Integrate With Ours?",
+        "paragraphs": [
+          "Integration is the backbone of a smooth 3PL relationship. Ask whether the provider offers direct API connections to your e-commerce platform, ERP, or order management system. Some providers only support manual file uploads, which can cause delays and errors.",
+          "Also ask about real-time inventory visibility. Can you see stock levels in their warehouse from your system? If they use a proprietary portal, how often does it sync? A provider that offers two-way integration can reduce the risk of overselling or stockouts.",
+          "For Canadian operations, confirm that the integration handles multi-currency and provincial tax calculations if you sell across provinces. A mismatch here can create billing headaches."
+        ],
+        "bullets": [
+          "API vs. file-based integration: which do they support?",
+          "Real-time inventory sync: how frequent is it?",
+          "Multi-currency and tax handling for Canadian sales"
+        ]
+      },
+      {
+        "heading": "What Inventory Accuracy Can You Guarantee?",
+        "paragraphs": [
+          "Inventory accuracy is a common pain point when switching providers. Ask for their cycle count process and typical accuracy rates. While no provider can guarantee 100%, a good one will have a documented process for reconciling discrepancies.",
+          "Find out how they handle receiving errors. If a shipment arrives with a miscount, who is responsible? Some providers charge for extra counts or returns. Also ask about lot tracking and expiry date management if you handle perishable or regulated goods.",
+          "A provider that conducts regular cycle counts and provides a clear discrepancy resolution process will save you time and money."
+        ],
+        "bullets": [
+          "Cycle count frequency and methodology",
+          "Process for handling receiving discrepancies",
+          "Lot and expiry date tracking capabilities"
+        ]
+      },
+      {
+        "heading": "What Are the Contract Terms and Exit Clauses?",
+        "paragraphs": [
+          "Before signing, review the contract terms carefully. Ask about the minimum commitment period, notice requirements for termination, and any penalties for early exit. Some providers lock you into annual contracts with steep cancellation fees.",
+          "Also clarify what happens to your inventory if you decide to leave. Is there a charge for outbound shipping or data export? How much notice do they need to prepare your stock for pickup? Understanding these terms upfront prevents surprises later.",
+          "Consider asking for a service level agreement (SLA) that defines key metrics like order accuracy, shipping speed, and response times. Make sure the SLA includes remedies if they fail to meet targets."
+        ],
+        "bullets": [
+          "Minimum contract length and termination notice",
+          "Inventory removal fees and data export policies",
+          "SLA metrics and remedies for non-performance"
+        ]
+      },
+      {
+        "heading": "How Do You Handle Peak Season and Scalability?",
+        "paragraphs": [
+          "Your 3PL needs to handle your busiest periods without breaking down. Ask about their peak season capacity planning. Do they hire temporary staff? How do they manage order surges? A provider that relies on a fixed workforce may struggle during Black Friday or holiday rushes.",
+          "Also ask about storage scalability. If your inventory doubles, can they accommodate it without moving you to a different facility? Some providers charge premium rates for overflow storage. Clarify how they handle space constraints and whether they offer multi-location options across Canada.",
+          "For Canadian businesses, consider whether the provider has warehouses in key regions like Ontario, British Columbia, or Alberta to reduce transit times and costs."
+        ],
+        "bullets": [
+          "Peak season staffing and capacity plans",
+          "Overflow storage options and pricing",
+          "Multi-location network for Canadian distribution"
+        ]
+      },
+      {
+        "heading": "Who Manages the Transition and What Support Is Provided?",
+        "paragraphs": [
+          "The transition period is the riskiest part of switching 3PLs. Ask if the provider assigns a dedicated transition manager. This person should coordinate inventory transfers, system setup, and testing. Without a single point of contact, details can fall through the cracks.",
+          "Find out what testing they require before going live. Do they run a pilot shipment? How do they handle exceptions like damaged goods or address corrections? A thorough testing phase can catch issues before they affect your customers.",
+          "Also ask about post-go-live support. Will they provide a performance review after 30 or 60 days? Ongoing support helps ensure the relationship starts strong and stays on track."
+        ],
+        "bullets": [
+          "Dedicated transition manager availability",
+          "Testing and pilot shipment procedures",
+          "Post-go-live performance review timeline"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How long does it typically take to switch 3PL providers?",
+        "answer": "The timeline varies based on inventory size and system complexity. A simple switch might take 4-6 weeks, while a complex one with multiple SKUs and integrations can take 2-3 months. Plan for a buffer period to test processes before fully committing."
+      },
+      {
+        "question": "What are the hidden costs when switching 3PL providers?",
+        "answer": "Hidden costs can include inventory transfer fees, data migration charges, new packaging or labeling requirements, and penalties for early contract termination. Always ask for a full breakdown of transition-related fees in writing."
+      },
+      {
+        "question": "Should I inform my current 3PL before switching?",
+        "answer": "Yes, but only after you have a signed contract with the new provider. Give proper notice as per your existing contract to avoid breach. Coordinate with both providers to ensure a smooth handover and minimize service disruptions."
+      }
+    ]
+  },
+  {
     "slug": "planning-overflow-storage-without-losing-inventory-visibility",
     "category": "3PL & Warehousing",
     "title": "Planning Overflow Storage Without Losing Inventory Visibility",
