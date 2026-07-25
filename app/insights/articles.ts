@@ -14,6 +14,97 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "building-clear-warehouse-returns-disposition-process",
+    "category": "3PL & Warehousing",
+    "title": "Building a Clear Warehouse Returns Disposition Process",
+    "description": "Learn how to set up a practical returns disposition process for your Canadian warehouse, covering inspection, sorting, restocking, and disposal decisions.",
+    "excerpt": "A clear returns disposition process helps importers and retailers quickly decide whether to restock, refurbish, or discard returned items, reducing confusion and costs.",
+    "keywords": [
+      "warehouse returns process",
+      "returns disposition workflow",
+      "Canadian 3PL returns handling",
+      "reverse logistics best practices",
+      "restocking vs disposal decisions"
+    ],
+    "publishedAt": "2026-07-25",
+    "readTime": "4 min read",
+    "keyAnswer": "A warehouse returns disposition process is a set of steps to decide what happens to each returned item: restock, refurbish, donate, recycle, or discard. It starts with inspection and sorting by condition, then applies predefined rules to move items to the right location. This reduces storage clutter, speeds up credit processing, and helps you recover value from returns.",
+    "sections": [
+      {
+        "heading": "Why a Disposition Process Matters",
+        "paragraphs": [
+          "Returns are inevitable in any distribution or e-commerce operation. Without a clear plan, returned items pile up in a corner, nobody knows what to do with them, and eventually they get written off or sit for months. A disposition process gives every return a clear path forward.",
+          "For Canadian importers and retailers, the stakes are higher because cross-border returns can involve additional freight and duty considerations. A well-defined process helps you decide quickly whether to restock an item for resale, send it to a refurbishment partner, donate it, or recycle it. The goal is to minimize storage costs and maximize recovery value."
+        ],
+        "bullets": [
+          "Reduces time spent deciding what to do with each return.",
+          "Prevents returned goods from mixing with sellable inventory.",
+          "Helps track return reasons to identify product or shipping issues."
+        ]
+      },
+      {
+        "heading": "Step 1: Inspection and Grading",
+        "paragraphs": [
+          "The first step is to inspect every return as soon as it arrives. Create simple condition grades: like-new, used but functional, damaged but repairable, and unsalvageable. The grader should check for missing parts, cosmetic damage, and functionality if possible.",
+          "For example, a returned electronic device might be like-new if the seal is unbroken, but used if the box is opened. A clothing item might have a small stain that can be cleaned. Define clear criteria for each grade so different staff members make consistent decisions."
+        ]
+      },
+      {
+        "heading": "Step 2: Define Disposition Rules",
+        "paragraphs": [
+          "Once graded, each item needs a disposition rule. Common options include: restock to inventory, return to vendor, send to refurbishment, donate to charity, sell as refurbished or open-box, recycle, or dispose. The rule should be based on the item's condition, cost to refurbish, and potential resale value.",
+          "For instance, a like-new item can be restocked immediately. A used item with minor wear might be sold as open-box at a discount. A damaged item that costs more to fix than it's worth should be recycled or donated. Work with your 3PL to set up these rules in their warehouse management system so the process is automated where possible."
+        ],
+        "bullets": [
+          "Restock: for items in sellable condition.",
+          "Return to vendor: for defective items under warranty.",
+          "Refurbish: for items with repairable damage.",
+          "Donate or recycle: for unsalvageable items."
+        ]
+      },
+      {
+        "heading": "Step 3: Physical Segregation and Workflow",
+        "paragraphs": [
+          "After grading and assigning a disposition, physically separate items into designated areas. A common setup is to have bins or shelves labeled for each disposition type. This prevents mix-ups and makes it easy for staff to process batches.",
+          "For example, all items destined for restock go to a quarantine area for quality check before being put away. Refurbish items go to a repair station or a bin for pickup by a third-party refurbisher. Donation items accumulate in a separate pallet. Clear signage and training are essential."
+        ]
+      },
+      {
+        "heading": "Step 4: Documentation and Data Capture",
+        "paragraphs": [
+          "Every step should be recorded. Capture the return reason, condition grade, disposition decision, and final outcome. This data helps you spot trends: are certain products returned more often? Is a particular carrier causing damage? Are there recurring defects?",
+          "Share this information with your suppliers and customers. For example, if a high percentage of a specific SKU is being returned as defective, you might want to negotiate a return-to-vendor agreement or improve packaging. Good data also helps your finance team process credits and chargebacks accurately."
+        ]
+      },
+      {
+        "heading": "Handling Exceptions and Edge Cases",
+        "paragraphs": [
+          "Not every return fits neatly into a rule. For example, a customer might return an item that is still in the box but the box is damaged. Or a product might be discontinued, so restocking it doesn't make sense. Build a simple escalation path: if the grader is unsure, a supervisor reviews and makes a decision.",
+          "Also consider seasonal items. A winter coat returned in April might not sell until October. You could store it, but storage costs might exceed the profit. In that case, donating or selling at a deep discount could be better. Document these exceptions so they become part of your process over time."
+        ],
+        "bullets": [
+          "Create a list of common exceptions and predefined responses.",
+          "Train staff to flag unusual items for supervisor review.",
+          "Review disposition rules quarterly to adjust for new products or market changes."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between restocking and refurbishing?",
+        "answer": "Restocking means putting a returned item back into sellable inventory as-is, usually after a quick quality check. Refurbishing involves repairing or cleaning the item to restore it to a sellable condition, often at a lower price point."
+      },
+      {
+        "question": "How long should I keep returned items before deciding disposition?",
+        "answer": "Aim to inspect and assign a disposition within 24 to 48 hours of receipt. The longer items sit, the more they clutter the warehouse and delay credits. Set a maximum hold time, say 7 days, after which the item is automatically processed according to default rules."
+      },
+      {
+        "question": "Can I automate disposition decisions in a 3PL warehouse?",
+        "answer": "Yes, many 3PL warehouse management systems allow you to create rules based on SKU, condition, return reason, and customer. For example, you can set all returns from a specific customer to be inspected and restocked automatically if the condition is like-new."
+      }
+    ]
+  },
+  {
     "slug": "shipment-consolidation-reduces-handling-complexity",
     "category": "3PL & Warehousing",
     "title": "How Shipment Consolidation Cuts Handling Complexity",
