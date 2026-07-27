@@ -14,6 +14,87 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "warehouse-readiness-marketplace-retail-replenishment",
+    "category": "Distribution",
+    "title": "Warehouse Readiness for Marketplace and Retail Replenishment",
+    "description": "Learn how to prepare your warehouse for marketplace and retail replenishment, from compliance checks to staging and timing, to avoid chargebacks and delays.",
+    "excerpt": "Practical guidance on getting your warehouse operations ready for marketplace and retail replenishment, covering compliance, labeling, staging, and timing.",
+    "keywords": [
+      "warehouse readiness",
+      "retail replenishment",
+      "marketplace fulfillment",
+      "vendor compliance",
+      "EDI requirements",
+      "pallet labeling"
+    ],
+    "publishedAt": "2026-07-27",
+    "readTime": "4 min read",
+    "keyAnswer": "Warehouse readiness for marketplace and retail replenishment means having the right processes in place to meet retailer and marketplace compliance requirements, including accurate labeling, packaging, EDI transactions, and on-time delivery. It involves pre-shipment audits, proper staging, and coordination with your 3PL to avoid chargebacks and delays. Key steps include understanding each retailer's vendor compliance guide, setting up quality checks, and aligning inventory availability with order windows.",
+    "sections": [
+      {
+        "heading": "Understanding Retailer and Marketplace Requirements",
+        "paragraphs": [
+          "Every retailer and marketplace has its own set of rules. Walmart, Amazon, Costco, and Canadian Tire each publish vendor compliance guides that spell out everything from carton labeling to pallet construction. Ignoring these details can lead to chargebacks, rejected shipments, or delisting. The first step in warehouse readiness is to collect and review these guides for every channel you serve.",
+          "Common requirements include GS1-128 barcodes on cartons, specific pallet heights and weights, and advance ship notices (ASNs) sent via EDI. Some retailers also require electronic proof of delivery or specific routing guides. Your warehouse team needs to know these specs before the first pick is made. A simple checklist per retailer can prevent costly mistakes."
+        ],
+        "bullets": [
+          "Obtain the latest vendor compliance guide from each retailer or marketplace.",
+          "Identify labeling, packaging, and pallet requirements for each channel.",
+          "Set up EDI capabilities for ASNs, invoices, and purchase order acknowledgments.",
+          "Create a compliance checklist that your warehouse team follows for every order."
+        ]
+      },
+      {
+        "heading": "Pre-Shipment Audits and Quality Checks",
+        "paragraphs": [
+          "A pre-shipment audit is your last line of defense against non-compliance. Before a pallet leaves the dock, someone should verify that carton labels match the purchase order, that pallets are wrapped and tagged correctly, and that the shipment weight falls within carrier limits. This step is especially important for retail replenishment, where a single mislabeled carton can trigger a chargeback.",
+          "Quality checks go beyond labeling. For marketplace orders, you might need to inspect for damage, verify expiration dates on consumables, or ensure poly bags meet Amazon's suffocation warning requirements. For retail, you may need to confirm that case packs match the ordered quantity. These checks can be built into your warehouse management system (WMS) or done manually with a tablet. The key is consistency: every order gets the same level of scrutiny."
+        ]
+      },
+      {
+        "heading": "Staging and Timing for On-Time Delivery",
+        "paragraphs": [
+          "Retailers and marketplaces often have strict delivery windows. Miss the appointment, and you may face a penalty or have your shipment refused. Staging your orders ahead of time helps you hit those windows. Ideally, orders should be picked, packed, and staged in a designated area at least 24 hours before the scheduled pickup. This buffer allows for last-minute corrections or carrier delays.",
+          "For marketplace replenishment, timing is also critical. Amazon's inventory placement requirements mean you may need to ship to multiple fulfillment centers. Your warehouse should be able to split orders and label each box with the correct destination. Some 3PLs offer consolidated shipping to reduce costs, but you'll need to plan for longer transit times. Coordinate with your logistics team to align production, warehousing, and carrier schedules."
+        ]
+      },
+      {
+        "heading": "EDI and Data Readiness",
+        "paragraphs": [
+          "Electronic data interchange (EDI) is the backbone of retail replenishment. Most major retailers require EDI 856 (ASN), EDI 810 (invoice), and EDI 850 (purchase order). Without these, your shipment may be rejected or delayed. Your warehouse system must be able to generate and send these documents accurately and on time.",
+          "For marketplaces, the data requirements are different. Amazon requires you to upload inventory files or use their API. Some marketplaces also require tracking numbers and delivery confirmations. Your warehouse should have the ability to capture and transmit this data automatically. If you're using a 3PL, confirm they support the EDI transactions and file formats your retailers require. A mismatch can cause weeks of delays."
+        ],
+        "bullets": [
+          "Confirm your 3PL supports EDI 856, 810, and 850 for retail accounts.",
+          "Test EDI transactions with a test file before going live.",
+          "Set up automated ASN generation when orders are shipped.",
+          "For marketplaces, ensure your system can upload inventory and tracking data."
+        ]
+      },
+      {
+        "heading": "Handling Exceptions and Chargebacks",
+        "paragraphs": [
+          "Even with careful preparation, exceptions happen. A retailer may reject a shipment because of a label error, or a marketplace may deduct for late delivery. Your warehouse readiness plan should include a process for handling these exceptions quickly. That means having a contact at each retailer, knowing the appeal process, and being able to re-ship if needed.",
+          "Chargebacks are a reality of retail replenishment. Common chargebacks include non-compliance fees, late delivery penalties, and shortage claims. To minimize them, keep detailed records of every shipment: photos of pallets, weight tickets, and carrier proof of delivery. If a chargeback occurs, you can dispute it with evidence. Your warehouse team should be trained to document shipments thoroughly."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is the most common reason for retail chargebacks?",
+        "answer": "The most common reasons are incorrect labeling, missing or incorrect ASNs, and late delivery. Each retailer has specific requirements, so following their vendor compliance guide is essential."
+      },
+      {
+        "question": "Do I need EDI for marketplace replenishment?",
+        "answer": "Not always. Many marketplaces like Amazon use APIs or flat files instead of traditional EDI. However, if you sell through a retailer's marketplace (like Walmart Marketplace), EDI may be required. Check each channel's technical requirements."
+      },
+      {
+        "question": "How far in advance should I stage orders for retail replenishment?",
+        "answer": "At least 24 hours before the scheduled pickup or delivery appointment. This gives you time to correct any issues and ensures the carrier can load on time. For large orders, staging 48 hours ahead is safer."
+      }
+    ]
+  },
+  {
     "slug": "carton-pallet-standards-outbound-operations",
     "category": "3PL & Warehousing",
     "title": "How Carton and Pallet Standards Shape Outbound Efficiency",
