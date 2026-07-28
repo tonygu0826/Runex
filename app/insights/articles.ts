@@ -14,6 +14,96 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "how-inbound-documentation-supports-faster-receiving",
+    "category": "3PL & Warehousing",
+    "title": "How Inbound Documentation Speeds Up Warehouse Receiving",
+    "description": "Learn how accurate inbound documentation helps Canadian warehouses receive goods faster, reduce delays, and improve inventory accuracy.",
+    "excerpt": "Accurate inbound documentation helps warehouses plan resources, verify shipments quickly, and put inventory away faster, reducing delays and costs.",
+    "keywords": [
+      "inbound documentation",
+      "warehouse receiving process",
+      "ASN benefits",
+      "receiving delays",
+      "inventory accuracy",
+      "3PL receiving tips"
+    ],
+    "publishedAt": "2026-07-28",
+    "readTime": "5 min read",
+    "keyAnswer": "Inbound documentation, such as advance shipping notices (ASNs) and detailed packing lists, allows warehouses to prepare for incoming shipments before they arrive. This preparation includes scheduling labor, reserving staging space, and pre-verifying expected quantities. When trucks arrive, staff can cross-check quickly and move goods to storage faster, reducing dock congestion and improving inventory accuracy.",
+    "sections": [
+      {
+        "heading": "Why Documentation Matters Before the Truck Arrives",
+        "paragraphs": [
+          "When a shipment arrives at a warehouse without prior notice, the receiving team works blind. They don't know how many pallets to expect, what labels are on the cartons, or whether the goods need special handling. This uncertainty slows down the entire process. The dock door might not be ready, staff may be allocated elsewhere, and staging space could be occupied.",
+          "Good inbound documentation flips that scenario. An advance shipping notice (ASN) sent electronically gives the warehouse a clear picture of what's coming. The team can schedule the right number of workers, clear a receiving lane, and even pre-assign storage locations. By the time the truck backs in, most of the planning is already done.",
+          "For Canadian importers and distributors, this is especially important when dealing with cross-border shipments. Customs clearance times can vary, but if the warehouse knows the shipment is cleared and on its way, they can prepare without guessing."
+        ]
+      },
+      {
+        "heading": "Key Documents That Streamline Receiving",
+        "paragraphs": [
+          "Not all paperwork is equally useful. The most effective inbound documentation includes a few specific items that directly support faster receiving.",
+          "An advance shipping notice (ASN) is the gold standard. It lists every item in the shipment, including SKU numbers, quantities, and carton counts. When the ASN matches the physical shipment, receiving becomes a simple verification step. If there are discrepancies, the team knows immediately where to look.",
+          "A detailed packing list is another essential. It should show how goods are packed across pallets or cartons, not just a total count. This allows the receiving clerk to check one pallet at a time without opening every box. For example, a packing list that says 'Pallet 1: SKU A, 50 units; Pallet 2: SKU B, 30 units' makes spot-checking straightforward.",
+          "Barcode labels on each carton or pallet also speed things up. When labels follow a standard format (like GS1-128), the warehouse can scan and update inventory in real time. No manual data entry, no typos."
+        ],
+        "bullets": [
+          "Advance shipping notice (ASN) for pre-receiving planning",
+          "Detailed packing list showing pallet-level contents",
+          "Standardized barcode labels for fast scanning"
+        ]
+      },
+      {
+        "heading": "How Documentation Reduces Receiving Errors",
+        "paragraphs": [
+          "Errors during receiving create ripple effects. If the system says 100 units arrived but only 90 were actually received, inventory counts go wrong. Orders might be shorted, or the warehouse might think they have stock they don't. Fixing these errors later takes time and can lead to chargebacks or customer complaints.",
+          "Accurate documentation helps catch mismatches early. When the ASN and packing list are clear, the receiving team can compare actual goods against expected quantities right at the dock. If a pallet is missing or a carton is damaged, they note it immediately. The carrier can be flagged before they leave the yard, and the inventory record stays clean.",
+          "One practical limitation: documentation is only as good as the data it contains. If a supplier sends an ASN with wrong SKUs or quantities, the warehouse may still face delays. That's why many 3PLs ask for a pre-shipment sample or require suppliers to follow a specific label format. It's a trade-off—more upfront effort for fewer downstream headaches."
+        ]
+      },
+      {
+        "heading": "Practical Steps to Improve Your Inbound Documentation",
+        "paragraphs": [
+          "If you ship to a Canadian warehouse regularly, there are a few things you can do to make receiving faster for everyone.",
+          "First, send the ASN at least 24 hours before the shipment arrives. This gives the warehouse time to plan. If your system can't generate an ASN automatically, a simple email with the packing list details is better than nothing.",
+          "Second, standardize your labels. Use a consistent format that includes the SKU, quantity, and a scannable barcode. Avoid mixing different label styles on the same pallet. If your warehouse partner has specific label requirements, follow them exactly.",
+          "Third, include a bill of lading (BOL) that matches the packing list. A mismatch between the BOL and the actual load can cause the warehouse to reject the shipment or hold it for verification. That delay eats into your receiving window.",
+          "Finally, communicate any special handling needs in advance. If a shipment includes fragile items, hazardous materials, or temperature-sensitive goods, note it on the documentation. The warehouse can then prepare the right equipment and storage area."
+        ],
+        "bullets": [
+          "Send ASN at least 24 hours before arrival",
+          "Use standardized barcode labels",
+          "Ensure BOL matches packing list",
+          "Flag special handling requirements early"
+        ]
+      },
+      {
+        "heading": "What to Ask Your 3PL About Receiving Documentation",
+        "paragraphs": [
+          "Not all warehouses handle documentation the same way. If you're evaluating a 3PL or trying to improve your current setup, ask specific questions about their receiving process.",
+          "Start with: 'What documentation do you require for a smooth receiving appointment?' Some warehouses need an ASN in a particular format, while others can work with a PDF packing list. Knowing the requirements upfront prevents surprises.",
+          "Also ask: 'How do you handle discrepancies between documentation and actual goods?' A good 3PL will have a clear process—flag the issue, photograph the evidence, and communicate with you before making adjustments. Without that process, discrepancies can sit unresolved for days.",
+          "Another useful question: 'Can you pre-receive against my ASN before the truck arrives?' Some warehouse management systems allow receiving teams to create expected inventory records based on the ASN. When the goods arrive, they only need to confirm the count, not enter everything from scratch. This can cut receiving time by half.",
+          "Remember that faster receiving isn't just about speed—it's about accuracy. Rushing through a receiving process without proper documentation can lead to errors that cost more time later. The goal is to be both fast and correct."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is an advance shipping notice (ASN)?",
+        "answer": "An ASN is an electronic document sent by the shipper to the warehouse before a shipment arrives. It lists the items, quantities, and packaging details, allowing the warehouse to prepare for receiving."
+      },
+      {
+        "question": "How does inbound documentation reduce receiving delays?",
+        "answer": "Good documentation lets the warehouse schedule staff, reserve staging space, and pre-verify inventory. When the truck arrives, the team can quickly cross-check and move goods to storage instead of figuring out what's in the shipment."
+      },
+      {
+        "question": "What should I do if my supplier doesn't provide an ASN?",
+        "answer": "Ask for a detailed packing list at minimum. You can also request that the supplier follow a standard label format. If neither is possible, expect longer receiving times and plan for potential discrepancies."
+      }
+    ]
+  },
+  {
     "slug": "warehouse-readiness-marketplace-retail-replenishment",
     "category": "Distribution",
     "title": "Warehouse Readiness for Marketplace and Retail Replenishment",
