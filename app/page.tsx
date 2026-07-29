@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Arrow, SiteFooter, SiteHeader } from "./components/site-chrome";
-import { articles } from "./insights/articles";
 
 const serviceCards = [
   {
@@ -150,23 +149,6 @@ export default function Home() {
               <div><b>03</b><h3>Reliable execution</h3><p>Practical processes designed to keep work moving.</p></div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <section className="home-insights section-shell" aria-labelledby="home-insights-title">
-        <div className="home-insights-heading">
-          <div><p className="eyebrow dark"><span /> Insights</p><h2 id="home-insights-title">Logistics answers your team can use.</h2></div>
-          <Link href="/insights">View all articles <Arrow /></Link>
-        </div>
-        <div className="home-article-grid">
-          {articles.map((article) => (
-            <article key={article.slug}>
-              <small>{article.category}</small>
-              <h3><a href={`/insights/${article.slug}`}>{article.title}</a></h3>
-              <p>{article.excerpt}</p>
-              <a href={`/insights/${article.slug}`}>Read article <Arrow /></a>
-            </article>
-          ))}
         </div>
       </section>
 
