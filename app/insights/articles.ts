@@ -14,6 +14,103 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "evaluating-value-added-warehouse-services-canada",
+    "category": "3PL & Warehousing",
+    "title": "Evaluating Value-Added Warehouse Services in Canada",
+    "description": "Learn how to assess value-added services like kitting, labeling, and light assembly from Canadian 3PLs to improve fulfillment efficiency and control costs.",
+    "excerpt": "A practical guide for importers and distributors to evaluate value-added warehouse services in Canada, covering kitting, labeling, assembly, and cost considerations.",
+    "keywords": [
+      "value-added warehouse services Canada",
+      "3PL value-added services evaluation",
+      "warehouse kitting and assembly Canada",
+      "Canadian 3PL service assessment",
+      "warehouse value-added costs"
+    ],
+    "publishedAt": "2026-07-29",
+    "readTime": "4 min read",
+    "keyAnswer": "Value-added warehouse services (VAS) are optional tasks beyond storage and shipping, such as kitting, labeling, light assembly, and quality checks. To evaluate them, start by mapping your product flow to identify where VAS can reduce handling or speed up order fulfillment. Then compare 3PL pricing models per unit versus per hour, and ask about error rates, turnaround times, and how they handle rework. A good VAS partner will show you their standard operating procedures and let you audit the process before committing.",
+    "sections": [
+      {
+        "heading": "What Are Value-Added Warehouse Services?",
+        "paragraphs": [
+          "Value-added services (VAS) are any tasks a 3PL performs that go beyond basic storage and shipping. Common examples include kitting (combining items into a bundle), custom labeling, light assembly, polybagging, and quality inspections. In Canada, where cross-border compliance and bilingual labeling add complexity, VAS can also include applying French-language labels or preparing documents for customs.",
+          "Not every warehouse offers the same VAS menu. Some specialize in retail-ready packaging, others in e-commerce kitting. The key is to match the service to your product and order profile. For instance, if you sell a product that needs a battery and a manual inserted, a kitting service could cut your per-order labor cost.",
+          "But VAS isn't free. You pay for the labor, materials, and any overhead the 3PL allocates. The trade-off is that you avoid investing in your own equipment and staff for tasks that may fluctuate seasonally."
+        ]
+      },
+      {
+        "heading": "How to Identify Which Services You Actually Need",
+        "paragraphs": [
+          "Start by reviewing your order history. Look for patterns: Do you frequently ship the same combination of items together? That is a candidate for kitting. Do retailers require specific label formats? That points to labeling services. If you spend more than a few hours per week on light assembly or repackaging, it may be time to outsource.",
+          "Another approach is to map your inbound-to-outbound flow. Where are the bottlenecks? For example, if your team spends hours applying labels after receiving goods, a 3PL can take that on during receiving. Similarly, if returns require inspection and repackaging, VAS can handle disposition.",
+          "Be realistic about volume. Some 3PLs have minimums for VAS, like a 500-unit kitting minimum. If your volumes are low, you might pay a premium per unit. Ask about setup fees and whether they offer a tiered pricing structure."
+        ],
+        "bullets": [
+          "Review order data for frequent item combinations.",
+          "Identify tasks that consume more than 2-3 hours per week.",
+          "Ask about minimum order quantities for VAS.",
+          "Check if the 3PL can integrate VAS with inbound receiving."
+        ]
+      },
+      {
+        "heading": "Comparing Pricing Models: Per Unit vs. Per Hour",
+        "paragraphs": [
+          "3PLs typically charge for VAS either per unit (e.g., $0.50 per label applied) or per hour of labor. Each model has pros and cons. Per-unit pricing is predictable and easy to budget, but it may not reflect complexity. For example, applying a simple label is quick, but a label that requires alignment and multiple data fields might take longer. If the 3PL uses a flat per-unit rate, they may build in a buffer that makes simple tasks more expensive.",
+          "Per-hour pricing aligns cost with actual effort, but it requires trust and visibility. You need to know how the 3PL tracks time and what their labor rate includes. Some 3PLs add a markup on labor or charge for overhead. Ask for a sample invoice or a breakdown of a typical VAS job.",
+          "Also consider material costs. Some 3PLs include labels and bags in the per-unit price; others charge separately. Get a full cost estimate for a typical order before comparing."
+        ],
+        "bullets": [
+          "Per-unit pricing: simple to budget, may overcharge for easy tasks.",
+          "Per-hour pricing: accurate but requires trust in time tracking.",
+          "Always ask about material costs and any setup fees.",
+          "Request a sample invoice for a typical VAS job."
+        ]
+      },
+      {
+        "heading": "Quality Control and Error Handling",
+        "paragraphs": [
+          "VAS errors can ripple through your supply chain. A mislabeled product might be rejected by a retailer, incurring chargebacks. A kitted item with missing parts leads to customer complaints. So evaluating a 3PL's quality control is essential.",
+          "Ask about their standard operating procedures (SOPs) for each VAS task. Do they have written work instructions? Do they use checklists? How do they handle rework when an error is found? Some 3PLs have a dedicated quality team that inspects a sample of VAS output daily.",
+          "Also discuss error resolution. If a mistake happens, who pays for the rework and any resulting penalties? A transparent 3PL will have a clear policy. You might also negotiate a service-level agreement (SLA) that defines acceptable error rates (e.g., <0.5%) and remedies."
+        ],
+        "bullets": [
+          "Request SOPs for each VAS task.",
+          "Ask about daily quality checks and sampling rates.",
+          "Clarify who bears cost of rework and chargebacks.",
+          "Consider an SLA with error rate targets."
+        ]
+      },
+      {
+        "heading": "Questions to Ask Before Signing a Contract",
+        "paragraphs": [
+          "Before committing, schedule a visit to the warehouse if possible. See the VAS area firsthand. Is it organized? Are workers following the SOPs? Ask about their peak season capacity for VAS. If your volumes double in Q4, can they scale up labor quickly?",
+          "Other key questions: What is the typical turnaround time from receiving to VAS completion? How do they handle rush orders? Do they have bilingual staff for French labeling? What is their process for introducing a new VAS task?",
+          "Finally, check references. Ask for a client who uses similar VAS and inquire about their experience with accuracy, communication, and billing. A 3PL that is transparent about their capabilities and limitations is usually a safer bet."
+        ],
+        "bullets": [
+          "Visit the warehouse and observe VAS operations.",
+          "Ask about peak season scalability.",
+          "Inquire about turnaround times and rush order handling.",
+          "Check references from clients with similar VAS needs."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What are the most common value-added services in Canadian warehouses?",
+        "answer": "Common VAS include kitting, custom labeling (including bilingual labels), light assembly, polybagging, price ticketing, quality inspections, and returns processing. Some 3PLs also offer e-commerce prep like adding poly bags or inserting marketing materials."
+      },
+      {
+        "question": "How do I know if a 3PL's VAS pricing is fair?",
+        "answer": "Compare per-unit and per-hour rates from multiple providers. Ask for a detailed quote that breaks down labor, materials, and any setup fees. Also consider the 3PL's error rate and turnaround time, as cheaper rates may come with lower quality."
+      },
+      {
+        "question": "Can I start with basic storage and add VAS later?",
+        "answer": "Yes, most 3PLs allow you to add VAS as your needs grow. However, some services require setup time or minimum volumes. Discuss your future plans during contract negotiations so the 3PL can prepare."
+      }
+    ]
+  },
+  {
     "slug": "how-inbound-documentation-supports-faster-receiving",
     "category": "3PL & Warehousing",
     "title": "How Inbound Documentation Speeds Up Warehouse Receiving",
