@@ -97,44 +97,6 @@ Return exactly this JSON shape:
   ]
 }`;
 
-const response = await fetch(apiUrl, {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${apiKey}`,
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model,
-    messages: [
-      { role: "system", content: systemPrompt },
-      { role: "user", content: userPrompt },
-    ],
-    thinking: { type: "disabled" },
-    response_format: { type: "json_object" },
-    max_tokens: 8_000,
-    temperature: 0.45,
-    stream: false,
-  }),
-});
-
-if (!response.ok) {
-  const detail = await response.text();
-  throw new Error(`DeepSeek request failed (${response.status}): ${detail.slice(0, 1_000)}`);
-}
-
-const payload = await response.json();
-const rawContent = payload?.choices?.[0]?.message?.content;
-if (typeof rawContent !== "string" || !rawContent.trim()) {
-  throw new Error("DeepSeek returned no article content.");
-}
-
-let generated;
-try {
-  generated = JSON.parse(rawContent.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, ""));
-} catch (error) {
-  throw new Error(`DeepSeek returned invalid JSON: ${error.message}`);
-}
-
 const countWords = (value) => value.trim().split(/\s+/).filter(Boolean).length;
 
 const requireString = (value, field, min = 1) => {
@@ -144,100 +106,184 @@ const requireString = (value, field, min = 1) => {
   return value.trim();
 };
 
-const slug = requireString(generated.slug, "slug").toLowerCase();
-if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error("Generated slug is not lowercase kebab-case.");
-if (slug.length > 72) throw new Error("Generated slug exceeds 72 characters.");
-if (existingSlugs.includes(slug)) throw new Error(`Generated slug already exists: ${slug}`);
+const requestArticleContent = async (messages) => {
+  const response = await fetch(apiUrl, {
+    method: "POST",
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      model,
+      messages,
+      thinking: { type: "disabled" },
+      response_format: { type: "json_object" },
+      max_tokens: 8_000,
+      temperature: 0.45,
+      stream: false,
+    }),
+  });
 
-const title = requireString(generated.title, "title", 20);
-if (title.length > 60 || countWords(title) > 10) {
-  throw new Error("Generated title must be no more than 60 characters and 10 words.");
-}
-if (existingTitles.some((existing) => existing.toLowerCase() === title.toLowerCase())) {
-  throw new Error(`Generated title already exists: ${title}`);
-}
-
-const categories = new Set(["3PL & Warehousing", "FBA & E-commerce", "Distribution", "Fulfillment", "Supply Chain"]);
-if (!categories.has(generated.category)) throw new Error(`Generated category is not allowed: ${generated.category}`);
-if (!Array.isArray(generated.sections) || generated.sections.length < 5 || generated.sections.length > 6) {
-  throw new Error("Generated article must contain 5-6 sections.");
-}
-if (!Array.isArray(generated.keywords) || generated.keywords.length < 4 || generated.keywords.length > 6) {
-  throw new Error("Generated article must contain 4-6 natural topic phrases.");
-}
-if (!Array.isArray(generated.faq) || generated.faq.length !== 3) {
-  throw new Error("Generated article must contain exactly 3 FAQs.");
-}
-
-const sections = generated.sections.map((section, index) => {
-  if (!Array.isArray(section.paragraphs) || section.paragraphs.length < 1) {
-    throw new Error(`Section ${index + 1} has no paragraphs.`);
+  if (!response.ok) {
+    const detail = await response.text();
+    throw new Error(`DeepSeek request failed (${response.status}): ${detail.slice(0, 1_000)}`);
   }
-  const heading = requireString(section.heading, `section ${index + 1} heading`, 5);
-  if (heading.length > 60 || countWords(heading) > 10) {
-    throw new Error(`Section ${index + 1} heading must be no more than 60 characters and 10 words.`);
+
+  const payload = await response.json();
+  const rawContent = payload?.choices?.[0]?.message?.content;
+  if (typeof rawContent !== "string" || !rawContent.trim()) {
+    throw new Error("DeepSeek returned no article content.");
   }
-  const normalized = {
-    heading,
-    paragraphs: section.paragraphs.map((paragraph, paragraphIndex) =>
-      requireString(paragraph, `section ${index + 1} paragraph ${paragraphIndex + 1}`, 12),
-    ),
-  };
-  if (Array.isArray(section.bullets) && section.bullets.length) {
-    if (section.bullets.length < 3 || section.bullets.length > 5) {
-      throw new Error(`Section ${index + 1} must contain 3-5 bullets when bullets are used.`);
-    }
-    normalized.bullets = section.bullets.map((bullet, bulletIndex) =>
-      requireString(bullet, `section ${index + 1} bullet ${bulletIndex + 1}`, 8),
-    );
-  }
-  return normalized;
-});
-
-const faq = generated.faq.map((item, index) => {
-  const question = requireString(item.question, `FAQ ${index + 1} question`, 10);
-  if (question.length > 90) throw new Error(`FAQ ${index + 1} question exceeds 90 characters.`);
-  return {
-    question,
-    answer: requireString(item.answer, `FAQ ${index + 1} answer`, 30),
-  };
-});
-
-const keywords = [...new Set(generated.keywords.map((keyword, index) => {
-  const value = requireString(keyword, `keyword ${index + 1}`, 4);
-  if (value.length > 55 || countWords(value) > 7) {
-    throw new Error(`Keyword ${index + 1} must be no more than 55 characters and 7 words.`);
-  }
-  return value;
-}))];
-if (keywords.length < 4) throw new Error("Generated keywords must be unique.");
-
-const prose = [generated.keyAnswer, ...sections.flatMap((section) => section.paragraphs), ...faq.map((item) => item.answer)].join(" ");
-const wordCount = countWords(prose);
-if (wordCount < 750 || wordCount > 1_200) {
-  throw new Error(`Generated article must be 750-1,200 words; received ${wordCount}.`);
-}
-
-const description = requireString(generated.description, "description", 110);
-if (description.length > 160) throw new Error("Generated description exceeds 160 characters.");
-const excerpt = requireString(generated.excerpt, "excerpt", 40);
-if (excerpt.length > 180) throw new Error("Generated excerpt exceeds 180 characters.");
-const keyAnswer = requireString(generated.keyAnswer, "keyAnswer", 80);
-if (countWords(keyAnswer) > 100) throw new Error("Generated key answer exceeds 100 words.");
-
-const article = {
-  slug,
-  category: generated.category,
-  title,
-  description,
-  excerpt,
-  keywords,
-  publishedAt,
-  readTime: `${Math.max(4, Math.ceil(wordCount / 220))} min read`,
-  keyAnswer,
-  sections,
-  faq,
+  return rawContent;
 };
+
+const parseArticleContent = (rawContent) => {
+  try {
+    return JSON.parse(rawContent.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/, ""));
+  } catch (error) {
+    throw new Error(`DeepSeek returned invalid JSON: ${error.message}`);
+  }
+};
+
+const validateGeneratedArticle = (generated) => {
+  const slug = requireString(generated.slug, "slug").toLowerCase();
+  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug)) throw new Error("Generated slug is not lowercase kebab-case.");
+  if (slug.length > 72) throw new Error("Generated slug exceeds 72 characters.");
+  if (existingSlugs.includes(slug)) throw new Error(`Generated slug already exists: ${slug}`);
+
+  const title = requireString(generated.title, "title", 20);
+  if (title.length > 60 || countWords(title) > 10) {
+    throw new Error("Generated title must be no more than 60 characters and 10 words.");
+  }
+  if (existingTitles.some((existing) => existing.toLowerCase() === title.toLowerCase())) {
+    throw new Error(`Generated title already exists: ${title}`);
+  }
+
+  const categories = new Set(["3PL & Warehousing", "FBA & E-commerce", "Distribution", "Fulfillment", "Supply Chain"]);
+  if (!categories.has(generated.category)) throw new Error(`Generated category is not allowed: ${generated.category}`);
+  if (!Array.isArray(generated.sections) || generated.sections.length < 5 || generated.sections.length > 6) {
+    throw new Error("Generated article must contain 5-6 sections.");
+  }
+  if (!Array.isArray(generated.keywords) || generated.keywords.length < 4 || generated.keywords.length > 6) {
+    throw new Error("Generated article must contain 4-6 natural topic phrases.");
+  }
+  if (!Array.isArray(generated.faq) || generated.faq.length !== 3) {
+    throw new Error("Generated article must contain exactly 3 FAQs.");
+  }
+
+  const sections = generated.sections.map((section, index) => {
+    if (!Array.isArray(section.paragraphs) || section.paragraphs.length < 1) {
+      throw new Error(`Section ${index + 1} has no paragraphs.`);
+    }
+    const heading = requireString(section.heading, `section ${index + 1} heading`, 5);
+    if (heading.length > 60 || countWords(heading) > 10) {
+      throw new Error(`Section ${index + 1} heading must be no more than 60 characters and 10 words.`);
+    }
+    const normalized = {
+      heading,
+      paragraphs: section.paragraphs.map((paragraph, paragraphIndex) =>
+        requireString(paragraph, `section ${index + 1} paragraph ${paragraphIndex + 1}`, 12),
+      ),
+    };
+    if (Array.isArray(section.bullets) && section.bullets.length) {
+      if (section.bullets.length < 3 || section.bullets.length > 5) {
+        throw new Error(`Section ${index + 1} must contain 3-5 bullets when bullets are used.`);
+      }
+      normalized.bullets = section.bullets.map((bullet, bulletIndex) =>
+        requireString(bullet, `section ${index + 1} bullet ${bulletIndex + 1}`, 8),
+      );
+    }
+    return normalized;
+  });
+
+  const faq = generated.faq.map((item, index) => {
+    const question = requireString(item.question, `FAQ ${index + 1} question`, 10);
+    if (question.length > 90) throw new Error(`FAQ ${index + 1} question exceeds 90 characters.`);
+    return {
+      question,
+      answer: requireString(item.answer, `FAQ ${index + 1} answer`, 30),
+    };
+  });
+
+  const keywords = [...new Set(generated.keywords.map((keyword, index) => {
+    const value = requireString(keyword, `keyword ${index + 1}`, 4);
+    if (value.length > 55 || countWords(value) > 7) {
+      throw new Error(`Keyword ${index + 1} must be no more than 55 characters and 7 words.`);
+    }
+    return value;
+  }))];
+  if (keywords.length < 4) throw new Error("Generated keywords must be unique.");
+
+  const prose = [generated.keyAnswer, ...sections.flatMap((section) => section.paragraphs), ...faq.map((item) => item.answer)].join(" ");
+  const wordCount = countWords(prose);
+  if (wordCount < 750 || wordCount > 1_200) {
+    throw new Error(`Generated article must be 750-1,200 words; received ${wordCount}.`);
+  }
+
+  const description = requireString(generated.description, "description", 110);
+  if (description.length > 160) throw new Error("Generated description exceeds 160 characters.");
+  const excerpt = requireString(generated.excerpt, "excerpt", 40);
+  if (excerpt.length > 180) throw new Error("Generated excerpt exceeds 180 characters.");
+  const keyAnswer = requireString(generated.keyAnswer, "keyAnswer", 80);
+  if (countWords(keyAnswer) > 100) throw new Error("Generated key answer exceeds 100 words.");
+
+  return {
+    wordCount,
+    article: {
+      slug,
+      category: generated.category,
+      title,
+      description,
+      excerpt,
+      keywords,
+      publishedAt,
+      readTime: `${Math.max(4, Math.ceil(wordCount / 220))} min read`,
+      keyAnswer,
+      sections,
+      faq,
+    },
+  };
+};
+
+const baseMessages = [
+  { role: "system", content: systemPrompt },
+  { role: "user", content: userPrompt },
+];
+const maxAttempts = 3;
+let previousRawContent = "";
+let lastError;
+let validated;
+
+for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
+  const messages = [...baseMessages];
+  if (attempt > 1) {
+    if (previousRawContent) messages.push({ role: "assistant", content: previousRawContent });
+    messages.push({
+      role: "user",
+      content: `The previous JSON failed validation for this exact reason: ${lastError.message}
+Correct the problem while preserving all other requirements. Recheck every length and count constraint, then return the complete corrected JSON object only.`,
+    });
+  }
+
+  try {
+    console.log(`DeepSeek generation attempt ${attempt}/${maxAttempts}.`);
+    previousRawContent = await requestArticleContent(messages);
+    validated = validateGeneratedArticle(parseArticleContent(previousRawContent));
+    break;
+  } catch (error) {
+    lastError = error instanceof Error ? error : new Error(String(error));
+    console.warn(`Attempt ${attempt} failed validation or generation: ${lastError.message}`);
+    if (attempt < maxAttempts) {
+      await new Promise((resolve) => setTimeout(resolve, attempt * 1_500));
+    }
+  }
+}
+
+if (!validated) {
+  throw new Error(`DeepSeek could not produce a valid article after ${maxAttempts} attempts: ${lastError.message}`);
+}
+
+const { article, wordCount } = validated;
 
 const marker = "export const articles: Article[] = [";
 if (!source.includes(marker)) throw new Error(`Could not find article list marker in ${articlesPath}.`);
