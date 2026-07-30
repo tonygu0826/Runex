@@ -14,6 +14,91 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "reducing-receiving-delays-canadian-3pl-warehouse",
+    "category": "3PL & Warehousing",
+    "title": "Cutting Receiving Delays at Your Canadian 3PL Warehouse",
+    "description": "Learn practical steps to reduce inbound receiving delays at a Canadian 3PL warehouse, from appointment scheduling to documentation and pallet standards.",
+    "excerpt": "Reduce receiving delays at your Canadian 3PL by scheduling appointments, submitting accurate documentation, and standardizing pallets and labels.",
+    "keywords": [
+      "warehouse receiving delays",
+      "Canadian 3PL receiving process",
+      "inbound appointment scheduling",
+      "warehouse documentation accuracy",
+      "pallet standards Canada",
+      "reduce receiving time"
+    ],
+    "publishedAt": "2026-07-30",
+    "readTime": "4 min read",
+    "keyAnswer": "Receiving delays at a Canadian 3PL warehouse often stem from unscheduled arrivals, incomplete documentation, and non-standard pallets. To reduce delays, book appointments in advance, submit accurate packing lists and PO numbers electronically, and ensure pallets meet common Canadian standards (e.g., 48x40 inches, no broken boards). These steps help the warehouse plan resources and process your freight faster.",
+    "sections": [
+      {
+        "heading": "Why Receiving Delays Happen",
+        "paragraphs": [
+          "A truck shows up at the dock without notice. The driver has a packing list that doesn't match the purchase order. Pallets are odd sizes or damaged. These scenes play out daily at Canadian 3PL warehouses, and each one adds hours—sometimes days—to the receiving process.",
+          "Delays ripple outward. Your inventory isn't available for orders, so you miss ship windows or pay for expedited freight. The warehouse team spends time sorting out discrepancies instead of putting product away. Understanding the root causes helps you prevent them."
+        ]
+      },
+      {
+        "heading": "Schedule Appointments and Stick to Them",
+        "paragraphs": [
+          "Most Canadian 3PL warehouses operate on an appointment system for inbound deliveries. If you arrive without one, you'll likely wait until a dock opens—or be turned away. Booking a slot a few days ahead gives the warehouse time to assign staff and equipment.",
+          "But appointments only work if you show up on time. Late arrivals disrupt the schedule and may push your unloading to the next day. If you're consistently early or late, adjust your booking window. Some warehouses charge fees for no-shows or last-minute cancellations, so check their policy."
+        ]
+      },
+      {
+        "heading": "Submit Accurate Documentation in Advance",
+        "paragraphs": [
+          "The single biggest time-saver is sending your packing list, bill of lading, and purchase order numbers to the warehouse before the truck arrives. Electronic submission (email or portal) lets the receiving team pre-verify quantities, SKUs, and any special handling notes.",
+          "Common documentation errors include mismatched PO numbers, missing item codes, and quantities that don't match the physical load. If your supplier provides the documents, ask them to follow your 3PL's format. A simple checklist can catch mistakes before they cause delays.",
+          "For example, if you import goods from Asia to a Canadian port, your freight forwarder might generate a packing list that uses different unit measures (e.g., cartons vs. pieces). Clarify with your 3PL which unit they expect on the paperwork."
+        ]
+      },
+      {
+        "heading": "Standardize Pallets and Labels",
+        "paragraphs": [
+          "Canadian warehouses typically handle 48x40 inch GMA-style pallets. Non-standard sizes—like Euro pallets or custom dimensions—slow down unloading because they don't fit racking or require special equipment. If your supply chain uses odd pallets, consider cross-docking to standard pallets before delivery.",
+          "Label placement matters too. A label stuck on the side of a shrink-wrapped pallet is hard to scan. Best practice is to place labels on two adjacent sides, about 12 inches from the bottom. Include the PO number, SKU, and quantity in a barcode format your 3PL can read.",
+          "Damaged pallets are another delay. Broken boards or protruding nails make pallets unsafe for forklifts. Inspect pallets at origin or ask your carrier to note damage on the delivery receipt. The warehouse may refuse to accept unsafe pallets, forcing a re-palletization that costs time and money."
+        ],
+        "bullets": [
+          "Use 48x40 inch GMA pallets whenever possible.",
+          "Place labels on two sides, 12 inches from bottom.",
+          "Include PO number, SKU, and quantity in barcode.",
+          "Inspect pallets for damage before shipment."
+        ]
+      },
+      {
+        "heading": "Communicate Special Handling Needs Early",
+        "paragraphs": [
+          "Some freight requires extra steps: temperature checks for perishables, hazmat segregation, or lift-gate service for heavy items. If you don't tell the warehouse in advance, they may not have the right equipment or certified staff ready.",
+          "For instance, if you ship lithium batteries, the warehouse needs to know the class and proper storage area. A heads-up a few days before arrival lets them prepare. Last-minute surprises often mean your truck waits while the team scrambles.",
+          "Similarly, if your shipment includes mixed SKUs on one pallet, note that on the packing list. The warehouse can plan to break down and sort the pallet rather than storing it as-is. Clear communication upfront saves everyone time."
+        ]
+      },
+      {
+        "heading": "Audit Your Inbound Process Regularly",
+        "paragraphs": [
+          "Even with good habits, delays can creep back. Review your receiving data quarterly: average wait time, number of appointment reschedules, and common documentation errors. Share these metrics with your 3PL and your suppliers.",
+          "A simple fix might be switching to a standard PO format across all suppliers. Another might be adjusting your delivery window to avoid peak hours (typically mid-morning and early afternoon). Small tweaks add up to consistent, faster receiving."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is a typical receiving window at a Canadian 3PL warehouse?",
+        "answer": "Most warehouses offer receiving windows from 8 AM to 4 PM, Monday through Friday, by appointment. Some may accept early morning or late afternoon slots if arranged in advance. Check with your 3PL for their specific hours and any cutoff times for same-day appointments."
+      },
+      {
+        "question": "How far in advance should I book a receiving appointment?",
+        "answer": "Booking 48 to 72 hours ahead is common. For high-volume periods like peak season, a week or more may be needed. Confirm with your 3PL their recommended lead time and whether they allow recurring appointments for regular shipments."
+      },
+      {
+        "question": "What happens if my shipment arrives without a packing list?",
+        "answer": "The warehouse may refuse to unload until documentation is provided, or they may process it as a 'blind receipt'—which takes longer because staff must manually count and identify items. This often incurs extra fees. Always ensure the packing list is sent electronically before arrival."
+      }
+    ]
+  },
+  {
     "slug": "evaluating-value-added-warehouse-services-canada",
     "category": "3PL & Warehousing",
     "title": "Evaluating Value-Added Warehouse Services in Canada",
