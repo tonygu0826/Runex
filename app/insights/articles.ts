@@ -14,6 +14,87 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "inventory-cycle-counting-for-ecommerce-brands",
+    "category": "Fulfillment",
+    "title": "Cycle Counting for E-commerce Inventory Accuracy",
+    "description": "Learn how cycle counting helps e-commerce brands keep inventory accurate without full physical counts, improving fulfillment and reducing stockouts.",
+    "excerpt": "Cycle counting is a practical way for e-commerce brands to keep inventory accurate without shutting down operations for a full physical count.",
+    "keywords": [
+      "cycle counting e-commerce",
+      "inventory accuracy for online retail",
+      "cycle count methods",
+      "warehouse inventory audit",
+      "reduce stockouts e-commerce"
+    ],
+    "publishedAt": "2026-07-31",
+    "readTime": "4 min read",
+    "keyAnswer": "Cycle counting is a systematic approach where a portion of your inventory is counted on a regular schedule, instead of doing one massive annual count. It helps e-commerce brands catch discrepancies early, improve order accuracy, and maintain trustworthy inventory data for purchasing and sales decisions.",
+    "sections": [
+      {
+        "heading": "Why Cycle Counting Matters for E-commerce",
+        "paragraphs": [
+          "When you sell online, your inventory numbers are the backbone of your business. They affect what you list as available, what you promise for delivery, and how much you reorder. A small error can mean overselling a popular item or holding dead stock that ties up cash. For a growing brand, these mistakes get more expensive as order volume climbs.",
+          "A full physical count, often done once a year, can be disruptive. You may need to pause shipping or work long hours to count everything. Even then, the data is stale by the time you finish. Cycle counting spreads the work throughout the year, so you can keep operating while still verifying accuracy."
+        ],
+        "bullets": [
+          "Catch discrepancies sooner, before they become customer-facing problems.",
+          "Reduce the risk of stockouts and overselling.",
+          "Improve trust in your inventory data for planning and purchasing."
+        ]
+      },
+      {
+        "heading": "How Cycle Counting Works",
+        "paragraphs": [
+          "The idea is simple: instead of counting everything at once, you count a subset of items on a rotating basis. The frequency can depend on how often an item moves or how valuable it is. High-velocity products might be counted monthly, while slower movers can be checked quarterly or even annually.",
+          "There are several ways to set up a cycle count. One common method is ABC analysis, where you group items by their annual sales value. 'A' items are your top sellers and get counted most often, 'B' items are moderate, and 'C' items are the rest. Another approach is to count a random sample of locations each day, which can help identify systemic issues without a fixed schedule."
+        ],
+        "bullets": [
+          "ABC analysis: prioritize by sales velocity or value.",
+          "Random sample: count a few locations daily to spot trends.",
+          "Control groups: count the same items repeatedly to measure accuracy."
+        ]
+      },
+      {
+        "heading": "Setting Up a Cycle Count Program",
+        "paragraphs": [
+          "Before you start counting, you need clean, organized storage. If products are scattered or mislabeled, your counts will be off no matter how often you do them. Make sure each SKU has a designated location and that your warehouse management system (WMS) reflects that location accurately.",
+          "Decide who will do the counting. It could be a dedicated inventory team, or you might train your pickers to count a few bins during slow periods. The key is consistency. If you rely on the same people who handle orders, make sure they have time set aside so counting doesn't get skipped when orders pile up.",
+          "You also need a process for handling discrepancies. When a count doesn't match your system, you need to investigate. Is it a receiving error, a picking mistake, or a data entry issue? Fixing the root cause is more valuable than just adjusting the number."
+        ]
+      },
+      {
+        "heading": "Common Challenges and How to Handle Them",
+        "paragraphs": [
+          "One challenge is finding time for counts during peak seasons. If you run a promotion or hit a holiday rush, you may need to pause counting temporarily. That's fine, as long as you resume afterward. The goal is consistency over the long term, not perfection every week.",
+          "Another issue is dealing with items that are in transit or being picked while you count. You can minimize errors by counting during slow periods or by using a 'count only what's in the bin' rule. If an item is mid-pick, it might be better to skip it and come back later.",
+          "Finally, you might find that some discrepancies are caused by theft or damage. These are harder to fix with counting alone. You may need to review your security or handling procedures. But cycle counting can help you spot these problems sooner rather than later."
+        ]
+      },
+      {
+        "heading": "Questions to Ask Your 3PL About Cycle Counting",
+        "paragraphs": [
+          "If you're using a third-party logistics (3PL) provider, you should ask about their cycle counting practices. Not all warehouses offer the same level of service. Some may include cycle counts in their standard fees, while others charge extra. It's worth clarifying what's included in your contract.",
+          "Ask how often they count, what method they use, and how they report discrepancies. Do they provide a report after each count? Can you see the history of adjustments? You also want to know how they handle inventory that is damaged or expired. A good 3PL will have a clear process for these situations.",
+          "Remember, you are ultimately responsible for your inventory accuracy. Even if your 3PL does the counting, you should review the results and understand what they mean for your business. If you see a pattern of errors, you may need to adjust your own processes, such as how you send purchase orders or receive goods."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How often should I do cycle counts?",
+        "answer": "It depends on your inventory turnover and value. High-value or fast-moving items might be counted monthly, while slower items can be counted quarterly or annually. The key is to have a consistent schedule that fits your operations."
+      },
+      {
+        "question": "What is the difference between cycle counting and a physical inventory count?",
+        "answer": "A physical inventory count involves counting all items at once, usually annually, and often requires shutting down operations. Cycle counting counts a portion of inventory on a regular basis, allowing you to keep operating and catch issues earlier."
+      },
+      {
+        "question": "Can cycle counting help reduce stockouts?",
+        "answer": "Yes. By identifying discrepancies early, you can correct inventory levels before they reach zero. This helps you reorder in time and avoid selling items you don't actually have."
+      }
+    ]
+  },
+  {
     "slug": "reducing-receiving-delays-canadian-3pl-warehouse",
     "category": "3PL & Warehousing",
     "title": "Cutting Receiving Delays at Your Canadian 3PL Warehouse",
