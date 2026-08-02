@@ -14,6 +14,86 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "retail-compliant-shipments-without-rework",
+    "category": "Distribution",
+    "title": "Retail-Compliant Shipments Without Costly Rework",
+    "description": "Learn how to prepare retail-compliant shipments to avoid rework, delays, and chargebacks with practical steps for Canadian distributors.",
+    "excerpt": "Practical steps to prepare retail-compliant shipments, reducing rework, delays, and chargebacks for Canadian distributors.",
+    "keywords": [
+      "retail compliance shipping",
+      "avoid chargebacks retail",
+      "EDI compliance for retail",
+      "labeling requirements retail",
+      "packing list accuracy",
+      "retail ready packaging"
+    ],
+    "publishedAt": "2026-08-02",
+    "readTime": "5 min read",
+    "keyAnswer": "Retail-compliant shipments meet the specific packaging, labeling, and documentation standards set by each retailer. To avoid rework, start by reviewing each retailer's compliance guide, then build checkpoints into your packing process to verify carton contents, labels, and ASNs before the truck leaves. Even small errors can trigger chargebacks or returns, so it's worth investing in upfront checks.",
+    "sections": [
+      {
+        "heading": "Why Retail Compliance Matters",
+        "paragraphs": [
+          "Retailers enforce strict rules on how products arrive at their distribution centers. These rules cover everything from carton weight and dimensions to barcode placement and packing slips. When a shipment doesn't match the retailer's expectations, it can be rejected, delayed, or flagged for a chargeback. That means your team spends time fixing problems, and your customer waits longer for inventory.",
+          "The cost of rework goes beyond the immediate labor. A rejected shipment can disrupt your relationship with the retailer, and repeated issues may lead to stricter inspections or even loss of vendor status. For Canadian distributors shipping across the border or within the country, the stakes are higher because returns and corrections often involve additional freight and customs paperwork."
+        ]
+      },
+      {
+        "heading": "Start with Retailer-Specific Requirements",
+        "paragraphs": [
+          "Every retailer has its own compliance manual. Some require specific carton sizes, others mandate unique barcode formats, and many have strict rules about pallet wrapping and labeling. The first step to avoiding rework is to obtain the latest compliance guide from each retailer you serve. These guides are usually available on the retailer's supplier portal or from your account representative.",
+          "Don't assume that what worked last year still applies. Retailers update their requirements regularly, and a change in their system can affect your shipment. For example, a retailer might switch from UPC to GTIN-14 barcodes, or they might start requiring RFID tags on certain products. Build a schedule to review these guides quarterly, and assign someone on your team to track changes."
+        ]
+      },
+      {
+        "heading": "Build Checkpoints into Your Packing Process",
+        "paragraphs": [
+          "Rework often happens because errors are caught after the shipment leaves your dock. To prevent that, create checkpoints at key stages: when you pick products, when you pack cartons, and when you load the trailer. At each checkpoint, verify that the items match the order, the carton is labeled correctly, and the packing slip is accurate.",
+          "A simple checklist can make a big difference. For example, before sealing a carton, confirm that the barcode scans and matches the product inside. After sealing, check that the shipping label is legible and placed on the correct side. If you use a warehouse management system, use its validation features to catch errors in real time.",
+          "Consider using a two-person verification for high-value or high-volume orders. One person packs, another checks. This might seem like extra labor, but it's far cheaper than dealing with a chargeback or a returned shipment."
+        ]
+      },
+      {
+        "heading": "Master Labeling and Barcode Standards",
+        "paragraphs": [
+          "Labeling is where most compliance issues occur. Retailers use barcodes to track inventory, so a missing or unreadable barcode can cause a shipment to be rejected. Common problems include using the wrong barcode symbology, placing labels over seams or edges, and printing labels with low contrast.",
+          "To avoid these issues, use high-quality thermal printers and test your labels regularly. Ensure that the barcode is placed on a flat, clean surface, away from folds or shrink wrap. Follow the retailer's specifications for label size, placement, and content. If a retailer requires a specific label format, don't substitute with a generic one.",
+          "Also, pay attention to the information on the label. The product name, SKU, and quantity should match the packing slip and the ASN (Advance Shipping Notice). A mismatch between the label and the ASN can trigger an audit or a chargeback."
+        ]
+      },
+      {
+        "heading": "Double-Check Your ASN and Documentation",
+        "paragraphs": [
+          "The Advance Shipping Notice (ASN) is the electronic document that tells the retailer what's coming. If the ASN doesn't match the physical shipment, the retailer's system may reject the delivery or apply a penalty. Ensure that your ASN includes the correct carton count, tracking number, and expected arrival date.",
+          "When creating the ASN, cross-reference it with the packing list and the actual cartons. If you ship from multiple warehouses, make sure each facility sends its own ASN for the relevant portion of the order. A common mistake is sending a single ASN for a split shipment, which can cause confusion at the receiving dock.",
+          "For Canadian shipments, also verify that your commercial invoice and customs documents align with the ASN. While customs compliance isn't the focus here, a mismatch between documents can delay the shipment at the border, which affects your delivery window."
+        ]
+      },
+      {
+        "heading": "Handle Exceptions and Damages Proactively",
+        "paragraphs": [
+          "Even with the best processes, exceptions happen. A product might arrive damaged, or a carton might be short. The key is to handle these exceptions before they become compliance issues. If you discover a problem during packing, fix it immediately. If you notice a discrepancy after the shipment is loaded, contact the retailer's compliance team right away.",
+          "For damaged goods, have a clear process for returning them to inventory or disposing of them. Don't ship damaged products just to meet a deadline; the retailer will likely reject them, and you'll have to deal with the return shipping and restocking.",
+          "Also, consider how you handle seasonal peaks. When volumes spike, it's tempting to skip checks to speed things up. But that's when errors are most likely. Instead, plan for extra labor or overtime during peak periods to maintain your compliance standards."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is a retail compliance guide?",
+        "answer": "A retail compliance guide is a document provided by a retailer that outlines the specific requirements for packaging, labeling, and shipping products to their distribution centers. It includes details like barcode standards, carton size limits, and ASN requirements."
+      },
+      {
+        "question": "How can I avoid chargebacks from retailers?",
+        "answer": "To avoid chargebacks, follow the retailer's compliance guide exactly, use accurate labeling and barcodes, and ensure your ASN matches the physical shipment. Implement checkpoints in your packing process to catch errors before the shipment leaves your facility."
+      },
+      {
+        "question": "What should I do if a shipment is rejected by a retailer?",
+        "answer": "If a shipment is rejected, contact the retailer's compliance team to understand the reason. Then, arrange for the shipment to be returned or corrected, and update your processes to prevent the same issue from happening again. Communicate with your customer to manage expectations."
+      }
+    ]
+  },
+  {
     "slug": "cross-docking-faster-canadian-distribution",
     "category": "Distribution",
     "title": "Cross-Docking for Faster Canadian Distribution",
