@@ -14,6 +14,81 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "practical-reverse-logistics-process-canada",
+    "category": "Supply Chain",
+    "title": "Building a Practical Reverse Logistics Process in Canada",
+    "description": "Learn how to build a practical reverse logistics process in Canada, from setting clear return policies to managing returned inventory efficiently.",
+    "excerpt": "A practical guide to designing a reverse logistics process in Canada that reduces costs and improves customer satisfaction.",
+    "keywords": [
+      "reverse logistics Canada",
+      "returns management process",
+      "Canadian warehouse returns",
+      "return disposition strategies",
+      "reverse logistics best practices"
+    ],
+    "publishedAt": "2026-08-04",
+    "readTime": "5 min read",
+    "keyAnswer": "A practical reverse logistics process in Canada starts with a clear, documented returns policy and a standardized procedure for receiving, inspecting, and dispositioning returned goods. It involves categorizing returns (restock, refurbish, liquidate, or dispose) and using data to identify recurring issues. Effective communication with your 3PL and customers ensures smooth operations and minimizes costs.",
+    "sections": [
+      {
+        "heading": "Start with a Clear Returns Policy",
+        "paragraphs": [
+          "Before you handle a single return, you need a policy that tells customers and your warehouse team exactly what to expect. A vague policy leads to confusion, disputes, and wasted time. Define the return window, condition requirements, and who pays for shipping. For example, you might accept returns within 30 days if the product is unused and in original packaging, with the customer covering return freight.",
+          "Your policy should also address how you handle returns for items sold through different channels. A marketplace return might have different rules than a direct-to-consumer return. Make sure your policy is easy to find on your website and that your customer service team can explain it clearly. This reduces friction and sets realistic expectations."
+        ]
+      },
+      {
+        "heading": "Set Up a Receiving Process for Returns",
+        "paragraphs": [
+          "Returns need a dedicated receiving area, separate from your inbound shipments. This prevents returned items from getting mixed up with new stock. When a return arrives, your warehouse team should log it immediately, noting the reason for return and the condition of the product. This data is gold for identifying trends, like a recurring defect or a sizing issue.",
+          "Use a standardized form or a digital system to capture this information. You might include a return merchandise authorization (RMA) number on the label, which helps you track the return from the moment it arrives. If you work with a 3PL, make sure they follow your documented procedure. A consistent process speeds up handling and reduces errors."
+        ]
+      },
+      {
+        "heading": "Inspect and Sort Returns Quickly",
+        "paragraphs": [
+          "Once a return is received, it needs to be inspected and sorted. This step determines whether the item can be restocked, needs refurbishing, or should be liquidated or disposed of. The goal is to make this decision quickly, so the item doesn't sit in a bin for weeks. For example, a returned shirt with the tags still on might be restocked immediately, while a damaged electronic device might need a repair assessment.",
+          "Create clear criteria for each disposition category. Restockable items should be in like-new condition and pass a quick quality check. Refurbishable items might need minor repairs or cleaning. Items that are obsolete or damaged beyond repair should be liquidated through a secondary market or disposed of responsibly. Having these categories defined helps your team make consistent decisions."
+        ]
+      },
+      {
+        "heading": "Manage Returned Inventory Effectively",
+        "paragraphs": [
+          "Returned inventory can be a headache if it's not managed properly. You need to update your inventory system as soon as a return is received, so your stock levels are accurate. This prevents overselling and helps you plan for replenishment. For restockable items, put them back into your sellable inventory quickly, but keep them separate from new stock until they pass inspection.",
+          "For items that need refurbishing, consider a dedicated area in your warehouse or a partnership with a repair service. Track the time it takes to process returns and aim to reduce it. The longer a return sits, the more it costs you in storage and lost value. Use your data to identify bottlenecks, like a slow inspection process or a lack of clear instructions."
+        ]
+      },
+      {
+        "heading": "Use Data to Improve Your Process",
+        "paragraphs": [
+          "Your returns data is a treasure trove of insights. Track return reasons, product categories, and the condition of returned items. Look for patterns: Are certain products returned more often? Are there spikes after a specific promotion? This information can help you improve product quality, adjust your return policy, or even change how you package items to reduce damage.",
+          "Share this data with your team and your 3PL partner. For example, if you notice a high return rate for a particular size, you might update your sizing guide. If a product is frequently damaged in transit, you might improve your packaging. Use the data to make proactive changes, not just reactive ones."
+        ]
+      },
+      {
+        "heading": "Communicate with Your 3PL and Customers",
+        "paragraphs": [
+          "If you use a 3PL for reverse logistics, communication is key. Make sure they understand your return policy and disposition rules. Provide them with clear instructions and regular feedback. A good 3PL will help you streamline the process, but they need your input to do so. Ask them for reports on return volumes and processing times.",
+          "Keep your customers informed throughout the return process. Send them a confirmation when their return is received and let them know when they can expect a refund or replacement. A little communication goes a long way in building trust. For example, an automated email that says, 'We've received your return and are processing it,' can reduce customer anxiety and support inquiries."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is reverse logistics?",
+        "answer": "Reverse logistics is the process of moving goods from the customer back to the seller or manufacturer. It includes returns, repairs, refurbishment, and disposal. In e-commerce, it's a critical part of the supply chain that can impact customer satisfaction and costs."
+      },
+      {
+        "question": "How can I reduce return costs in Canada?",
+        "answer": "Start by analyzing your return reasons and addressing the root causes, such as product quality or sizing issues. Implement a clear return policy that sets expectations, and use a standardized process for receiving and inspecting returns. Work with your 3PL to streamline the process and consider restocking or refurbishing items when possible to recover value."
+      },
+      {
+        "question": "What should I look for in a 3PL for reverse logistics?",
+        "answer": "Look for a 3PL that has experience with returns management, a dedicated returns area, and a clear process for inspection and disposition. They should be able to provide you with data and reports on return volumes and reasons. Also, ensure they have good communication and can adapt to your specific needs."
+      }
+    ]
+  },
+  {
     "slug": "pallet-storage-vs-shelf-storage",
     "category": "3PL & Warehousing",
     "title": "Pallet Storage vs. Shelf Storage: A Practical Guide",
