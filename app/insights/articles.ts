@@ -14,6 +14,84 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "warehouse-appointment-planning-prevent-detention",
+    "category": "3PL & Warehousing",
+    "title": "Warehouse Appointment Planning to Prevent Detention",
+    "description": "Learn how warehouse appointment scheduling reduces truck detention, cuts costs, and keeps your freight moving through Canadian distribution centers.",
+    "excerpt": "Warehouse appointment planning aligns truck arrivals with dock capacity, reducing wait times and detention fees while improving supply chain reliability.",
+    "keywords": [
+      "warehouse appointment scheduling",
+      "prevent detention fees",
+      "dock appointment planning",
+      "reduce truck waiting time",
+      "Canadian warehouse operations"
+    ],
+    "publishedAt": "2026-08-05",
+    "readTime": "5 min read",
+    "keyAnswer": "Warehouse appointment planning coordinates truck arrivals with available dock doors and labor, preventing congestion and reducing the time carriers spend waiting to load or unload. By scheduling arrivals in advance, warehouses can allocate resources efficiently, avoid peak-hour bottlenecks, and minimize detention charges. This proactive approach benefits both shippers and carriers by improving on-time performance and lowering overall supply chain costs.",
+    "sections": [
+      {
+        "heading": "Why Detention Happens in Warehousing",
+        "paragraphs": [
+          "Detention occurs when a truck arrives at a warehouse but cannot be loaded or unloaded within the agreed free time. The clock starts when the driver checks in, and if the warehouse isn't ready, the wait time adds up. Carriers then bill the shipper or receiver for every minute beyond the free period, and those charges can quickly eat into your margins.",
+          "Common causes include peak-hour congestion, insufficient dock doors, labor shortages, and poor communication between the warehouse and the carrier. A truck that shows up without an appointment often waits behind scheduled loads, creating a ripple effect that delays everyone. In Canadian logistics, where distances are long and weather can disrupt schedules, a missed appointment can throw off an entire regional distribution plan.",
+          "The good news is that most detention is preventable. It starts with a structured appointment system that matches inbound and outbound freight to available capacity. When you plan arrivals, you give the warehouse time to prepare for each truck, from staging product to assigning the right equipment and staff."
+        ],
+        "bullets": [
+          "Detention fees are charged when a truck exceeds the free waiting time at a warehouse.",
+          "Common triggers: unscheduled arrivals, peak-hour congestion, and lack of dock coordination.",
+          "Appointment planning aligns truck arrivals with warehouse capacity to avoid these delays."
+        ]
+      },
+      {
+        "heading": "How Appointment Planning Works",
+        "paragraphs": [
+          "Appointment planning is straightforward: the warehouse sets time slots for carriers to arrive, and the carrier books a slot that fits the warehouse's capacity. The warehouse then knows exactly how many trucks to expect and when, allowing it to schedule labor and reserve dock doors accordingly. This turns a chaotic flow of arrivals into a predictable schedule.",
+          "For example, a warehouse might allow appointments between 7 a.m. and 5 p.m., with each slot lasting 30 minutes. The warehouse can limit the number of appointments per hour based on dock availability and staffing levels. If a carrier is running late, they can reschedule, and the warehouse can fill the slot with another truck. This flexibility reduces idle time for everyone.",
+          "A good appointment system also accounts for the type of freight. A full truckload of pallets takes longer to unload than a small parcel shipment, so the warehouse can allocate longer slots for larger loads. This granularity prevents a 53-foot trailer from blocking a dock door while a smaller truck waits."
+        ]
+      },
+      {
+        "heading": "Setting Up an Appointment System",
+        "paragraphs": [
+          "You don't need a complex software solution to start. Many warehouses begin with a simple spreadsheet or a shared calendar, but as volume grows, a dedicated appointment scheduling tool becomes worthwhile. The key is to establish clear rules and communicate them to carriers and suppliers.",
+          "Start by defining your operating hours and the number of dock doors you can staff. Then create time slots that reflect your unloading and loading capabilities. For instance, if you can handle four trucks per hour, schedule four appointments per hour. Make sure to leave some buffer time for unexpected delays, like a truck that arrives late or a shipment that takes longer than expected.",
+          "Next, set a cutoff time for same-day appointments. For example, you might require carriers to book at least 24 hours in advance. This gives your warehouse team time to prepare. You also need a policy for no-shows and late arrivals. Will you charge a fee? Will you reschedule them to the next available slot? Clear policies prevent disputes and keep the system fair for all carriers."
+        ]
+      },
+      {
+        "heading": "Integrating Appointments with Warehouse Operations",
+        "paragraphs": [
+          "Appointment planning only works if it's integrated with your warehouse management system (WMS) and your team's daily routine. When a carrier books a slot, the WMS should generate a receiving or shipping order, so the warehouse knows what to expect. This allows the team to pre-stage inventory, prepare documentation, and assign the right equipment before the truck arrives.",
+          "Communication is also critical. The warehouse should send appointment confirmations to carriers, including the dock door number and any specific instructions. If there's a delay, the warehouse should notify the carrier as soon as possible, so they can adjust their route. Similarly, carriers should call if they're running late, so the warehouse can fill the slot.",
+          "In a Canadian context, weather and border delays can disrupt schedules. A good appointment system builds in flexibility, allowing carriers to reschedule without penalty if they hit an unexpected snowstorm or a long wait at the border. This reduces friction and keeps relationships positive."
+        ]
+      },
+      {
+        "heading": "Measuring Success and Adjusting",
+        "paragraphs": [
+          "To know if your appointment planning is working, track key metrics like average wait time, detention incidents, and dock utilization. If you see a pattern of delays, dig into the data. Is a particular carrier always late? Is a certain time slot consistently overbooked? Adjust your schedule accordingly.",
+          "Regularly review your appointment policies with your warehouse team and carriers. What works in summer may not work during peak season. For example, you might extend hours during the holidays or add a night shift to handle increased volume. The goal is to keep the system responsive to your actual operational needs.",
+          "Don't forget to factor in the cost of detention. If you're paying detention fees, calculate how much you're spending and compare it to the cost of improving your appointment process. Often, a small investment in scheduling tools or extra labor pays for itself by reducing fees and improving carrier relationships."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is a detention fee in warehousing?",
+        "answer": "A detention fee is a charge that carriers impose when a truck is held at a warehouse beyond the free waiting time, typically 1-2 hours. It compensates the carrier for lost time and covers the cost of the driver's wait."
+      },
+      {
+        "question": "How can appointment planning reduce detention?",
+        "answer": "Appointment planning reduces detention by ensuring that trucks arrive when the warehouse is ready to handle them. This minimizes wait times and prevents congestion, so carriers can load and unload quickly and stay within the free time window."
+      },
+      {
+        "question": "What should I include in a warehouse appointment policy?",
+        "answer": "A good appointment policy should specify operating hours, booking deadlines, slot durations, late arrival procedures, and any fees for no-shows or cancellations. It should also outline how to handle emergency or unscheduled deliveries."
+      }
+    ]
+  },
+  {
     "slug": "practical-reverse-logistics-process-canada",
     "category": "Supply Chain",
     "title": "Building a Practical Reverse Logistics Process in Canada",
