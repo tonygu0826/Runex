@@ -14,6 +14,92 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "preparing-freight-before-3pl-arrival",
+    "category": "3PL & Warehousing",
+    "title": "Preparing Freight Before It Reaches Your 3PL",
+    "description": "Learn what importers should prepare before freight arrives at a Canadian 3PL to avoid delays, extra costs, and inventory issues.",
+    "excerpt": "Get practical steps to prepare your freight for a smooth handoff to your 3PL, from documentation to labeling and communication.",
+    "keywords": [
+      "freight preparation for 3PL",
+      "importing to Canada 3PL",
+      "warehouse receiving preparation",
+      "inbound freight documentation",
+      "3PL receiving requirements"
+    ],
+    "publishedAt": "2026-08-06",
+    "readTime": "5 min read",
+    "keyAnswer": "Before freight reaches a 3PL, importers should prepare accurate documentation, clear product identification, and proper packaging. This includes advance shipping notices, commercial invoices, packing lists, and compliance with labeling standards. Doing so reduces receiving delays, prevents storage issues, and ensures inventory accuracy.",
+    "sections": [
+      {
+        "heading": "Why Preparation Matters Before Freight Arrives",
+        "paragraphs": [
+          "When your container or truck pulls into a 3PL warehouse, the clock starts ticking. Every minute spent sorting out paperwork or deciphering unclear labels is time that could have been used to get your products ready for sale. In my experience, the most common delays at receiving docks aren't caused by the warehouse team—they're caused by missing or inconsistent information from the importer.",
+          "Think of the handoff as a relay race. The better you prepare the baton, the smoother the exchange. A little upfront effort can save you from detention charges, storage overages, and the headache of inventory that's in the building but not yet available to ship."
+        ]
+      },
+      {
+        "heading": "Documentation: The Backbone of a Smooth Receiving Process",
+        "paragraphs": [
+          "Accurate paperwork is the single most important thing you can provide. Your 3PL needs to know exactly what's in each shipment, where it's going, and how it should be handled. Missing or incorrect documents can lead to your freight sitting on the dock while the warehouse tries to reconcile the details.",
+          "At minimum, you should provide an advance shipping notice (ASN) that matches the packing list and commercial invoice. The ASN should include purchase order numbers, SKU numbers, quantities, and any batch or lot numbers. If your 3PL uses a warehouse management system, this information can be uploaded in advance, so the receiving team knows what to expect.",
+          "Also, make sure the documents are easy to read and consistent. If your packing list says 'Widget A' but your cartons are labeled 'Widget B,' the receiving clerk has to stop and ask. That's a delay you can avoid."
+        ],
+        "bullets": [
+          "Send the ASN at least 24 hours before arrival, if possible.",
+          "Include a commercial invoice with the correct shipper and consignee details.",
+          "Provide a packing list that matches the carton contents exactly.",
+          "Note any special handling requirements, such as fragile or temperature-sensitive items."
+        ]
+      },
+      {
+        "heading": "Labeling and Marking: Clear Communication on Every Carton",
+        "paragraphs": [
+          "Labels are the language of the warehouse. If your cartons don't have clear, scannable barcodes and readable text, the receiving process slows to a crawl. In Canada, you'll often need labels that include the SKU, description, and quantity, plus a unique carton ID if you want to track individual boxes.",
+          "Consider the environment: Canadian warehouses can be cold in winter, and labels that aren't water-resistant or that peel off in humidity can cause problems. Use durable labels and ensure they're placed on a flat surface, not over a seam or edge.",
+          "Also, think about the pallet. If you're shipping on pallets, make sure they're in good condition and that the load is stable. A pallet that falls apart during unloading is a safety hazard and a mess to sort out."
+        ]
+      },
+      {
+        "heading": "Product Identification and SKU Setup",
+        "paragraphs": [
+          "Your 3PL needs to know exactly what each SKU is, how it's packaged, and how it should be stored. Before freight arrives, provide a detailed product master with dimensions, weight, and any special storage requirements. For example, if you have a product that needs to be stored in a climate-controlled area, say so in advance.",
+          "If you're sending products that require kitting or assembly, outline the process clearly. The warehouse can't read your mind—they need step-by-step instructions. Also, agree on how to handle variations, like different colors or sizes. A clear naming convention prevents confusion.",
+          "One practical tip: send a sample or photos of the product and its packaging. This helps the receiving team verify that what they're seeing matches your description. It's a small step that can prevent big mix-ups."
+        ]
+      },
+      {
+        "heading": "Communication and Appointment Scheduling",
+        "paragraphs": [
+          "Don't let your freight show up unannounced. Most 3PLs require appointments for deliveries, and for good reason. They need to allocate staff and equipment to unload your truck efficiently. If you miss the appointment window, you may face a rebooking fee or a delay.",
+          "When you book the appointment, confirm the exact address, dock door, and any specific instructions. If your shipment is coming from overseas, coordinate with your freight forwarder to ensure the delivery date aligns with your appointment. A little communication goes a long way.",
+          "Also, let your 3PL know if there are any changes to the shipment, such as a partial delivery or a different carrier. The more they know, the better they can prepare."
+        ]
+      },
+      {
+        "heading": "What to Do When Things Don't Go as Planned",
+        "paragraphs": [
+          "Even with the best preparation, exceptions happen. A carton might be damaged, a quantity might be short, or a product might not match its description. Your 3PL should have a process for documenting these issues, but you need to be ready to respond quickly.",
+          "Decide in advance how you want to handle discrepancies. Do you want the warehouse to refuse a damaged carton, or accept it and note the damage? Who should be notified? Having a clear protocol in place means the warehouse can act without waiting for your approval, saving time.",
+          "Also, consider your inventory accuracy. If you're using a 3PL, you're trusting them with your stock. Regular cycle counts and a good relationship with your account manager can help you catch issues early. But the foundation is always the same: clear communication and accurate data."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is an ASN and why is it important for 3PL receiving?",
+        "answer": "An ASN, or advance shipping notice, is a digital document that tells the 3PL what's in the shipment before it arrives. It helps the warehouse plan resources, verify the delivery, and update inventory quickly. Without an ASN, receiving takes longer and errors are more likely."
+      },
+      {
+        "question": "How far in advance should I send shipment details to my 3PL?",
+        "answer": "Ideally, send the ASN and other documents at least 24 hours before the freight arrives. This gives the warehouse time to review the information, allocate staff, and prepare storage locations. For large or complex shipments, even more lead time is better."
+      },
+      {
+        "question": "What happens if my freight arrives without proper labels?",
+        "answer": "If your freight arrives without proper labels, the 3PL may need to inspect each carton to identify the contents. This can cause delays and may incur additional handling charges. In some cases, the shipment might be refused until labels are provided. Always double-check labeling before dispatch."
+      }
+    ]
+  },
+  {
     "slug": "warehouse-appointment-planning-prevent-detention",
     "category": "3PL & Warehousing",
     "title": "Warehouse Appointment Planning to Prevent Detention",
