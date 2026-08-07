@@ -14,6 +14,85 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "kitting-light-assembly-simplify-fulfillment",
+    "category": "Fulfillment",
+    "title": "Kitting and Light Assembly to Simplify Fulfillment",
+    "description": "Learn how kitting and light assembly reduce handling, cut shipping costs, and speed up order fulfillment for Canadian e-commerce and retail operations.",
+    "excerpt": "Kitting and light assembly bundle products and perform simple tasks in the warehouse to streamline fulfillment, reduce errors, and lower shipping costs.",
+    "keywords": [
+      "kitting services",
+      "light assembly warehouse",
+      "fulfillment simplification",
+      "value-added services 3PL",
+      "Canadian e-commerce fulfillment"
+    ],
+    "publishedAt": "2026-08-07",
+    "readTime": "5 min read",
+    "keyAnswer": "Kitting and light assembly are value-added services where a 3PL combines multiple items into a single SKU or performs simple product modifications, such as attaching labels or assembling components. These services simplify fulfillment by reducing the number of items handled per order, which can lower picking errors, cut shipping costs, and speed up order processing. For Canadian businesses, using a warehouse that offers these services can streamline operations and improve customer satisfaction.",
+    "sections": [
+      {
+        "heading": "What Kitting and Light Assembly Mean in a Warehouse",
+        "paragraphs": [
+          "Kitting is the process of grouping separate items into a single package or kit that can be picked and shipped as one unit. For example, a skincare company might bundle a cleanser, toner, and moisturizer into a gift set. Instead of picking three separate items for every order, the warehouse picks one pre-assembled kit. This reduces the number of touches per order and simplifies inventory management.",
+          "Light assembly goes a step further. It involves simple product modifications that don't require heavy machinery or specialized skills. Think attaching a power cord to a small appliance, snapping together plastic components, or inserting a manual into a box. These tasks are performed in the warehouse before the product is stored or shipped.",
+          "Both services are considered value-added because they customize the product to meet specific customer needs without requiring a separate manufacturing facility. For many importers and distributors, outsourcing these tasks to a 3PL can be more cost-effective than doing them in-house, especially when volumes fluctuate."
+        ]
+      },
+      {
+        "heading": "How Kitting Reduces Handling and Errors",
+        "paragraphs": [
+          "When you sell a bundle, you have two options: pick the components individually for each order or create a pre-assembled kit. The first approach means your picker walks to multiple locations, scans several barcodes, and packs each item separately. That's more time, more opportunities for mistakes, and more packaging material.",
+          "With kitting, the kit is stored as a single SKU. Your picker scans one barcode, grabs one box, and moves on. This can cut picking time significantly, especially for orders that include multiple units of the same kit. Fewer touches also mean fewer chances for a missing item or a wrong variant to slip through.",
+          "Consider a retailer that sells a camping set with a tent, sleeping bag, and lantern. If they pick these separately, a picker might forget the lantern or grab the wrong sleeping bag size. A pre-assembled kit eliminates that risk. The trade-off is that you need to forecast demand accurately enough to have kits ready without overproducing them. If you overstock kits, you tie up capital in inventory that might not sell as quickly as individual components."
+        ]
+      },
+      {
+        "heading": "Light Assembly: When It Makes Sense",
+        "paragraphs": [
+          "Light assembly is useful when a product arrives from the manufacturer in a semi-finished state. For example, a furniture importer might receive table legs and tops separately to save on shipping volume. The warehouse can assemble the tables before storing them, so they're ready to ship as soon as an order comes in.",
+          "Another common scenario is adding a country-specific power plug or instruction manual. A Canadian distributor might receive electronics with US plugs and need to swap them for Canadian ones. A 3PL with light assembly capabilities can do that in the warehouse, avoiding the need for a separate facility or a return to the manufacturer.",
+          "However, light assembly isn't free. It adds labor costs, and if the assembly is complex, it might require training or quality checks. You should weigh the cost of assembly against the savings in shipping and storage. For bulky items, assembling them later can reduce the cube they occupy during storage, but if you assemble them early, you might lose that benefit. It's a balance that depends on your product and your storage costs."
+        ]
+      },
+      {
+        "heading": "Cost and Operational Considerations",
+        "paragraphs": [
+          "Before you jump into kitting or light assembly, think about the costs. You'll pay for labor, packaging materials, and possibly additional floor space. Some 3PLs charge per kit or per assembly task, while others include it in a monthly fee. Ask for a clear breakdown so you know what you're paying for.",
+          "There's also the question of quality control. If a kit is assembled incorrectly, you might not catch it until the customer complains. Make sure your 3PL has a quality check process, like verifying the contents against a checklist or doing a final visual inspection. You should also define what happens if a kit is damaged or missing parts—will they replace it from component inventory or do you need to send a replacement?",
+          "Another consideration is inventory accuracy. When you create kits, you're essentially transforming multiple SKUs into a new one. Your inventory system needs to reflect that. If you're using a 3PL's warehouse management system, they should be able to handle the conversion. But if you're managing inventory in your own ERP, you'll need to sync the data to avoid discrepancies."
+        ],
+        "bullets": [
+          "Ask about minimum quantities and setup fees for kitting projects.",
+          "Clarify how damaged or incomplete kits are handled.",
+          "Discuss how often you can change kit contents or assembly instructions.",
+          "Understand how the 3PL tracks component usage and kit inventory."
+        ]
+      },
+      {
+        "heading": "How to Work with Your 3PL on Kitting",
+        "paragraphs": [
+          "Start by discussing your goals with your 3PL. Are you trying to reduce shipping costs, speed up order processing, or offer a new bundle to customers? Be specific about what you want to achieve, so they can recommend the best approach.",
+          "Provide detailed instructions for each kit or assembly task. Include photos, diagrams, or a sample unit. The more clarity you give, the fewer mistakes you'll have. Also, agree on a lead time for kitting—how long before a promotion or new product launch do you need to have the kits ready?",
+          "Finally, review the process regularly. As your product line changes or sales volumes shift, you might need to adjust your kitting strategy. A good 3PL will work with you to optimize the process over time. Remember, kitting isn't a one-time decision; it's an ongoing part of your fulfillment strategy."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between kitting and light assembly?",
+        "answer": "Kitting combines multiple items into a single package or bundle, like a gift set, while light assembly involves physically modifying a product, such as attaching a cord or assembling parts. Kitting creates a new SKU, whereas light assembly changes the product itself."
+      },
+      {
+        "question": "How can kitting reduce shipping costs?",
+        "answer": "Kitting can reduce shipping costs by allowing you to ship a single, consolidated package instead of multiple boxes. For example, a bundle of three items might fit in one box, reducing dimensional weight and packaging materials. However, the savings depend on the size and weight of the items."
+      },
+      {
+        "question": "What should I consider before outsourcing kitting to a 3PL?",
+        "answer": "Consider the cost of labor and materials, the accuracy of your inventory system, and the 3PL's quality control processes. Also, think about your demand forecasting—if you overproduce kits, you might be stuck with unsold inventory. Ask about setup fees and minimum quantities to ensure it's cost-effective."
+      }
+    ]
+  },
+  {
     "slug": "preparing-freight-before-3pl-arrival",
     "category": "3PL & Warehousing",
     "title": "Preparing Freight Before It Reaches Your 3PL",
