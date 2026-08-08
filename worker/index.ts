@@ -170,6 +170,11 @@ const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
 
+    if (url.protocol === "http:" && url.hostname !== "localhost") {
+      url.protocol = "https:";
+      return Response.redirect(url.toString(), 301);
+    }
+
     if (url.pathname === "/api/contact") {
       return handleContactRequest(request, env);
     }
