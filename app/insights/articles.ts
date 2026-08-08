@@ -18,6 +18,75 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "repeatable-kitting-workflow-for-changing-order-volumes",
+    "category": "Fulfillment",
+    "title": "Designing a Repeatable Kitting Workflow for Fluctuating Order Volumes",
+    "description": "Learn how to build a kitting process that stays consistent when order volumes change, with clear instructions, separate inventory counts, and flexible planning.",
+    "excerpt": "A repeatable kitting workflow depends on clear instructions, separate counts for components and finished kits, and flexible planning for changing volumes.",
+    "keywords": [
+      "kitting workflow",
+      "order volume changes",
+      "warehouse kitting",
+      "inventory visibility",
+      "value-added services"
+    ],
+    "publishedAt": "2026-08-08",
+    "modifiedAt": "2026-08-08",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Kitting instructions should define components, quantities, labels and the finished-unit identifier.",
+      "Component inventory and finished kits need separate, visible counts.",
+      "Timing and pricing for value-added work are confirmed case by case."
+    ],
+    "sources": [],
+    "keyAnswer": "A repeatable kitting workflow for changing order volumes starts with detailed instructions that define components, quantities, labels, and the finished-unit identifier. Maintain separate, visible counts for component inventory and finished kits, and confirm timing and pricing for value-added work case by case to stay flexible.",
+    "sections": [
+      {
+        "heading": "Start with Clear Kitting Instructions",
+        "paragraphs": [
+          "A repeatable kitting workflow begins with instructions that leave no room for guesswork. Each kit should have a written specification that defines the components, the exact quantity of each, the labels to apply, and the finished-unit identifier that ties the kit to its order or SKU. This clarity helps your team assemble consistently, even when volumes spike or dip.",
+          "When volumes change, the same instructions should apply whether you are building 10 kits or 1,000. If you need to adjust the process for a large run, document the change and update the master instructions so the next run starts from the same baseline. This prevents drift and reduces errors during busy periods."
+        ]
+      },
+      {
+        "heading": "Maintain Separate Inventory Counts",
+        "paragraphs": [
+          "Visibility is critical when volumes fluctuate. Component inventory and finished kits need separate, visible counts. If you only track finished kits, you may not know which components are running low. Conversely, if you only track components, you may overpromise kits that are already assembled and sitting on a shelf.",
+          "Use separate bins or locations for components and finished kits, and update counts in your warehouse management system in real time. This allows you to see at a glance what is available to build and what is ready to ship. When order volumes change, these counts help you decide whether to ramp up assembly or pause it without losing track of either side."
+        ]
+      },
+      {
+        "heading": "Plan for Volume Changes with Flexible Scheduling",
+        "paragraphs": [
+          "Changing order volumes require a kitting plan that can flex. Build a schedule that accounts for peak periods, but also have a contingency for unexpected drops or surges. Cross-train staff so they can move between kitting and other fulfillment tasks as needed. This keeps your workflow repeatable without overcommitting labor.",
+          "Because timing and pricing for value-added work are confirmed case by case, communicate early with your 3PL or internal team when you anticipate a volume change. Ask about lead times for large kitting runs and whether there are minimum or maximum batch sizes. This helps you plan your orders and avoid surprises."
+        ]
+      },
+      {
+        "heading": "Ask the Right Questions Before You Scale",
+        "paragraphs": [
+          "Before you rely on a kitting workflow for changing volumes, ask your warehouse partner or internal operations team specific questions. For example: How do you handle rush kitting orders? What is your process for updating instructions when components change? How do you keep finished kits separate from components in the same area?",
+          "Also ask about reporting. You need to see component usage and finished kit counts separately to manage inventory effectively. Confirm that the system can provide these views without manual workarounds. This ensures your workflow remains repeatable even as volumes fluctuate."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should be included in a kitting instruction?",
+        "answer": "A kitting instruction should define the components, the quantity of each, the labels to apply, and the finished-unit identifier. This ensures every kit is assembled consistently."
+      },
+      {
+        "question": "How do I manage inventory when kitting volumes change?",
+        "answer": "Keep separate, visible counts for component inventory and finished kits. Update these counts in real time so you know what is available to build and what is ready to ship."
+      },
+      {
+        "question": "Can I get kitting done on short notice?",
+        "answer": "Timing and pricing for value-added work are confirmed case by case. Contact your 3PL or internal team early to discuss lead times and any constraints for large or urgent kitting runs."
+      }
+    ]
+  },
+  {
     "slug": "kitting-light-assembly-simplify-fulfillment",
     "category": "Fulfillment",
     "title": "Kitting and Light Assembly to Simplify Fulfillment",
