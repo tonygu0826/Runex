@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
 :root {
+  --font-nunito-sans: "Arial Rounded MT Bold", "Trebuchet MS", Arial, sans-serif;
   --navy: #001b35;
   --navy-deep: #001327;
   --ink: #0c2033;

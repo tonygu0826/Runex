@@ -14,7 +14,9 @@ const coreTopics = [
 ];
 
 export function GET() {
-  const recentArticles = articles.slice(0, 12);
+  // Google does not use llms.txt for Search ranking. Keep this file limited to
+  // content that has passed the site's publication quality gate for other agents.
+  const recentArticles = articles.filter((article) => article.qualityGatePassed).slice(0, 12);
   const topicPhrases = [
     ...coreTopics,
     ...recentArticles.flatMap((article) => article.keywords ?? [article.title]),

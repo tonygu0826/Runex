@@ -27,6 +27,24 @@ test("renders the production canonical URL", async () => {
   assert.match(await response.text(), productionCanonical);
 });
 
+test("does not emit build-machine font URLs", async () => {
+  const response = await render("/");
+  const html = await response.text();
+
+  assert.doesNotMatch(html, /\/workspace\//);
+  assert.doesNotMatch(html, /<link[^>]+rel=["']preload["'][^>]+as=["']font["']/i);
+});
+
+test("redirects public HTTP requests to HTTPS", async () => {
+  const workerUrl = new URL("../dist/server/index.js", import.meta.url);
+  workerUrl.searchParams.set("test", `${process.pid}-${Date.now()}-https-redirect`);
+  const { default: worker } = await import(workerUrl.href);
+  const response = await worker.fetch(new Request("http://runexlogi.com/contact"), {}, { waitUntil() {}, passThroughOnException() {} });
+
+  assert.equal(response.status, 301);
+  assert.equal(response.headers.get("location"), "https://runexlogi.com/contact");
+});
+
 for (const [pathname, heading, canonical] of [
   ["/solutions", "3PL solutions from receiving to delivery.", "https://runexlogi.com/solutions"],
   ["/about", "Logistics built around operational clarity.", "https://runexlogi.com/about"],
@@ -88,6 +106,14 @@ test("renders Insights as a paginated vertical article list", async () => {
   assert.doesNotMatch(html, /class=["']article-index-grid["']/);
 });
 
+test("gives each Insights pagination page its own canonical URL", async () => {
+  const response = await render("/insights?page=2");
+  const html = await response.text();
+
+  assert.equal(response.status, 200);
+  assert.match(html, /rel=["']canonical["'][^>]*href=["']https:\/\/runexlogi\.com\/insights\?page=2["']/);
+});
+
 
 test("serves an automatically updated AI content guide", async () => {
   const response = await render("/llms.txt");
@@ -98,7 +124,7 @@ test("serves an automatically updated AI content guide", async () => {
   assert.match(body, /# Runex Logistics Inc\./);
   assert.match(body, /## Core service pages/);
   assert.match(body, /## Current knowledge topics/);
-  assert.match(body, /Planning Overflow Storage Without Losing Inventory Visibility/);
+  assert.doesNotMatch(body, /Kitting and Light Assembly to Simplify Fulfillment/);
   assert.match(body, /info@runexlogi\.com/);
 });
 
@@ -108,8 +134,10 @@ test("connects an insight to its service and related guidance", async () => {
   const html = await response.text();
 
   assert.equal(response.status, 200);
-  assert.match(html, /Prepared and reviewed by the Runex Logistics editorial team/);
+  assert.match(html, /AI-assisted drafting and automated editorial checks/);
   assert.match(html, /"@type":"BreadcrumbList"/);
+  assert.doesNotMatch(html, /"@type":"FAQPage"/);
+  assert.match(html, /name=["']robots["'][^>]*content=["']noindex, follow["']/);
   assert.match(html, /href=["']\/solutions\/warehousing-fulfillment-canada["']/);
   assert.match(html, /USEFUL NEXT STEPS/);
 });

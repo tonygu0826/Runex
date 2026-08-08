@@ -2,12 +2,6 @@ import type { Metadata } from "next";
 import { Arrow, SiteFooter, SiteHeader } from "../components/site-chrome";
 import { articles } from "./articles";
 
-export const metadata: Metadata = {
-  title: "Logistics Insights | Runex Logistics Inc.",
-  description: "Practical guides about Canadian warehousing, 3PL fulfillment, FBA preparation, cross-docking and transportation.",
-  alternates: { canonical: "/insights" },
-};
-
 const ARTICLES_PER_PAGE = 4;
 
 type InsightsPageProps = {
@@ -16,6 +10,23 @@ type InsightsPageProps = {
 
 function pageHref(page: number) {
   return page === 1 ? "/insights" : `/insights?page=${page}`;
+}
+
+function readPage(searchParams?: { page?: string | string[] }) {
+  const rawPage = Array.isArray(searchParams?.page) ? searchParams.page[0] : searchParams?.page;
+  const parsed = Number.parseInt(rawPage ?? "1", 10);
+  return Number.isFinite(parsed) && parsed > 1 ? parsed : 1;
+}
+
+export async function generateMetadata({ searchParams }: InsightsPageProps): Promise<Metadata> {
+  const page = readPage(await searchParams);
+  const suffix = page > 1 ? ` — Page ${page}` : "";
+  return {
+    title: `Logistics Insights${suffix} | Runex Logistics Inc.`,
+    description: "Practical guides about Canadian warehousing, 3PL fulfillment, FBA preparation, cross-docking and transportation.",
+    alternates: { canonical: pageHref(page) },
+    robots: page > Math.ceil(articles.length / ARTICLES_PER_PAGE) ? { index: false, follow: true } : undefined,
+  };
 }
 
 function paginationItems(currentPage: number, totalPages: number) {
@@ -31,8 +42,7 @@ function paginationItems(currentPage: number, totalPages: number) {
 
 export default async function InsightsPage({ searchParams }: InsightsPageProps) {
   const params = (await searchParams) ?? {};
-  const rawPage = Array.isArray(params.page) ? params.page[0] : params.page;
-  const requestedPage = Number.parseInt(rawPage ?? "1", 10);
+  const requestedPage = readPage(params);
   const totalPages = Math.max(1, Math.ceil(articles.length / ARTICLES_PER_PAGE));
   const currentPage = Number.isFinite(requestedPage)
     ? Math.min(Math.max(requestedPage, 1), totalPages)

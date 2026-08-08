@@ -19,11 +19,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     title: `${article.title} | Runex Logistics`,
     description: article.description,
     alternates: { canonical: `/insights/${article.slug}` },
+    robots: article.qualityGatePassed ? undefined : { index: false, follow: true },
     openGraph: {
       type: "article",
       title: article.title,
       description: article.description,
       publishedTime: article.publishedAt,
+      modifiedTime: article.modifiedAt ?? article.publishedAt,
     },
   };
 }
@@ -52,15 +54,13 @@ export default async function ArticlePage({ params }: PageProps) {
       headline: article.title,
       description: article.description,
       datePublished: article.publishedAt,
-      dateModified: article.publishedAt,
+      dateModified: article.modifiedAt ?? article.publishedAt,
       mainEntityOfPage: articleUrl,
-      author: { "@type": "Organization", name: "Runex Logistics Inc." },
-      publisher: { "@type": "Organization", name: "Runex Logistics Inc.", logo: { "@type": "ImageObject", url: "https://runexlogi.com/runex-mark.svg" } },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: article.faq.map((item) => ({ "@type": "Question", name: item.question, acceptedAnswer: { "@type": "Answer", text: item.answer } })),
+      inLanguage: "en-CA",
+      isAccessibleForFree: true,
+      author: { "@type": "Organization", "@id": "https://runexlogi.com/#organization", name: "Runex Logistics Inc.", url: "https://runexlogi.com/about" },
+      publisher: { "@type": "Organization", "@id": "https://runexlogi.com/#organization", name: "Runex Logistics Inc.", url: "https://runexlogi.com", logo: { "@type": "ImageObject", url: "https://runexlogi.com/runex-mark.svg" } },
+      ...(article.sources?.length ? { citation: article.sources.map((source) => source.url) } : {}),
     },
     {
       "@context": "https://schema.org",
@@ -84,7 +84,7 @@ export default async function ArticlePage({ params }: PageProps) {
           <h1>{article.title}</h1>
           <p>{article.description}</p>
           <div><time dateTime={article.publishedAt}>{article.publishedAt}</time><span>{article.readTime}</span><span>Runex Logistics Inc.</span></div>
-          <p className="article-review">Prepared and reviewed by the Runex Logistics editorial team for operational clarity.</p>
+          <p className="article-review">Runex uses AI-assisted drafting and automated editorial checks. Confirm current carrier, marketplace and regulatory requirements with the relevant authority.</p>
         </header>
         <div className="article-layout">
           <aside>
@@ -101,7 +101,9 @@ export default async function ArticlePage({ params }: PageProps) {
                 {section.bullets && <ul>{section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}</ul>}
               </section>
             ))}
-            <section className="article-faq" id="faq" aria-labelledby="faq-title"><small>FREQUENTLY ASKED QUESTIONS</small><h2 id="faq-title">Common questions</h2>{article.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section>
+            {article.operationalBasis?.length ? <section className="article-section" aria-labelledby="operational-basis-title"><small>OPERATIONAL BASIS</small><h2 id="operational-basis-title">What this guide is grounded in</h2><ul>{article.operationalBasis.map((item) => <li key={item}>{item}</li>)}</ul></section> : null}
+            {article.sources?.length ? <section className="article-section" aria-labelledby="sources-title"><small>SOURCES</small><h2 id="sources-title">References</h2><ul>{article.sources.map((source) => <li key={source.url}><a href={source.url} rel="nofollow noopener noreferrer">{source.name}</a></li>)}</ul></section> : null}
+            {article.faq.length ? <section className="article-faq" id="faq" aria-labelledby="faq-title"><small>FREQUENTLY ASKED QUESTIONS</small><h2 id="faq-title">Common questions</h2>{article.faq.map((item) => <details key={item.question}><summary>{item.question}</summary><p>{item.answer}</p></details>)}</section> : null}
 
             <section className="article-next-steps" aria-labelledby="next-steps-title">
               <small>USEFUL NEXT STEPS</small>

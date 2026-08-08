@@ -71,6 +71,7 @@ jobs:
           cache: npm
 
       - name: Generate article with DeepSeek
+        id: generation
         if: steps.freshness.outputs.should_publish == 'true'
         env:
           DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
@@ -78,17 +79,28 @@ jobs:
           ARTICLE_TOPIC: ${{ inputs.topic }}
         run: node scripts/generate-seo-article.mjs
 
-      - name: Install dependencies
+      - name: Check whether a draft passed the quality gate
         if: steps.freshness.outputs.should_publish == 'true'
+        id: quality_gate
+        run: |
+          if git diff --quiet -- app/insights/articles.ts; then
+            echo "No draft passed the quality gate; today's run is complete without publishing."
+            echo "passed=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "passed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Install dependencies
+        if: steps.quality_gate.outputs.passed == 'true'
         run: npm ci
 
       - name: Verify production build
-        if: steps.freshness.outputs.should_publish == 'true'
+        if: steps.quality_gate.outputs.passed == 'true'
         run: npm run build
 
       - name: Recheck today's article before commit
         id: final_freshness
-        if: steps.freshness.outputs.should_publish == 'true'
+        if: steps.quality_gate.outputs.passed == 'true'
         env:
           EVENT_NAME: ${{ github.event_name }}
         run: |
@@ -109,7 +121,7 @@ jobs:
           fi
 
       - name: Commit article
-        if: steps.freshness.outputs.should_publish == 'true' && steps.final_freshness.outputs.should_commit == 'true'
+        if: steps.quality_gate.outputs.passed == 'true' && steps.final_freshness.outputs.should_commit == 'true'
         run: |
           git config user.name "runex-seo-bot"
           git config user.email "actions@users.noreply.github.com"

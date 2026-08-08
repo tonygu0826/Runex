@@ -1,22 +1,5 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Nunito_Sans } from "next/font/google";
 import "./globals.css";
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
-});
-
-const nunitoSans = Nunito_Sans({
-  variable: "--font-nunito-sans",
-  subsets: ["latin"],
-  weight: ["700", "800", "900"],
-});
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://runexlogi.com"),
@@ -43,18 +26,35 @@ export default function RootLayout({
   const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
+    "@id": "https://runexlogi.com/#organization",
     name: "Runex Logistics Inc.",
+    legalName: "Runex Logistics Inc.",
     url: "https://runexlogi.com",
     logo: "https://runexlogi.com/runex-mark.svg",
     email: "info@runexlogi.com",
     areaServed: "Canada",
+    description: "Canadian warehousing, fulfillment, FBA preparation and transportation services.",
+    contactPoint: {
+      "@type": "ContactPoint",
+      contactType: "sales and operations inquiries",
+      email: "info@runexlogi.com",
+      areaServed: "CA",
+      availableLanguage: "English",
+    },
+  };
+  const websiteJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://runexlogi.com/#website",
+    url: "https://runexlogi.com",
+    name: "Runex Logistics Inc.",
+    alternateName: "Runex Logistics",
+    publisher: { "@id": "https://runexlogi.com/#organization" },
   };
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} ${nunitoSans.variable} antialiased`}
-      >
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }} />
+      <body>
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationJsonLd, websiteJsonLd]) }} />
         {children}
       </body>
     </html>

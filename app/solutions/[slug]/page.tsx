@@ -57,18 +57,12 @@ export default async function ServicePage({ params }: PageProps) {
       areaServed: { "@type": "Country", name: "Canada" },
       provider: {
         "@type": "Organization",
+        "@id": `${siteUrl}/#organization`,
         name: "Runex Logistics Inc.",
+        legalName: "Runex Logistics Inc.",
         url: siteUrl,
+        email: "info@runexlogi.com",
       },
-    },
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      mainEntity: service.faq.map((item) => ({
-        "@type": "Question",
-        name: item.question,
-        acceptedAnswer: { "@type": "Answer", text: item.answer },
-      })),
     },
     {
       "@context": "https://schema.org",

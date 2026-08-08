@@ -6,7 +6,11 @@ export type Article = {
   excerpt: string;
   keywords?: string[];
   publishedAt: string;
+  modifiedAt?: string;
   readTime: string;
+  qualityGatePassed?: boolean;
+  operationalBasis?: string[];
+  sources?: Array<{ name: string; url: string }>;
   keyAnswer: string;
   sections: Array<{ heading: string; paragraphs: string[]; bullets?: string[] }>;
   faq: Array<{ question: string; answer: string }>;
@@ -17,8 +21,8 @@ export const articles: Article[] = [
     "slug": "kitting-light-assembly-simplify-fulfillment",
     "category": "Fulfillment",
     "title": "Kitting and Light Assembly to Simplify Fulfillment",
-    "description": "Learn how kitting and light assembly reduce handling, cut shipping costs, and speed up order fulfillment for Canadian e-commerce and retail operations.",
-    "excerpt": "Kitting and light assembly bundle products and perform simple tasks in the warehouse to streamline fulfillment, reduce errors, and lower shipping costs.",
+    "description": "Learn how to scope kitting and light assembly work, including instructions, inventory conversion, quality checks and operational trade-offs.",
+    "excerpt": "Kitting and light assembly can simplify selected fulfillment workflows when instructions, component counts and quality checks are clearly defined.",
     "keywords": [
       "kitting services",
       "light assembly warehouse",
@@ -28,7 +32,7 @@ export const articles: Article[] = [
     ],
     "publishedAt": "2026-08-07",
     "readTime": "5 min read",
-    "keyAnswer": "Kitting and light assembly are value-added services where a 3PL combines multiple items into a single SKU or performs simple product modifications, such as attaching labels or assembling components. These services simplify fulfillment by reducing the number of items handled per order, which can lower picking errors, cut shipping costs, and speed up order processing. For Canadian businesses, using a warehouse that offers these services can streamline operations and improve customer satisfaction.",
+    "keyAnswer": "Kitting combines specified components into a finished unit, while light assembly covers limited preparation tasks defined in a work order. Either workflow can reduce order-level handling, but the result depends on accurate component inventory, documented instructions, quality checks and the cost of the added warehouse work.",
     "sections": [
       {
         "heading": "What Kitting and Light Assembly Mean in a Warehouse",
@@ -42,7 +46,7 @@ export const articles: Article[] = [
         "heading": "How Kitting Reduces Handling and Errors",
         "paragraphs": [
           "When you sell a bundle, you have two options: pick the components individually for each order or create a pre-assembled kit. The first approach means your picker walks to multiple locations, scans several barcodes, and packs each item separately. That's more time, more opportunities for mistakes, and more packaging material.",
-          "With kitting, the kit is stored as a single SKU. Your picker scans one barcode, grabs one box, and moves on. This can cut picking time significantly, especially for orders that include multiple units of the same kit. Fewer touches also mean fewer chances for a missing item or a wrong variant to slip through.",
+          "With kitting, the finished kit can be stored as a single SKU when the inventory system is configured for that conversion. The picker then handles the finished unit instead of selecting every component for that order. This may reduce order-level touches, while shifting the accuracy requirement to the kitting and quality-check steps.",
           "Consider a retailer that sells a camping set with a tent, sleeping bag, and lantern. If they pick these separately, a picker might forget the lantern or grab the wrong sleeping bag size. A pre-assembled kit eliminates that risk. The trade-off is that you need to forecast demand accurately enough to have kits ready without overproducing them. If you overstock kits, you tie up capital in inventory that might not sell as quickly as individual components."
         ]
       },
@@ -50,7 +54,7 @@ export const articles: Article[] = [
         "heading": "Light Assembly: When It Makes Sense",
         "paragraphs": [
           "Light assembly is useful when a product arrives from the manufacturer in a semi-finished state. For example, a furniture importer might receive table legs and tops separately to save on shipping volume. The warehouse can assemble the tables before storing them, so they're ready to ship as soon as an order comes in.",
-          "Another common scenario is adding a country-specific power plug or instruction manual. A Canadian distributor might receive electronics with US plugs and need to swap them for Canadian ones. A 3PL with light assembly capabilities can do that in the warehouse, avoiding the need for a separate facility or a return to the manufacturer.",
+          "Another possible scenario is inserting approved instructions or accessories supplied by the client. Electrical changes, safety-related modifications and regulated product work require appropriate technical authority and should not be treated as routine warehouse assembly.",
           "However, light assembly isn't free. It adds labor costs, and if the assembly is complex, it might require training or quality checks. You should weigh the cost of assembly against the savings in shipping and storage. For bulky items, assembling them later can reduce the cube they occupy during storage, but if you assemble them early, you might lose that benefit. It's a balance that depends on your product and your storage costs."
         ]
       },
@@ -107,12 +111,12 @@ export const articles: Article[] = [
     ],
     "publishedAt": "2026-08-06",
     "readTime": "5 min read",
-    "keyAnswer": "Before freight reaches a 3PL, importers should prepare accurate documentation, clear product identification, and proper packaging. This includes advance shipping notices, commercial invoices, packing lists, and compliance with labeling standards. Doing so reduces receiving delays, prevents storage issues, and ensures inventory accuracy.",
+    "keyAnswer": "Before freight reaches a 3PL, the warehouse should receive an accurate inbound notice, packing details, product identifiers and handling instructions. The exact documents and lead time depend on the provider and shipment, so the receiving requirements should be confirmed before dispatch.",
     "sections": [
       {
         "heading": "Why Preparation Matters Before Freight Arrives",
         "paragraphs": [
-          "When your container or truck pulls into a 3PL warehouse, the clock starts ticking. Every minute spent sorting out paperwork or deciphering unclear labels is time that could have been used to get your products ready for sale. In my experience, the most common delays at receiving docks aren't caused by the warehouse team—they're caused by missing or inconsistent information from the importer.",
+          "When a container or truck reaches a 3PL warehouse, missing or inconsistent information can pause receiving while the warehouse identifies the freight or asks for direction. A complete inbound notice gives the receiving team a reference for the expected items, quantities and handling steps.",
           "Think of the handoff as a relay race. The better you prepare the baton, the smoother the exchange. A little upfront effort can save you from detention charges, storage overages, and the headache of inventory that's in the building but not yet available to ship."
         ]
       },
@@ -120,12 +124,12 @@ export const articles: Article[] = [
         "heading": "Documentation: The Backbone of a Smooth Receiving Process",
         "paragraphs": [
           "Accurate paperwork is the single most important thing you can provide. Your 3PL needs to know exactly what's in each shipment, where it's going, and how it should be handled. Missing or incorrect documents can lead to your freight sitting on the dock while the warehouse tries to reconcile the details.",
-          "At minimum, you should provide an advance shipping notice (ASN) that matches the packing list and commercial invoice. The ASN should include purchase order numbers, SKU numbers, quantities, and any batch or lot numbers. If your 3PL uses a warehouse management system, this information can be uploaded in advance, so the receiving team knows what to expect.",
+          "Confirm the provider's required inbound notice and supporting documents before dispatch. The notice may include purchase order numbers, SKU numbers, quantities and relevant batch or lot identifiers. If the provider accepts an upload to its warehouse system, submitting the information in advance can give the receiving team a record to work against.",
           "Also, make sure the documents are easy to read and consistent. If your packing list says 'Widget A' but your cartons are labeled 'Widget B,' the receiving clerk has to stop and ask. That's a delay you can avoid."
         ],
         "bullets": [
-          "Send the ASN at least 24 hours before arrival, if possible.",
-          "Include a commercial invoice with the correct shipper and consignee details.",
+          "Send the inbound notice within the lead time agreed with the warehouse.",
+          "Provide the shipment and packing documents requested by the provider.",
           "Provide a packing list that matches the carton contents exactly.",
           "Note any special handling requirements, such as fragile or temperature-sensitive items."
         ]
@@ -134,7 +138,7 @@ export const articles: Article[] = [
         "heading": "Labeling and Marking: Clear Communication on Every Carton",
         "paragraphs": [
           "Labels are the language of the warehouse. If your cartons don't have clear, scannable barcodes and readable text, the receiving process slows to a crawl. In Canada, you'll often need labels that include the SKU, description, and quantity, plus a unique carton ID if you want to track individual boxes.",
-          "Consider the environment: Canadian warehouses can be cold in winter, and labels that aren't water-resistant or that peel off in humidity can cause problems. Use durable labels and ensure they're placed on a flat surface, not over a seam or edge.",
+          "Choose label material and placement for the actual storage and handling environment. Place labels on a readable surface and confirm any barcode, carton or pallet-label specifications with the receiving warehouse.",
           "Also, think about the pallet. If you're shipping on pallets, make sure they're in good condition and that the load is stable. A pallet that falls apart during unloading is a safety hazard and a mess to sort out."
         ]
       },
@@ -170,11 +174,11 @@ export const articles: Article[] = [
       },
       {
         "question": "How far in advance should I send shipment details to my 3PL?",
-        "answer": "Ideally, send the ASN and other documents at least 24 hours before the freight arrives. This gives the warehouse time to review the information, allocate staff, and prepare storage locations. For large or complex shipments, even more lead time is better."
+        "answer": "Use the lead time agreed with the receiving warehouse. Larger, unusual or labour-intensive receipts may require earlier notice, so confirm the appointment and document deadline before dispatch."
       },
       {
         "question": "What happens if my freight arrives without proper labels?",
-        "answer": "If your freight arrives without proper labels, the 3PL may need to inspect each carton to identify the contents. This can cause delays and may incur additional handling charges. In some cases, the shipment might be refused until labels are provided. Always double-check labeling before dispatch."
+        "answer": "The warehouse may need to hold the receipt, identify cartons or request new instructions. The resulting timing, handling work and acceptance decision depend on the provider's agreed receiving rules."
       }
     ]
   },

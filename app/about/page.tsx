@@ -60,6 +60,19 @@ export default function AboutPage() {
         <div><small>TRANSPORTATION</small><strong>Coordinate the next freight handoff</strong></div>
       </section>
 
+      <section className="story-section" aria-labelledby="editorial-heading">
+        <div className="story-mark">
+          <strong>EDITORIAL</strong>
+          <small>CONTENT STANDARD</small>
+        </div>
+        <div className="story-copy">
+          <p className="eyebrow dark"><span /> How Runex publishes</p>
+          <h2 id="editorial-heading">Useful guidance, with its limits made clear.</h2>
+          <p>Runex publishes practical explanations for businesses planning warehousing, fulfillment and freight workflows. Articles may begin with AI-assisted drafting, but each new draft must pass checks for repetition, unsupported experience claims, guarantees, statistics and invented requirements before it can be published.</p>
+          <p>External rules should be tied to an identified source. Operational examples are presented as examples, not customer results. Content is general information—not legal, customs, tax or regulatory advice—and current requirements should be confirmed with the relevant carrier, marketplace or authority.</p>
+        </div>
+      </section>
+
       <section className="page-cta">
         <div><small>WORK WITH RUNEX</small><h2>Build a logistics plan that fits your operation.</h2></div>
         <a className="button button-primary" href="/contact">Start a conversation <Arrow /></a>
