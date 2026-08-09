@@ -18,6 +18,82 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "designing-useful-exception-reports-for-inventory-operations",
+    "category": "Supply Chain",
+    "title": "Designing Useful Exception Reports for Inventory Operations",
+    "description": "Learn how to create exception reports that clearly identify inventory issues, assign ownership, and support documented adjustments.",
+    "excerpt": "Exception reports should tell you exactly what needs attention: the item, quantity, condition, and the decision required. A clear escalation owner prevents warehouse work from waiting without direction.",
+    "keywords": [
+      "inventory exception reports",
+      "warehouse reporting",
+      "inventory adjustments",
+      "escalation owner",
+      "inventory accuracy"
+    ],
+    "publishedAt": "2026-08-09",
+    "modifiedAt": "2026-08-09",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Exceptions should identify the item, quantity, condition and required decision.",
+      "A clear escalation owner prevents warehouse work from waiting without direction.",
+      "Inventory adjustments should follow documented approval and reconciliation steps."
+    ],
+    "sources": [],
+    "keyAnswer": "Useful exception reports identify the item, quantity, condition, and required decision, and they assign a clear escalation owner so issues don't stall. They also support documented approval and reconciliation steps for any adjustments.",
+    "sections": [
+      {
+        "heading": "Start with the decision in mind",
+        "paragraphs": [
+          "An exception report is only useful if it leads to action. Before designing the layout, ask what decision each line is meant to trigger. For example, a mismatch between system quantity and physical count might require a recount, an adjustment, or a search for misplaced items. The report should make that decision obvious.",
+          "Include the essential fields: item identifier, location, expected quantity, actual quantity, variance, condition (e.g., damaged, expired, or sellable), and the date and time of discovery. Without these, the reader has to chase down basic facts, which slows resolution.",
+          "Avoid clutter. A report that lists every minor discrepancy becomes noise. Filter for exceptions that meet a threshold or that affect order fulfillment, and group similar issues so patterns are visible."
+        ],
+        "bullets": [
+          "Item identifier and description",
+          "Location (bin, aisle, or zone)",
+          "Expected vs. actual quantity",
+          "Variance and condition notes",
+          "Date and time of discovery"
+        ]
+      },
+      {
+        "heading": "Assign a clear escalation owner",
+        "paragraphs": [
+          "Every exception should have a named owner who is responsible for deciding what happens next. This could be a shift lead, an inventory analyst, or a warehouse manager. Without an owner, an exception can sit in a queue while work stops or errors compound.",
+          "Define the escalation path: if the first owner doesn't resolve within a set time, the report should automatically notify the next level. This prevents delays and ensures accountability.",
+          "In practice, this means the report should include an 'owner' column and a status field (e.g., open, in review, resolved). The owner should be someone with the authority to make the required decision, not just a recipient of the report."
+        ]
+      },
+      {
+        "heading": "Support documented adjustments",
+        "paragraphs": [
+          "When an exception leads to an inventory adjustment, the process must be controlled. The report should reference a documented procedure that includes approval steps and reconciliation. For example, a cycle count variance might require a supervisor's sign-off before the system is updated.",
+          "Include a reference number for each exception so you can trace the adjustment back to the original report. This supports audits and helps identify recurring issues.",
+          "Reconciliation means checking that the adjustment actually resolves the discrepancy and that the system matches physical counts after the change. The report can include a field for the adjustment number and a final confirmation date."
+        ]
+      },
+      {
+        "heading": "Review and refine regularly",
+        "paragraphs": [
+          "An exception report is not a one-time design. Review it regularly to see if the thresholds are appropriate, if the owners are responding, and if the report is catching the issues that matter most.",
+          "Talk to the people who use it. They may have suggestions for additional fields or better ways to group data. The goal is to reduce the time from exception to resolution.",
+          "Also consider the frequency: daily, weekly, or real-time. Real-time alerts are useful for urgent issues like stockouts, but a daily summary may be enough for slow-moving discrepancies. Choose the cadence that matches your operational rhythm."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is the most important field in an exception report?",
+        "answer": "The required decision is the most important because it tells the reader what to do next. Without it, the report is just a list of problems."
+      },
+      {
+        "question": "How often should exception reports be generated?",
+        "answer": "It depends on the urgency. Real-time alerts are useful for critical issues, but a daily summary is often sufficient for most inventory discrepancies. Match the frequency to your operational needs."
+      }
+    ]
+  },
+  {
     "slug": "repeatable-kitting-workflow-for-changing-order-volumes",
     "category": "Fulfillment",
     "title": "Designing a Repeatable Kitting Workflow for Fluctuating Order Volumes",
