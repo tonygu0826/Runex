@@ -18,6 +18,64 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "preparing-a-practical-3pl-quote-brief",
+    "category": "3PL & Warehousing",
+    "title": "Preparing a Practical 3PL Quote Brief Before Contacting Providers",
+    "description": "Learn how to assemble a clear, operational quote brief for 3PL providers, covering product data, inbound patterns, storage profiles, and exceptions.",
+    "excerpt": "A practical 3PL quote brief starts with product dimensions, weights, quantities, and handling needs. Disclose exceptions early to get accurate pricing.",
+    "keywords": [
+      "3PL quote brief",
+      "warehouse pricing",
+      "fulfillment requirements",
+      "inbound frequency",
+      "storage profile"
+    ],
+    "publishedAt": "2026-08-10",
+    "modifiedAt": "2026-08-10",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A useful quote begins with product dimensions, weights, quantities and handling needs.",
+      "Inbound frequency, storage profile and outbound order pattern affect the operating plan.",
+      "Known exceptions and client-provided instructions should be disclosed before pricing is confirmed."
+    ],
+    "sources": [],
+    "keyAnswer": "A practical 3PL quote brief should include product dimensions, weights, quantities, handling needs, inbound frequency, storage profile, and outbound order patterns. Disclosing known exceptions and client instructions before pricing is confirmed helps providers give accurate quotes and avoid surprises.",
+    "sections": [
+      {
+        "heading": "Start with the Product Data That Drives Cost",
+        "paragraphs": [
+          "Before you contact a 3PL, gather the basic facts about what you are shipping. A useful quote begins with product dimensions, weights, quantities and handling needs. Without these, a provider cannot estimate storage space, labor time, or equipment requirements. For each SKU, list the physical size, weight, and whether it is fragile, hazardous, or requires special handling. Also note if items are pre-packaged or need kitting or labeling.",
+          "Quantities matter as much as dimensions. If you plan to store 10,000 units of a small item, that is different from 10,000 units of a bulky product. Provide realistic estimates of inventory levels, not just initial shipments. This helps the provider design a storage plan that matches your actual volume, avoiding over- or under-quoting."
+        ]
+      },
+      {
+        "heading": "Describe Your Inbound and Outbound Patterns",
+        "paragraphs": [
+          "Inbound frequency, storage profile and outbound order pattern affect the operating plan. A provider needs to know how often you will send shipments, whether they arrive as full pallets or loose cartons, and if you have seasonal peaks. For example, a business that receives a few large shipments per month will have different receiving labor needs than one that gets daily small parcels.",
+          "Your outbound order pattern is equally important. Are orders mostly single-item or multi-line? Do you ship to consumers or retail stores? Do you need same-day dispatch or is next-day acceptable? These details influence picking methods, packing materials, and carrier selection. Be specific about order volumes and frequency, such as average orders per day and peak periods."
+        ]
+      },
+      {
+        "heading": "Disclose Exceptions and Client Instructions Upfront",
+        "paragraphs": [
+          "Known exceptions and client-provided instructions should be disclosed before pricing is confirmed. If you have special labeling requirements, custom packaging, or specific carrier rules, mention them early. For example, some retailers require poly bags or specific carton markings. If you have clients with unique delivery instructions, include those in the brief.",
+          "Hiding exceptions to get a lower quote often backfires. Providers may add surcharges later or fail to meet expectations. A transparent brief helps the 3PL build the right processes and quote accurately. It also sets the stage for a smoother relationship, as both sides understand the scope from the start."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if I don't have exact product dimensions yet?",
+        "answer": "Provide your best estimates and note that they are preliminary. A 3PL can still give a rough quote, but final pricing may change once exact data is available. It's better to share approximate numbers than to omit them entirely."
+      },
+      {
+        "question": "How much detail should I include about exceptions?",
+        "answer": "Include any instruction that could affect labor, materials, or carrier selection. If you are unsure, list it as a potential exception and ask the provider if it impacts pricing. Over-communicating is safer than under-communicating."
+      }
+    ]
+  },
+  {
     "slug": "designing-useful-exception-reports-for-inventory-operations",
     "category": "Supply Chain",
     "title": "Designing Useful Exception Reports for Inventory Operations",
