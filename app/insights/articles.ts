@@ -18,6 +18,65 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "building-a-returns-disposition-workflow-with-clear-decision-ownership",
+    "category": "Supply Chain",
+    "title": "Building a Returns Disposition Workflow with Clear Decision Ownership",
+    "description": "Learn how to create a returns disposition workflow that assigns clear ownership for each decision, ensuring returned inventory is handled efficiently and accurately.",
+    "excerpt": "A practical guide to designing a returns disposition workflow where every returned item has a defined status, clear approval authority, and documented evidence.",
+    "keywords": [
+      "returns disposition",
+      "decision ownership",
+      "reverse logistics",
+      "inventory status",
+      "approval workflow"
+    ],
+    "publishedAt": "2026-08-12",
+    "modifiedAt": "2026-08-12",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Returned inventory needs an identified status before it can be restocked, held or otherwise handled.",
+      "Disposition rules should state who can approve each action and what evidence is recorded."
+    ],
+    "sources": [],
+    "keyAnswer": "A returns disposition workflow should assign a clear status to every returned item, specify who can approve each disposition action, and document the evidence for each decision. This ensures returned inventory is handled consistently and reduces ambiguity in restocking, holding, or discarding products.",
+    "sections": [
+      {
+        "heading": "Start with a Clear Status for Every Return",
+        "paragraphs": [
+          "Before you can decide what to do with a returned item, you need to know its condition. Returned inventory needs an identified status before it can be restocked, held or otherwise handled. This status should be assigned as soon as the return is received, based on a simple classification system that everyone in your operation understands.",
+          "Common statuses might include 'restockable', 'needs inspection', 'needs repackaging', or 'dispose'. The key is to make the status visible and actionable. For example, a returned item that is unopened and in its original packaging might be immediately marked as restockable, while a returned item with a damaged label might be marked for relabelling. Without a clear status, your team will waste time trying to figure out what to do next, and you risk making inconsistent decisions."
+        ]
+      },
+      {
+        "heading": "Define Who Approves Each Disposition Action",
+        "paragraphs": [
+          "Once you have a status, you need to know who has the authority to move the item to the next step. Disposition rules should state who can approve each action and what evidence is recorded. For example, a warehouse associate might be able to approve restocking a 'restockable' item, but only a supervisor can approve a write-off or a return to vendor.",
+          "Documenting these rules prevents bottlenecks and ensures accountability. If every decision requires a manager's approval, you will slow down your operation. On the other hand, if anyone can approve a write-off, you risk unnecessary losses. The goal is to match the level of authority to the financial or operational impact of the decision.",
+          "When you define these rules, consider the evidence that must be recorded. For a restockable item, you might record the condition, the reason for return, and the date. For a write-off, you might need a photo and a reason code. This evidence creates an audit trail and helps you identify patterns in returns."
+        ]
+      },
+      {
+        "heading": "Scope Additional Work Before It Proceeds",
+        "paragraphs": [
+          "Some returned items will require extra work before they can be resold or used. Additional inspection, relabelling or repacking work is scoped before it proceeds. This means you need to define the scope of that work, including the time, materials, and cost involved, before you commit to doing it.",
+          "For example, if a returned item needs a new label, you should know what label is required, how long it will take to apply, and whether you have the materials in stock. If the item needs repacking, you need to know the packaging specifications and whether the item is worth the effort. By scoping the work upfront, you avoid surprises and can make a cost-benefit decision.",
+          "This step also helps you set expectations with your team. If a return requires extensive work, you might decide it is not worth the cost and instead dispose of it. Having a clear scope allows you to make that call quickly and consistently."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should be included in a disposition rule?",
+        "answer": "A disposition rule should specify the condition or status of the returned item, the action to be taken (e.g., restock, dispose), the role or person who can approve that action, and the evidence that must be recorded (e.g., photos, reason codes)."
+      },
+      {
+        "question": "How can we avoid bottlenecks in the approval process?",
+        "answer": "Assign approval authority based on the impact of the decision. For low-impact actions like restocking, allow frontline staff to approve. For high-impact actions like write-offs, require a supervisor or manager. This balances speed with control."
+      }
+    ]
+  },
+  {
     "slug": "coordinating-cross-docking-short-transfer-windows",
     "category": "Distribution",
     "title": "Coordinating Cross-Docking When Freight Has a Short Transfer Window",
