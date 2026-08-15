@@ -18,6 +18,72 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "building-receiving-instructions-that-reduce-warehouse-exceptions",
+    "category": "3PL & Warehousing",
+    "title": "Building Receiving Instructions That Reduce Warehouse Exceptions",
+    "description": "Learn how to create clear receiving instructions that cut down on warehouse exceptions by defining identification, count, and damage-reporting steps before handling begins.",
+    "excerpt": "Clear receiving instructions are the first line of defense against warehouse exceptions. By documenting identification, counting, and damage-reporting steps, you can catch issues early and keep operations moving.",
+    "keywords": [
+      "receiving instructions",
+      "warehouse exceptions",
+      "inbound receiving",
+      "damage reporting",
+      "inventory accuracy"
+    ],
+    "publishedAt": "2026-08-15",
+    "modifiedAt": "2026-08-15",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Receiving instructions should define identification, count and damage-reporting steps.",
+      "Exceptions should be documented before additional handling work proceeds."
+    ],
+    "sources": [],
+    "keyAnswer": "Effective receiving instructions reduce exceptions by specifying exactly how to identify, count, and report damages before additional handling. This proactive approach ensures issues are documented early, preventing downstream errors and disputes.",
+    "sections": [
+      {
+        "heading": "Start with Your Freight Profile and Known Exceptions",
+        "paragraphs": [
+          "The operating plan starts with the freight profile, expected activity and known exceptions. Before writing any instructions, review what you typically receive: carton sizes, pallet configurations, and any recurring issues like short shipments or damaged goods. This baseline helps you tailor instructions to your actual operations rather than using generic templates.",
+          "For example, if you often receive mixed pallets from a particular supplier, your instructions might specify how to verify each SKU separately. If you know that certain carriers tend to deliver late, your instructions could include a check for appointment times. By anticipating these patterns, you can build steps that prevent exceptions from becoming bigger problems."
+        ]
+      },
+      {
+        "heading": "Define Identification, Count, and Damage-Reporting Steps",
+        "paragraphs": [
+          "Receiving instructions should define identification, count and damage-reporting steps. Identification means specifying how to match the shipment to the purchase order or ASN, such as checking serial numbers, lot numbers, or barcodes. Counting should be explicit: whether to count every carton or use a pallet-level count, and how to handle discrepancies.",
+          "Damage reporting is often the most critical step. Your instructions should tell staff exactly what to look for—crushed corners, torn wrapping, water stains—and how to document it, including taking photos and filling out a damage report. The key is to do this before any additional handling, such as put-away or repacking, so the evidence is fresh and uncontaminated.",
+          "For instance, a hypothetical instruction might say: 'Inspect each pallet for visible damage before unloading. If damage is found, photograph the pallet and note the extent on the receiving log. Do not proceed with put-away until the damage is documented.' This clarity reduces ambiguity and ensures consistency across shifts."
+        ]
+      },
+      {
+        "heading": "Document Exceptions Before Additional Handling",
+        "paragraphs": [
+          "Exceptions should be documented before additional handling work proceeds. This principle is crucial because once you start moving goods, it becomes harder to prove whether damage occurred in transit or in your warehouse. By documenting exceptions at the receiving dock, you protect your claims with carriers and suppliers.",
+          "In practice, this means your instructions should include a 'stop' point: if a count is off or damage is found, the receiving team must complete the exception report before proceeding. This might slow down the receiving process slightly, but it prevents larger issues later, such as inventory inaccuracies or disputed chargebacks.",
+          "Consider a scenario where a pallet arrives with a torn stretch wrap. If the team unloads it and puts it away without noting the damage, the next person who picks it might assume the damage happened in storage. Documenting it at receiving avoids that confusion and keeps your inventory records reliable."
+        ]
+      },
+      {
+        "heading": "Questions to Ask Your 3PL or Warehouse Team",
+        "paragraphs": [
+          "When building receiving instructions, ask your warehouse partner how they handle exceptions. Questions like 'What is your process for documenting damage?' or 'How do you handle count discrepancies?' can reveal gaps in your current instructions. Also ask about their capacity to follow specific steps, such as photo documentation or serial-level verification.",
+          "Another key question is how exceptions are communicated back to you. Do you get a daily report, or only when an issue arises? Understanding this helps you set expectations and ensures that the instructions you write are actually actionable. Remember, the goal is to reduce exceptions, not just to document them."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should be included in receiving instructions?",
+        "answer": "Receiving instructions should include steps for identifying the shipment (matching to PO or ASN), counting (how to count and what to do if counts differ), and damage reporting (what to look for and how to document). These steps should be performed before any additional handling."
+      },
+      {
+        "question": "Why is it important to document exceptions before handling?",
+        "answer": "Documenting exceptions before handling preserves evidence and prevents disputes. If you move goods first, it's harder to prove whether damage occurred in transit or in your facility, which can affect carrier claims and inventory accuracy."
+      }
+    ]
+  },
+  {
     "slug": "building-a-returns-disposition-workflow-with-clear-decision-ownership",
     "category": "Supply Chain",
     "title": "Building a Returns Disposition Workflow with Clear Decision Ownership",
