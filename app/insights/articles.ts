@@ -18,6 +18,64 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "planning-repeatable-kitting-workflow-for-changing-order-volumes",
+    "category": "Fulfillment",
+    "title": "Building a Kitting Workflow That Adapts to Order Volume Changes",
+    "description": "Learn how to design a kitting workflow that stays consistent when order volumes fluctuate, with clear instructions, separate inventory counts, and case-by-case timing and pricing.",
+    "excerpt": "A repeatable kitting workflow depends on clear instructions, separate inventory counts, and confirmed timing and pricing for value-added work.",
+    "keywords": [
+      "kitting workflow",
+      "order volume fluctuations",
+      "warehouse fulfillment",
+      "inventory counts",
+      "value-added services"
+    ],
+    "publishedAt": "2026-08-16",
+    "modifiedAt": "2026-08-16",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Kitting instructions should define components, quantities, labels and the finished-unit identifier.",
+      "Component inventory and finished kits need separate, visible counts.",
+      "Timing and pricing for value-added work are confirmed case by case."
+    ],
+    "sources": [],
+    "keyAnswer": "A repeatable kitting workflow for changing order volumes starts with detailed instructions that define components, quantities, labels, and the finished-unit identifier. Keep component inventory and finished kits in separate, visible counts, and confirm timing and pricing for value-added work case by case to adapt to volume changes.",
+    "sections": [
+      {
+        "heading": "Start with Clear Kitting Instructions",
+        "paragraphs": [
+          "When order volumes change, the first thing to protect is consistency. A kitting workflow only stays repeatable if every team member knows exactly what goes into each kit and how to identify the finished unit. That means your instructions should define components, quantities, labels and the finished-unit identifier. Without this level of detail, a spike in orders can lead to missing parts or mislabeled kits, and a slow period can cause confusion when you restart production.",
+          "Write instructions that are easy to follow under pressure. Use part numbers, not just descriptions, and include a visual reference if possible. The finished-unit identifier—whether a SKU, barcode, or serial number—should be prominent so that kits are not confused with individual components. Test the instructions with a small batch before scaling up, and update them whenever a component changes."
+        ]
+      },
+      {
+        "heading": "Keep Separate, Visible Counts for Components and Finished Kits",
+        "paragraphs": [
+          "A common pitfall in kitting is mixing component inventory with finished kits. If you count them together, you lose visibility into what is actually available to fulfill orders. Instead, maintain separate, visible counts for components and finished kits. This allows you to see at a glance whether you have enough parts to build more kits or whether you have finished kits ready to ship.",
+          "Use distinct storage locations or labels to keep the two categories clear. For example, components might be in bins on a shelf, while finished kits are in a staging area with their own count. This separation also helps during cycle counts and when reconciling inventory after a busy period. When volumes fluctuate, you can quickly decide whether to build more kits or wait for component replenishment."
+        ]
+      },
+      {
+        "heading": "Confirm Timing and Pricing for Value-Added Work Case by Case",
+        "paragraphs": [
+          "Kitting is a value-added service, and its cost and lead time are not fixed. When order volumes change, the time required to build kits may vary, and pricing can depend on the complexity of the kit or the volume of orders. Therefore, timing and pricing for value-added work are confirmed case by case. This means you should discuss each kitting project with your 3PL or warehouse provider before committing to a schedule or budget.",
+          "Ask questions like: How much notice do you need for a large kitting run? Is there a minimum batch size? What happens if we need to pause and restart? By confirming these details upfront, you avoid surprises when volumes spike or dip. This approach also allows you to compare costs across different scenarios and plan your fulfillment budget more accurately."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How can I make my kitting instructions more robust?",
+        "answer": "Include component part numbers, exact quantities, label specifications, and a clear finished-unit identifier. Test the instructions with a small batch and update them whenever components change."
+      },
+      {
+        "question": "Why is it important to keep separate counts for components and finished kits?",
+        "answer": "Separate counts give you clear visibility into what is available to build more kits versus what is ready to ship. This helps you respond quickly to order volume changes and prevents inventory mix-ups."
+      }
+    ]
+  },
+  {
     "slug": "building-receiving-instructions-that-reduce-warehouse-exceptions",
     "category": "3PL & Warehousing",
     "title": "Building Receiving Instructions That Reduce Warehouse Exceptions",
