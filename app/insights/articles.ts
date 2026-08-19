@@ -18,6 +18,78 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "coordinating-cross-docking-short-transfer-window",
+    "category": "Distribution",
+    "title": "Managing Cross-Docking with Tight Transfer Windows",
+    "description": "Learn how to align arrival information, destination instructions, and release timing to keep cross-docking on schedule when transfer windows are tight.",
+    "excerpt": "Cross-docking with a short transfer window depends on precise coordination. Align arrival information, destination instructions, and release timing to avoid delays and exceptions.",
+    "keywords": [
+      "cross-docking coordination",
+      "short transfer window",
+      "freight scheduling",
+      "warehouse operations",
+      "exception management"
+    ],
+    "publishedAt": "2026-08-19",
+    "modifiedAt": "2026-08-19",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Cross-docking requires aligned arrival information, destination instructions and release timing.",
+      "Transportation timing is confirmed for each movement rather than assumed from a generic service promise."
+    ],
+    "sources": [],
+    "keyAnswer": "To coordinate cross-docking with a short transfer window, align arrival information, destination instructions, and release timing across all parties. Confirm transportation timing for each movement and establish a clear escalation path for exceptions to keep operations moving.",
+    "sections": [
+      {
+        "heading": "Align Arrival Information and Destination Instructions",
+        "paragraphs": [
+          "When freight has a short transfer window, the first step is ensuring that everyone—shipper, carrier, and warehouse—has the same arrival information and destination instructions. This includes exact dock doors, appointment times, and any special handling requirements. Without this alignment, a truck can arrive at the wrong door or with incomplete routing details, eating into the precious minutes needed for transfer.",
+          "Destination instructions should be specific: which outbound trailer to load, what sequence to follow, and any labeling or documentation needed. The more precise these instructions are, the less time workers spend interpreting or clarifying during the transfer. This is especially important when multiple shipments are being cross-docked simultaneously.",
+          "Consider creating a standardized template for arrival and destination details that all parties use. This reduces the risk of miscommunication and ensures that every shipment carries the same level of detail. For example, include a required field for the outbound trailer number and a check box for whether the shipment is floor-loaded or palletized."
+        ]
+      },
+      {
+        "heading": "Confirm Transportation Timing for Each Movement",
+        "paragraphs": [
+          "Transportation timing should be confirmed for each movement rather than assumed from a generic service promise. A carrier's standard transit time may not reflect real-world conditions like traffic, weather, or border delays. By confirming the expected arrival and departure times for each leg, you can identify potential gaps early and adjust the schedule.",
+          "This confirmation should happen before the freight is in transit, and again as the shipment approaches. Real-time updates from carriers help the warehouse prepare resources, such as staging areas and labor, so that the transfer can begin immediately upon arrival.",
+          "When confirming timing, also verify the carrier's capacity to meet the window. For instance, if a carrier has multiple stops, confirm that the cross-dock appointment is prioritized. If there is a risk of delay, have a contingency plan, such as a backup carrier or a flexible dock assignment."
+        ]
+      },
+      {
+        "heading": "Establish an Escalation Path for Exceptions",
+        "paragraphs": [
+          "Even with careful planning, exceptions occur—a damaged pallet, a count discrepancy, or a late truck. For a short transfer window, you need an agreed escalation path so that issues are resolved quickly without halting the entire operation. This path should define who to contact, how to document the issue, and what actions to take (e.g., accept with notation, reject, or rework).",
+          "Having a pre-agreed process reduces decision-making time during the transfer. For example, if a count is off, the warehouse can immediately notify the designated person and follow the agreed procedure, rather than waiting for instructions. This keeps the cross-dock moving and minimizes the impact on outbound schedules.",
+          "It's also helpful to define thresholds for when to escalate. For instance, if a discrepancy is below a certain dollar amount, the warehouse supervisor can approve it on the spot. For larger issues, involve the operations manager or the client. This tiered approach prevents minor exceptions from stalling the entire process."
+        ]
+      },
+      {
+        "heading": "Prepare for the Unexpected",
+        "paragraphs": [
+          "Even with the best coordination, unexpected events can disrupt a short transfer window. A carrier breakdown, a sudden surge in volume, or a mislabeled pallet can all cause delays. To mitigate these risks, build flexibility into your cross-docking plan.",
+          "One way is to have a designated overflow area where freight can be temporarily staged if the outbound trailer is not ready. Another is to cross-train staff so that multiple people can handle the transfer process. Additionally, maintain open lines of communication with all parties so that changes can be communicated quickly.",
+          "Finally, review each cross-docking event after it concludes. Identify what went well and what could be improved. Use this feedback to refine your processes, update your templates, and strengthen your escalation paths. Continuous improvement helps you handle even tighter transfer windows in the future."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should I include in destination instructions for cross-docking?",
+        "answer": "Include specific dock door assignments, outbound trailer numbers, loading sequence, and any labeling or documentation requirements. The more detailed and clear the instructions, the faster the transfer can proceed."
+      },
+      {
+        "question": "How can I handle a late carrier during a short transfer window?",
+        "answer": "Confirm transportation timing for each movement and maintain real-time communication with carriers. If a delay occurs, use your escalation path to notify the warehouse and adjust resources, such as staging or labor, to minimize disruption when the freight finally arrives."
+      },
+      {
+        "question": "What are common exceptions in cross-docking and how should I handle them?",
+        "answer": "Common exceptions include damaged goods, count discrepancies, and mislabeled pallets. Establish an escalation path that defines who to contact and what actions to take, such as accepting with notation or rejecting. Having a pre-agreed process helps resolve issues quickly without stalling the transfer."
+      }
+    ]
+  },
+  {
     "slug": "inventory-exception-report-design",
     "category": "Supply Chain",
     "title": "Designing Exception Reports That Keep Inventory Operations Moving",
