@@ -18,6 +18,78 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "returns-disposition-workflow-decision-ownership",
+    "category": "3PL & Warehousing",
+    "title": "Assigning Decision Ownership in Returns Disposition",
+    "description": "Learn how to create a returns disposition workflow that assigns clear decision ownership, records evidence, and scopes extra work before it proceeds.",
+    "excerpt": "A returns disposition workflow needs clear decision ownership to avoid inventory limbo. Define statuses, approval rules, and evidence requirements before restocking or handling returned items.",
+    "keywords": [
+      "returns disposition",
+      "decision ownership",
+      "warehouse workflow",
+      "inventory status",
+      "returns management"
+    ],
+    "publishedAt": "2026-08-20",
+    "modifiedAt": "2026-08-20",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Returned inventory needs an identified status before it can be restocked, held or otherwise handled.",
+      "Disposition rules should state who can approve each action and what evidence is recorded."
+    ],
+    "sources": [],
+    "keyAnswer": "A returns disposition workflow should assign each returned item a clear status and specify who can approve each action, with evidence recorded at every step. This prevents inventory from sitting in limbo and ensures any extra inspection or repacking is scoped before it starts.",
+    "sections": [
+      {
+        "heading": "Start with a Clear Status for Every Return",
+        "paragraphs": [
+          "Before you can decide what to do with a returned item, you need to know what it is. Returned inventory needs an identified status before it can be restocked, held or otherwise handled. That status might be 'restockable', 'needs inspection', 'quarantine', or 'dispose', but the key is that it is explicit and recorded in your system.",
+          "Without a status, a returned item sits in a gray zone. It takes up space, confuses pickers, and can lead to errors if someone assumes it is sellable. Define a small set of statuses that match your operations, and make sure every return is tagged with one at the moment it is received.",
+          "For example, a common set might include 'sellable', 'repairable', 'quarantine', and 'scrap'. Each status should have a clear definition and a default next step. This way, anyone handling the return knows what to do without asking for clarification."
+        ]
+      },
+      {
+        "heading": "Define Disposition Rules and Approval Authority",
+        "paragraphs": [
+          "Once you have statuses, you need rules for how items move from one status to another. Disposition rules should state who can approve each action and what evidence is recorded. For example, a warehouse associate might be able to mark a return as 'restockable' if it passes a visual check, but only a supervisor can approve a 'dispose' action for a high-value item.",
+          "The evidence recorded might include photos, condition notes, or the reason for return. This creates an audit trail and helps you spot patterns, like a recurring defect from a specific supplier. Make sure the rules are written down and accessible to everyone involved, so there is no ambiguity about who can do what.",
+          "Consider creating a simple matrix that lists each action, the required role, and the evidence needed. For instance, 'restock' might require a quality check by a trained associate, while 'write-off' might require a manager's sign-off and a photo. This matrix can be posted in the returns area or included in training materials."
+        ]
+      },
+      {
+        "heading": "Scope Additional Work Before It Proceeds",
+        "paragraphs": [
+          "Sometimes a returned item needs more than a status change. It might require inspection, relabelling, or repacking before it can be restocked. Additional inspection, relabelling or repacking work is scoped before it proceeds. That means you define the task, the time, and the cost before anyone starts.",
+          "For example, if a batch of returns needs to be repacked into new cartons, you should know how many units are involved, what materials are needed, and who will do the work. This prevents surprises and keeps your operation efficient. If the work is significant, you might need approval from a manager or the customer before proceeding.",
+          "Scoping also helps you decide whether the work is worth doing. If the cost of repacking exceeds the product's value, it might be better to dispose of the item. By having a clear scoping process, you can make these decisions quickly and avoid wasting resources."
+        ]
+      },
+      {
+        "heading": "Implementing the Workflow in Practice",
+        "paragraphs": [
+          "To put this workflow into practice, start by mapping out the current returns process. Identify where items get stuck and where decisions are unclear. Then, introduce the statuses and rules gradually, perhaps starting with a pilot area.",
+          "Train your team on the new process and make sure they understand their roles. Regularly review the workflow to see if it is working. For example, you might track how long items stay in each status or how many returns are disposed of without proper approval. Use this data to refine the rules and improve efficiency.",
+          "Remember that the goal is not to create bureaucracy but to ensure that every return is handled consistently and with clear accountability. A well-designed workflow reduces errors, saves time, and helps you get the most value from returned inventory."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if a returned item doesn't fit any existing status?",
+        "answer": "Create a default status like 'pending review' and assign a specific person to review it within a set timeframe. This ensures no return is left without a clear next step."
+      },
+      {
+        "question": "How do I decide who has approval authority?",
+        "answer": "Match authority to the risk and value of the action. Low-risk actions like restocking can be done by trained staff, while high-value disposals or write-offs should require a supervisor or manager."
+      },
+      {
+        "question": "What evidence should be recorded for each disposition action?",
+        "answer": "Record the reason for return, condition notes, photos if applicable, and the name of the person who made the decision. This creates an audit trail and helps identify recurring issues."
+      }
+    ]
+  },
+  {
     "slug": "coordinating-cross-docking-short-transfer-window",
     "category": "Distribution",
     "title": "Managing Cross-Docking with Tight Transfer Windows",
