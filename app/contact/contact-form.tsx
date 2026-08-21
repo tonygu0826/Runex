@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { trackOpenAIAdsLeadCreated } from "../openai-ads";
 
 type FormStatus = "idle" | "submitting" | "success" | "error";
 
@@ -36,6 +37,7 @@ export function ContactForm() {
       }
 
       form.reset();
+      trackOpenAIAdsLeadCreated();
       setStatus("success");
       setMessage("Thank you. Your request has been sent to the Runex team.");
     } catch (error) {
