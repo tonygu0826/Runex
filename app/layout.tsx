@@ -1,6 +1,28 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const openAIAdsPixelId = "9MPjBuNd4aM4F6unct8oQ8";
+
+const openAIAdsBootstrap = `
+(function (w, d, s, u) {
+  if (w.oaiq) return;
+  var q = function () {
+    q.q.push(arguments);
+  };
+  q.q = [];
+  w.oaiq = q;
+  var js = d.createElement(s);
+  js.async = true;
+  js.src = u;
+  var f = d.getElementsByTagName(s)[0];
+  f.parentNode.insertBefore(js, f);
+})(window, document, "script", "https://bzrcdn.openai.com/sdk/oaiq.min.js");
+
+oaiq("init", {
+  pixelId: ${JSON.stringify(openAIAdsPixelId)},
+});
+`;
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://runexlogi.com"),
   title: "Runex Logistics Inc. | Warehousing, Fulfillment & Transportation",
@@ -53,6 +75,12 @@ export default function RootLayout({
   };
   return (
     <html lang="en">
+      <head>
+        <script
+          data-openai-ads-pixel={openAIAdsPixelId}
+          dangerouslySetInnerHTML={{ __html: openAIAdsBootstrap }}
+        />
+      </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationJsonLd, websiteJsonLd]) }} />
         {children}

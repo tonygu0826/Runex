@@ -27,6 +27,23 @@ test("renders the production canonical URL", async () => {
   assert.match(await response.text(), productionCanonical);
 });
 
+test("initializes the OpenAI Ads pixel exactly once", async () => {
+  const response = await render("/");
+  const html = await response.text();
+  const head = html.match(/<head>([\s\S]*?)<\/head>/i)?.[1] ?? "";
+
+  assert.equal(response.status, 200);
+  assert.equal(
+    (head.match(/https:\/\/bzrcdn\.openai\.com\/sdk\/oaiq\.min\.js/g) ?? []).length,
+    1,
+  );
+  assert.equal(
+    (head.match(/9MPjBuNd4aM4F6unct8oQ8/g) ?? []).length,
+    2,
+  );
+  assert.match(head, /oaiq\(["']init["']/);
+});
+
 test("does not emit build-machine font URLs", async () => {
   const response = await render("/");
   const html = await response.text();
