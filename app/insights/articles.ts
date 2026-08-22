@@ -18,6 +18,70 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "preparing-marketplace-bound-inventory-without-assumptions",
+    "category": "FBA & E-commerce",
+    "title": "Preparing Marketplace-Bound Inventory Without Assumptions",
+    "description": "Learn how to prepare marketplace-bound inventory by relying on client-provided instructions, clarifying work orders, and escalating unclear requirements before making changes.",
+    "excerpt": "Marketplace preparation starts with the client's instructions, not assumptions. Use work orders to confirm labels, quantities, and packaging, and escalate conflicts before touching inventory.",
+    "keywords": [
+      "marketplace prep",
+      "work order clarity",
+      "inventory preparation",
+      "labeling and packaging",
+      "escalation process"
+    ],
+    "publishedAt": "2026-08-22",
+    "modifiedAt": "2026-08-22",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Current client-provided marketplace instructions remain the source of truth for preparation work.",
+      "Unclear or conflicting instructions should be escalated before inventory is changed."
+    ],
+    "sources": [],
+    "keyAnswer": "Marketplace-bound inventory should be prepared strictly according to current client-provided instructions, which are the source of truth. Work orders must specify labels, quantities, and packaging steps, and any unclear or conflicting instructions should be escalated before any changes are made.",
+    "sections": [
+      {
+        "heading": "Start with the Client's Instructions, Not Assumptions",
+        "paragraphs": [
+          "When preparing inventory for a marketplace, the only reliable guide is the client's current instructions. These instructions are the source of truth because they reflect the latest requirements from the marketplace, which can change without notice. Assuming that a previous order's specifications still apply, or that all marketplaces follow the same rules, can lead to rework, delays, and chargebacks.",
+          "Before any preparation begins, confirm that the instructions are up to date and accessible to the team. If the client has not provided explicit guidance, that is a signal to pause and ask, not to proceed with a best guess. For example, a marketplace might update its labeling requirements for a new season, and only the client's latest instructions will capture that change. Relying on a template from last year could result in labels that are rejected at the receiving dock."
+        ]
+      },
+      {
+        "heading": "Use the Work Order to Define Every Step",
+        "paragraphs": [
+          "A well-structured work order removes ambiguity by specifying exactly what needs to be done. It should identify the required item labels, carton labels, quantities, and packaging steps. For example, it might state that each unit needs a specific SKU label on the top left corner, that cartons must be sealed with tamper-evident tape, and that each carton must contain exactly 12 units.",
+          "When the work order is incomplete or vague, the team should flag it rather than fill in the gaps with assumptions. For instance, if the label placement is not specified, that is a detail to clarify, not to decide internally. The goal is to ensure that every preparation action is traceable to a documented instruction. A clear work order also helps in training new staff and in auditing the process for consistency."
+        ]
+      },
+      {
+        "heading": "Escalate Unclear or Conflicting Instructions Early",
+        "paragraphs": [
+          "Even with a work order, conflicts can arise—perhaps the client's email says one thing and the work order says another, or the marketplace's latest bulletin contradicts the client's instructions. In such cases, the correct move is to escalate before making any changes to inventory. This protects the client from costly errors and preserves trust.",
+          "Escalation should be a formal process, not an informal chat. It should include a clear description of the conflict, the potential impact on preparation, and a request for a decision. The sooner this happens, the less disruption to the workflow. Waiting until the last minute to raise concerns often leads to rushed decisions and avoidable mistakes. For example, if the work order says to apply a label to each item but the client's email says only carton labels are needed, escalating that discrepancy before labeling hundreds of units can save hours of rework."
+        ]
+      },
+      {
+        "heading": "Document Decisions and Changes",
+        "paragraphs": [
+          "Once a conflict is escalated and resolved, record the decision and update the work order accordingly. This documentation becomes part of the audit trail and helps prevent the same issue from recurring. It also provides clarity for future shipments, especially if the same client or marketplace is involved.",
+          "Documentation should include the date, the person who made the decision, and the exact instruction that was confirmed. This is not about assigning blame but about creating a reference point. When a similar situation arises later, the team can look back and see how it was handled, reducing the need to escalate the same question twice."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should I do if the client's instructions are outdated?",
+        "answer": "Treat the client's current instructions as the source of truth. If you suspect they are outdated, ask the client to confirm or provide updated instructions before proceeding."
+      },
+      {
+        "question": "Can I use a previous work order as a template for a new shipment?",
+        "answer": "Only if the client confirms that the instructions are still valid. Marketplaces often change requirements, so relying on a previous order without confirmation is risky."
+      }
+    ]
+  },
+  {
     "slug": "returns-disposition-workflow-decision-ownership",
     "category": "3PL & Warehousing",
     "title": "Assigning Decision Ownership in Returns Disposition",
