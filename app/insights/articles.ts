@@ -18,6 +18,63 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "exception-reports-for-inventory-operations",
+    "category": "Supply Chain",
+    "title": "Designing Exception Reports That Guide Inventory Decisions",
+    "description": "Learn how to structure inventory exception reports so warehouse teams can act quickly, with clear item details, quantities, conditions, and decision owners.",
+    "excerpt": "Useful exception reports identify the item, quantity, condition, and required decision, and assign a clear escalation owner to keep work moving.",
+    "keywords": [
+      "inventory exceptions",
+      "warehouse reporting",
+      "escalation owner",
+      "inventory adjustments",
+      "operational efficiency"
+    ],
+    "publishedAt": "2026-08-25",
+    "modifiedAt": "2026-08-25",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Exceptions should identify the item, quantity, condition and required decision.",
+      "A clear escalation owner prevents warehouse work from waiting without direction."
+    ],
+    "sources": [],
+    "keyAnswer": "Exception reports should focus on actionable details—item, quantity, condition, and the decision needed—so warehouse staff can resolve issues without delays. Assigning a clear escalation owner ensures every exception has direction, and documented approval steps keep adjustments controlled.",
+    "sections": [
+      {
+        "heading": "Start with the Decision in Mind",
+        "paragraphs": [
+          "An exception report is only useful if it tells someone what to do next. Before designing the report, list the common exceptions in your inventory operations—like receiving discrepancies, damaged goods, or cycle count variances—and define the decision each one requires. For example, a damaged item might need a decision to return to vendor, dispose, or move to a quarantine area. The report should include the item identifier, the quantity affected, the condition (if relevant), and a clear statement of the decision needed.",
+          "Without that clarity, warehouse staff may interpret the same exception differently, causing delays or inconsistent handling. Keep the report focused on exceptions that require action, not routine data. If an item is simply low in stock, that may be a replenishment trigger, not an exception. Reserve the report for situations where normal workflow cannot proceed without a human choice."
+        ]
+      },
+      {
+        "heading": "Assign Escalation Ownership",
+        "paragraphs": [
+          "Every exception should have a named owner who is responsible for making or approving the decision. This could be a supervisor, a buyer, or a quality lead, depending on the type of exception. The report should list the escalation owner for each line item, so warehouse staff know exactly who to contact if the issue is not resolved within a set time.",
+          "A clear escalation owner prevents warehouse work from waiting without direction. For instance, if a receiving discrepancy is flagged, the report might show the purchasing manager as the owner, with a note to review within 24 hours. This reduces the chance of inventory sitting in a holding area while staff guess who should act."
+        ]
+      },
+      {
+        "heading": "Control Adjustments with Approval Steps",
+        "paragraphs": [
+          "Inventory adjustments—whether due to damage, loss, or cycle count corrections—should follow documented approval and reconciliation steps. The exception report can serve as the starting point for that process, but it should not be the final record. Include a reference to the adjustment form or system workflow that must be completed, and require a supervisor's approval before the system is updated.",
+          "This control prevents unauthorized changes and ensures that adjustments are reconciled with physical counts. For example, a cycle count variance might trigger an exception report, but the actual adjustment is only made after a second count and a manager's sign-off. This keeps your inventory records reliable and supports audit trails."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How often should exception reports be reviewed?",
+        "answer": "Review frequency depends on the volume of exceptions and the speed of your operations. Daily reviews are common for receiving and shipping exceptions, while cycle count variances might be reviewed weekly. The key is to set a cadence that matches your decision timelines."
+      },
+      {
+        "question": "What if an exception has no clear owner?",
+        "answer": "If an exception lacks a clear owner, it should be escalated to a supervisor or manager immediately. The report should include a default escalation path, such as a duty manager, to avoid delays."
+      }
+    ]
+  },
+  {
     "slug": "repeatable-kitting-workflow-fluctuating-order-volumes",
     "category": "Fulfillment",
     "title": "Kitting Workflow Design for Variable Order Volumes",
