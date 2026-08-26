@@ -18,6 +18,71 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "preparing-a-practical-3pl-quote-brief-before-contacting-providers",
+    "category": "3PL & Warehousing",
+    "title": "Building a 3PL Quote Brief That Gets Accurate Pricing",
+    "description": "Learn how to build a clear, data-rich brief for 3PL quotes, covering product details, inbound patterns, storage needs, and exceptions to get accurate pricing.",
+    "excerpt": "A practical 3PL quote brief starts with product dimensions, weights, quantities, and handling needs, and includes inbound frequency, storage profile, and outbound order patterns.",
+    "keywords": [
+      "3PL quote brief",
+      "warehouse pricing",
+      "inbound frequency",
+      "storage profile",
+      "outbound order pattern"
+    ],
+    "publishedAt": "2026-08-26",
+    "modifiedAt": "2026-08-26",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A useful quote begins with product dimensions, weights, quantities and handling needs.",
+      "Inbound frequency, storage profile and outbound order pattern affect the operating plan.",
+      "Known exceptions and client-provided instructions should be disclosed before pricing is confirmed."
+    ],
+    "sources": [],
+    "keyAnswer": "A practical 3PL quote brief should include product dimensions, weights, quantities, handling needs, inbound frequency, storage profile, and outbound order patterns. Disclosing known exceptions and client instructions before pricing helps providers give accurate quotes.",
+    "sections": [
+      {
+        "heading": "Start with the Product Details That Drive Cost",
+        "paragraphs": [
+          "The foundation of any 3PL quote is a clear picture of what you are storing and shipping. Begin with product dimensions, weights, quantities and handling needs. For each SKU, list the physical size, weight per unit, and whether items are fragile, hazardous, or require special handling. Also note if products are pre-packaged or need kitting or assembly.",
+          "Quantities matter as much as dimensions. Provide expected inventory levels at peak and average times, and indicate how many units you plan to store. This helps the provider assess space requirements and labor needs. Without these specifics, quotes will be based on assumptions that may not match your reality."
+        ]
+      },
+      {
+        "heading": "Describe Your Inbound and Outbound Patterns",
+        "paragraphs": [
+          "Inbound frequency, storage profile and outbound order pattern affect the operating plan. Tell the provider how often you receive shipments—daily, weekly, or monthly—and whether they arrive as full pallets, cartons, or loose items. This influences receiving labor and dock scheduling.",
+          "Your storage profile includes how long products sit in the warehouse. If you have fast-moving items that turn over quickly, you need efficient pick paths. Slow movers may require less accessible storage. Outbound order patterns—such as average order size, number of lines per order, and shipping destinations—determine picking and packing methods. Be specific about whether you ship mostly single-item orders or multi-line orders to retail stores."
+        ]
+      },
+      {
+        "heading": "Disclose Exceptions and Client Instructions Upfront",
+        "paragraphs": [
+          "Known exceptions and client-provided instructions should be disclosed before pricing is confirmed. If you have special labeling requirements, unique packaging, or delivery appointment windows, mention them early. Also note any recurring issues like frequent returns or orders that require inspection.",
+          "Client instructions might include specific carrier preferences, delivery deadlines, or compliance rules for retail or marketplace channels. Sharing these details prevents surprises later and allows the provider to build them into their operating plan and pricing. Omitting them can lead to change orders or service failures."
+        ]
+      },
+      {
+        "heading": "Ask the Right Questions to Compare Quotes",
+        "paragraphs": [
+          "When you receive quotes, compare them on more than price. Ask how the provider plans to handle your inbound frequency and storage profile. Inquire about their experience with your product type and whether they have the equipment for your handling needs.",
+          "Also ask about how they manage exceptions and client instructions. For example, if you have a client that requires specific packing slips, confirm they can accommodate that. Finally, request a sample operating plan that shows how they would receive, store, and ship your products. This helps you evaluate whether the quote is realistic."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if I don't have exact product dimensions yet?",
+        "answer": "Provide estimates and clearly label them as such. The provider can adjust the quote once final dimensions are available, but starting with approximate data is better than omitting it."
+      },
+      {
+        "question": "How much detail should I include about exceptions?",
+        "answer": "Include any exception that could affect labor, space, or shipping. If you are unsure, list it as a potential scenario and ask the provider how they would handle it."
+      }
+    ]
+  },
+  {
     "slug": "exception-reports-for-inventory-operations",
     "category": "Supply Chain",
     "title": "Designing Exception Reports That Guide Inventory Decisions",
