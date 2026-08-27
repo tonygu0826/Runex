@@ -18,6 +18,71 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "cross-docking-coordination-short-transfer-window",
+    "category": "Distribution",
+    "title": "Cross-Docking with a Short Transfer Window",
+    "description": "Practical guidance for aligning arrival information, destination instructions, and release timing to keep cross-docking on schedule.",
+    "excerpt": "Cross-docking with a short transfer window depends on aligned arrival information, destination instructions, and release timing—plus a clear escalation path for exceptions.",
+    "keywords": [
+      "cross-docking coordination",
+      "short transfer window",
+      "freight exceptions",
+      "arrival alignment",
+      "release timing"
+    ],
+    "publishedAt": "2026-08-27",
+    "modifiedAt": "2026-08-27",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Cross-docking requires aligned arrival information, destination instructions and release timing.",
+      "Freight condition and count exceptions need an agreed escalation path.",
+      "Transportation timing is confirmed for each movement rather than assumed from a generic service promise."
+    ],
+    "sources": [],
+    "keyAnswer": "Coordinate cross-docking by aligning arrival information, destination instructions, and release timing for each movement, and establish an agreed escalation path for freight condition or count exceptions. Confirm transportation timing per movement rather than assuming a generic service promise.",
+    "sections": [
+      {
+        "heading": "Start with aligned arrival information",
+        "paragraphs": [
+          "When freight has a short transfer window, the first step is ensuring that everyone—shipper, carrier, and warehouse—has the same arrival details. This means sharing the expected arrival time, the dock door assignment, and the exact purchase order or shipment reference. Without this alignment, a truck can arrive at the wrong time or the wrong door, and the window is lost before unloading begins.",
+          "For each movement, confirm the arrival information directly with the carrier and the warehouse. Do not rely on a generic schedule or a previous shipment's timing. The more specific the arrival data, the better the warehouse can prepare staging space and labor to receive and re-ship the freight quickly."
+        ]
+      },
+      {
+        "heading": "Clarify destination instructions and release timing",
+        "paragraphs": [
+          "Destination instructions must be clear before the freight arrives. This includes the final delivery address, any appointment requirements at the destination, and the required delivery time. If the freight is being transferred to another carrier or an outbound dock, the warehouse needs to know which trailer or staging lane to use. Ambiguity here can cause delays that ripple through the entire transfer.",
+          "Release timing is equally critical. The warehouse must know when the freight is authorized to leave the dock. This could be tied to a customer's receiving hours, a carrier's pickup appointment, or a shipment consolidation deadline. Confirm the release time for each movement, and communicate any changes immediately to all parties."
+        ]
+      },
+      {
+        "heading": "Confirm transportation timing per movement",
+        "paragraphs": [
+          "Transportation timing should be confirmed for each movement rather than assumed from a generic service promise. A carrier's standard transit time may not reflect current conditions, such as weather, traffic, or border delays. For cross-docking, the arrival and departure times are the backbone of the operation, so verify them with the carrier and the warehouse for every shipment.",
+          "This confirmation should happen as close to the transfer window as possible. If a truck is running late, the warehouse can adjust its plan. If it is early, the warehouse may need to hold the freight until the outbound appointment. Proactive communication prevents surprises and keeps the transfer on track."
+        ]
+      },
+      {
+        "heading": "Establish an escalation path for exceptions",
+        "paragraphs": [
+          "Even with careful planning, freight condition and count exceptions can occur. When they do, you need an agreed escalation path. This means knowing who to contact, how to document the issue, and what actions are authorized. For example, if a pallet arrives damaged, the warehouse should know whether to reject it, re-palletize it, or contact the shipper for a decision.",
+          "Define the escalation path in advance, including contact names and backup contacts. The path should specify how to handle discrepancies in count, damage, or labeling. Without this, a minor exception can stall the entire transfer, defeating the purpose of cross-docking."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should be included in a cross-docking escalation path?",
+        "answer": "An escalation path should include the names and contact details of the people responsible for making decisions on freight condition and count exceptions. It should also specify the documentation required, such as photos or signed delivery receipts, and the authorized actions, such as rejecting, re-staging, or re-labeling freight."
+      },
+      {
+        "question": "How far in advance should arrival information be shared?",
+        "answer": "Arrival information should be shared as soon as it is known, ideally at least 24 hours before the scheduled arrival. This gives the warehouse time to allocate dock doors, labor, and staging space. For shorter windows, real-time updates are essential."
+      }
+    ]
+  },
+  {
     "slug": "preparing-a-practical-3pl-quote-brief-before-contacting-providers",
     "category": "3PL & Warehousing",
     "title": "Building a 3PL Quote Brief That Gets Accurate Pricing",
