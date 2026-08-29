@@ -18,6 +18,64 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "keeping-overflow-inventory-visible-across-primary-and-secondary-storage",
+    "category": "3PL & Warehousing",
+    "title": "Keeping Overflow Inventory Visible Across Primary and Secondary Storage",
+    "description": "Learn practical steps to maintain inventory accuracy when stock moves between primary and overflow storage locations.",
+    "excerpt": "Maintain inventory accuracy across primary and overflow storage with consistent identifiers, clear transfer instructions, and cycle counts that cover both areas.",
+    "keywords": [
+      "overflow inventory",
+      "inventory visibility",
+      "storage locations",
+      "cycle counting",
+      "inventory transfers"
+    ],
+    "publishedAt": "2026-08-29",
+    "modifiedAt": "2026-08-29",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Each storage location needs a consistent identifier and inventory status.",
+      "Transfer instructions should preserve item, quantity and destination information.",
+      "Cycle-count and reconciliation steps should cover both primary and overflow locations."
+    ],
+    "sources": [],
+    "keyAnswer": "To keep overflow inventory visible, assign each storage location a consistent identifier and status, and ensure transfer instructions preserve item, quantity, and destination details. Cycle-count and reconciliation steps must cover both primary and overflow locations to maintain accuracy.",
+    "sections": [
+      {
+        "heading": "Establish Clear Location Identifiers and Statuses",
+        "paragraphs": [
+          "When inventory overflows from primary picking locations to secondary storage, the first step is to ensure every storage location—whether a bin, shelf, pallet position, or overflow area—has a consistent identifier. This identifier should be unique and follow a logical pattern that warehouse staff can easily interpret. For example, a location code might include zone, aisle, rack, and level. Consistency prevents confusion when items are moved between primary and overflow areas.",
+          "In addition to identifiers, each location needs an inventory status. Statuses such as 'available', 'reserved', 'in-transit', or 'quarantined' help staff know whether stock in that location can be picked, moved, or counted. Without a clear status, overflow inventory can be overlooked or double-counted, leading to inaccuracies."
+        ]
+      },
+      {
+        "heading": "Document Transfer Instructions Completely",
+        "paragraphs": [
+          "When moving inventory from primary to overflow storage, or back again, the transfer instructions must preserve all essential information: item identifier, quantity, and destination location. This ensures that the system reflects the new location accurately and that staff know exactly what to move and where to put it.",
+          "Incomplete transfer instructions—such as missing quantities or vague destination descriptions—are a common source of inventory discrepancies. They can result in items being placed in the wrong location, or not being recorded at all. To avoid this, create a standard template for transfer orders that includes fields for item, quantity, from-location, to-location, and a timestamp. Train staff to fill out these fields completely before executing the move."
+        ]
+      },
+      {
+        "heading": "Integrate Cycle Counts and Reconciliation Across All Locations",
+        "paragraphs": [
+          "Cycle counting is a powerful tool for maintaining inventory accuracy, but it only works if it covers both primary and overflow locations. Many operations focus cycle counts on high-velocity picking locations and neglect overflow areas, which can lead to silent inaccuracies. Ensure your cycle-count schedule includes a representative sample of overflow locations, and that counts are reconciled against system records.",
+          "Reconciliation steps should also address discrepancies found during counts. When a count reveals a variance, investigate the cause—whether it was a missed transfer, a mislabeled location, or a receiving error—and correct the system accordingly. By making cycle counts and reconciliation a routine part of managing both primary and overflow storage, you can maintain visibility and trust in your inventory data."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How often should overflow inventory be cycle counted?",
+        "answer": "The frequency depends on the value and velocity of the items, but a good practice is to include overflow locations in the same cycle-count rotation as primary locations, adjusting for risk. High-value or fast-moving items may require more frequent counts."
+      },
+      {
+        "question": "What should be included in a transfer instruction?",
+        "answer": "A transfer instruction should include the item identifier, quantity, source location, destination location, and a timestamp. This ensures that the move is recorded accurately and can be traced if needed."
+      }
+    ]
+  },
+  {
     "slug": "cross-docking-coordination-short-transfer-window",
     "category": "Distribution",
     "title": "Cross-Docking with a Short Transfer Window",
