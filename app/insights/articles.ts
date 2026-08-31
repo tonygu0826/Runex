@@ -18,6 +18,63 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "receiving-instructions-that-reduce-warehouse-exceptions",
+    "category": "3PL & Warehousing",
+    "title": "How to Write Receiving Instructions That Prevent Warehouse Exceptions",
+    "description": "Learn how to build clear receiving instructions that reduce warehouse exceptions by defining identification, count, and damage-reporting steps before handling begins.",
+    "excerpt": "Clear receiving instructions reduce exceptions by specifying identification, counting, and damage-reporting steps, and by documenting issues before further handling.",
+    "keywords": [
+      "receiving instructions",
+      "warehouse exceptions",
+      "inbound process",
+      "damage reporting",
+      "identification and count"
+    ],
+    "publishedAt": "2026-08-31",
+    "modifiedAt": "2026-08-31",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Receiving instructions should define identification, count and damage-reporting steps.",
+      "Exceptions should be documented before additional handling work proceeds."
+    ],
+    "sources": [],
+    "keyAnswer": "Receiving instructions reduce warehouse exceptions by clearly defining identification, count, and damage-reporting steps, and by requiring documentation before additional handling. This ensures issues are caught early and handled consistently.",
+    "sections": [
+      {
+        "heading": "Start with the Freight Profile and Known Exceptions",
+        "paragraphs": [
+          "Before writing receiving instructions, review the freight profile, expected activity, and known exceptions. This operating plan helps you tailor instructions to the specific types of shipments you receive, whether they are palletized, loose cartons, or mixed loads. Knowing what typically goes wrong—such as short counts, damaged cartons, or labeling mismatches—allows you to build preventive steps into the instructions.",
+          "For example, if a supplier frequently sends cartons with ambiguous SKU labels, your instructions might require a two-step verification: first, compare the label to the packing slip, then scan the barcode to confirm the SKU in the warehouse management system. This proactive approach reduces the chance of misidentification and the exceptions that follow."
+        ]
+      },
+      {
+        "heading": "Define Identification, Count, and Damage-Reporting Steps",
+        "paragraphs": [
+          "Clear receiving instructions should specify exactly how to identify each item, how to count units, and how to report damage. For identification, include details like where to find the SKU number, what label formats are acceptable, and how to handle missing or unreadable labels. For counting, state whether to count each carton, weigh pallets, or use a pre-receiving report, and require a second count for high-value or high-risk items.",
+          "Damage reporting should be standardized: instruct staff to photograph the damage, note the extent on the bill of lading, and flag the shipment in the system. This ensures that damage is recorded consistently and can be used for claims or supplier feedback. Without these steps, exceptions may be missed or documented inconsistently, leading to disputes and inventory inaccuracies."
+        ]
+      },
+      {
+        "heading": "Document Exceptions Before Additional Handling",
+        "paragraphs": [
+          "A critical rule is to document exceptions before any additional handling work proceeds. This means that if a carton is damaged or a count is off, the receiving team must record the issue immediately, before moving the product to storage or staging areas. This prevents the problem from being obscured by subsequent operations and ensures that the exception is captured in the system for follow-up.",
+          "In practice, this might involve a hold status on the shipment, a digital note in the receiving app, or a physical tag on the pallet. The key is to make documentation a mandatory step in the receiving workflow, not an afterthought. This approach reduces the risk of exceptions being discovered later during putaway or order picking, which can be more costly to resolve."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should be included in receiving instructions to prevent exceptions?",
+        "answer": "Receiving instructions should include clear steps for identifying items (e.g., SKU location, label requirements), counting units (e.g., per carton or pallet), and reporting damage (e.g., photo documentation, note on bill of lading). Also, specify when to document exceptions—before any further handling."
+      },
+      {
+        "question": "How can I ensure exceptions are documented consistently?",
+        "answer": "Standardize the documentation process by using a digital form or checklist that guides staff through the steps. Require that exceptions be recorded immediately upon discovery, before moving products to storage, and use a hold status or flag in the warehouse management system to track them."
+      }
+    ]
+  },
+  {
     "slug": "keeping-overflow-inventory-visible-across-primary-and-secondary-storage",
     "category": "3PL & Warehousing",
     "title": "Keeping Overflow Inventory Visible Across Primary and Secondary Storage",
