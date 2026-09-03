@@ -22,7 +22,8 @@ const publishedAt = new Intl.DateTimeFormat("en-CA", {
 
 const briefs = [
   {
-    topic: "building receiving instructions that reduce warehouse exceptions",
+    id: "receiving-control",
+    area: "warehouse receiving instructions, count checks and damage documentation",
     evidence: [
       "The operating plan starts with the freight profile, expected activity and known exceptions.",
       "Receiving instructions should define identification, count and damage-reporting steps.",
@@ -30,7 +31,8 @@ const briefs = [
     ],
   },
   {
-    topic: "planning a repeatable kitting workflow for changing order volumes",
+    id: "kitting-control",
+    area: "repeatable kitting and light-assembly workflows for changing order volumes",
     evidence: [
       "Kitting instructions should define components, quantities, labels and the finished-unit identifier.",
       "Component inventory and finished kits need separate, visible counts.",
@@ -38,7 +40,8 @@ const briefs = [
     ],
   },
   {
-    topic: "designing useful exception reports for inventory operations",
+    id: "inventory-exceptions",
+    area: "inventory exception reporting, escalation and adjustment approval",
     evidence: [
       "Exceptions should identify the item, quantity, condition and required decision.",
       "A clear escalation owner prevents warehouse work from waiting without direction.",
@@ -46,7 +49,8 @@ const briefs = [
     ],
   },
   {
-    topic: "preparing a practical 3PL quote brief before contacting providers",
+    id: "quote-planning",
+    area: "preparing accurate operating information for a 3PL quote",
     evidence: [
       "A useful quote begins with product dimensions, weights, quantities and handling needs.",
       "Inbound frequency, storage profile and outbound order pattern affect the operating plan.",
@@ -54,7 +58,8 @@ const briefs = [
     ],
   },
   {
-    topic: "coordinating cross-docking when freight has a short transfer window",
+    id: "cross-docking",
+    area: "cross-docking coordination when freight has a short transfer window",
     evidence: [
       "Cross-docking requires aligned arrival information, destination instructions and release timing.",
       "Freight condition and count exceptions need an agreed escalation path.",
@@ -62,7 +67,8 @@ const briefs = [
     ],
   },
   {
-    topic: "creating a returns disposition workflow with clear decision ownership",
+    id: "returns-control",
+    area: "returns inspection and disposition with clear decision ownership",
     evidence: [
       "Returned inventory needs an identified status before it can be restocked, held or otherwise handled.",
       "Disposition rules should state who can approve each action and what evidence is recorded.",
@@ -70,7 +76,8 @@ const briefs = [
     ],
   },
   {
-    topic: "keeping overflow inventory visible across primary and secondary storage",
+    id: "overflow-control",
+    area: "maintaining inventory visibility across primary and overflow storage",
     evidence: [
       "Each storage location needs a consistent identifier and inventory status.",
       "Transfer instructions should preserve item, quantity and destination information.",
@@ -78,18 +85,88 @@ const briefs = [
     ],
   },
   {
-    topic: "preparing marketplace-bound inventory without relying on assumptions",
+    id: "marketplace-prep",
+    area: "preparing marketplace-bound inventory from current client instructions",
     evidence: [
       "Current client-provided marketplace instructions remain the source of truth for preparation work.",
       "The work order should identify item labels, carton labels, quantities and packaging steps.",
       "Unclear or conflicting instructions should be escalated before inventory is changed.",
     ],
   },
+  {
+    id: "inbound-readiness",
+    area: "inbound appointment readiness and the information a warehouse needs before arrival",
+    evidence: [
+      "Inbound planning should identify the expected arrival, freight profile and receiving requirements.",
+      "Appointment details and shipment references need to match the receiving instructions.",
+      "Missing or conflicting information should be resolved before the freight reaches the receiving point.",
+    ],
+  },
+  {
+    id: "inventory-status",
+    area: "inventory status definitions for available, held, damaged and pending-review stock",
+    evidence: [
+      "Inventory status should show whether stock is available, held, damaged or awaiting a decision.",
+      "Status changes need a clear reason and an identified approval owner.",
+      "Physical handling and system records should be reconciled before stock is released.",
+    ],
+  },
+  {
+    id: "outbound-readiness",
+    area: "outbound order readiness before carrier pickup",
+    evidence: [
+      "Outbound instructions should identify the order, quantity, packaging and destination requirements.",
+      "Pickup timing should be coordinated with the warehouse completion status.",
+      "Unresolved quantity, label or packaging exceptions should be escalated before release.",
+    ],
+  },
+  {
+    id: "carrier-handoffs",
+    area: "documenting carrier handoffs from pickup through delivery confirmation",
+    evidence: [
+      "A transportation handoff should identify the shipment, pickup status and next responsible party.",
+      "Delivery instructions and known exceptions should travel with the shipment record.",
+      "Proof of delivery closes the handoff and supports follow-up when an exception remains.",
+    ],
+  },
+  {
+    id: "inventory-reconciliation",
+    area: "cycle counts and inventory reconciliation without disrupting daily fulfillment",
+    evidence: [
+      "Count plans should define the items, locations and inventory statuses included in the review.",
+      "Differences need to be documented and investigated before records are adjusted.",
+      "Reconciliation should preserve a clear link between the physical count and the approved system change.",
+    ],
+  },
+  {
+    id: "warehouse-onboarding",
+    area: "onboarding a new warehouse account with clear operating responsibilities",
+    evidence: [
+      "Onboarding should confirm the freight profile, expected activity and required handling instructions.",
+      "The client and warehouse need named owners for routine decisions and exceptions.",
+      "The operating plan should be reviewed when actual volume or handling differs from the original assumptions.",
+    ],
+  },
+  {
+    id: "capacity-changes",
+    area: "adjusting warehouse capacity when inbound or outbound volume changes",
+    evidence: [
+      "Capacity planning depends on expected inventory, activity and timing rather than storage volume alone.",
+      "Short-term volume changes should be communicated before they affect receiving or order preparation.",
+      "The operating plan should identify which work can be rescheduled and which deadlines require escalation.",
+    ],
+  },
+  {
+    id: "multi-location-transfers",
+    area: "controlling inventory transfers between warehouse locations",
+    evidence: [
+      "A transfer instruction should identify the item, quantity, origin and destination.",
+      "Inventory status should remain visible while goods are moving between locations.",
+      "Receipt confirmation and discrepancy handling complete the transfer record.",
+    ],
+  },
 ];
-
-const dayNumber = Math.floor(new Date(`${publishedAt}T12:00:00-04:00`).getTime() / 86_400_000);
-const selectedBrief = briefs[dayNumber % briefs.length];
-const selectedTopic = process.env.ARTICLE_TOPIC?.trim() || selectedBrief.topic;
+const requestedTopic = process.env.ARTICLE_TOPIC?.trim();
 
 let approvedSources = [];
 if (process.env.ARTICLE_SOURCES_JSON?.trim()) {
@@ -101,10 +178,14 @@ if (process.env.ARTICLE_SOURCES_JSON?.trim()) {
 
 const systemPrompt = `You are an editorial assistant for Runex Logistics Inc. Write people-first English guidance for businesses planning Canadian warehousing, fulfillment and freight workflows. Use only the operational evidence and approved sources supplied in the brief. Never invent first-hand experience, customers, results, statistics, legal requirements, certifications, prices, locations, capabilities or delivery guarantees. Treat examples explicitly as hypothetical. Avoid hype, filler, keyword stuffing and formulaic AI phrases. Return valid JSON only.`;
 
-const userPrompt = `Create one original article about: ${selectedTopic}.
+const editorialBriefs = briefs.map((brief) => `- briefId: ${brief.id}\n  Area: ${brief.area}\n  Allowed operational evidence:\n${brief.evidence.map((item) => `  - ${item}`).join("\n")}`).join("\n");
 
-Operational evidence you may use:
-${selectedBrief.evidence.map((item) => `- ${item}`).join("\n")}
+const userPrompt = `Create one original article${requestedTopic ? ` about this requested topic: ${requestedTopic}` : " by choosing a narrow, practical search intent that is not already covered below"}.
+
+Choose exactly one editorial brief and use only that brief's operational evidence. Select a materially new decision, workflow, handoff, documentation or exception-management angle rather than paraphrasing an existing article.
+
+Editorial briefs:
+${editorialBriefs}
 
 Approved external sources (use only these; an empty list means do not make external factual or regulatory claims):
 ${approvedSources.length ? approvedSources.map((item) => `- ${item.name}: ${item.url}`).join("\n") : "- None"}
@@ -128,7 +209,7 @@ Requirements:
 
 Return exactly this JSON shape:
 {
-  "slug": "lowercase-kebab-case",
+  "briefId": "one of the supplied briefId values",
   "category": "one of: 3PL & Warehousing, FBA & E-commerce, Distribution, Fulfillment, Supply Chain",
   "title": "...",
   "description": "...",
@@ -179,14 +260,32 @@ function parseArticleContent(rawContent) {
   }
 }
 
+function slugifyTitle(title) {
+  return title
+    .normalize("NFKD")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-+|-+$/g, "")
+    .slice(0, 72)
+    .replace(/-+$/g, "");
+}
+
 function validateGeneratedArticle(generated) {
-  const slug = requireString(generated.slug, "slug").toLowerCase();
-  if (!/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(slug) || slug.length > 72 || existingSlugs.includes(slug)) throw new Error("Slug is invalid or already exists.");
+  const briefId = requireString(generated.briefId, "briefId");
+  const selectedBrief = briefs.find((brief) => brief.id === briefId);
+  if (!selectedBrief) throw new Error(`Brief "${briefId}" is not allowed. Choose one supplied briefId.`);
 
   const title = requireString(generated.title, "title", 20);
-  if (title.length > 90 || existingTitles.some((existing) => existing.toLowerCase() === title.toLowerCase() || jaccard(existing, title) > 0.58)) {
-    throw new Error("Title is too long, duplicated or too similar to an existing title.");
+  if (title.length > 90) throw new Error(`Title is too long (${title.length} characters). Keep it at 90 characters or fewer.`);
+  const titleCollision = existingTitles
+    .map((existing) => ({ existing, score: jaccard(existing, title) }))
+    .sort((left, right) => right.score - left.score)[0];
+  if (titleCollision && (titleCollision.existing.toLowerCase() === title.toLowerCase() || titleCollision.score > 0.58)) {
+    throw new Error(`Title "${title}" is too similar to existing title "${titleCollision.existing}". Choose a materially different search intent, preferably from another editorial brief.`);
   }
+  const slug = slugifyTitle(title);
+  if (!slug) throw new Error(`Title "${title}" cannot produce a valid URL slug. Use a clear English title.`);
+  if (existingSlugs.includes(slug)) throw new Error(`Title "${title}" produces an existing URL slug "${slug}". Choose a different search intent and title.`);
 
   const categories = new Set(["3PL & Warehousing", "FBA & E-commerce", "Distribution", "Fulfillment", "Supply Chain"]);
   if (!categories.has(generated.category)) throw new Error("Category is not allowed.");
@@ -282,8 +381,7 @@ for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
 }
 
 if (!validated) {
-  console.warn(`No article published today: the draft did not pass after ${maxAttempts} attempts (${lastError.message}).`);
-  process.exit(0);
+  throw new Error(`No article was published after ${maxAttempts} attempts. Last quality check: ${lastError.message}`);
 }
 
 const marker = "export const articles: Article[] = [";

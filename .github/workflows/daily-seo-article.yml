@@ -84,11 +84,10 @@ jobs:
         id: quality_gate
         run: |
           if git diff --quiet -- app/insights/articles.ts; then
-            echo "No draft passed the quality gate; today's run is complete without publishing."
-            echo "passed=false" >> "$GITHUB_OUTPUT"
-          else
-            echo "passed=true" >> "$GITHUB_OUTPUT"
+            echo "The generator completed without producing an article." >&2
+            exit 1
           fi
+          echo "passed=true" >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies
         if: steps.quality_gate.outputs.passed == 'true'
