@@ -18,6 +18,64 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "practical-3pl-quote-brief-preparation",
+    "category": "3PL & Warehousing",
+    "title": "Gathering the Details That Make 3PL Quotes Accurate",
+    "description": "Learn how to gather the operational details that make 3PL quotes accurate and comparable.",
+    "excerpt": "A practical 3PL quote brief starts with product dimensions, weights, quantities, and handling needs, plus clear information about inbound and outbound patterns.",
+    "keywords": [
+      "3PL quote brief",
+      "warehouse pricing",
+      "fulfillment requirements",
+      "inbound frequency",
+      "outbound order pattern"
+    ],
+    "publishedAt": "2026-09-03",
+    "modifiedAt": "2026-09-03",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A useful quote begins with product dimensions, weights, quantities and handling needs.",
+      "Inbound frequency, storage profile and outbound order pattern affect the operating plan.",
+      "Known exceptions and client-provided instructions should be disclosed before pricing is confirmed."
+    ],
+    "sources": [],
+    "keyAnswer": "A practical 3PL quote brief should include product dimensions, weights, quantities, handling needs, inbound frequency, storage profile, and outbound order patterns. Disclosing known exceptions and client instructions before pricing is confirmed helps avoid costly surprises later.",
+    "sections": [
+      {
+        "heading": "Start with the physical facts of your products",
+        "paragraphs": [
+          "Before you contact a 3PL, gather the basics: each product's dimensions, weight, and the quantities you expect to store and ship. Include packaging details, such as whether items are sold individually or in multi-packs, and note any special handling needs like fragile, hazardous, or temperature-sensitive items. These details directly affect storage space, labor time, and packaging materials, so they are the foundation of any accurate quote.",
+          "If you have a wide range of SKUs, group them by similar characteristics to simplify the brief. For example, list standard cartons separately from oversized or irregularly shaped items. This helps the provider see the true mix of work and avoids surprises when they calculate rates."
+        ]
+      },
+      {
+        "heading": "Describe your inbound and storage patterns",
+        "paragraphs": [
+          "Providers need to understand how often you receive goods and in what volumes. Do you get weekly pallet deliveries or seasonal container loads? This affects dock scheduling, receiving labor, and how much inventory you hold at any time. Also describe your storage profile: do you need long-term storage for slow movers or mostly cross-docking and short-term turnover?",
+          "The outbound order pattern is equally important. Are orders mostly single-item parcels or multi-line cartons? Do you ship to consumers or retail stores? Order frequency and size influence picking methods, packing stations, and carrier contracts. The more clearly you can describe these patterns, the better the provider can tailor their operation and pricing to your actual needs."
+        ]
+      },
+      {
+        "heading": "Disclose exceptions and client instructions upfront",
+        "paragraphs": [
+          "Every operation has exceptions: special labeling for retail, custom kitting, or unique packing slips. If you know about these before you request a quote, include them in the brief. Also share any client-provided instructions you must follow, such as specific carrier requirements or delivery appointment windows. Hiding these details may lead to lower initial quotes, but they often surface later as additional charges or service failures.",
+          "Be honest about variability. If your order volumes spike during holidays or promotions, say so. Providers can plan for peaks if they know they are coming. Similarly, if you expect to add new products or change packaging, mention that. A good brief is not just a snapshot of today; it is a roadmap of how your operation may evolve."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if I don't know my exact outbound order pattern?",
+        "answer": "Provide your best estimate based on historical sales or projections. If you are launching a new product, describe expected order sizes and frequencies. Providers can still quote based on assumptions, but be clear that these are estimates."
+      },
+      {
+        "question": "Should I include information about seasonal peaks?",
+        "answer": "Yes. Seasonal peaks affect staffing, storage, and carrier capacity. Disclosing them helps the provider plan and may result in more accurate pricing, including any peak-season surcharges."
+      }
+    ]
+  },
+  {
     "slug": "receiving-instructions-that-reduce-warehouse-exceptions",
     "category": "3PL & Warehousing",
     "title": "How to Write Receiving Instructions That Prevent Warehouse Exceptions",
