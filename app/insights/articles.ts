@@ -18,6 +18,67 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "preparing-inbound-shipments-for-a-smoother-warehouse-receiving-experienc",
+    "category": "3PL & Warehousing",
+    "title": "Preparing Inbound Shipments for a Smoother Warehouse Receiving Experience",
+    "description": "Learn what information and preparation steps help a warehouse receive your inbound freight efficiently, reducing delays and exceptions.",
+    "excerpt": "Inbound planning should identify the expected arrival, freight profile and receiving requirements. Clear appointment details and shipment references help the warehouse prepare, reducing delays and errors.",
+    "keywords": [
+      "inbound readiness",
+      "warehouse receiving",
+      "appointment scheduling",
+      "freight profile",
+      "receiving instructions"
+    ],
+    "publishedAt": "2026-09-04",
+    "modifiedAt": "2026-09-04",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Inbound planning should identify the expected arrival, freight profile and receiving requirements.",
+      "Appointment details and shipment references need to match the receiving instructions."
+    ],
+    "sources": [],
+    "keyAnswer": "Inbound readiness means giving your warehouse accurate arrival details, a clear freight profile, and complete receiving instructions before the truck shows up. This allows the warehouse to plan labor and space, and to resolve any missing or conflicting information ahead of time, reducing delays and errors.",
+    "sections": [
+      {
+        "heading": "Start with the Freight Profile",
+        "paragraphs": [
+          "Before you schedule an inbound delivery, think about what the warehouse needs to know to handle it well. The freight profile includes the type of goods, their dimensions, weight, and how they are packed—pallets, cartons, or loose items. It also covers any special handling needs, such as fragile items, temperature sensitivity, or hazardous materials (though you should follow your own compliance procedures for such goods).",
+          "Sharing this profile early helps the warehouse plan for the right equipment, labor, and storage space. For example, a palletized shipment of heavy boxes requires different preparation than a floor-loaded trailer of mixed cartons. The more specific you can be, the better the warehouse can align its resources."
+        ]
+      },
+      {
+        "heading": "Align Appointment Details and Shipment References",
+        "paragraphs": [
+          "When you book an appointment, the details—date, time, carrier, and trailer number—must match the information on the shipping documents. If the warehouse expects a specific purchase order or bill of lading, make sure those references are correct and appear on all paperwork. Mismatched references can cause delays as the warehouse tries to reconcile the shipment with its records.",
+          "If anything changes, such as a delayed pickup or a different carrier, communicate that to the warehouse as soon as possible. This allows them to adjust their receiving plan and avoid surprises at the dock."
+        ]
+      },
+      {
+        "heading": "Resolve Missing or Conflicting Information Early",
+        "paragraphs": [
+          "Sometimes, the information you provide may be incomplete or inconsistent. For instance, the packing list might show 500 cartons, but the bill of lading says 450. Or the appointment is for a specific time, but the receiving instructions require a different dock door. These discrepancies should be resolved before the freight arrives, not when the driver is waiting.",
+          "Work with your warehouse contact to clarify any issues. This might involve updating the appointment, correcting the paperwork, or confirming the receiving instructions. The goal is to ensure that when the truck arrives, the warehouse can proceed without ambiguity, reducing the risk of errors and delays."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What happens if I don't provide a freight profile before the shipment arrives?",
+        "answer": "Without a freight profile, the warehouse may not have the right equipment or labor ready, leading to delays. They might also be unable to plan storage space, which could result in temporary overflow or rehandling."
+      },
+      {
+        "question": "How far in advance should I share inbound shipment details?",
+        "answer": "As soon as you have the information, ideally at least a few days before the expected arrival. This gives the warehouse time to schedule staff and space. For time-sensitive or complex shipments, earlier is better."
+      },
+      {
+        "question": "What should I do if my shipment details change after booking an appointment?",
+        "answer": "Notify your warehouse contact immediately. They can update the appointment and adjust their plan. It's better to communicate changes than to have the warehouse discover them at the dock."
+      }
+    ]
+  },
+  {
     "slug": "practical-3pl-quote-brief-preparation",
     "category": "3PL & Warehousing",
     "title": "Gathering the Details That Make 3PL Quotes Accurate",
