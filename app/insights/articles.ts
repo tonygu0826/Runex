@@ -18,6 +18,75 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "defining-inventory-statuses-to-keep-warehouse-decisions-moving",
+    "category": "Supply Chain",
+    "title": "Defining Inventory Statuses to Keep Warehouse Decisions Moving",
+    "description": "Learn how clear inventory status definitions—available, held, damaged, pending review—help warehouses avoid delays and keep operations moving.",
+    "excerpt": "Clear inventory statuses prevent confusion and delays. Learn how to define available, held, damaged, and pending-review stock, and why status changes need approval owners.",
+    "keywords": [
+      "inventory status",
+      "warehouse stock status",
+      "inventory holds",
+      "damaged inventory handling",
+      "inventory approval workflow"
+    ],
+    "publishedAt": "2026-09-05",
+    "modifiedAt": "2026-09-05",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Inventory status should show whether stock is available, held, damaged or awaiting a decision.",
+      "Status changes need a clear reason and an identified approval owner."
+    ],
+    "sources": [],
+    "keyAnswer": "Inventory statuses should clearly show whether stock is available, held, damaged, or awaiting a decision. Status changes need a documented reason and an identified approval owner, and physical handling must be reconciled with system records before stock is released.",
+    "sections": [
+      {
+        "heading": "Why Clear Inventory Statuses Matter",
+        "paragraphs": [
+          "When stock sits in a warehouse, its status determines what can happen next. If a worker cannot tell whether a pallet is available to pick, held for a quality check, damaged beyond use, or waiting for a decision from the client, they may either ship something that should not go out or leave sellable product sitting idle. Both outcomes create avoidable friction.",
+          "A practical status system uses plain labels that everyone understands. Available means the item can be included in outbound orders. Held means there is a reason it cannot ship right now—perhaps a customer hold or a pending inspection. Damaged means it is not fit for its intended purpose. Pending review means someone needs to make a call before the stock can move in any direction."
+        ]
+      },
+      {
+        "heading": "Making Status Changes Deliberate",
+        "paragraphs": [
+          "A status change is not just a data entry task. It should reflect a real decision made by someone with the authority to make it. For example, moving an item from available to held might require a client service representative to confirm the hold reason. Moving it from pending review to damaged should involve a supervisor who can verify the condition and decide whether disposal or return is appropriate.",
+          "Documenting the reason for each change creates an audit trail. If a discrepancy appears later, you can trace when the status changed, who approved it, and what evidence supported the decision. Without that trail, a status change becomes a guess, and the next person handling the inventory has no way to know whether the record is trustworthy."
+        ],
+        "bullets": [
+          "Define who can approve each type of status change.",
+          "Record the reason and evidence for every change.",
+          "Use a shared system so all teams see the same status."
+        ]
+      },
+      {
+        "heading": "Reconciling Physical Handling with System Records",
+        "paragraphs": [
+          "A status is only useful if it matches what is actually on the floor. If the system says a carton is available but a worker moved it to a quarantine area without updating the record, the next picker may try to ship it. That is why physical handling and system records should be reconciled before stock is released.",
+          "Reconciliation does not have to be a full inventory count every time. It can be a simple check when inventory is moved, when a status changes, or before a high-value order is picked. The goal is to catch mismatches early, while they are still easy to investigate."
+        ]
+      },
+      {
+        "heading": "Practical Questions for Your Warehouse Team",
+        "paragraphs": [
+          "If you are setting up or reviewing inventory statuses, ask your warehouse provider how they handle exceptions. Who is the named owner for approving a status change? What evidence is recorded when an item is marked damaged? How do they ensure that a held item does not accidentally get picked?",
+          "The answers should be specific. A vague response like 'we handle it' is not enough. You want to hear that there is a documented process, a clear escalation path, and a system that prevents unauthorized changes. That level of clarity reduces the risk of inventory errors and keeps your supply chain moving."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What is the difference between 'held' and 'pending review'?",
+        "answer": "Held usually means there is a known reason stock cannot ship, such as a customer hold or a quality hold. Pending review means a decision has not been made yet—someone needs to determine whether the item should be available, held, damaged, or something else."
+      },
+      {
+        "question": "Who should approve inventory status changes?",
+        "answer": "The approval owner depends on the type of change. Routine changes, like moving from pending review to available after inspection, might be handled by a warehouse supervisor. More significant changes, like writing off damaged inventory, may require client approval. The key is that every change has an identified owner."
+      }
+    ]
+  },
+  {
     "slug": "preparing-inbound-shipments-for-a-smoother-warehouse-receiving-experienc",
     "category": "3PL & Warehousing",
     "title": "Preparing Inbound Shipments for a Smoother Warehouse Receiving Experience",
