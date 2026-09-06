@@ -18,6 +18,78 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "getting-inbound-appointments-right-before-freight-arrives",
+    "category": "3PL & Warehousing",
+    "title": "Getting Inbound Appointments Right Before Freight Arrives",
+    "description": "Learn what information a warehouse needs before an inbound shipment arrives, and how to resolve missing or conflicting details to avoid delays.",
+    "excerpt": "Inbound planning should identify the expected arrival, freight profile, and receiving requirements. Resolve missing or conflicting information before freight reaches the receiving point.",
+    "keywords": [
+      "inbound appointment",
+      "receiving requirements",
+      "freight profile",
+      "warehouse readiness",
+      "shipment references"
+    ],
+    "publishedAt": "2026-09-06",
+    "modifiedAt": "2026-09-06",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Inbound planning should identify the expected arrival, freight profile and receiving requirements.",
+      "Missing or conflicting information should be resolved before the freight reaches the receiving point."
+    ],
+    "sources": [],
+    "keyAnswer": "Inbound readiness means giving your warehouse the expected arrival, freight profile, and receiving requirements ahead of time. Match appointment details and shipment references to receiving instructions, and resolve any missing or conflicting information before the freight arrives.",
+    "sections": [
+      {
+        "heading": "What the Warehouse Needs Before Arrival",
+        "paragraphs": [
+          "A smooth inbound shipment starts with clear communication before the truck pulls up. The warehouse needs to know the expected arrival date and time, what the freight profile looks like (pallet counts, carton counts, weight, and any special handling needs), and what receiving requirements apply—such as appointment windows, dock assignments, or specific documentation.",
+          "Without this information, the receiving team cannot plan labour or space. They might be caught off guard by a large shipment or lack the right equipment for unusual items. Providing a complete picture early helps the warehouse prepare and avoids last-minute scrambling.",
+          "For example, if you are sending a mixed pallet of fragile items, the warehouse needs to know that so they can allocate a staging area and have the right packing materials ready. If the shipment requires temperature control, that must be communicated in advance. The more detail you provide, the better the warehouse can serve you."
+        ]
+      },
+      {
+        "heading": "Matching Appointment Details with Receiving Instructions",
+        "paragraphs": [
+          "Appointment details and shipment references need to match the receiving instructions. For example, if the appointment is booked under a purchase order number, that same number should appear on the bill of lading and packing list. If the warehouse expects a specific SKU mix but the shipment contains different items, that is a red flag.",
+          "Before the freight arrives, double-check that the appointment confirmation, carrier documents, and your own records all align. Small mismatches—like a wrong trailer number or a missing reference—can cause delays at the gate or lead to misdirected inventory.",
+          "It is also wise to confirm the exact receiving location. If you have multiple warehouses, make sure the appointment is for the correct facility. A simple typo in the address can send your freight to the wrong city, causing significant delays and extra costs."
+        ]
+      },
+      {
+        "heading": "Resolving Missing or Conflicting Information Early",
+        "paragraphs": [
+          "If you notice that the expected arrival time conflicts with the carrier's schedule, or that the receiving instructions do not match the shipment contents, address it before the freight reaches the receiving point. Waiting until the truck is at the dock means the warehouse may have to hold the shipment while questions are answered, which ties up space and resources.",
+          "The goal is to resolve any ambiguity while there is still time to adjust. That might mean updating the appointment, correcting the paperwork, or clarifying which products are actually on the way. The more you can sort out in advance, the smoother the receiving process will be.",
+          "For instance, if the carrier calls to say they will arrive a day early, but your warehouse does not have a dock slot, you need to decide whether to accept the early delivery or reschedule. Communicating this decision to both the carrier and the warehouse prevents confusion and ensures someone is there to receive the freight."
+        ]
+      },
+      {
+        "heading": "Creating a Pre-Arrival Checklist",
+        "paragraphs": [
+          "To make inbound readiness a habit, create a simple checklist that you review before every shipment. Include the expected arrival date and time, the freight profile (number of pallets, cartons, weight), any special handling requirements, and the receiving instructions. Confirm that the appointment details match the shipment references, and that all parties have the same information.",
+          "This checklist does not need to be elaborate—just a consistent way to ensure nothing is overlooked. Over time, you will find that fewer shipments arrive with surprises, and your warehouse partner can operate more efficiently.",
+          "If you are working with a 3PL, ask them what information they need and in what format. Some warehouses have online portals where you can enter shipment details, while others prefer email. Understanding their preferences makes the process smoother for everyone."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What happens if my shipment arrives without a confirmed appointment?",
+        "answer": "The warehouse may not have labour or dock space ready, which can lead to delays. Providing arrival details ahead of time helps the warehouse plan for your freight."
+      },
+      {
+        "question": "How far in advance should I share inbound shipment details?",
+        "answer": "As soon as you know the expected arrival and have the freight profile, share it with the warehouse. This gives them time to schedule receiving resources and prepare for any special requirements."
+      },
+      {
+        "question": "What should I do if the carrier arrives early or late?",
+        "answer": "Communicate the change to the warehouse as soon as possible. If the warehouse cannot accommodate the new time, you may need to reschedule the delivery or arrange for a different dock slot."
+      }
+    ]
+  },
+  {
     "slug": "defining-inventory-statuses-to-keep-warehouse-decisions-moving",
     "category": "Supply Chain",
     "title": "Defining Inventory Statuses to Keep Warehouse Decisions Moving",
