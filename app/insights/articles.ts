@@ -18,6 +18,80 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "cycle-counting-without-halting-daily-fulfillment",
+    "category": "Supply Chain",
+    "title": "Cycle Counting Without Halting Daily Fulfillment",
+    "description": "Learn how to plan cycle counts and reconcile inventory differences without disrupting daily fulfillment operations.",
+    "excerpt": "Cycle counting can keep inventory accurate without stopping your warehouse. This guide shows how to plan counts, document differences, and approve adjustments while daily work continues.",
+    "keywords": [
+      "cycle counting",
+      "inventory reconciliation",
+      "warehouse counts",
+      "inventory accuracy",
+      "fulfillment disruption"
+    ],
+    "publishedAt": "2026-09-07",
+    "modifiedAt": "2026-09-07",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Count plans should define the items, locations and inventory statuses included in the review.",
+      "Differences need to be documented and investigated before records are adjusted."
+    ],
+    "sources": [],
+    "keyAnswer": "Cycle counting can be done without halting daily fulfillment by planning counts around active workflows, using clear statuses, and documenting differences before any system changes. Investigate discrepancies before adjusting records, and ensure approved changes are linked to physical counts.",
+    "sections": [
+      {
+        "heading": "Plan Counts Around Active Workflows",
+        "paragraphs": [
+          "Cycle counting does not have to stop your warehouse. The key is to plan counts around the flow of work. Start by defining which items, locations, and inventory statuses will be reviewed. For example, you might count fast-moving SKUs more often than slow movers, or focus on a specific storage zone during a lull in receiving.",
+          "Coordinate with the operations team to schedule counts during natural breaks, such as between waves of outbound orders or after inbound receiving is complete. If a location is actively being picked or put away, consider deferring the count to avoid double handling. The goal is to get an accurate snapshot without disrupting the work that keeps orders moving."
+        ],
+        "bullets": [
+          "Identify count priorities based on item velocity, value, or known problem areas.",
+          "Schedule counts during slower periods or after major workflows finish.",
+          "Communicate the count plan so pickers and receivers know which locations are being reviewed."
+        ]
+      },
+      {
+        "heading": "Document Differences Before Changing Records",
+        "paragraphs": [
+          "When a count reveals a difference between the physical stock and the system record, the first step is to document it. Record the item, the counted quantity, the system quantity, and any relevant details like condition or location. This documentation creates a clear starting point for investigation.",
+          "Do not adjust the system immediately. Investigate the cause first. Was there a receiving error, a mis-pick, or a transfer that was not recorded? Look for patterns, such as recurring shortages in a specific area or after a particular activity. Understanding the root cause helps prevent the same discrepancy from happening again.",
+          "Only after the investigation should you consider an adjustment. The adjustment must follow your documented approval and reconciliation steps, ensuring that the physical count and the system change are clearly linked."
+        ],
+        "bullets": [
+          "Use a standard discrepancy form or log to capture all relevant details.",
+          "Investigate before adjusting to identify root causes and prevent recurrence.",
+          "Ensure adjustments are approved by the designated owner and tied to the count evidence."
+        ]
+      },
+      {
+        "heading": "Keep Reconciliation Linked to Physical Evidence",
+        "paragraphs": [
+          "Reconciliation is not just about fixing numbers; it is about maintaining trust in your inventory data. Each approved system change should reference the physical count that triggered it. This creates an audit trail that supports future decisions and helps identify systemic issues.",
+          "After adjustments are made, verify that the system now matches the physical reality. If the count was part of a larger cycle count program, update your count plan based on what you learned. For example, if you found frequent discrepancies in a particular location, you might schedule more frequent counts there.",
+          "By keeping reconciliation tied to physical evidence, you can maintain accurate inventory without bringing your warehouse to a standstill."
+        ],
+        "bullets": [
+          "Reference the count ID or date in the adjustment record.",
+          "Confirm the system update matches the physical count before closing the cycle.",
+          "Use discrepancy trends to refine future count plans and improve processes."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How often should I cycle count my inventory?",
+        "answer": "The frequency depends on your operation. High-velocity or high-value items may need more frequent counts, while slower movers can be counted less often. Your count plan should define the items, locations, and statuses included in each review."
+      },
+      {
+        "question": "What should I do if a count difference is found during a busy period?",
+        "answer": "Document the difference immediately, but you can defer the investigation to a quieter time. The key is to capture the evidence so you can investigate before making any system adjustments."
+      }
+    ]
+  },
+  {
     "slug": "getting-inbound-appointments-right-before-freight-arrives",
     "category": "3PL & Warehousing",
     "title": "Getting Inbound Appointments Right Before Freight Arrives",
