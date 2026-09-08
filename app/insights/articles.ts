@@ -18,6 +18,70 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "coordinating-outbound-orders-with-carrier-pickup-windows",
+    "category": "Fulfillment",
+    "title": "Coordinating Outbound Orders with Carrier Pickup Windows",
+    "description": "Learn how to align warehouse completion status with carrier pickup timing to avoid missed handoffs and unresolved exceptions.",
+    "excerpt": "Outbound readiness depends on clear instructions, coordinated pickup timing, and early escalation of exceptions before release.",
+    "keywords": [
+      "outbound order readiness",
+      "carrier pickup coordination",
+      "warehouse release exceptions",
+      "fulfillment handoff"
+    ],
+    "publishedAt": "2026-09-08",
+    "modifiedAt": "2026-09-08",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Outbound instructions should identify the order, quantity, packaging and destination requirements.",
+      "Pickup timing should be coordinated with the warehouse completion status.",
+      "Unresolved quantity, label or packaging exceptions should be escalated before release."
+    ],
+    "sources": [],
+    "keyAnswer": "Outbound readiness means ensuring orders are fully prepared—correct quantity, packaging, and labels—and that pickup timing is coordinated with warehouse completion status. Unresolved exceptions should be escalated before release to prevent delays and miscommunication.",
+    "sections": [
+      {
+        "heading": "Define Outbound Instructions Clearly",
+        "paragraphs": [
+          "Before an order is prepared, the outbound instructions should spell out exactly what is expected: the order identifier, the quantity to ship, the packaging requirements, and any destination-specific rules. Without this clarity, warehouse staff may guess at labeling or packing standards, leading to rework or missed carrier pickups.",
+          "When instructions are incomplete or ambiguous, treat that as a signal to pause. The cost of a quick clarification is far lower than the cost of a shipment that fails to meet carrier or destination requirements. For example, if a purchase order requires a specific carton label but the instruction only says 'label as usual,' the warehouse should ask for the exact format before proceeding. Similarly, if the quantity on the order does not match the pick list, that discrepancy must be resolved before packing begins.",
+          "A well-defined instruction also includes the destination requirements, such as delivery appointment windows or specific dock doors. These details affect how the order is staged and when it needs to be ready for pickup. The warehouse should not assume that all shipments follow the same process; each order may have unique handling needs."
+        ]
+      },
+      {
+        "heading": "Coordinate Pickup Timing with Warehouse Completion",
+        "paragraphs": [
+          "Carrier pickup windows should not be treated as fixed deadlines that the warehouse must hit at all costs. Instead, the warehouse completion status should drive the timing of the pickup request. If an order is not ready, moving the pickup later is often better than releasing a partial or incorrect shipment. A missed pickup is easier to reschedule than a shipment that arrives with errors.",
+          "Communication between the warehouse and the person coordinating transportation is essential. The warehouse should provide realistic completion estimates, and the coordinator should adjust pickup times accordingly. This prevents carriers from arriving too early (and waiting) or too late (and missing the outbound trailer). For instance, if the warehouse knows that a large order will not be ready until 2 PM, the carrier should be scheduled for 3 PM rather than the default 10 AM pickup.",
+          "In practice, this coordination requires a shared view of order status. The warehouse should update the order record when picking is complete, when packing is done, and when the order is staged for pickup. The transportation coordinator can then confirm that the carrier is on track or make adjustments if the warehouse falls behind."
+        ]
+      },
+      {
+        "heading": "Escalate Exceptions Before Release",
+        "paragraphs": [
+          "Quantity mismatches, label errors, or packaging issues should never be resolved by simply shipping the order and hoping for the best. These exceptions need to be escalated to the appropriate decision-maker before the freight is released to the carrier. For example, if the order calls for 50 units but only 48 are available, the warehouse must not ship 48 without approval. The escalation owner might decide to backorder the missing units, substitute a similar product, or delay the shipment until the full quantity is available.",
+          "Escalation does not mean stopping all work. It means identifying the unresolved issue, notifying the person who can make a decision, and waiting for direction. This prevents the exception from becoming a problem at the destination or during delivery. The warehouse should document the exception clearly, including the order number, the discrepancy, and any relevant photos or notes, so that the decision-maker has the full context.",
+          "Once the decision is made, the warehouse should update the order record and proceed with the approved action. If the decision is to release the order with a known exception, that information should travel with the shipment so that the receiver is not surprised. If the decision is to hold the order, the warehouse should communicate the revised completion time to the transportation coordinator."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should I do if a carrier pickup is scheduled but the order is not ready?",
+        "answer": "Contact the transportation coordinator immediately to reschedule the pickup. Releasing an incomplete order can lead to additional costs and customer dissatisfaction."
+      },
+      {
+        "question": "Who should be responsible for escalating outbound exceptions?",
+        "answer": "The warehouse team should have a named escalation owner, such as a shift lead or account manager, who can resolve quantity, label, or packaging issues before release."
+      },
+      {
+        "question": "How can I prevent outbound exceptions from happening in the first place?",
+        "answer": "Invest time in writing clear outbound instructions and reviewing them with the warehouse team. Also, perform a final quality check before staging the order for pickup to catch errors early."
+      }
+    ]
+  },
+  {
     "slug": "cycle-counting-without-halting-daily-fulfillment",
     "category": "Supply Chain",
     "title": "Cycle Counting Without Halting Daily Fulfillment",
