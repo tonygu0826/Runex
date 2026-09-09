@@ -18,6 +18,67 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "controlling-inventory-transfers-between-warehouse-locations",
+    "category": "Supply Chain",
+    "title": "Controlling Inventory Transfers Between Warehouse Locations",
+    "description": "Learn how to manage inventory transfers between warehouse locations with clear instructions, status visibility, and receipt confirmation to prevent discrepancies.",
+    "excerpt": "Inventory transfers between locations require precise instructions, visible status, and confirmed receipts to avoid errors and keep operations moving.",
+    "keywords": [
+      "inventory transfer",
+      "multi-location",
+      "warehouse transfer",
+      "transfer instructions",
+      "inventory visibility"
+    ],
+    "publishedAt": "2026-09-09",
+    "modifiedAt": "2026-09-09",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A transfer instruction should identify the item, quantity, origin and destination.",
+      "Inventory status should remain visible while goods are moving between locations.",
+      "Receipt confirmation and discrepancy handling complete the transfer record."
+    ],
+    "sources": [],
+    "keyAnswer": "To control inventory transfers between warehouse locations, you need clear transfer instructions that identify the item, quantity, origin, and destination. Inventory status must remain visible while goods are in transit, and the process is completed only when the receiving location confirms receipt and any discrepancies are resolved.",
+    "sections": [
+      {
+        "heading": "Start with a Complete Transfer Instruction",
+        "paragraphs": [
+          "Before any inventory moves between locations, the transfer instruction must be precise. It should identify the item, the exact quantity, the origin location, and the destination location. Without these four elements, warehouse staff are left to guess, which can lead to misplaced stock or incorrect counts.",
+          "A good transfer instruction also includes a reference number and the expected timing. This allows both the sending and receiving locations to plan their work. For example, if you are moving seasonal stock to a secondary warehouse, the instruction should state when the goods will arrive so the receiving team can schedule labour.",
+          "If any part of the instruction is unclear, it should be resolved before the transfer begins. This prevents the shipment from sitting in limbo or being processed incorrectly at the destination."
+        ]
+      },
+      {
+        "heading": "Keep Inventory Status Visible While Goods Are in Transit",
+        "paragraphs": [
+          "Once a transfer is initiated, the inventory should not simply disappear from the system. Instead, it should be assigned a status that shows it is in transit between locations. This visibility is essential for accurate planning. If a customer order comes in for an item that is moving, you need to know whether it is available at the origin, on the way, or already at the destination.",
+          "Without a clear in-transit status, you risk overselling or double-allocating stock. The system should reflect that the goods are not available for picking until they are received at the destination. This prevents warehouse workers from promising stock that is not physically ready.",
+          "The status should also indicate the expected arrival time, so that customer service or order management teams can set accurate expectations. If the transfer is delayed, the status should be updated to reflect the new timeline."
+        ]
+      },
+      {
+        "heading": "Complete the Transfer with Receipt Confirmation and Discrepancy Handling",
+        "paragraphs": [
+          "The transfer is not complete when the goods leave the origin. It is only complete when the destination location confirms receipt. This confirmation should include the item, quantity, and condition. If the received quantity does not match the transfer instruction, that discrepancy must be documented and investigated before any adjustment is made.",
+          "Discrepancies can happen for many reasons: a counting error at the origin, damage during transit, or a mislabel. The key is to have a clear process for handling them. The receiving team should report the discrepancy immediately, and an identified owner should decide whether to investigate, adjust records, or escalate.",
+          "Once the receipt is confirmed and any discrepancies are resolved, the transfer record is closed. This final step ensures that the system accurately reflects the physical inventory at each location, which is the foundation for reliable cycle counts and order fulfillment."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should I do if the received quantity doesn't match the transfer instruction?",
+        "answer": "Document the discrepancy immediately and report it to the designated escalation owner. Investigate the cause before adjusting records. The transfer record should remain open until the discrepancy is resolved and the receipt is confirmed."
+      },
+      {
+        "question": "How can I keep inventory visible during a transfer?",
+        "answer": "Assign an in-transit status to the inventory in your warehouse management system. This status should prevent the stock from being allocated for orders until it is received at the destination, while still showing the quantity and expected arrival time."
+      }
+    ]
+  },
+  {
     "slug": "coordinating-outbound-orders-with-carrier-pickup-windows",
     "category": "Fulfillment",
     "title": "Coordinating Outbound Orders with Carrier Pickup Windows",
