@@ -18,6 +18,88 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "how-to-define-inventory-statuses-so-warehouse-teams-know-what-they-can-a",
+    "category": "3PL & Warehousing",
+    "title": "How to Define Inventory Statuses So Warehouse Teams Know What They Can and Cannot Touch",
+    "description": "A practical guide to defining available, held, damaged and pending-review inventory statuses, with clear approval ownership and reconciliation steps before stock is released.",
+    "excerpt": "Inventory status tells a warehouse team whether stock can be picked, must wait, or needs a decision before handling. This article covers status definitions, approval ownership and reconciliation.",
+    "keywords": [
+      "inventory status definitions",
+      "warehouse hold and release",
+      "damaged stock handling",
+      "pending-review inventory",
+      "inventory status approval"
+    ],
+    "publishedAt": "2026-09-10",
+    "modifiedAt": "2026-09-10",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Inventory status should show whether stock is available, held, damaged or awaiting a decision.",
+      "Status changes need a clear reason and an identified approval owner.",
+      "Physical handling and system records should be reconciled before stock is released."
+    ],
+    "sources": [],
+    "keyAnswer": "Inventory status should show whether stock is available, held, damaged or awaiting a decision, and every status change needs a clear reason and an identified approval owner. Before stock is released, physical handling and system records should be reconciled so the warehouse is not acting on a status that no longer reflects reality.",
+    "sections": [
+      {
+        "heading": "Why a status label alone is not enough",
+        "paragraphs": [
+          "A warehouse team needs to know what it can do with a unit right now. A status such as available, held, damaged or pending review is only useful if it changes what happens next on the floor. If a picker can still pull held stock, or a receiver can put damaged cartons back into sellable inventory, the status is decorative rather than operational.",
+          "The practical test is simple: for each status, can you name the person who may change it, the reason that justifies the change, and the evidence recorded at the time? If any of those are missing, the status will eventually be overridden by urgency. That is how inventory records drift away from what is physically on the shelf."
+        ]
+      },
+      {
+        "heading": "Defining the four working statuses",
+        "paragraphs": [
+          "Available means the stock can be picked, packed or transferred under normal instructions. Held means the stock must not move until a named owner releases it. Damaged means the condition is known and the stock is not treated as sellable without a separate decision. Pending review means the condition or ownership is not yet clear, so the stock waits while someone gathers facts.",
+          "These four categories are deliberately plain. The value is not in having many statuses but in making sure each one has a different physical consequence. If two statuses lead to the same handling behaviour, they can usually be merged. If one status covers both a minor label issue and a crushed carton, the team will guess, and guesses are where errors enter the record."
+        ],
+        "bullets": [
+          "Available: normal handling may proceed under existing instructions.",
+          "Held: no movement until the identified approval owner releases it.",
+          "Damaged: condition is recorded and the stock is not treated as sellable by default.",
+          "Pending review: facts are gathered before any disposition decision is made."
+        ]
+      },
+      {
+        "heading": "Who owns a status change",
+        "paragraphs": [
+          "Every status change needs a clear reason and an identified approval owner. That owner may be a client contact, a warehouse supervisor or a named role, but the point is that the decision does not sit in a queue with no one responsible. When a receiver finds a discrepancy, the escalation path should already be known so the freight does not wait for direction that never arrives.",
+          "A useful rule is that the person who physically handles the stock is not automatically the person who approves a status change. Separating those roles keeps the record honest. It also gives the warehouse a defensible answer when a client asks why a unit was held, released or written off."
+        ]
+      },
+      {
+        "heading": "Reconciling before release",
+        "paragraphs": [
+          "Physical handling and system records should be reconciled before stock is released. In practice, that means a count or condition check is compared with the system status, differences are documented, and only then is the status changed to available or another final state. Releasing first and reconciling later invites the same exception to reappear on the next order.",
+          "Reconciliation does not need to be heavy. It needs to preserve a clear link between what was observed on the floor and the approved change in the system. If a count differs, the difference is recorded and investigated before the record is adjusted. That sequence protects both the client and the warehouse from acting on stale information."
+        ]
+      },
+      {
+        "heading": "Questions to settle before go-live",
+        "paragraphs": [
+          "Before a new account starts, agree on the status list, the physical meaning of each status, and the named owner for each change. Ask what evidence is recorded when a status changes, how quickly a pending-review item must be resolved, and who is contacted when the owner is unavailable. These questions surface gaps while they are still cheap to fix.",
+          "Also confirm how status changes appear in routine reporting. A status that is invisible to the client will generate avoidable follow-up. A status that is visible but never cleared will clog the operation. The operating plan should be reviewed when actual volume or handling differs from the original assumptions, because status rules that worked at low volume may not hold under pressure."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How many inventory statuses does a warehouse actually need?",
+        "answer": "Enough to change physical behaviour, and no more. Available, held, damaged and pending review cover the common decisions. If two statuses lead to the same handling, merge them; if one status hides very different conditions, split it."
+      },
+      {
+        "question": "Can a warehouse change a status without client approval?",
+        "answer": "Only where the operating plan names the warehouse as the approval owner for that specific change. Otherwise the status change waits for the identified owner, and the reason and evidence are recorded at the time of the change."
+      },
+      {
+        "question": "What happens when a count does not match the system status?",
+        "answer": "The difference is documented and investigated before records are adjusted. Physical handling and system records should be reconciled before stock is released, so the next order is not built on an unresolved discrepancy."
+      }
+    ]
+  },
+  {
     "slug": "controlling-inventory-transfers-between-warehouse-locations",
     "category": "Supply Chain",
     "title": "Controlling Inventory Transfers Between Warehouse Locations",
