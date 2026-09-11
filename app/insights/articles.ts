@@ -18,6 +18,90 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "what-to-record-at-each-carrier-handoff-so-exceptions-do-not-disappear",
+    "category": "Distribution",
+    "title": "What to Record at Each Carrier Handoff So Exceptions Do Not Disappear",
+    "description": "A practical guide to documenting carrier handoffs from pickup through delivery confirmation, with clear ownership and exception visibility.",
+    "excerpt": "Carrier handoffs fail quietly when the shipment record does not say who has responsibility next. This guide explains what to capture at pickup, in transit and at delivery confirmation.",
+    "keywords": [
+      "carrier handoff documentation",
+      "pickup status record",
+      "delivery confirmation",
+      "shipment exception ownership",
+      "proof of delivery"
+    ],
+    "publishedAt": "2026-09-11",
+    "modifiedAt": "2026-09-11",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A transportation handoff should identify the shipment, pickup status and next responsible party.",
+      "Delivery instructions and known exceptions should travel with the shipment record.",
+      "Proof of delivery closes the handoff and supports follow-up when an exception remains."
+    ],
+    "sources": [],
+    "keyAnswer": "A transportation handoff should identify the shipment, pickup status and next responsible party, and delivery instructions and known exceptions should travel with the shipment record. Proof of delivery closes the handoff and supports follow-up when an exception remains.",
+    "sections": [
+      {
+        "heading": "Why the handoff record matters more than the pickup itself",
+        "paragraphs": [
+          "A carrier pickup can look complete while the shipment record is still ambiguous. The truck has the freight, but the record may not show who is responsible for the next step, what was agreed about delivery, or which exceptions were already known. When that ambiguity follows the shipment, follow-up becomes guesswork.",
+          "The practical fix is to treat each handoff as a small, documented transfer of responsibility. The record should identify the shipment, the pickup status and the next responsible party. That single set of facts gives everyone a shared reference point when a question arises later."
+        ]
+      },
+      {
+        "heading": "What to capture at pickup",
+        "paragraphs": [
+          "At pickup, the record should confirm that the shipment left with the carrier and note the condition and count as observed at that point. If the warehouse already knew about a packaging concern, a short count or a delivery instruction that needs attention, that information should travel with the shipment record rather than staying in a separate message thread.",
+          "The next responsible party should be named in the record, not assumed from the carrier name alone. A named owner makes it clear who should be contacted if the shipment does not progress as expected."
+        ],
+        "bullets": [
+          "Shipment identifier and pickup status",
+          "Next responsible party after pickup",
+          "Delivery instructions and known exceptions carried with the record",
+          "Condition and count notes observed at handoff"
+        ]
+      },
+      {
+        "heading": "Keeping exceptions visible while freight is moving",
+        "paragraphs": [
+          "Known exceptions should not be treated as resolved simply because the freight is in transit. If a delivery instruction is unusual or a count discrepancy was noted at pickup, the record should keep that context available. Otherwise, the receiving end may treat the shipment as routine and miss the reason it needed attention.",
+          "This is also where an agreed escalation path helps. When freight condition or count exceptions arise, the record should show who was notified and what decision is pending. That prevents the exception from waiting without direction."
+        ]
+      },
+      {
+        "heading": "Closing the handoff with proof of delivery",
+        "paragraphs": [
+          "Proof of delivery closes the handoff and supports follow-up when an exception remains. It is the point at which the record can show that the shipment reached its destination, and it gives the team a factual basis for any remaining question about condition, count or instruction compliance.",
+          "If an exception is still open after delivery, the record should not be closed as if everything was routine. The proof of delivery and the exception note should stay linked so the follow-up has a clear starting point."
+        ]
+      },
+      {
+        "heading": "Questions to ask before relying on a handoff process",
+        "paragraphs": [
+          "A buyer or operations lead should ask how the carrier handoff record is created, who updates it, and what happens when the next responsible party changes. It is also worth asking how delivery instructions and known exceptions are attached to the shipment record, and how proof of delivery is matched back to the original handoff.",
+          "The answers should describe a repeatable process rather than a person remembering to send an email. If the process depends on memory, the record will be incomplete exactly when it matters most."
+        ],
+        "bullets": [
+          "Who owns the handoff record at each stage?",
+          "How are delivery instructions and known exceptions attached?",
+          "How is proof of delivery linked to the original shipment record?",
+          "What happens when an exception remains open after delivery?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does every carrier handoff need the same level of detail?",
+        "answer": "The record should at least identify the shipment, pickup status and next responsible party. Additional detail about delivery instructions and known exceptions should travel with the shipment record whenever those facts exist, because they affect how the next party handles the freight."
+      },
+      {
+        "question": "What should happen if an exception is still open after proof of delivery?",
+        "answer": "The handoff should not be treated as fully closed. Proof of delivery supports follow-up when an exception remains, so the exception note and the delivery confirmation should stay linked until the question is resolved."
+      }
+    ]
+  },
+  {
     "slug": "how-to-define-inventory-statuses-so-warehouse-teams-know-what-they-can-a",
     "category": "3PL & Warehousing",
     "title": "How to Define Inventory Statuses So Warehouse Teams Know What They Can and Cannot Touch",
