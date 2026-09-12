@@ -18,6 +18,77 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "when-volume-shifts-a-practical-way-to-adjust-warehouse-capacity-without",
+    "category": "3PL & Warehousing",
+    "title": "When Volume Shifts: A Practical Way to Adjust Warehouse Capacity Without Surprises",
+    "description": "A guide to communicating short-term inbound and outbound volume changes so receiving and order preparation can be rescheduled or escalated before deadlines slip.",
+    "excerpt": "Capacity is not just floor space. It is the match between expected inventory, activity and timing. This article explains how to flag volume changes early and keep the operating plan honest.",
+    "keywords": [
+      "warehouse capacity planning",
+      "volume change communication",
+      "inbound and outbound timing",
+      "operating plan review",
+      "warehouse escalation"
+    ],
+    "publishedAt": "2026-09-12",
+    "modifiedAt": "2026-09-12",
+    "readTime": "3 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Capacity planning depends on expected inventory, activity and timing rather than storage volume alone.",
+      "Short-term volume changes should be communicated before they affect receiving or order preparation.",
+      "The operating plan should identify which work can be rescheduled and which deadlines require escalation."
+    ],
+    "sources": [],
+    "keyAnswer": "Capacity planning depends on expected inventory, activity and timing rather than storage volume alone. When short-term volume changes are communicated before they affect receiving or order preparation, the operating plan can identify which work can be rescheduled and which deadlines require escalation.",
+    "sections": [
+      {
+        "heading": "Why storage volume alone does not answer a capacity question",
+        "paragraphs": [
+          "A warehouse can have open rack positions and still be unable to absorb a sudden inbound surge or an outbound order spike. Capacity planning depends on expected inventory, activity and timing rather than storage volume alone. The same square footage behaves differently when receipts arrive in one narrow window, when pick faces are already committed to another account, or when outbound orders require staging space that is not free until a carrier departs.",
+          "That is why a useful capacity conversation starts with the operating plan rather than a simple count of empty locations. The plan should describe what inventory is expected, what handling activity it requires and when that activity lands. When any of those three elements changes, the capacity picture changes with it, even if the physical footprint has not moved."
+        ]
+      },
+      {
+        "heading": "Communicating a volume change before it hits the floor",
+        "paragraphs": [
+          "Short-term volume changes should be communicated before they affect receiving or order preparation. A message that arrives after freight is already at the dock or after pick tickets are released leaves the warehouse with fewer options. An earlier signal gives both sides room to adjust labour, dock scheduling, staging and order release sequence.",
+          "The communication does not need to be formal to be useful. What matters is that it identifies the change, the timing and the affected workflow. For example, a client might flag that an inbound shipment will arrive two days earlier than planned, or that outbound order volume will double for one week. The warehouse can then compare that against current commitments and respond with a realistic view of what can shift."
+        ]
+      },
+      {
+        "heading": "Deciding what can move and what must escalate",
+        "paragraphs": [
+          "Not all work is equally movable. The operating plan should identify which work can be rescheduled and which deadlines require escalation. Routine replenishment, cycle counting or non-urgent putaway may be flexible. A carrier pickup window, a marketplace replenishment deadline or a customer-committed ship date may not be.",
+          "When a volume change is confirmed, the first step is to separate flexible work from fixed commitments. The second is to name who decides when a deadline is at risk. If the warehouse and client have already agreed on an escalation owner for capacity conflicts, the decision does not wait for a meeting. If they have not, the change can stall while both sides assume the other is handling it."
+        ],
+        "bullets": [
+          "Which inbound receipts or outbound orders have fixed dates that cannot move?",
+          "Which tasks can be delayed by a day or two without affecting a customer commitment?",
+          "Who is authorized to approve overtime, temporary labour or a revised schedule?",
+          "What is the latest point at which a reschedule decision must be made?"
+        ]
+      },
+      {
+        "heading": "Reviewing the operating plan when assumptions no longer hold",
+        "paragraphs": [
+          "A capacity adjustment is also a signal that the original operating plan may need review. If the volume change is temporary, the plan can note the exception and return to normal. If the change persists, the assumptions behind the plan, such as average daily orders, receipt frequency or storage profile, may no longer describe the work.",
+          "The review should be practical rather than bureaucratic. It can be a short conversation that confirms what actually changed, what was rescheduled, what escalated and whether the same response would work next time. That record helps both sides avoid repeating the same scramble and gives the warehouse a clearer basis for future capacity discussions."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How far in advance should a volume change be communicated?",
+        "answer": "The brief does not set a fixed lead time. The practical rule is to communicate before the change affects receiving or order preparation, so the warehouse still has room to reschedule work or escalate a deadline."
+      },
+      {
+        "question": "Does a volume increase always require more storage space?",
+        "answer": "Not necessarily. Capacity planning depends on expected inventory, activity and timing rather than storage volume alone. A surge in outbound orders may stress labour and staging more than rack space, while a slow-moving inbound build-up may do the opposite."
+      }
+    ]
+  },
+  {
     "slug": "what-to-record-at-each-carrier-handoff-so-exceptions-do-not-disappear",
     "category": "Distribution",
     "title": "What to Record at Each Carrier Handoff So Exceptions Do Not Disappear",
