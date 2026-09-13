@@ -18,6 +18,91 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "slug": "how-to-scope-returns-inspection-work-before-it-begins",
+    "category": "3PL & Warehousing",
+    "title": "How to Scope Returns Inspection Work Before It Begins",
+    "description": "A practical guide to defining inspection tasks, evidence and approval steps for returned inventory so warehouse teams can act without waiting for direction.",
+    "excerpt": "Returns work stalls when inspection scope is unclear. This article explains how to define what gets inspected, who approves each disposition and what evidence is recorded before additional handling begins.",
+    "keywords": [
+      "returns inspection scope",
+      "disposition approval",
+      "returned inventory status",
+      "warehouse returns workflow",
+      "inspection evidence"
+    ],
+    "publishedAt": "2026-09-13",
+    "modifiedAt": "2026-09-13",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Returned inventory needs an identified status before it can be restocked, held or otherwise handled.",
+      "Disposition rules should state who can approve each action and what evidence is recorded.",
+      "Additional inspection, relabelling or repacking work is scoped before it proceeds."
+    ],
+    "sources": [],
+    "keyAnswer": "Returned inventory needs an identified status before it can be restocked, held or otherwise handled, and disposition rules should state who can approve each action and what evidence is recorded. Additional inspection, relabelling or repacking work should be scoped before it proceeds so warehouse teams are not left waiting for direction.",
+    "sections": [
+      {
+        "heading": "Why inspection scope belongs in the disposition rules",
+        "paragraphs": [
+          "A returned item often arrives with a status that is not yet decided. The warehouse may know it is a return, but not whether it should be restocked, held, damaged or routed for further review. Without a defined inspection scope, staff may either skip checks that matter or perform work that was never approved. Both outcomes create rework and delay.",
+          "The practical fix is to treat inspection as a scoped task rather than an open-ended instruction. The disposition rules should state what must be checked, what evidence is recorded and who can approve the next action. This keeps the return moving through a known path instead of sitting in a queue while someone decides what to do."
+        ]
+      },
+      {
+        "heading": "What to define before inspection starts",
+        "paragraphs": [
+          "Before any additional handling begins, the work order should identify the item, the quantity received back and the condition observed at intake. That intake record becomes the baseline for the inspection task. If the condition is unclear, the item should be placed in a pending-review status rather than moved into available stock.",
+          "The inspection scope should also name the specific checks required. These might include verifying the item matches the return authorization, confirming quantities, checking for visible damage, or noting whether packaging is intact. Each check should produce a recorded result, not a verbal handoff. The goal is a decision-ready record that an approver can act on without asking for more information."
+        ],
+        "bullets": [
+          "Identify the item, quantity and condition at intake.",
+          "Assign a status such as held, damaged or pending review before any restocking.",
+          "List the specific inspection checks required for that return type.",
+          "Record the result of each check in a form the approver can review."
+        ]
+      },
+      {
+        "heading": "Assigning approval ownership for each disposition",
+        "paragraphs": [
+          "Disposition rules should state who can approve each action. A warehouse team may be able to approve a straightforward restock when the item is unopened and matches the return record. A damaged item, a partial return or a return that requires relabelling may need a different approver, such as a client contact or a designated operations lead.",
+          "The value of naming the approver is that warehouse work does not wait without direction. When an item is in pending review, the team knows who to notify and what information to send. The approver knows what evidence to expect. If the approver is unavailable, the escalation path should identify a backup rather than leaving the item in limbo."
+        ]
+      },
+      {
+        "heading": "Scoping additional work before it proceeds",
+        "paragraphs": [
+          "Inspection often reveals that more work is needed. An item may require relabelling, repacking or a deeper functional check. That additional work should be scoped before it proceeds, meaning the task, the expected time and the approval to do it are confirmed first. This prevents the warehouse from absorbing unplanned labour and prevents the client from receiving an unexpected charge.",
+          "A simple scoping note can record what was found, what work is proposed and who approved it. If the work is not approved, the item stays in its current status and the decision is documented. If it is approved, the inspection record and the approval travel together so the next person understands why the work was done."
+        ]
+      },
+      {
+        "heading": "Questions to ask before returns inspection begins",
+        "paragraphs": [
+          "Buyers and operations managers can use a short set of questions to test whether their returns process is ready. The answers should be documented in the operating plan rather than left to individual interpretation. This is not about adding bureaucracy; it is about making the next decision obvious when a return arrives.",
+          "If any answer is unclear, that is a signal to resolve it before the next return shipment. The warehouse should not be expected to guess at disposition rules or approval ownership. A clear scope protects both the client and the warehouse team."
+        ],
+        "bullets": [
+          "What status does a returned item receive at intake, and who assigns it?",
+          "Which inspection checks are required, and where are the results recorded?",
+          "Who can approve restocking, holding, damaging or further review?",
+          "What additional work might be needed, and who approves it before it starts?",
+          "How are unclear or conflicting instructions escalated?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a warehouse restock a return without inspection?",
+        "answer": "Returned inventory needs an identified status before it can be restocked, held or otherwise handled. If the disposition rules allow restocking without inspection for a specific return type, that rule should be documented and the intake record should still identify the item and quantity."
+      },
+      {
+        "question": "What if the inspection reveals a problem that is not covered by the disposition rules?",
+        "answer": "The item should remain in a pending-review status while the question is escalated to the named approval owner. Additional inspection, relabelling or repacking work should be scoped before it proceeds, so the warehouse does not begin unapproved handling."
+      }
+    ]
+  },
+  {
     "slug": "when-volume-shifts-a-practical-way-to-adjust-warehouse-capacity-without",
     "category": "3PL & Warehousing",
     "title": "When Volume Shifts: A Practical Way to Adjust Warehouse Capacity Without Surprises",
