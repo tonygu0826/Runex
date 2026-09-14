@@ -64,7 +64,7 @@ test("extracts quality signals from quoted and unquoted article records", () => 
   ]);
 });
 
-test("rejects a recent article that reuses the same operational basis", () => {
+test("rejects an article that reuses the same operational basis", () => {
   const evidence = [
     "Inventory status should show whether stock is available, held, damaged or awaiting a decision.",
     "Status changes need a clear reason and an identified approval owner.",
@@ -94,7 +94,50 @@ test("rejects a recent article that reuses the same operational basis", () => {
 
   assert.ok(collision);
   assert.equal(collision.existing.slug, "existing-inventory-statuses");
-  assert.equal(collision.reason, "the same operational basis was used recently");
+  assert.equal(collision.reason, "the same operational basis and search intent were already used");
+});
+
+test("rejects a matching search intent even when the duplicate is outside the recent window", () => {
+  const evidence = [
+    "Returned inventory needs an identified status before it can be restocked, held or otherwise handled.",
+    "Disposition rules should state who can approve each action and what evidence is recorded.",
+  ];
+  const unrelated = Array.from({ length: 12 }, (_, index) => ({
+    slug: `unrelated-${index}`,
+    title: `Unrelated Warehouse Topic ${index}`,
+    description: "A different operating subject.",
+    excerpt: "No overlap with returns inspection.",
+    keywords: ["warehouse planning"],
+    keyAnswer: "This article covers a different workflow.",
+    operationalBasis: ["Different evidence."],
+  }));
+  const collision = findTopicCollision(
+    {
+      briefId: "returns-control",
+      title: "How to Scope Returns Inspection Work Before It Begins",
+      description: "Define inspection work and approval steps for returned inventory.",
+      excerpt: "Scope inspection, evidence and disposition ownership before handling starts.",
+      keywords: ["returns inspection", "disposition approval", "returned inventory"],
+      keyAnswer: "Assign a status and approval owner before handling returned stock.",
+      operationalBasis: evidence,
+    },
+    [
+      ...unrelated,
+      {
+        slug: "returns-disposition-workflow-decision-ownership",
+        title: "Assigning Decision Ownership in Returns Disposition",
+        description: "Define return statuses, approvals and recorded evidence.",
+        excerpt: "Keep returned inventory moving through a clear disposition workflow.",
+        keywords: ["returns disposition", "decision ownership", "returned inventory"],
+        keyAnswer: "Give each return a status and name the person who approves its disposition.",
+        operationalBasis: evidence,
+      },
+    ],
+  );
+
+  assert.ok(collision);
+  assert.equal(collision.existing.slug, "returns-disposition-workflow-decision-ownership");
+  assert.equal(collision.reason, "the same operational basis and search intent were already used");
 });
 
 test("allows an article with a distinct brief and search intent", () => {

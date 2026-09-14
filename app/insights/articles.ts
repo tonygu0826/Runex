@@ -21,6 +21,7 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "returns-control",
     "slug": "how-to-scope-returns-inspection-work-before-it-begins",
     "category": "3PL & Warehousing",
     "title": "How to Scope Returns Inspection Work Before It Begins",
@@ -1308,6 +1309,7 @@ export const articles: Article[] = [
   },
   {
     "slug": "returns-disposition-workflow-decision-ownership",
+    "supersededBy": "how-to-scope-returns-inspection-work-before-it-begins",
     "category": "3PL & Warehousing",
     "title": "Assigning Decision Ownership in Returns Disposition",
     "description": "Learn how to create a returns disposition workflow that assigns clear decision ownership, records evidence, and scopes extra work before it proceeds.",
@@ -1634,6 +1636,7 @@ export const articles: Article[] = [
   },
   {
     "slug": "building-a-returns-disposition-workflow-with-clear-decision-ownership",
+    "supersededBy": "how-to-scope-returns-inspection-work-before-it-begins",
     "category": "Supply Chain",
     "title": "Building a Returns Disposition Workflow with Clear Decision Ownership",
     "description": "Learn how to create a returns disposition workflow that assigns clear ownership for each decision, ensuring returned inventory is handled efficiently and accurately.",

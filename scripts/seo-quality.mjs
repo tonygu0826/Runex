@@ -237,16 +237,23 @@ export function findTopicCollision(candidate, existingArticles, recentLimit = 12
     const sharedEvidence = (existing.operationalBasis || []).filter((item) => candidateEvidence.has(item)).length;
     const sameRecentBrief = index < recentLimit && candidate.briefId && existing.briefId === candidate.briefId;
     const repeatedRecentEvidence = index < recentLimit && sharedEvidence >= 2;
+    const archivedIntentOverlap = keywordScore >= 0.4 || topicScore >= 0.2 || titleScore >= 0.2;
+    const sameArchivedBrief = index >= recentLimit && candidate.briefId && existing.briefId === candidate.briefId && archivedIntentOverlap;
+    const repeatedArchivedEvidence = index >= recentLimit && sharedEvidence >= 2 && archivedIntentOverlap;
     const isCollision =
       existing.title.toLowerCase() === candidate.title.toLowerCase() ||
       titleScore > 0.5 ||
       (titleScore > 0.32 && keywordScore >= 0.5) ||
       (topicScore > 0.55 && keywordScore >= 0.4) ||
       sameRecentBrief ||
-      repeatedRecentEvidence;
+      repeatedRecentEvidence ||
+      sameArchivedBrief ||
+      repeatedArchivedEvidence;
 
     if (!isCollision) continue;
-    const rank = Number(sameRecentBrief) * 4 + sharedEvidence + titleScore + topicScore + keywordScore;
+    const sameBrief = sameRecentBrief || sameArchivedBrief;
+    const repeatedEvidence = repeatedRecentEvidence || repeatedArchivedEvidence;
+    const rank = Number(sameBrief) * 4 + sharedEvidence + titleScore + topicScore + keywordScore;
     if (!strongest || rank > strongest.rank) {
       strongest = {
         existing,
@@ -255,10 +262,10 @@ export function findTopicCollision(candidate, existingArticles, recentLimit = 12
         keywordScore,
         topicScore,
         sharedEvidence,
-        reason: sameRecentBrief
-          ? "the same editorial brief was used recently"
-          : repeatedRecentEvidence
-            ? "the same operational basis was used recently"
+        reason: sameBrief
+          ? "the same editorial brief and search intent were already used"
+          : repeatedEvidence
+            ? "the same operational basis and search intent were already used"
             : "the title, keywords and search intent are too similar",
       };
     }
