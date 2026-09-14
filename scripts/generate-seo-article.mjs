@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { extractExistingArticleSignals, findTopicCollision, jaccard, normalizeWords, slugifyTitle } from "./seo-quality.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const articlesPath = process.env.ARTICLES_PATH || path.join(root, "app", "insights", "articles.ts");
@@ -11,8 +12,9 @@ const apiKey = process.env.DEEPSEEK_API_KEY;
 if (!apiKey) throw new Error("DEEPSEEK_API_KEY is missing.");
 
 const source = await readFile(articlesPath, "utf8");
-const existingSlugs = [...source.matchAll(/["']?slug["']?\s*:\s*["']([^"']+)["']/g)].map((match) => match[1]);
-const existingTitles = [...source.matchAll(/["']?title["']?\s*:\s*["']([^"']+)["']/g)].map((match) => match[1]);
+const existingArticles = extractExistingArticleSignals(source);
+const existingSlugs = existingArticles.map((article) => article.slug);
+const existingTitles = existingArticles.map((article) => article.title);
 const publishedAt = new Intl.DateTimeFormat("en-CA", {
   timeZone: "America/Toronto",
   year: "numeric",
@@ -167,6 +169,15 @@ const briefs = [
   },
 ];
 const requestedTopic = process.env.ARTICLE_TOPIC?.trim();
+const recentlyUsedBriefIds = new Set(
+  existingArticles.slice(0, 12).flatMap((article) =>
+    briefs
+      .filter((brief) => brief.evidence.filter((item) => article.operationalBasis.includes(item)).length >= 2)
+      .map((brief) => brief.id),
+  ),
+);
+const availableBriefs = briefs.filter((brief) => !recentlyUsedBriefIds.has(brief.id));
+const selectableBriefs = availableBriefs.length ? availableBriefs : briefs;
 
 let approvedSources = [];
 if (process.env.ARTICLE_SOURCES_JSON?.trim()) {
@@ -178,7 +189,7 @@ if (process.env.ARTICLE_SOURCES_JSON?.trim()) {
 
 const systemPrompt = `You are an editorial assistant for Runex Logistics Inc. Write people-first English guidance for businesses planning Canadian warehousing, fulfillment and freight workflows. Use only the operational evidence and approved sources supplied in the brief. Never invent first-hand experience, customers, results, statistics, legal requirements, certifications, prices, locations, capabilities or delivery guarantees. Treat examples explicitly as hypothetical. Avoid hype, filler, keyword stuffing and formulaic AI phrases. Return valid JSON only.`;
 
-const editorialBriefs = briefs.map((brief) => `- briefId: ${brief.id}\n  Area: ${brief.area}\n  Allowed operational evidence:\n${brief.evidence.map((item) => `  - ${item}`).join("\n")}`).join("\n");
+const editorialBriefs = selectableBriefs.map((brief) => `- briefId: ${brief.id}\n  Area: ${brief.area}\n  Allowed operational evidence:\n${brief.evidence.map((item) => `  - ${item}`).join("\n")}`).join("\n");
 
 const userPrompt = `Create one original article${requestedTopic ? ` about this requested topic: ${requestedTopic}` : " by choosing a narrow, practical search intent that is not already covered below"}.
 
@@ -223,17 +234,11 @@ Return exactly this JSON shape:
 }`;
 
 const countWords = (value) => value.trim().split(/\s+/).filter(Boolean).length;
-const normalizeWords = (value) => value.toLowerCase().replace(/[^a-z0-9\s]/g, " ").split(/\s+/).filter((word) => word.length > 2);
-const jaccard = (left, right) => {
-  const a = new Set(normalizeWords(left));
-  const b = new Set(normalizeWords(right));
-  const intersection = [...a].filter((item) => b.has(item)).length;
-  return intersection / Math.max(1, new Set([...a, ...b]).size);
-};
+const normalizedSource = normalizeWords(source).join(" ");
 const copiedShingleRatio = (value, size = 7) => {
   const words = normalizeWords(value);
   const shingles = Array.from({ length: Math.max(0, words.length - size + 1) }, (_, index) => words.slice(index, index + size).join(" "));
-  return shingles.filter((shingle) => source.toLowerCase().includes(shingle)).length / Math.max(1, shingles.length);
+  return shingles.filter((shingle) => normalizedSource.includes(shingle)).length / Math.max(1, shingles.length);
 };
 const requireString = (value, field, min = 1) => {
   if (typeof value !== "string" || value.trim().length < min) throw new Error(`Invalid ${field}.`);
@@ -258,16 +263,6 @@ function parseArticleContent(rawContent) {
   } catch (error) {
     throw new Error(`DeepSeek returned invalid JSON: ${error.message}`);
   }
-}
-
-function slugifyTitle(title) {
-  return title
-    .normalize("NFKD")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-+|-+$/g, "")
-    .slice(0, 72)
-    .replace(/-+$/g, "");
 }
 
 function validateGeneratedArticle(generated) {
@@ -323,6 +318,7 @@ function validateGeneratedArticle(generated) {
   if (!Array.isArray(generated.operationalBasis) || generated.operationalBasis.length < 2 || generated.operationalBasis.some((item) => !selectedBrief.evidence.includes(item))) {
     throw new Error("Operational basis must reproduce at least two supplied evidence statements exactly.");
   }
+  const operationalBasis = [...new Set(generated.operationalBasis)];
   if (!Array.isArray(generated.sources)) throw new Error("Sources must be an array.");
   const sources = generated.sources.map((item) => {
     const match = approvedSources.find((approved) => approved.name === item?.name && approved.url === item?.url);
@@ -335,9 +331,20 @@ function validateGeneratedArticle(generated) {
   const excerpt = requireString(generated.excerpt, "excerpt", 40);
   if (excerpt.length > 220) throw new Error("Excerpt exceeds 220 characters.");
 
+  const topicCollision = findTopicCollision(
+    { briefId, title, description, excerpt, keywords, keyAnswer, operationalBasis },
+    existingArticles,
+  );
+  if (topicCollision) {
+    throw new Error(
+      `Topic overlaps with existing article "${topicCollision.existing.title}": ${topicCollision.reason}. Choose another editorial brief or a materially different search intent.`,
+    );
+  }
+
   return {
     wordCount,
     article: {
+      briefId,
       slug,
       category: generated.category,
       title,
@@ -348,7 +355,7 @@ function validateGeneratedArticle(generated) {
       modifiedAt: publishedAt,
       readTime: `${Math.max(3, Math.ceil(wordCount / 220))} min read`,
       qualityGatePassed: true,
-      operationalBasis: [...new Set(generated.operationalBasis)],
+      operationalBasis,
       sources,
       keyAnswer,
       sections,

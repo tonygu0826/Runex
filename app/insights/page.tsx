@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Arrow, SiteFooter, SiteHeader } from "../components/site-chrome";
-import { articles } from "./articles";
+import { publishedArticles } from "./articles";
 
 const ARTICLES_PER_PAGE = 4;
 
@@ -25,7 +25,7 @@ export async function generateMetadata({ searchParams }: InsightsPageProps): Pro
     title: `Logistics Insights${suffix} | Runex Logistics Inc.`,
     description: "Practical guides about Canadian warehousing, 3PL fulfillment, FBA preparation, cross-docking and transportation.",
     alternates: { canonical: pageHref(page) },
-    robots: page > Math.ceil(articles.length / ARTICLES_PER_PAGE) ? { index: false, follow: true } : undefined,
+    robots: page > Math.ceil(publishedArticles.length / ARTICLES_PER_PAGE) ? { index: false, follow: true } : undefined,
   };
 }
 
@@ -43,12 +43,12 @@ function paginationItems(currentPage: number, totalPages: number) {
 export default async function InsightsPage({ searchParams }: InsightsPageProps) {
   const params = (await searchParams) ?? {};
   const requestedPage = readPage(params);
-  const totalPages = Math.max(1, Math.ceil(articles.length / ARTICLES_PER_PAGE));
+  const totalPages = Math.max(1, Math.ceil(publishedArticles.length / ARTICLES_PER_PAGE));
   const currentPage = Number.isFinite(requestedPage)
     ? Math.min(Math.max(requestedPage, 1), totalPages)
     : 1;
   const firstArticle = (currentPage - 1) * ARTICLES_PER_PAGE;
-  const visibleArticles = articles.slice(firstArticle, firstArticle + ARTICLES_PER_PAGE);
+  const visibleArticles = publishedArticles.slice(firstArticle, firstArticle + ARTICLES_PER_PAGE);
 
   return (
     <main className="insights-page">
