@@ -158,3 +158,45 @@ test("connects an insight to its service and related guidance", async () => {
   assert.match(html, /href=["']\/solutions\/warehousing-fulfillment-canada["']/);
   assert.match(html, /USEFUL NEXT STEPS/);
 });
+
+for (const [oldSlug, newSlug] of [
+  [
+    "how-to-define-inventory-statuses-so-warehouse-teams-know-what-they-can-a",
+    "defining-inventory-statuses-for-warehouse-control",
+  ],
+  [
+    "defining-inventory-statuses-to-keep-warehouse-decisions-moving",
+    "defining-inventory-statuses-for-warehouse-control",
+  ],
+  [
+    "when-volume-shifts-a-practical-way-to-adjust-warehouse-capacity-without",
+    "warehouse-capacity-planning-for-volume-shifts",
+  ],
+  [
+    "preparing-inbound-shipments-for-a-smoother-warehouse-receiving-experienc",
+    "preparing-inbound-shipments-for-warehouse-receiving",
+  ],
+]) {
+  test(`redirects the legacy insight slug ${oldSlug}`, async () => {
+    const response = await render(`/insights/${oldSlug}`);
+
+    assert.ok([307, 308].includes(response.status));
+    assert.equal(response.headers.get("location"), `http://localhost/insights/${newSlug}`);
+  });
+}
+
+test("lists only the canonical inventory-status article", async () => {
+  const response = await render("/insights?page=2");
+  const html = await response.text();
+
+  assert.doesNotMatch(html, /Defining Inventory Statuses to Keep Warehouse Decisions Moving/);
+});
+
+test("keeps legacy insight slugs out of the sitemap", async () => {
+  const response = await render("/sitemap.xml");
+  const body = await response.text();
+
+  assert.match(body, /defining-inventory-statuses-for-warehouse-control/);
+  assert.doesNotMatch(body, /how-to-define-inventory-statuses-so-warehouse-teams-know-what-they-can-a/);
+  assert.doesNotMatch(body, /defining-inventory-statuses-to-keep-warehouse-decisions-moving/);
+});

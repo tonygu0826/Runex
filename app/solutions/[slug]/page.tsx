@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow, SiteFooter, SiteHeader } from "../../components/site-chrome";
-import { articles } from "../../insights/articles";
+import { publishedArticles } from "../../insights/articles";
 import { getService, services } from "../services";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -43,7 +43,7 @@ export default async function ServicePage({ params }: PageProps) {
     "fba-ecommerce-prep-canada": ["FBA & E-commerce", "Fulfillment"],
     "transportation-cross-docking-canada": ["Distribution", "Supply Chain"],
   };
-  const relatedInsights = articles
+  const relatedInsights = publishedArticles
     .filter((article) => categoryMap[service.slug]?.includes(article.category))
     .slice(0, 3);
   const jsonLd = [

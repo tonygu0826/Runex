@@ -1,4 +1,4 @@
-import { articles } from "../insights/articles";
+import { publishedArticles } from "../insights/articles";
 import { services } from "../solutions/services";
 
 const baseUrl = "https://runexlogi.com";
@@ -16,7 +16,7 @@ const coreTopics = [
 export function GET() {
   // Google does not use llms.txt for Search ranking. Keep this file limited to
   // content that has passed the site's publication quality gate for other agents.
-  const recentArticles = articles.filter((article) => article.qualityGatePassed).slice(0, 12);
+  const recentArticles = publishedArticles.filter((article) => article.qualityGatePassed).slice(0, 12);
   const topicPhrases = [
     ...coreTopics,
     ...recentArticles.flatMap((article) => article.keywords ?? [article.title]),

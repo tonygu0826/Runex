@@ -1,14 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { Arrow, SiteFooter, SiteHeader } from "../../components/site-chrome";
 import { getService } from "../../solutions/services";
-import { articles, getArticle } from "../articles";
+import { articles, getArticle, publishedArticles } from "../articles";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
 export function generateStaticParams() {
-  return articles.map((article) => ({ slug: article.slug }));
+  return articles.flatMap((article) => [article.slug, ...(article.legacySlugs ?? [])].map((slug) => ({ slug })));
 }
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
@@ -34,6 +34,7 @@ export default async function ArticlePage({ params }: PageProps) {
   const { slug } = await params;
   const article = getArticle(slug);
   if (!article) notFound();
+  if (slug !== article.slug) redirect(`/insights/${article.slug}`);
 
   const articleUrl = `https://runexlogi.com/insights/${article.slug}`;
   const serviceByCategory: Record<string, string> = {
@@ -44,7 +45,7 @@ export default async function ArticlePage({ params }: PageProps) {
     "Supply Chain": "transportation-cross-docking-canada",
   };
   const relatedService = getService(serviceByCategory[article.category]);
-  const relatedArticles = articles
+  const relatedArticles = publishedArticles
     .filter((item) => item.slug !== article.slug && item.category === article.category)
     .slice(0, 3);
   const jsonLd = [

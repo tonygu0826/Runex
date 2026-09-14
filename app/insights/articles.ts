@@ -1,5 +1,8 @@
 export type Article = {
+  briefId?: string;
   slug: string;
+  legacySlugs?: string[];
+  supersededBy?: string;
   category: string;
   title: string;
   description: string;
@@ -103,7 +106,10 @@ export const articles: Article[] = [
     ]
   },
   {
-    "slug": "when-volume-shifts-a-practical-way-to-adjust-warehouse-capacity-without",
+    "slug": "warehouse-capacity-planning-for-volume-shifts",
+    "legacySlugs": [
+      "when-volume-shifts-a-practical-way-to-adjust-warehouse-capacity-without"
+    ],
     "category": "3PL & Warehousing",
     "title": "When Volume Shifts: A Practical Way to Adjust Warehouse Capacity Without Surprises",
     "description": "A guide to communicating short-term inbound and outbound volume changes so receiving and order preparation can be rescheduled or escalated before deadlines slip.",
@@ -258,7 +264,10 @@ export const articles: Article[] = [
     ]
   },
   {
-    "slug": "how-to-define-inventory-statuses-so-warehouse-teams-know-what-they-can-a",
+    "slug": "defining-inventory-statuses-for-warehouse-control",
+    "legacySlugs": [
+      "how-to-define-inventory-statuses-so-warehouse-teams-know-what-they-can-a"
+    ],
     "category": "3PL & Warehousing",
     "title": "How to Define Inventory Statuses So Warehouse Teams Know What They Can and Cannot Touch",
     "description": "A practical guide to defining available, held, damaged and pending-review inventory statuses, with clear approval ownership and reconciliation steps before stock is released.",
@@ -612,6 +621,7 @@ export const articles: Article[] = [
   },
   {
     "slug": "defining-inventory-statuses-to-keep-warehouse-decisions-moving",
+    "supersededBy": "defining-inventory-statuses-for-warehouse-control",
     "category": "Supply Chain",
     "title": "Defining Inventory Statuses to Keep Warehouse Decisions Moving",
     "description": "Learn how clear inventory status definitions—available, held, damaged, pending review—help warehouses avoid delays and keep operations moving.",
@@ -680,7 +690,10 @@ export const articles: Article[] = [
     ]
   },
   {
-    "slug": "preparing-inbound-shipments-for-a-smoother-warehouse-receiving-experienc",
+    "slug": "preparing-inbound-shipments-for-warehouse-receiving",
+    "legacySlugs": [
+      "preparing-inbound-shipments-for-a-smoother-warehouse-receiving-experienc"
+    ],
     "category": "3PL & Warehousing",
     "title": "Preparing Inbound Shipments for a Smoother Warehouse Receiving Experience",
     "description": "Learn what information and preparation steps help a warehouse receive your inbound freight efficiently, reducing delays and exceptions.",
@@ -3654,6 +3667,10 @@ export const articles: Article[] = [
   },
 ];
 
+export const publishedArticles = articles.filter((article) => !article.supersededBy);
+
 export function getArticle(slug: string) {
-  return articles.find((article) => article.slug === slug);
+  const matched = articles.find((article) => article.slug === slug || article.legacySlugs?.includes(slug));
+  if (!matched?.supersededBy) return matched;
+  return articles.find((article) => article.slug === matched.supersededBy);
 }
