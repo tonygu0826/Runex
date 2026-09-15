@@ -21,6 +21,91 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "warehouse-onboarding",
+    "slug": "setting-up-decision-owners-during-warehouse-onboarding",
+    "category": "3PL & Warehousing",
+    "title": "Setting Up Decision Owners During Warehouse Onboarding",
+    "description": "A practical guide to assigning named decision owners for routine and exception decisions when onboarding a new warehouse account, so work does not stall.",
+    "excerpt": "Onboarding a new warehouse account involves more than sharing freight details. This article explains how to assign named owners for routine decisions and exceptions, and when to review the operating plan.",
+    "keywords": [
+      "warehouse onboarding",
+      "decision ownership",
+      "3PL account setup",
+      "exception management",
+      "operating responsibilities"
+    ],
+    "publishedAt": "2026-09-15",
+    "modifiedAt": "2026-09-15",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Onboarding should confirm the freight profile, expected activity and required handling instructions.",
+      "The client and warehouse need named owners for routine decisions and exceptions.",
+      "The operating plan should be reviewed when actual volume or handling differs from the original assumptions."
+    ],
+    "sources": [],
+    "keyAnswer": "During warehouse onboarding, the client and warehouse should each name an owner for routine decisions and a separate owner for exceptions. These named owners prevent work from waiting when questions arise, and the operating plan should be reviewed when actual volume or handling differs from the original assumptions.",
+    "sections": [
+      {
+        "heading": "Why decision ownership belongs in onboarding",
+        "paragraphs": [
+          "Onboarding a new warehouse account often focuses on confirming the freight profile, expected activity and required handling instructions. Those details matter, but they do not answer a common operational question: who decides when something is unclear or goes wrong? Without named owners, warehouse teams may pause work while waiting for direction, and the client may not know whom to contact.",
+          "Assigning decision owners during onboarding turns vague responsibilities into specific names. It also gives both parties a shared reference point when routine questions or exceptions arise, reducing the chance that work stalls. This is not about adding bureaucracy; it is about making sure the right person can say yes, no, or hold on without a long chain of messages.",
+          "The operating plan is the natural place to record these names. When the plan lists who owns which decisions, warehouse staff and client contacts can act with confidence instead of guessing."
+        ]
+      },
+      {
+        "heading": "Separate routine decisions from exceptions",
+        "paragraphs": [
+          "Routine decisions are the small, recurring choices that keep daily work moving. Examples might include confirming a label format, approving a minor packaging substitution, or clarifying a receiving detail. These decisions are usually best handled by a named operational contact on each side, because they happen often and rarely need senior approval.",
+          "Exceptions are the situations that fall outside normal instructions, such as damaged freight, unexpected quantities, or conflicting handling requests. Exceptions often need a different owner with authority to approve a deviation or escalate further. Documenting both roles during onboarding helps the warehouse know when to act and when to ask.",
+          "A useful test is to ask, for each decision type, whether the warehouse can proceed without checking back. If the answer is no, that decision needs a named owner and a clear escalation path. If the answer is yes, the routine owner can handle it and simply log the outcome."
+        ],
+        "bullets": [
+          "Name a routine decision owner for each party.",
+          "Name an exception owner for each party, with clear escalation steps.",
+          "Record these names in the operating plan so they are easy to find.",
+          "Review the list when new activity types are added."
+        ]
+      },
+      {
+        "heading": "Review the plan when reality differs",
+        "paragraphs": [
+          "The operating plan is based on assumptions about volume and handling. When actual volume or handling differs from those assumptions, the plan should be reviewed. A review is not a failure; it is a chance to adjust decision ownership, escalation paths, or handling instructions before small mismatches become recurring problems.",
+          "Schedule a check-in after the first few weeks of activity. Use that time to compare actual freight profile and activity against what was expected, and update the plan if needed. If the volume is much higher or lower than assumed, the routine decision owner may need more support, or the exception owner may need a different approval threshold.",
+          "Keep the review focused on operational fit. The goal is to confirm that the named owners still match the work, not to rewrite the entire onboarding document."
+        ]
+      },
+      {
+        "heading": "Questions to ask before work begins",
+        "paragraphs": [
+          "Before the first shipment arrives, ask who will handle routine questions during warehouse hours and who will handle exceptions outside those hours. Ask how a decision owner should be reached and what information they need to make a call. Ask what happens if the named owner is unavailable.",
+          "These questions surface gaps early. They also help the client and warehouse agree on response expectations without assuming a generic service promise. The answers belong in the operating plan so both sides can refer to them later."
+        ],
+        "bullets": [
+          "Who is the routine decision owner for each party?",
+          "Who is the exception owner, and what can they approve?",
+          "How should an owner be contacted, and what is the backup?",
+          "What information should accompany an exception before escalation?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if the client and warehouse cannot agree on a decision owner?",
+        "answer": "Escalate to a manager on both sides during onboarding. The goal is to name someone before work begins, even if the role is temporary. Revisit the assignment during the first operating plan review."
+      },
+      {
+        "question": "How often should the operating plan be reviewed?",
+        "answer": "Review it when actual volume or handling differs from the original assumptions. A short check-in after the first few weeks can catch mismatches early."
+      },
+      {
+        "question": "Does every decision need a named owner?",
+        "answer": "Not every decision needs a separate name, but every decision type should have a clear path. Routine decisions can sit with one operational contact, while exceptions need a specific owner with authority to act."
+      }
+    ]
+  },
+  {
     "briefId": "returns-control",
     "slug": "how-to-scope-returns-inspection-work-before-it-begins",
     "category": "3PL & Warehousing",
