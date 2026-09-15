@@ -1,6 +1,7 @@
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
+import { deepSeekRequestSettings, requestDeepSeekContent, retryDelayForAttempt, waitBeforeRetry } from "./deepseek-client.mjs";
 import { extractExistingArticleSignals, findTopicCollision, jaccard, normalizeWords, slugifyTitle } from "./seo-quality.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -8,6 +9,7 @@ const articlesPath = process.env.ARTICLES_PATH || path.join(root, "app", "insigh
 const apiUrl = `${(process.env.DEEPSEEK_API_BASE || "https://api.deepseek.com").replace(/\/$/, "")}/chat/completions`;
 const model = process.env.DEEPSEEK_MODEL || "deepseek-v4-flash";
 const apiKey = process.env.DEEPSEEK_API_KEY;
+const { timeoutMs: requestTimeoutMs, retryDelayMs } = deepSeekRequestSettings();
 
 if (!apiKey) throw new Error("DEEPSEEK_API_KEY is missing.");
 
@@ -246,15 +248,7 @@ const requireString = (value, field, min = 1) => {
 };
 
 async function requestArticleContent(messages) {
-  const response = await fetch(apiUrl, {
-    method: "POST",
-    headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-    body: JSON.stringify({ model, messages, thinking: { type: "disabled" }, response_format: { type: "json_object" }, max_tokens: 8_000, temperature: 0.35, stream: false }),
-  });
-  if (!response.ok) throw new Error(`DeepSeek request failed (${response.status}): ${(await response.text()).slice(0, 1_000)}`);
-  const rawContent = (await response.json())?.choices?.[0]?.message?.content;
-  if (typeof rawContent !== "string" || !rawContent.trim()) throw new Error("DeepSeek returned no article content.");
-  return rawContent;
+  return requestDeepSeekContent({ apiUrl, apiKey, model, messages, timeoutMs: requestTimeoutMs });
 }
 
 function parseArticleContent(rawContent) {
@@ -384,6 +378,11 @@ for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
   } catch (error) {
     lastError = error instanceof Error ? error : new Error(String(error));
     console.warn(`Attempt ${attempt} rejected: ${lastError.message}`);
+    if (attempt < maxAttempts) {
+      const delayMs = retryDelayForAttempt(attempt, retryDelayMs);
+      console.warn(`Retrying in ${delayMs} ms.`);
+      await waitBeforeRetry(attempt, retryDelayMs);
+    }
   }
 }
 
