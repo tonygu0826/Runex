@@ -2,6 +2,13 @@ import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { deepSeekRequestSettings, requestDeepSeekContent, retryDelayForAttempt, waitBeforeRetry } from "./deepseek-client.mjs";
+import {
+  formatExistingCoverage,
+  qualityFailureAction,
+  retryInstruction,
+  selectableBriefsForAttempt,
+  seoGenerationSettings,
+} from "./seo-generation-policy.mjs";
 import { extractExistingArticleSignals, findTopicCollision, jaccard, normalizeWords, slugifyTitle } from "./seo-quality.mjs";
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
@@ -10,6 +17,7 @@ const apiUrl = `${(process.env.DEEPSEEK_API_BASE || "https://api.deepseek.com").
 const model = process.env.DEEPSEEK_MODEL || "deepseek-v4-flash";
 const apiKey = process.env.DEEPSEEK_API_KEY;
 const { timeoutMs: requestTimeoutMs, retryDelayMs } = deepSeekRequestSettings();
+const { maxAttempts } = seoGenerationSettings();
 
 if (!apiKey) throw new Error("DEEPSEEK_API_KEY is missing.");
 
@@ -191,9 +199,10 @@ if (process.env.ARTICLE_SOURCES_JSON?.trim()) {
 
 const systemPrompt = `You are an editorial assistant for Runex Logistics Inc. Write people-first English guidance for businesses planning Canadian warehousing, fulfillment and freight workflows. Use only the operational evidence and approved sources supplied in the brief. Never invent first-hand experience, customers, results, statistics, legal requirements, certifications, prices, locations, capabilities or delivery guarantees. Treat examples explicitly as hypothetical. Avoid hype, filler, keyword stuffing and formulaic AI phrases. Return valid JSON only.`;
 
-const editorialBriefs = selectableBriefs.map((brief) => `- briefId: ${brief.id}\n  Area: ${brief.area}\n  Allowed operational evidence:\n${brief.evidence.map((item) => `  - ${item}`).join("\n")}`).join("\n");
+function buildUserPrompt(attemptBriefs) {
+  const editorialBriefs = attemptBriefs.map((brief) => `- briefId: ${brief.id}\n  Area: ${brief.area}\n  Allowed operational evidence:\n${brief.evidence.map((item) => `  - ${item}`).join("\n")}`).join("\n");
 
-const userPrompt = `Create one original article${requestedTopic ? ` about this requested topic: ${requestedTopic}` : " by choosing a narrow, practical search intent that is not already covered below"}.
+  return `Create one original article${requestedTopic ? ` about this requested topic: ${requestedTopic}` : " by choosing a narrow, practical search intent that is not already covered below"}.
 
 Choose exactly one editorial brief and use only that brief's operational evidence. Select a materially new decision, workflow, handoff, documentation or exception-management angle rather than paraphrasing an existing article.
 
@@ -203,8 +212,8 @@ ${editorialBriefs}
 Approved external sources (use only these; an empty list means do not make external factual or regulatory claims):
 ${approvedSources.length ? approvedSources.map((item) => `- ${item.name}: ${item.url}`).join("\n") : "- None"}
 
-Existing titles that must not be repeated or closely paraphrased:
-${existingTitles.map((title) => `- ${title}`).join("\n")}
+Existing coverage that must not be repeated or closely paraphrased:
+${formatExistingCoverage(existingArticles)}
 
 Requirements:
 - Answer one clear search intent with the amount of detail the subject needs. Do not target a word count and do not pad the article.
@@ -213,11 +222,15 @@ Requirements:
 - Use 3-6 descriptive sections with 1-3 substantial paragraphs each. Bullets are optional.
 - FAQs are optional; include 0-3 only when they add information not already covered.
 - Use Canadian context only where supported by the brief. Do not imply nationwide facilities or coverage details.
-- Title, description and excerpt must be complete, natural sentences or phrases rather than keyword templates.
+- Title must be a complete, natural phrase between 20 and 75 characters.
+- Description must be a complete, natural sentence between 70 and 160 characters.
+- Excerpt must be complete and between 40 and 200 characters.
 - Provide 3-6 natural topic phrases in keywords; these are editorial labels, not HTML meta keywords.
 - keyAnswer must directly answer the topic in 2-3 self-contained sentences.
 - operationalBasis must reproduce at least two supplied evidence statements exactly.
 - sources must contain only approved source objects above. If there are no approved sources, return an empty array.
+- Do not use first-hand experience or customer-result wording such as "in our experience", "we have seen", "our clients" or "customer results".
+- Do not use guarantees, percentages, unsupported studies or absolute wording such as "always", "never fails" or "eliminates all".
 - Do not use Markdown, HTML or emoji.
 
 Return exactly this JSON shape:
@@ -234,6 +247,7 @@ Return exactly this JSON shape:
   "sections": [{ "heading": "...", "paragraphs": ["..."], "bullets": ["..."] }],
   "faq": [{ "question": "...", "answer": "..." }]
 }`;
+}
 
 const countWords = (value) => value.trim().split(/\s+/).filter(Boolean).length;
 const normalizedSource = normalizeWords(source).join(" ");
@@ -259,10 +273,10 @@ function parseArticleContent(rawContent) {
   }
 }
 
-function validateGeneratedArticle(generated) {
+function validateGeneratedArticle(generated, allowedBriefs = briefs) {
   const briefId = requireString(generated.briefId, "briefId");
-  const selectedBrief = briefs.find((brief) => brief.id === briefId);
-  if (!selectedBrief) throw new Error(`Brief "${briefId}" is not allowed. Choose one supplied briefId.`);
+  const selectedBrief = allowedBriefs.find((brief) => brief.id === briefId);
+  if (!selectedBrief) throw new Error(`Brief "${briefId}" is not allowed in this attempt. Choose one currently supplied briefId.`);
 
   const title = requireString(generated.title, "title", 20);
   if (title.length > 90) throw new Error(`Title is too long (${title.length} characters). Keep it at 90 characters or fewer.`);
@@ -306,7 +320,8 @@ function validateGeneratedArticle(generated) {
     /\b\d+(?:\.\d+)?\s*%\b/,
     /\b(studies show|research proves|industry data shows)\b/i,
   ];
-  if (unsupportedPatterns.some((pattern) => pattern.test(prose))) throw new Error("Article contains an unsupported experience, result, statistic or absolute claim.");
+  const unsupportedMatch = unsupportedPatterns.map((pattern) => prose.match(pattern)?.[0]).find(Boolean);
+  if (unsupportedMatch) throw new Error(`Article contains unsupported wording: "${unsupportedMatch}". Remove or rewrite that claim without replacing it with another absolute or unsourced claim.`);
   if (!approvedSources.length && /\b(customs|tariff|tax law|regulation|statutory|legally required)\b/i.test(prose)) throw new Error("External or regulatory claim requires an approved source.");
 
   if (!Array.isArray(generated.operationalBasis) || generated.operationalBasis.length < 2 || generated.operationalBasis.some((item) => !selectedBrief.evidence.includes(item))) {
@@ -321,9 +336,9 @@ function validateGeneratedArticle(generated) {
   });
 
   const description = requireString(generated.description, "description", 70);
-  if (description.length > 180) throw new Error("Description exceeds 180 characters.");
+  if (description.length > 180) throw new Error(`Description is ${description.length} characters; shorten it to 180 characters or fewer while keeping it complete.`);
   const excerpt = requireString(generated.excerpt, "excerpt", 40);
-  if (excerpt.length > 220) throw new Error("Excerpt exceeds 220 characters.");
+  if (excerpt.length > 220) throw new Error(`Excerpt is ${excerpt.length} characters; shorten it to 220 characters or fewer while keeping it complete.`);
 
   const topicCollision = findTopicCollision(
     { briefId, title, description, excerpt, keywords, keyAnswer, operationalBasis },
@@ -358,25 +373,37 @@ function validateGeneratedArticle(generated) {
   };
 }
 
-const baseMessages = [{ role: "system", content: systemPrompt }, { role: "user", content: userPrompt }];
-const maxAttempts = 3;
 let previousRawContent = "";
 let lastError;
 let validated;
+let retryAction = "fresh-draft";
+let failedBriefId = "";
+const blockedBriefIds = new Set();
 
 for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
-  const messages = [...baseMessages];
-  if (attempt > 1) {
-    if (previousRawContent) messages.push({ role: "assistant", content: previousRawContent });
-    messages.push({ role: "user", content: `The prior draft failed this quality check: ${lastError.message}\nReturn a complete corrected JSON object. Do not loosen or work around the requirement.` });
+  const attemptBriefs = selectableBriefsForAttempt({ briefs: selectableBriefs, blockedBriefIds, requestedTopic });
+  if (!attemptBriefs.length) {
+    lastError = new Error("Every eligible editorial brief collided with existing coverage during this run.");
+    break;
   }
+
+  const messages = [{ role: "system", content: systemPrompt }, { role: "user", content: buildUserPrompt(attemptBriefs) }];
+  if (attempt > 1) {
+    if (retryAction === "repair-draft" && previousRawContent) messages.push({ role: "assistant", content: previousRawContent });
+    messages.push({ role: "user", content: retryInstruction({ action: retryAction, errorMessage: lastError.message, failedBriefId }) });
+  }
+  let generated;
   try {
-    console.log(`Generation attempt ${attempt}/${maxAttempts}.`);
+    console.log(`Generation attempt ${attempt}/${maxAttempts} with ${attemptBriefs.length} eligible editorial brief(s).`);
     previousRawContent = await requestArticleContent(messages);
-    validated = validateGeneratedArticle(parseArticleContent(previousRawContent));
+    generated = parseArticleContent(previousRawContent);
+    validated = validateGeneratedArticle(generated, attemptBriefs);
     break;
   } catch (error) {
     lastError = error instanceof Error ? error : new Error(String(error));
+    failedBriefId = typeof generated?.briefId === "string" ? generated.briefId : "";
+    retryAction = qualityFailureAction(lastError.message);
+    if (retryAction === "switch-brief" && failedBriefId && !requestedTopic) blockedBriefIds.add(failedBriefId);
     console.warn(`Attempt ${attempt} rejected: ${lastError.message}`);
     if (attempt < maxAttempts) {
       const delayMs = retryDelayForAttempt(attempt, retryDelayMs);
