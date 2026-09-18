@@ -1,5 +1,6 @@
 export type Article = {
   briefId?: string;
+  searchIntent?: string;
   slug: string;
   legacySlugs?: string[];
   supersededBy?: string;

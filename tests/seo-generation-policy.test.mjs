@@ -43,7 +43,7 @@ test("removes rejected briefs from scheduled retries", () => {
   );
   assert.deepEqual(
     selectableBriefsForAttempt({ briefs, blockedBriefIds: new Set(["two"]), requestedTopic: "manual topic" }),
-    briefs,
+    [{ id: "one" }, { id: "three" }],
   );
 });
 

@@ -212,6 +212,7 @@ export function extractExistingArticleSignals(source) {
     .map((block) => ({
       slug: extractStringProperty(block, "slug"),
       briefId: extractStringProperty(block, "briefId"),
+      searchIntent: extractStringProperty(block, "searchIntent"),
       title: extractStringProperty(block, "title"),
       description: extractStringProperty(block, "description"),
       excerpt: extractStringProperty(block, "excerpt"),
@@ -240,6 +241,7 @@ export function findTopicCollision(candidate, existingArticles, recentLimit = 12
     const archivedIntentOverlap = keywordScore >= 0.4 || topicScore >= 0.2 || titleScore >= 0.2;
     const sameArchivedBrief = index >= recentLimit && candidate.briefId && existing.briefId === candidate.briefId && archivedIntentOverlap;
     const repeatedArchivedEvidence = index >= recentLimit && sharedEvidence >= 2 && archivedIntentOverlap;
+    const sameSearchIntent = candidate.searchIntent && existing.searchIntent && jaccard(candidate.searchIntent, existing.searchIntent) > 0.8;
     const isCollision =
       existing.title.toLowerCase() === candidate.title.toLowerCase() ||
       titleScore > 0.5 ||
@@ -247,6 +249,7 @@ export function findTopicCollision(candidate, existingArticles, recentLimit = 12
       (topicScore > 0.55 && keywordScore >= 0.4) ||
       sameRecentBrief ||
       repeatedRecentEvidence ||
+      sameSearchIntent ||
       sameArchivedBrief ||
       repeatedArchivedEvidence;
 

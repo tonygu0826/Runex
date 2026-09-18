@@ -18,7 +18,10 @@ export function formatExistingCoverage(existingArticles) {
     .map((article) => {
       const brief = article.briefId ? `briefId: ${article.briefId}; ` : "";
       const keywords = article.keywords?.length ? `; keywords: ${article.keywords.join(", ")}` : "";
-      return `- ${brief}title: ${article.title}${keywords}`;
+      const intent = article.searchIntent || article.keyAnswer;
+      const answer = intent ? `; intent: ${intent}` : "";
+      const basis = article.operationalBasis?.length ? `; basis: ${article.operationalBasis.join(" | ")}` : "";
+      return `- ${brief}title: ${article.title}${keywords}${answer}${basis}`;
     })
     .join("\n");
 }
@@ -37,8 +40,7 @@ export function qualityFailureAction(message) {
   return "repair-draft";
 }
 
-export function selectableBriefsForAttempt({ briefs, blockedBriefIds = new Set(), requestedTopic = "" }) {
-  if (requestedTopic) return briefs;
+export function selectableBriefsForAttempt({ briefs, blockedBriefIds = new Set() }) {
   return briefs.filter((brief) => !blockedBriefIds.has(brief.id));
 }
 

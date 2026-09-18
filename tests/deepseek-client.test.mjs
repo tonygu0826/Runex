@@ -57,6 +57,32 @@ test("uses safe timeout defaults and accepts positive overrides", () => {
   );
 });
 
+test("keeps the timeout active while reading successful or failed response bodies", async () => {
+  for (const ok of [true, false]) {
+    let signal;
+    await assert.rejects(requestDeepSeekContent({
+      ...request,
+      timeoutMs: 20,
+      fetchImpl: async (_url, options) => {
+        signal = options.signal;
+        return { ok, status: ok ? 200 : 503, json: () => new Promise(() => {}), text: () => new Promise(() => {}) };
+      },
+    }), /timed out after 20 ms/);
+    assert.equal(signal.aborted, true);
+  }
+});
+
+test("uses a smaller token budget for topic planning", async () => {
+  await requestDeepSeekContent({
+    ...request,
+    maxTokens: 2_000,
+    fetchImpl: async (_url, options) => {
+      assert.equal(JSON.parse(options.body).max_tokens, 2_000);
+      return new Response(JSON.stringify({ choices: [{ message: { content: "{}" } }] }));
+    },
+  });
+});
+
 test("applies bounded linear backoff between generation attempts", async () => {
   const delays = [];
   assert.equal(retryDelayForAttempt(1, 5_000), 5_000);
