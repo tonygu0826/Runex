@@ -90,6 +90,9 @@ actions tied to the current ChatGPT user. Leave public content anonymous.
 
 ## Diagnostic Commands
 
+For the editorial generator, its retry budget and pool maintenance, see
+[SEO publishing](docs/seo-publishing.md).
+
 - `npm run install:ci`: perform the one bounded lockfile install
 - `npm run dev`: start the Vite/Vinext development server
 - `npm run build`: build and validate the deployable Sites artifact

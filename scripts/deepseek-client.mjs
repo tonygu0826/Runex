@@ -28,6 +28,7 @@ export async function requestDeepSeekContent({
   apiKey,
   model,
   messages,
+  maxTokens = 8_000,
   timeoutMs = DEFAULT_REQUEST_TIMEOUT_MS,
   fetchImpl = fetch,
 }) {
@@ -40,23 +41,30 @@ export async function requestDeepSeekContent({
     }, timeoutMs);
   });
 
-  let response;
   try {
-    response = await Promise.race([
-      fetchImpl(apiUrl, {
-        method: "POST",
-        headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
-        body: JSON.stringify({
-          model,
-          messages,
-          thinking: { type: "disabled" },
-          response_format: { type: "json_object" },
-          max_tokens: 8_000,
-          temperature: 0.35,
-          stream: false,
-        }),
-        signal: controller.signal,
-      }),
+    return await Promise.race([
+      (async () => {
+        const response = await fetchImpl(apiUrl, {
+          method: "POST",
+          headers: { Authorization: `Bearer ${apiKey}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            model,
+            messages,
+            thinking: { type: "disabled" },
+            response_format: { type: "json_object" },
+            max_tokens: maxTokens,
+            temperature: 0.35,
+            stream: false,
+          }),
+          signal: controller.signal,
+        });
+        // The same deadline covers headers AND the response body. A server can
+        // send headers immediately and then stall while generating its answer.
+        if (!response.ok) throw new Error(`DeepSeek request failed (${response.status}): ${(await response.text()).slice(0, 1_000)}`);
+        const rawContent = (await response.json())?.choices?.[0]?.message?.content;
+        if (typeof rawContent !== "string" || !rawContent.trim()) throw new Error("DeepSeek returned no article content.");
+        return rawContent;
+      })(),
       timeoutPromise,
     ]);
   } catch (error) {
@@ -65,9 +73,4 @@ export async function requestDeepSeekContent({
   } finally {
     clearTimeout(timeoutId);
   }
-
-  if (!response.ok) throw new Error(`DeepSeek request failed (${response.status}): ${(await response.text()).slice(0, 1_000)}`);
-  const rawContent = (await response.json())?.choices?.[0]?.message?.content;
-  if (typeof rawContent !== "string" || !rawContent.trim()) throw new Error("DeepSeek returned no article content.");
-  return rawContent;
 }

@@ -27,6 +27,7 @@ test("extracts quality signals from quoted and unquoted article records", () => 
     {
       "slug": "new-style",
       "title": "A New Style Article",
+      "searchIntent": "What practical question does this article answer?",
       "keywords": ["inventory status", "warehouse control"],
       "operationalBasis": ["Evidence one.", "Evidence two."],
       "keyAnswer": "A direct answer."
@@ -44,6 +45,7 @@ test("extracts quality signals from quoted and unquoted article records", () => 
     {
       slug: "new-style",
       briefId: "",
+      searchIntent: "What practical question does this article answer?",
       title: "A New Style Article",
       description: "",
       excerpt: "",
@@ -54,6 +56,7 @@ test("extracts quality signals from quoted and unquoted article records", () => 
     {
       slug: "old-style",
       briefId: "",
+      searchIntent: "",
       title: "An Old Style Article",
       description: "",
       excerpt: "",
@@ -166,4 +169,13 @@ test("allows an article with a distinct brief and search intent", () => {
   );
 
   assert.equal(collision, null);
+});
+
+test("recognises the same recorded reader question even with changed metadata", () => {
+  const searchIntent = "How should supplier lot codes preserve leading zeros during transcription?";
+  const collision = findTopicCollision(
+    { title: "Checking Vendor Batch Identifiers", briefId: "new-id", searchIntent },
+    [{ title: "Preserving Product Code Text", briefId: "old-id", searchIntent }],
+  );
+  assert.ok(collision);
 });
