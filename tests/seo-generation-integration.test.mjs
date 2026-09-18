@@ -67,11 +67,61 @@ test("repairs a plan's exact metadata error before spending a request on prose",
 test("repairs unsafe draft wording without discarding the approved plan or relaxing the gate", async () => {
   const draft = unitDraft();
   draft.sections[0].paragraphs[0] += " This always works.";
-  const h = harness([unitPlan, draft, unitDraft()]);
+  const h = harness([unitPlan, draft, { replacements: [{ field: "sections.0.paragraphs.0", text: unitDraft().sections[0].paragraphs[0] }] }]);
   await h.run();
-  assert.match(h.calls[2].messages[1].content, /WRITE_ARTICLE/);
+  assert.match(h.calls[2].messages[1].content, /REPAIR_FIELDS_ONLY/);
   assert.match(h.calls[2].messages.map((item) => item.content).join("\n"), /unsupported wording: "always"/);
+  assert.match(h.calls[2].messages[1].content, /sections.0.paragraphs.0/);
+  assert.equal(h.calls.length, 3);
   assert.doesNotMatch(h.writes[0].split('"searchIntent"')[0], /This always works/);
+});
+
+test("repairs wording in the excerpt and FAQ in a single bounded request", async () => {
+  const draft = unitDraft();
+  draft.excerpt += " This always works.";
+  draft.faq = [{ question: "Are case packs always identical?", answer: "Confirm the particular pack definition before converting order quantities." }];
+  const h = harness([unitPlan, draft, { replacements: [
+    { field: "excerpt", text: unitDraft().excerpt },
+    { field: "faq.0.question", text: "Can case pack quantities vary?" },
+  ] }]);
+  const result = await h.run();
+  assert.equal(h.calls.length, 3);
+  assert.deepEqual(result.article.sections, unitDraft().sections);
+  assert.equal(result.article.faq[0].question, "Can case pack quantities vary?");
+});
+
+test("field repair retries preserve the draft across a network timeout", async () => {
+  const draft = unitDraft();
+  draft.sections[0].paragraphs[0] += " This always works.";
+  const h = harness([unitPlan, draft, new Error("DeepSeek request timed out after 120000 ms."), {
+    replacements: [{ field: "sections.0.paragraphs.0", text: unitDraft().sections[0].paragraphs[0] }],
+  }]);
+  const result = await h.run();
+  assert.equal(h.calls.length, 4);
+  assert.match(h.calls[3].messages[1].content, /REPAIR_FIELDS_ONLY/);
+  assert.deepEqual(result.article.sections, unitDraft().sections);
+});
+
+test("persistent invalid replacements exhaust the common budget and never write an article", async () => {
+  const draft = unitDraft();
+  draft.sections[0].paragraphs[0] += " This always works.";
+  const h = harness((_request, number) => number === 1 ? unitPlan : number === 2 ? draft : {
+    replacements: [{ field: "sections.0.paragraphs.0", text: draft.sections[0].paragraphs[0] }],
+  });
+  await assert.rejects(h.run(), /No article was published after 6 API requests/);
+  assert.equal(h.calls.length, 6);
+  assert.ok(h.calls.slice(2).every((call) => call.messages[1].content.startsWith("REPAIR_FIELDS_ONLY")));
+  assert.equal(h.writes.length, 0);
+});
+
+test("repaired fields still undergo full-article copied-prose checks", async () => {
+  const draft = unitDraft();
+  draft.sections[0].paragraphs[0] += " This always works.";
+  const h = harness([unitPlan, draft, {
+    replacements: [{ field: "sections.0.paragraphs.0", text: archive.slice(0, 6).map((article) => article.keyAnswer).join(" ") }],
+  }], { env: { DEEPSEEK_API_KEY: "mock-only", SEO_GENERATION_MAX_ATTEMPTS: "3" } });
+  await assert.rejects(h.run(), /overlaps too heavily/);
+  assert.equal(h.writes.length, 0);
 });
 
 test("exhausted legacy pool fails without any API request or write, including a manual topic", async () => {

@@ -14,8 +14,11 @@ text in `scripts/seo-editorial-briefs.mjs` must remain stable.
    existing URLs and topic overlap before requesting prose.
 3. Write only the approved plan. Recheck the full article, including copied
    prose, unsupported wording, evidence, sources, lengths and topic overlap.
-   A conflicting topic requires a new plan; a repairable field or wording error
-   is fed back precisely for correction.
+   A conflicting topic requires a new plan. Wording and length errors are
+   collected across metadata, headings, paragraphs, bullets and FAQs together.
+   The model receives exact field paths, original text and constraints, and
+   returns only replacements for those fields. Correct content stays intact;
+   every repaired draft still passes the complete gate before it can be written.
 4. Write a candidate only after the full gate passes and the input file has not
    changed. The existing workflow still builds before committing/publishing it.
 
@@ -26,7 +29,7 @@ future checks; existing articles and URLs are unchanged.
 
 ## Bounds and recovery
 
-- Planning and writing **share** `SEO_GENERATION_MAX_ATTEMPTS`: 6 API requests by
+- Planning, writing and field repair **share** `SEO_GENERATION_MAX_ATTEMPTS`: 6 API requests by
   default, capped at 8. A plan is never mistaken for a completed article.
 - Planning allows 2,000 output tokens; full writing allows 8,000.
 - Each request is capped at 120 seconds (including response-body reads) and the
@@ -66,7 +69,7 @@ requires no API key, makes no paid model calls and does not update live articles
 `npm test` additionally builds and checks rendered pages, canonical URLs,
 redirects, metadata and the sitemap.
 
-These tests do not establish live DeepSeek availability. Following an approved
-merge, check the next scheduled run for an approved plan, a fully validated
-article, a commit and its matching live page. No manual rerun or backfill is
-part of this change.
+These tests do not establish live DeepSeek availability. Following a merge,
+verify an authorised run through an approved plan, a fully validated article,
+a commit and its matching live page. A controlled rerun uses the same freshness
+checks; it must not create a second article after today's article exists.

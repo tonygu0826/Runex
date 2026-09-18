@@ -11,6 +11,7 @@ import {
 } from "./seo-generation-policy.mjs";
 import { extractExistingArticleSignals, findTopicCollision, jaccard, normalizeWords, slugifyTitle } from "./seo-quality.mjs";
 import { editorialBriefs } from "./seo-editorial-briefs.mjs";
+import { applyFieldRepairs, articleFieldProblems, ArticleFieldRepairError, buildFieldRepairPrompt } from "./seo-field-repairs.mjs";
 import {
   assertDraftFollowsPlan, assertSupportedWording, buildTopicPlanningPrompt,
   GENERATION_BUDGET_MS, rotateBriefs, unusedEditorialBriefs, validateTopicPlan,
@@ -239,6 +240,7 @@ export async function generateSeoArticle({
   let lastError;
   let validated;
   let plan;
+  let fieldRepair;
   let retryAction = "fresh-draft";
   let retryPhase = "";
   let failedBriefId = "";
@@ -246,7 +248,7 @@ export async function generateSeoArticle({
   const blockedBriefIds = new Set();
 
   for (let attempt = 1; attempt <= maxAttempts; attempt += 1) {
-    const phase = plan ? "draft" : "plan";
+    const phase = fieldRepair ? "repair" : plan ? "draft" : "plan";
     const eligibleBriefs = selectableBriefsForAttempt({ briefs: selectableBriefs, blockedBriefIds });
     const attemptBriefs = requestedTopic ? eligibleBriefs : eligibleBriefs.slice(0, 6);
     if (!attemptBriefs.length) {
@@ -262,25 +264,32 @@ export async function generateSeoArticle({
       lastError = new Error("The 14-minute generation budget is exhausted; leaving time for build and publication steps.");
       break;
     }
-    const prompt = plan
+    const prompt = fieldRepair
+      ? buildFieldRepairPrompt({ plan, brief: briefs.find((brief) => brief.id === plan.briefId), problems: fieldRepair.problems, approvedSources })
+      : plan
       ? buildUserPrompt(briefs.filter((brief) => brief.id === plan.briefId), plan)
       : buildTopicPlanningPrompt({ briefs: attemptBriefs, existingArticles, requestedTopic });
     const messages = [{ role: "system", content: systemPrompt }, { role: "user", content: prompt }];
     if (lastError) {
-      if (retryPhase === phase && retryAction === "repair-draft" && previousRawContent) messages.push({ role: "assistant", content: previousRawContent });
-      messages.push({ role: "user", content: retryInstruction({ action: retryAction, errorMessage: lastError.message, failedBriefId }) });
-      if (phase === "plan") messages.push({ role: "user", content: "Return only a corrected topic plan with an outline, not an article." });
+      if (fieldRepair) {
+        messages.push({ role: "user", content: `Last validation error: ${lastError.message}\nReturn only the requested field replacements. Every replacement will be checked; do not return the complete article.` });
+      } else {
+        if (retryPhase === phase && retryAction === "repair-draft" && previousRawContent) messages.push({ role: "assistant", content: previousRawContent });
+        messages.push({ role: "user", content: retryInstruction({ action: retryAction, errorMessage: lastError.message, failedBriefId }) });
+        if (phase === "plan") messages.push({ role: "user", content: "Return only a corrected topic plan with an outline, not an article." });
+      }
     }
     let generated;
     try {
       requests += 1;
-      logger.log(`${phase === "plan" ? "Topic planning" : "Article writing"} request ${requests}/${maxAttempts}.`);
+      logger.log(`${phase === "plan" ? "Topic planning" : phase === "repair" ? "Targeted field repair" : "Article writing"} request ${requests}/${maxAttempts}.`);
       previousRawContent = await requestContent({
         apiUrl, apiKey, model, messages,
         timeoutMs: Math.min(requestTimeoutMs, 120_000, remainingMs),
         maxTokens: phase === "plan" ? 2_000 : 8_000,
       });
-      generated = parseArticleContent(previousRawContent);
+      const response = parseArticleContent(previousRawContent);
+      generated = fieldRepair ? applyFieldRepairs(fieldRepair.article, fieldRepair.problems, response) : response;
       if (!plan) {
         if (generated?.unavailable) throw new Error(`No supported topic plan: ${String(generated.reason || "requested topic is outside the supplied briefs")}`);
         plan = validateTopicPlan(generated, attemptBriefs, existingArticles, approvedSources);
@@ -290,6 +299,8 @@ export async function generateSeoArticle({
         continue;
       }
       assertDraftFollowsPlan(generated, plan);
+      const problems = articleFieldProblems(generated, approvedSources);
+      if (problems.length) throw new ArticleFieldRepairError(problems);
       validated = validateGeneratedArticle(generated, briefs.filter((brief) => brief.id === plan.briefId));
       validated.article.searchIntent = plan.searchIntent;
       break;
@@ -298,9 +309,19 @@ export async function generateSeoArticle({
       failedBriefId = plan?.briefId || (typeof generated?.briefId === "string" ? generated.briefId : "");
       retryAction = qualityFailureAction(lastError.message);
       retryPhase = phase;
+      if (lastError instanceof ArticleFieldRepairError) {
+        fieldRepair = { article: generated, problems: lastError.problems };
+      } else if (phase === "repair" && generated) {
+        // The patch was valid but another whole-article gate failed. Keep the
+        // patched draft for a full correction, or discard it for a new topic.
+        fieldRepair = undefined;
+        previousRawContent = JSON.stringify(generated);
+        retryPhase = "draft";
+      }
       if (retryAction === "switch-brief" && failedBriefId) {
         blockedBriefIds.add(failedBriefId);
         plan = undefined;
+        fieldRepair = undefined;
         previousRawContent = "";
       }
       logger.warn(`${phase} request ${requests} rejected: ${lastError.message}`);
