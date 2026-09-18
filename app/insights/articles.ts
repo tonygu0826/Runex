@@ -22,6 +22,88 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "date-field-ambiguity",
+    "slug": "resolving-ambiguous-date-formats-enter-product-records",
+    "category": "3PL & Warehousing",
+    "title": "Resolving Ambiguous Date Formats Before They Enter Product Records",
+    "description": "A practical way to confirm what an ambiguous date means and which format it uses before converting it for a product record.",
+    "excerpt": "Confirm the meaning and format of an ambiguous date with the information owner, then keep the converted value traceable to its source.",
+    "keywords": [
+      "ambiguous date format",
+      "date field meaning",
+      "day and month order",
+      "product record data entry",
+      "source file traceability",
+      "label date conversion"
+    ],
+    "publishedAt": "2026-09-18",
+    "modifiedAt": "2026-09-18",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A date field should identify both the date's meaning and the format supplied by the client.",
+      "An ambiguous day-and-month order should be confirmed with the information owner before conversion.",
+      "A converted date should remain traceable to the original label or source file."
+    ],
+    "sources": [],
+    "keyAnswer": "A date field should identify both what the date means and which format the client supplied, because a value such as 04/05 can be read as two different days. When the day-and-month order is unclear, confirm it with the information owner before converting it, and keep the converted date traceable to the original label or source file.",
+    "sections": [
+      {
+        "heading": "Why a date field needs both a meaning and a format",
+        "paragraphs": [
+          "A date on a product label or in an import file is not self-explanatory. The same string can describe a production date, a best-before date, a lot date, a receipt date or a re-test date, and each of those meanings leads to different handling. Before any value is entered into a product record, the field should identify what the date means, not just what it looks like.",
+          "The format matters just as much. A value such as 04/05 can be read as the fourth of May or the fifth of April depending on whether the source uses day-month or month-day order. A two-digit year adds another layer of doubt. Treating the string as obvious is where errors begin, because the record will carry a specific day that may not match the label it came from.",
+          "A date field should identify both the date's meaning and the format supplied by the client. That single rule prevents most downstream confusion: the person entering the value knows which date they are recording and how the source wrote it, so the record reflects the label rather than an assumption about it."
+        ]
+      },
+      {
+        "heading": "Confirming day-and-month order with the information owner",
+        "paragraphs": [
+          "When the day-and-month order is unclear, the safest step is to pause and confirm it with the information owner before converting anything. The information owner is the party who supplied the label or file and can say what the date is meant to represent. Guessing based on which reading seems more common, or on the order used in a previous file, introduces a silent error that may only surface later.",
+          "A useful confirmation request is specific. It names the field, shows the exact value as it appears, and asks two questions: what does this date mean, and is the first number the day or the month? If the source uses a written month or an unambiguous format elsewhere in the same file, that can support the answer, but it should still be confirmed rather than inferred. An ambiguous day-and-month order should be confirmed with the information owner before conversion.",
+          "There is a practical trade-off here. Waiting for confirmation can slow a data-entry queue, and a team may be tempted to proceed on the most likely reading. The cost of a wrong date in a product record, however, is usually harder to unwind than a short wait, because the error can affect how stock is handled, labelled or reported. Where a whole batch of values shares the same ambiguous format, one confirmation can cover the batch, which keeps the pause short."
+        ]
+      },
+      {
+        "heading": "Recording the conversion so the original label or file stays traceable",
+        "paragraphs": [
+          "Once the meaning and format are confirmed, the converted date should remain traceable to the original label or source file. Traceability means a person reviewing the record later can see where the value came from and how it was read. Without that link, a converted date looks like any other entry, and there is no way to check it against the source when a question arises.",
+          "In practice, traceability can be as simple as recording the source file name, the field or label the date came from, and the format that was confirmed. If the original value was 04/05 and the confirmed reading was 5 April, the record should make that relationship visible rather than storing only the final date. A converted date should remain traceable to the original label or source file.",
+          "This record also helps when the same client sends later files. If the confirmed format is documented, the next batch can be read consistently, and any change in format stands out instead of blending in. The goal is not extra paperwork for its own sake; it is to make the conversion checkable, so an ambiguous value is resolved once and stays resolved."
+        ]
+      },
+      {
+        "heading": "Questions to settle before the value enters the record",
+        "paragraphs": [
+          "A short set of questions can be applied to any ambiguous date before entry. Who supplied this date, and what does it represent? Is the first number the day or the month? Does the source use a two-digit or four-digit year? Is there another date in the same file that confirms the pattern? If any answer is missing, the value is not ready to convert.",
+          "It also helps to agree who resolves the question when the information owner is not immediately available. Naming that person or role in advance keeps the queue moving without forcing a guess. The decision point is straightforward: confirm, then convert, then record the link to the source. Skipping the confirmation step is what turns a small ambiguity into a record that cannot be trusted."
+        ],
+        "bullets": [
+          "What does the date mean: production, best-before, lot, receipt or something else?",
+          "Is the first number the day or the month, and what did the client confirm?",
+          "Is the year two-digit or four-digit, and how should it be recorded?",
+          "Which source file or label does the value come from?",
+          "Who is the information owner if the format cannot be confirmed immediately?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a date be converted if the format is clear but the meaning is not?",
+        "answer": "No. A clear format still leaves the question of what the date represents. A field should identify both the date's meaning and the format supplied by the client, so the meaning should be confirmed before the value is entered."
+      },
+      {
+        "question": "What should be recorded alongside a converted date?",
+        "answer": "Record enough to link the converted value back to its origin, such as the source file or label and the confirmed format. A converted date should remain traceable to the original label or source file so it can be checked later."
+      },
+      {
+        "question": "Is it acceptable to use the most likely reading when a client is slow to respond?",
+        "answer": "An ambiguous day-and-month order should be confirmed with the information owner before conversion. If confirmation is delayed, the value can wait or be flagged, but entering a guessed date puts an unverified value into the product record."
+      }
+    ],
+    "searchIntent": "How should an ambiguous date such as 04/05 be resolved before it enters a product record?"
+  },
+  {
     "briefId": "warehouse-onboarding",
     "slug": "setting-up-decision-owners-during-warehouse-onboarding",
     "category": "3PL & Warehousing",
