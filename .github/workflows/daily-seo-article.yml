@@ -44,31 +44,34 @@ jobs:
           git checkout main
           git pull --ff-only origin main
 
+      - name: Set up Node.js
+        uses: actions/setup-node@v6
+        with:
+          node-version: 22
+          cache: npm
+
       - name: Check whether today's article already exists
+        # Node is configured first because the freshness check uses the same
+        # parser for the working tree and the final remote snapshot.
         id: freshness
         env:
           EVENT_NAME: ${{ github.event_name }}
         run: |
+          set -euo pipefail
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             echo "should_publish=true" >> "$GITHUB_OUTPUT"
             exit 0
           fi
 
           TODAY="$(TZ=America/Toronto date +%F)"
-          if grep -Fq "$TODAY" app/insights/articles.ts; then
+          PUBLISHED="$(node scripts/check-seo-publication.mjs "$TODAY")"
+          if [ "$PUBLISHED" = "true" ]; then
             echo "Article for $TODAY already exists; skipping this run."
             echo "should_publish=false" >> "$GITHUB_OUTPUT"
           else
             echo "No article for $TODAY; publishing now."
             echo "should_publish=true" >> "$GITHUB_OUTPUT"
           fi
-
-      - name: Set up Node.js
-        if: steps.freshness.outputs.should_publish == 'true'
-        uses: actions/setup-node@v6
-        with:
-          node-version: 22
-          cache: npm
 
       - name: Generate article with DeepSeek
         id: generation
@@ -103,6 +106,7 @@ jobs:
         env:
           EVENT_NAME: ${{ github.event_name }}
         run: |
+          set -euo pipefail
           if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
             echo "should_commit=true" >> "$GITHUB_OUTPUT"
             exit 0
@@ -110,7 +114,8 @@ jobs:
 
           TODAY="$(TZ=America/Toronto date +%F)"
           git fetch origin main
-          if git show origin/main:app/insights/articles.ts | grep -Fq "$TODAY"; then
+          PUBLISHED="$(git show origin/main:app/insights/articles.ts | node scripts/check-seo-publication.mjs "$TODAY" -)"
+          if [ "$PUBLISHED" = "true" ]; then
             echo "Another run already published the article for $TODAY; discarding this duplicate."
             git restore --source=origin/main -- app/insights/articles.ts
             echo "should_commit=false" >> "$GITHUB_OUTPUT"

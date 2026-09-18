@@ -40,7 +40,10 @@ future checks; existing articles and URLs are unchanged.
 - `ARTICLE_TOPIC` still requires an unused, grounded brief. It considers the
   whole unused pool, but does not override duplicate or quality gates.
 - Exhaustion, timeout or invalid content exits unsuccessfully without writing
-  an article. The workflow schedule and its freshness/build checks are unchanged.
+  an article. The workflow schedule is unchanged. Both freshness checks parse
+  an active article's exact `publishedAt` value; a matching `modifiedAt` or date
+  in example text cannot suppress publication. Read or parse errors fail the
+  check instead of being treated as an unpublished day.
 
 ## Maintaining the editorial pool
 

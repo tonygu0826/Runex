@@ -116,16 +116,20 @@ export function slugifyTitle(title, maxLength = 64) {
   return selected.join("-");
 }
 
-function extractTopLevelObjects(source) {
+function extractTopLevelObjects(source, strict = false) {
   const marker = "export const articles: Article[] = [";
   const markerIndex = source.indexOf(marker);
-  if (markerIndex < 0) return [];
+  if (markerIndex < 0) {
+    if (strict) throw new Error("Article array is missing; refusing to guess publication state.");
+    return [];
+  }
 
   const objects = [];
   let objectStart = -1;
   let depth = 0;
   let quote = "";
   let escaped = false;
+  let closed = false;
 
   const arrayStart = markerIndex + marker.length - 1;
   for (let index = arrayStart + 1; index < source.length; index += 1) {
@@ -150,10 +154,14 @@ function extractTopLevelObjects(source) {
         objectStart = -1;
       }
     } else if (character === "]" && depth === 0) {
+      closed = true;
       break;
     }
   }
 
+  if (strict && (!closed || quote || depth !== 0)) {
+    throw new Error("Article array is incomplete; refusing to guess publication state.");
+  }
   return objects;
 }
 
@@ -205,6 +213,20 @@ function extractStringArray(block, property) {
     }
   }
   return [];
+}
+
+export function extractPublicationRecords(source) {
+  return extractTopLevelObjects(source, true).map((block) => {
+    const article = {
+      slug: extractStringProperty(block, "slug"),
+      publishedAt: extractStringProperty(block, "publishedAt"),
+      supersededBy: extractStringProperty(block, "supersededBy"),
+    };
+    if (!article.slug || !article.publishedAt) {
+      throw new Error("Article publication metadata is missing or unreadable; refusing to guess publication state.");
+    }
+    return article;
+  });
 }
 
 export function extractExistingArticleSignals(source) {
