@@ -22,6 +22,109 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "reusable-container-balances",
+    "slug": "reconciling-reusable-tote-balances-across-dispatch-return",
+    "category": "3PL & Warehousing",
+    "title": "Reconciling Reusable Tote Balances Across Dispatch and Return",
+    "description": "A practical approach to tracking reusable totes and containers sent out and expected back, keeping container counts separate from the products inside.",
+    "excerpt": "Keep container quantities distinct from product quantities, record dispatch and return entries by counterparty and type, and review balances to separate outstanding returns from confirmed losses.",
+    "keywords": [
+      "reusable tote reconciliation",
+      "container balance tracking",
+      "reusable container returns",
+      "dispatch and return records",
+      "outstanding container returns",
+      "container loss and damage"
+    ],
+    "publishedAt": "2026-09-19",
+    "modifiedAt": "2026-09-19",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A reusable-container record should separate container quantities from the products carried inside them.",
+      "Dispatch and return entries should identify the counterparty, container type and quantity involved.",
+      "A container balance review should distinguish outstanding returns from confirmed losses or damaged units."
+    ],
+    "sources": [],
+    "keyAnswer": "Reconcile reusable tote balances by keeping container quantities separate from the products they carry, and by recording each dispatch and return with the counterparty, container type and quantity. A periodic balance review should then distinguish outstanding returns from confirmed losses or damaged units.",
+    "sections": [
+      {
+        "heading": "Why reusable container records need their own quantity field",
+        "paragraphs": [
+          "Reusable totes and containers move differently from the products they carry. A tote can leave with one shipment, return empty on a later truck, and be reused many times before it is retired. If container counts are folded into product quantities, the two movements become tangled: a returned tote may look like returned stock, and a missing tote may look like a stock shortage. Keeping a separate quantity field for containers prevents that confusion and gives each movement its own record.",
+          "A practical container record treats the tote or container as the tracked item, with its own identifier, type and status. The product record stays focused on what is inside. This separation matters when a container is dispatched full and returned empty, when a container is returned with product still inside, or when a container is damaged and taken out of circulation. In each case, the container balance changes independently of the product balance, and the records should reflect that.",
+          "The decision point is how much detail to capture. At minimum, the record should distinguish container type and quantity so that a balance can be calculated per type. Where containers are pooled or shared, the record should also identify who holds them, because a balance only makes sense against a named counterparty. Without that link, a count of outstanding containers cannot be attributed or followed up."
+        ],
+        "bullets": [
+          "Track containers as their own item, not as a line inside a product record.",
+          "Give each container type a clear identifier so balances can be calculated per type.",
+          "Record the holder of the container so outstanding quantities can be attributed.",
+          "Keep container status separate from product status, especially for damaged or retired units."
+        ]
+      },
+      {
+        "heading": "What to capture on every dispatch and return entry",
+        "paragraphs": [
+          "Every dispatch and return entry should identify the counterparty, container type and quantity involved. The counterparty is the party the containers are sent to or received from, and it is the anchor for any later balance review. The container type distinguishes one kind of tote from another, so quantities are not mixed across incompatible units. The quantity states how many moved. These three fields, recorded consistently on both dispatch and return, make a running balance possible.",
+          "A dispatch entry records containers leaving a location. A return entry records containers coming back. The two entries should use the same counterparty and container type references so they can be matched. If a dispatch names one counterparty and the return names a different one, the balance will not reconcile. If a return is recorded against the wrong container type, the balance for both types will be wrong. Consistency in these fields is what allows the balance to be trusted.",
+          "It also helps to record the date and any reference that links the container movement to a shipment or order. That reference is not the balance itself, but it supports follow-up when a return is outstanding. Where a container comes back damaged, the return entry should note the condition so the unit can be moved out of circulation rather than counted as available. The exact fields depend on the operation, but the counterparty, type and quantity should be present on every entry."
+        ],
+        "bullets": [
+          "Record the counterparty on both dispatch and return entries.",
+          "Record the container type so quantities are not mixed across incompatible units.",
+          "Record the quantity dispatched and the quantity returned.",
+          "Note damaged units on the return entry so they are not counted as available.",
+          "Link the entry to a shipment or order reference where follow-up may be needed."
+        ]
+      },
+      {
+        "heading": "Running a balance review: outstanding returns versus confirmed losses or damage",
+        "paragraphs": [
+          "A balance review compares containers dispatched against containers returned, by counterparty and container type. The difference is the outstanding quantity. That difference is not automatically a loss. It may simply be a return that has not yet arrived, a return recorded under a different reference, or a container still in use at the counterparty. The review should separate these possibilities before any adjustment is made.",
+          "Outstanding returns are containers that are expected back but have not yet been recorded as returned. They need follow-up, not write-off. Confirmed losses are containers that are known not to be coming back, for example because the counterparty has reported them missing or because a documented search has concluded. Damaged units are containers that have returned but are no longer usable. Each of these categories should be tracked separately so the balance reflects reality rather than a single unexplained gap.",
+          "The review should be periodic and consistent. A regular cycle, matched to how often containers move, keeps the outstanding list short and follow-up timely. When a difference is found, the first step is to check whether a return entry exists under a different reference or date. If not, the counterparty should be asked to confirm the status. Only after that confirmation should the quantity be reclassified as a confirmed loss or damage. This order of steps keeps the balance accurate and avoids writing off containers that are simply in transit or awaiting return."
+        ],
+        "bullets": [
+          "Compare dispatched and returned quantities by counterparty and container type.",
+          "Treat the difference as outstanding until it is confirmed otherwise.",
+          "Check for return entries recorded under a different reference or date before escalating.",
+          "Reclassify only after the counterparty confirms the status.",
+          "Track confirmed losses and damaged units separately from outstanding returns."
+        ]
+      },
+      {
+        "heading": "Questions to ask before setting up container balance tracking",
+        "paragraphs": [
+          "Before committing to a tracking method, it is worth clarifying how containers move in the operation. Ask which container types are in circulation, who holds them at each stage, and how returns are normally triggered. Ask whether containers are pooled across counterparties or dedicated to one, because pooling changes how balances are attributed. Ask who is responsible for following up on outstanding returns and who can approve a write-off when a container is confirmed lost or damaged.",
+          "It also helps to ask how damaged containers are handled. A damaged tote that is returned but unusable should not sit in the available balance. The process should state where damaged units are recorded and who decides when they are removed from circulation. Finally, ask how the balance review will be scheduled and what evidence is kept when a difference is resolved. These questions do not require a specific system, but they do require agreed answers before the records can be relied on."
+        ],
+        "bullets": [
+          "Which container types are tracked, and how are they identified?",
+          "Who holds containers at each stage, and how are returns triggered?",
+          "Are containers pooled or dedicated to a single counterparty?",
+          "Who follows up on outstanding returns, and who approves a write-off?",
+          "How are damaged containers recorded and removed from circulation?",
+          "How often is the balance reviewed, and what evidence is kept?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should container quantities be recorded on the same line as product quantities?",
+        "answer": "No. A reusable-container record should separate container quantities from the products carried inside them. Keeping them on separate lines or separate records prevents a returned tote from being mistaken for returned stock and a missing tote from being mistaken for a stock shortage."
+      },
+      {
+        "question": "What is the minimum information needed on a dispatch or return entry?",
+        "answer": "At minimum, each dispatch and return entry should identify the counterparty, container type and quantity involved. These fields allow a running balance to be calculated and matched between dispatch and return. A date and a shipment or order reference also help with follow-up."
+      },
+      {
+        "question": "How should an outstanding container return be treated in the balance?",
+        "answer": "An outstanding return should be treated as expected back, not as a loss. The balance review should check whether a return entry exists under a different reference or date before escalating. Only after the counterparty confirms the status should the quantity be reclassified as a confirmed loss or damaged unit."
+      }
+    ],
+    "searchIntent": "How can reusable tote balances be reconciled across dispatches and container returns?"
+  },
+  {
     "briefId": "date-field-ambiguity",
     "slug": "resolving-ambiguous-date-formats-enter-product-records",
     "category": "3PL & Warehousing",
