@@ -22,6 +22,93 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "lot-code-transcription",
+    "slug": "capturing-supplier-lot-codes-losing-leading-zeros",
+    "category": "3PL & Warehousing",
+    "title": "Capturing Supplier Lot Codes Without Losing Leading Zeros",
+    "description": "Preserve the supplier's full lot identifier, including leading zeros and separators, and verify unclear characters against the original label.",
+    "excerpt": "Preserve the supplier's full lot identifier, including leading zeros and separators, and verify unclear characters against the label.",
+    "keywords": [
+      "supplier lot code entry",
+      "leading zeros lot code",
+      "lot code transcription",
+      "lot identifier separators",
+      "label verification lot code",
+      "lot code correction record"
+    ],
+    "publishedAt": "2026-09-20",
+    "modifiedAt": "2026-09-20",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A lot-code entry should preserve the supplier's full identifier, including leading zeros and separators.",
+      "Unclear characters should be checked against the original label rather than guessed during transcription.",
+      "A correction should retain a reference to the original entry and the label used to verify it."
+    ],
+    "sources": [],
+    "keyAnswer": "Capture the supplier's full lot identifier exactly as printed, including leading zeros and separators, rather than retyping it into a shortened or reformatted value. When a character is unclear, check the original label instead of guessing, and keep a correction linked to the original entry and the label used to verify it.",
+    "sections": [
+      {
+        "heading": "Why leading zeros and separators carry meaning in a lot identifier",
+        "paragraphs": [
+          "A supplier lot code is an identifier, not a number to be tidied. The characters printed on the label, including leading zeros and separators, are part of how the supplier distinguishes one batch from another. When an entry drops a leading zero or changes a separator, the stored value no longer matches the supplier's identifier, even if the remaining characters look similar.",
+          "This matters because lot codes are used to trace which batch a unit came from. If a record holds a shortened or reformatted value, a later lookup against the supplier's documentation may not find a match, and the record may appear to refer to a different batch or to no batch at all. The practical rule is to treat the lot code as text to be copied, not as a quantity or a number to be normalized."
+        ]
+      },
+      {
+        "heading": "Entering the full supplier identifier without reformatting",
+        "paragraphs": [
+          "The entry step should accept the full identifier as printed. That means keeping leading zeros, retaining the separators the supplier uses, and not trimming spaces or punctuation that form part of the code. If the supplier prints a code with a hyphen, a slash or a space, the entry should reflect that structure rather than a cleaned-up version.",
+          "Reformatting often happens for understandable reasons: a field may be set up for numbers only, a template may strip leading characters, or a person may assume the zeros are decorative. Each of these shortcuts changes the identifier. Where a system or template forces a change, that constraint should be identified and resolved before the product record is treated as complete, because a stored value that differs from the label undermines the purpose of recording the lot code at all."
+        ],
+        "bullets": [
+          "Keep leading zeros exactly as printed.",
+          "Retain the supplier's separators, including hyphens, slashes and spaces.",
+          "Do not shorten, round or reorder characters to fit a field.",
+          "Treat the lot code as text, not as a number."
+        ]
+      },
+      {
+        "heading": "Checking unclear characters against the original label",
+        "paragraphs": [
+          "Some labels are hard to read. Print quality, wear, glare or a small font can make a character ambiguous, and characters such as zero and the letter O, or one and the letter I, can look alike. When a character is unclear, the entry should be checked against the original label rather than guessed. A guess may produce a plausible-looking code that is wrong, and a wrong lot code is harder to detect later than a missing one.",
+          "Checking against the label may mean returning to the physical item, viewing a clearer image of the label, or asking the party that supplied the goods to confirm the printed value. The point is to resolve the ambiguity from the source, not from memory or pattern. If the character cannot be confirmed at the time of entry, that uncertainty should be visible in the record rather than hidden behind a confident-looking value."
+        ]
+      },
+      {
+        "heading": "Recording a correction with a link to the original entry",
+        "paragraphs": [
+          "Corrections are normal in lot-code work, but a correction should not erase the path back to what was first entered. A correction should retain a reference to the original entry and the label used to verify it. That reference allows someone reviewing the record later to see what changed, why it changed, and which label supported the new value.",
+          "This is a record-keeping discipline rather than a technical one. The original entry, the corrected value and the label used for verification should be connected so the history is readable. Without that link, a corrected code looks the same as a code that was right the first time, and the evidence behind the change is lost."
+        ]
+      },
+      {
+        "heading": "Reviewing lot-code entries before the product record is treated as complete",
+        "paragraphs": [
+          "Before a product record is treated as complete, the lot-code entry should be reviewed against the label. The review is a check that the full identifier is present, that leading zeros and separators are intact, and that any unclear character has been resolved from the source rather than guessed. This step is most useful when it happens before the goods move on and the label is no longer easy to reach.",
+          "The review should also confirm that any correction is linked to the original entry and the label used to verify it. A record that passes these checks is one that can be matched back to the supplier's identifier later. A record that fails them may still look complete, which is why the check belongs in the workflow rather than in a later cleanup."
+        ],
+        "bullets": [
+          "Confirm the full identifier is present, including leading zeros and separators.",
+          "Confirm unclear characters were resolved from the original label.",
+          "Confirm any correction links to the original entry and the verifying label.",
+          "Complete the review while the label is still accessible."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should happen if a lot code cannot be confirmed from the label?",
+        "answer": "The uncertainty should remain visible in the record rather than being replaced by a guessed value. The entry can be held or flagged until the printed code is confirmed from the original label or from the party that supplied the goods."
+      },
+      {
+        "question": "Does a correction replace the original lot-code entry?",
+        "answer": "A correction should retain a reference to the original entry and the label used to verify it, so the change remains traceable rather than overwriting the history."
+      }
+    ],
+    "searchIntent": "How should supplier lot codes be captured without losing leading zeros or changing their meaning?"
+  },
+  {
     "briefId": "reusable-container-balances",
     "slug": "reconciling-reusable-tote-balances-across-dispatch-return",
     "category": "3PL & Warehousing",
