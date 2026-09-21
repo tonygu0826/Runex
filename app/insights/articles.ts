@@ -22,6 +22,93 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "carton-content-amendments",
+    "slug": "updating-carton-records-after-items-move-between-boxes",
+    "category": "Fulfillment",
+    "title": "Updating Carton Records After Items Move Between Boxes",
+    "description": "A carton-content amendment should name the source carton, destination carton and moved quantities, then reconcile to the order total.",
+    "excerpt": "When items move between cartons after packing, the carton records, order total and any content documents need a documented amendment.",
+    "keywords": [
+      "carton content amendment",
+      "repacking carton records",
+      "moved quantities between cartons",
+      "source and destination carton",
+      "carton record reconciliation",
+      "obsolete packing documents"
+    ],
+    "publishedAt": "2026-09-21",
+    "modifiedAt": "2026-09-21",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A carton-content amendment should identify the source carton, destination carton and moved quantities.",
+      "The revised carton records should reconcile to the unchanged or separately amended order total.",
+      "Documents describing carton contents should be checked for obsolete versions after repacking."
+    ],
+    "sources": [],
+    "keyAnswer": "A carton-content amendment should identify the source carton, the destination carton and the quantities moved between them. The revised carton records should then reconcile to the unchanged or separately amended order total, and documents describing carton contents should be checked for obsolete versions after repacking.",
+    "sections": [
+      {
+        "heading": "Naming the source carton, destination carton and moved quantities",
+        "paragraphs": [
+          "Once items have been moved between packed cartons, the amendment record is the only reliable way to know what changed. The record should name the carton the items left, the carton they entered and the quantity moved. If several cartons are involved, each movement needs its own line so the trail does not collapse into a single vague note.",
+          "The amendment should also identify the item or items moved, using the same identifier already used in the carton record. That keeps the amendment readable alongside the original packing detail and avoids a second naming convention. A short reason for the move, such as a carton being over its intended capacity or a damaged outer box being replaced, helps the next person understand why the records no longer match the first packing pass.",
+          "A useful test is whether someone who did not perform the repacking could reconstruct the final carton contents from the amendment alone. If the source, destination and moved quantity are present, the answer is usually yes. If any of those three elements is missing, the amendment is incomplete and the carton records remain unreliable."
+        ],
+        "bullets": [
+          "Identify the source carton and the destination carton for every movement.",
+          "State the quantity moved, not just the fact that a move occurred.",
+          "Use the same item identifiers already present in the carton records.",
+          "Add a brief reason so the change is understandable later."
+        ]
+      },
+      {
+        "heading": "Reconciling revised carton records to the order total",
+        "paragraphs": [
+          "After the amendment is recorded, the revised carton records should reconcile to the order total. This is a check, not a formality. If the order total is unchanged, the sum of all carton contents after the move should still equal that total. If the numbers do not match, the discrepancy needs to be resolved before the records are treated as final.",
+          "Reconciliation is easier when the amendment is treated as a change to carton-level detail rather than a change to the order itself. Moving items between cartons does not, by itself, change how many units the order contains. Keeping that distinction clear prevents an internal repack from being mistaken for a quantity correction.",
+          "Where the order total itself is wrong or has changed for a separate reason, that is a different amendment. Mixing the two into one record makes it hard to tell whether the carton contents changed, the order quantity changed, or both. Separate amendments keep each change traceable to its own cause."
+        ]
+      },
+      {
+        "heading": "Checking content documents for obsolete versions after repacking",
+        "paragraphs": [
+          "Documents describing carton contents should be checked for obsolete versions after repacking. A packing list, carton content sheet or similar document that still shows the pre-move arrangement is misleading even if it was accurate when it was created. The check should confirm which version is current and which versions are no longer valid.",
+          "Obsolete versions do not need to be destroyed, but they should not circulate as if they were current. Marking them as superseded, or keeping them only as a reference to the earlier arrangement, prevents someone from picking, receiving or investigating against the wrong content list. The current version should be the one that matches the amended carton records.",
+          "This step matters most when documents leave the warehouse. A carton content document that travels with a shipment or is shared with a customer or carrier can create confusion if it describes contents that no longer match the physical carton. Checking for obsolete versions before release is a simple control that prevents that confusion."
+        ],
+        "bullets": [
+          "Confirm which content document version is current after the move.",
+          "Mark superseded versions so they are not used as current references.",
+          "Check documents that travel with the shipment before they are released."
+        ]
+      },
+      {
+        "heading": "Deciding when the order total itself needs a separate amendment",
+        "paragraphs": [
+          "Most moves between cartons leave the order total unchanged. In that case, the carton-content amendment is enough, and the order total should not be adjusted. The reconciliation step confirms this by showing that the revised carton quantities still sum to the original total.",
+          "A separate amendment to the order total is needed when the total no longer reflects what is actually being shipped. That can happen when units are removed, added or found to be missing during the repack. The decision point is whether the change is confined to how units are distributed across cartons or whether the number of units in the order has changed.",
+          "Keeping these two amendments separate has a practical benefit. It shows whether an internal repack caused the change or whether the order quantity was corrected for an independent reason. When both changes are recorded in one place, later reviews cannot tell which happened, and the carton records lose some of their value as a reference."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does moving items between cartons require an order total amendment?",
+        "answer": "No. If the order total is unchanged, the carton-content amendment should reconcile to that same total. A separate amendment to the order total is needed only when the number of units in the order has changed for a reason beyond the repack."
+      },
+      {
+        "question": "What should happen to the original carton content document after repacking?",
+        "answer": "It should be checked for obsolescence. The version that matches the amended carton records becomes the current reference, and earlier versions should be marked or kept so they are not mistaken for current content lists."
+      },
+      {
+        "question": "Who should be able to reconstruct the final carton contents from the amendment?",
+        "answer": "Someone who did not perform the repacking should be able to reconstruct the final contents. That is possible when the amendment names the source carton, the destination carton and the moved quantities."
+      }
+    ],
+    "searchIntent": "Which records need to change when items are moved between cartons after packing?"
+  },
+  {
     "briefId": "lot-code-transcription",
     "slug": "capturing-supplier-lot-codes-losing-leading-zeros",
     "category": "3PL & Warehousing",
