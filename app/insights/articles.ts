@@ -22,6 +22,103 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "order-import-deduplication",
+    "slug": "checking-resubmitted-order-files-duplicate-picks",
+    "category": "3PL & Warehousing",
+    "title": "Checking Resubmitted Order Files Before Duplicate Picks",
+    "description": "Compare a resubmitted order file with accepted line details before releasing a second pick instruction, and record rejected submissions separately.",
+    "excerpt": "Retain client and submission references, compare repeated order references with accepted lines, and record rejected submissions separately.",
+    "keywords": [
+      "resubmitted order file",
+      "duplicate pick instruction",
+      "order import reference",
+      "client order reference",
+      "submission reference",
+      "rejected order submission"
+    ],
+    "publishedAt": "2026-09-22",
+    "modifiedAt": "2026-09-22",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An order import should retain the client order reference and a distinguishable submission reference.",
+      "A repeated order reference should be compared with accepted line details before a second instruction is released.",
+      "A rejected submission should be recorded separately from a successfully accepted order."
+    ],
+    "sources": [],
+    "keyAnswer": "An order import should retain the client order reference and a distinguishable submission reference so a repeated file can be identified. Before releasing a second pick instruction, the repeated order reference should be compared with the accepted line details. A rejected submission should be recorded separately from a successfully accepted order.",
+    "sections": [
+      {
+        "heading": "References that distinguish a resubmission from a new order",
+        "paragraphs": [
+          "A resubmitted order file can look identical to a new order if the import record only stores the client order reference. Two submissions may carry the same client order reference while representing different attempts to place the same order, or a corrected version of an earlier file. Without a second identifier, the warehouse has no reliable way to tell whether the file is a repeat or a genuinely new instruction.",
+          "An order import should retain the client order reference and a distinguishable submission reference. The client order reference ties the file to the customer's own numbering, while the submission reference identifies the specific file or transmission that arrived. Together they let a reviewer ask a precise question: has this client order reference already been accepted, and is this submission the same one or a later one?",
+          "The submission reference does not need to be elaborate. It needs to be unique enough that two files carrying the same client order reference can be told apart in the import record. If the same client order reference appears twice with different submission references, that is a signal to pause and compare before any pick instruction is released."
+        ],
+        "bullets": [
+          "Retain the client order reference exactly as supplied.",
+          "Add a submission reference that distinguishes one file from another.",
+          "Treat a repeated client order reference with a new submission reference as a review trigger, not an automatic release."
+        ]
+      },
+      {
+        "heading": "Comparing a repeated order reference with accepted line details",
+        "paragraphs": [
+          "Once a repeated order reference is identified, the next step is comparison rather than assumption. A repeated order reference should be compared with accepted line details before a second instruction is released. The accepted line details show what was already committed: item, quantity and any line-level information the import captured when the order was first accepted.",
+          "The comparison should answer whether the resubmitted file matches, corrects or conflicts with the accepted lines. A file that matches the accepted lines is likely a duplicate submission and should not generate a second pick instruction. A file that changes quantities or items is a different situation, because the accepted lines no longer describe what the client now wants. That difference needs a decision owner before any new instruction is released.",
+          "This is where a narrow check matters. Releasing a second pick instruction for the same order can send the warehouse to pick stock that was already picked, or to pick a quantity that no longer reflects the accepted order. Comparing the repeated reference with accepted line details is the control that prevents the second instruction from being created by default."
+        ],
+        "bullets": [
+          "Pull the accepted line details for the repeated order reference.",
+          "Compare item and quantity information between the accepted lines and the resubmitted file.",
+          "Escalate a conflict or correction to a named decision owner instead of releasing a second instruction automatically."
+        ]
+      },
+      {
+        "heading": "Recording a rejected submission separately from an accepted order",
+        "paragraphs": [
+          "Not every resubmitted file should be accepted, and not every rejected file should disappear. A rejected submission should be recorded separately from a successfully accepted order. If a rejected file is folded into the accepted order record, the history becomes misleading: it can look as though the accepted order was amended, or as though the rejected file was never received.",
+          "Keeping the rejected submission separate preserves a clear audit trail. The record can show that a file arrived, that it was reviewed against an accepted order reference, and that it was not released as a second instruction. The accepted order record remains unchanged, which keeps the pick instruction tied to the lines that were actually committed.",
+          "This separation also helps when a client asks what happened to a resubmission. The answer can point to the rejected submission record and the accepted order it was compared against, rather than relying on memory or on a single blended record. The practical benefit is that duplicate handling becomes a documented decision instead of an invisible one."
+        ],
+        "bullets": [
+          "Record the rejected submission with its own reference and the reason it was not released.",
+          "Leave the accepted order record unchanged when a resubmission is rejected.",
+          "Keep the rejected submission traceable to the accepted order reference it was compared against."
+        ]
+      },
+      {
+        "heading": "Questions to settle before the import goes live",
+        "paragraphs": [
+          "The control only works if the people receiving order files agree on a few basics. Who supplies the submission reference, and is it generated by the client's system, the import process or both? What counts as a repeated order reference: an exact match, or a match after normalising spacing and case? Who is the decision owner when a resubmitted file changes quantities rather than repeating them?",
+          "It is also worth deciding what happens when a resubmitted file arrives before the first file has been accepted. The comparison step assumes there is an accepted order to compare against. If no accepted lines exist yet, the reviewer needs a rule for which submission becomes the accepted one and how the other is recorded.",
+          "These questions are operational, not legal or regulatory. They define how the import behaves and who acts when the behaviour is ambiguous. Settling them before the workflow goes live is cheaper than discovering after a duplicate pick that no one owned the decision."
+        ],
+        "bullets": [
+          "Confirm who generates and owns the submission reference.",
+          "Define what counts as a repeated order reference.",
+          "Name the decision owner for corrections and conflicts.",
+          "Decide how to handle a resubmission that arrives before any acceptance."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does a repeated client order reference mean the file is a duplicate?",
+        "answer": "No. A repeated client order reference means the file should be compared with accepted line details before a second instruction is released. The comparison shows whether the file repeats the accepted lines or changes them, and that difference determines the next step."
+      },
+      {
+        "question": "Why keep a rejected submission instead of deleting it?",
+        "answer": "A rejected submission should be recorded separately from a successfully accepted order so the history stays clear. The record shows that a file arrived and was reviewed, while the accepted order remains tied to the lines that were actually committed."
+      },
+      {
+        "question": "What is the minimum reference information for an order import?",
+        "answer": "An order import should retain the client order reference and a distinguishable submission reference. The client reference links the file to the customer's numbering, and the submission reference makes it possible to tell one file from another when the client reference repeats."
+      }
+    ],
+    "searchIntent": "How should a resubmitted order file be checked before it creates a second pick instruction?"
+  },
+  {
     "briefId": "carton-content-amendments",
     "slug": "updating-carton-records-after-items-move-between-boxes",
     "category": "Fulfillment",
