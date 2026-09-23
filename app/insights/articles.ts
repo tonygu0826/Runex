@@ -22,6 +22,97 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "rework-first-sample-approval",
+    "slug": "approving-first-rework-sample-batch-processing",
+    "category": "3PL & Warehousing",
+    "title": "Approving a First Rework Sample Before Batch Processing",
+    "description": "Compare the first completed rework sample with the current instruction, record the approval, and update the instruction before batch work resumes.",
+    "excerpt": "A first rework sample review compares the completed unit with the current instruction and records which version and sample were approved.",
+    "keywords": [
+      "rework sample approval",
+      "first sample review",
+      "relabelling and repacking instruction",
+      "rework instruction version",
+      "batch processing hold point"
+    ],
+    "publishedAt": "2026-09-23",
+    "modifiedAt": "2026-09-23",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A sample review should compare the completed unit with the current rework instruction.",
+      "The approval record should identify the instruction version and the sample that was reviewed.",
+      "Changes requested during sample review should be reflected in the working instruction before batch processing resumes."
+    ],
+    "sources": [],
+    "keyAnswer": "Review the first completed rework unit against the current rework instruction, then record the approval with the instruction version and the sample that was reviewed. If the review requests changes, reflect them in the working instruction before the remaining batch is processed.",
+    "sections": [
+      {
+        "heading": "What the first sample review compares against the current instruction",
+        "paragraphs": [
+          "When a relabelling or repacking job begins, the first completed unit is a checkpoint rather than a finished output. The review compares that completed unit with the current rework instruction, item by item, so the instruction and the physical result are checked against each other before the rest of the batch is touched. The instruction is the reference point; the sample is the evidence. If the two do not agree, the disagreement needs to be resolved before more units are processed.",
+          "A practical comparison covers the elements the instruction actually specifies. That may include the label applied, the placement of that label, the packaging used, the quantity or configuration inside the unit, and any marking or identifier the instruction calls for. The reviewer is not judging whether the work looks acceptable in general, but whether it matches what the current instruction says. Keeping the comparison tied to the instruction prevents personal preference from quietly becoming the standard for the batch."
+        ],
+        "bullets": [
+          "Confirm which instruction version is in force at the time of the review.",
+          "Check the completed unit against each element the instruction defines.",
+          "Note any element the instruction leaves unclear, rather than filling the gap by assumption."
+        ]
+      },
+      {
+        "heading": "Recording the instruction version and the reviewed sample",
+        "paragraphs": [
+          "The approval record should identify the instruction version and the sample that was reviewed. Both parts matter. Without the instruction version, a later reader cannot tell which set of requirements the sample was measured against, especially if the instruction has been revised since. Without a clear reference to the sample, the approval floats free of any physical object, and there is no way to confirm later which unit was actually examined.",
+          "The sample reference should be specific enough that the unit can be located or distinguished from the rest of the batch. Depending on the job, that might be a unit identifier, a time or sequence marker, or a retained physical sample held aside for the purpose. The record should also state the outcome plainly: approved as is, approved with noted changes, or not approved pending revision. Vague wording such as checked or looks fine leaves the next person guessing whether batch work may proceed."
+        ],
+        "bullets": [
+          "Record the instruction version in force at the moment of review.",
+          "Identify the sample in a way that distinguishes it from the remaining units.",
+          "State the outcome explicitly rather than implying it."
+        ]
+      },
+      {
+        "heading": "Handling changes requested during sample review",
+        "paragraphs": [
+          "A first sample review often surfaces something worth changing: a label position that does not sit correctly, a packaging step that is awkward at the bench, or wording in the instruction that two people read differently. When changes are requested, they should be reflected in the working instruction before batch processing resumes. The instruction is the document the rest of the team will follow, so a correction that lives only in conversation or in a reviewer's note will not reach the people doing the work.",
+          "This is the point where the hold matters most. If the batch continues while the instruction is being revised, some units will be produced under the old wording and some under the new, and the batch becomes a mix of two standards. Pausing batch work until the revised instruction is in place keeps the output consistent and keeps the approval record meaningful. It also gives the reviewer a chance to confirm that the revised wording actually produces the intended result, rather than assuming the change reads correctly on paper."
+        ],
+        "bullets": [
+          "Capture the requested change in the working instruction, not only in a message or margin note.",
+          "Confirm the revised instruction is the version in force before work restarts.",
+          "Decide whether the revised instruction needs its own sample check before the batch continues."
+        ]
+      },
+      {
+        "heading": "Confirming the working instruction before batch processing resumes",
+        "paragraphs": [
+          "Before the remaining units are processed, confirm which instruction version is now the working version and that everyone involved is using it. If the instruction was revised, the earlier version should no longer be in circulation at the bench, and the approval record should point to the version that was actually approved. A short confirmation step here prevents the common failure where the revision exists but the floor is still working from a printed or cached copy of the old one.",
+          "It is also worth deciding, in advance, what happens if a unit later in the batch does not match the approved sample. The approval covers the sample that was reviewed, not an assumption that every subsequent unit will match it without checking. A simple expectation that deviations are raised rather than quietly corrected keeps the batch aligned with the instruction and keeps the approval record honest about what was actually verified."
+        ],
+        "bullets": [
+          "Confirm the working instruction version and remove superseded copies from use.",
+          "Tie the approval record to the version that batch work will follow.",
+          "Agree how a later unit that differs from the approved sample should be raised."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does the first sample need to be approved before any other units are processed?",
+        "answer": "The sample review exists to catch a mismatch between the completed unit and the current instruction before the rest of the batch is produced. If batch work continues while the instruction is still being revised, units end up split across two versions of the requirement, which makes the approval record harder to rely on."
+      },
+      {
+        "question": "What should the approval record contain at minimum?",
+        "answer": "It should identify the instruction version in force at the time of review and the sample that was examined, along with the outcome. Those three elements let a later reader reconstruct what was checked and against which requirements."
+      },
+      {
+        "question": "What if the instruction is unclear rather than wrong?",
+        "answer": "An unclear instruction is still a reason to pause batch work, because two people may interpret it differently and produce different results. Clarify the wording in the working instruction first, then confirm the revised version before processing resumes."
+      }
+    ],
+    "searchIntent": "How should a first completed rework sample be approved before the remaining batch is processed?"
+  },
+  {
     "briefId": "order-import-deduplication",
     "slug": "checking-resubmitted-order-files-duplicate-picks",
     "category": "3PL & Warehousing",
