@@ -22,6 +22,89 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "packing-photo-instructions",
+    "slug": "packing-photo-instructions-match-images-parcels",
+    "category": "Fulfillment",
+    "title": "Packing-Photo Instructions That Match Images to Parcels",
+    "description": "A packing-photo instruction should name the feature to capture, the packing moment it appears, and the parcel reference it belongs to.",
+    "excerpt": "Define what each packing photo shows, when it is taken, and which parcel or order reference it links to before routine capture begins.",
+    "keywords": [
+      "packing photo instruction",
+      "parcel reference image link",
+      "packing station photo capture",
+      "image retention expectations",
+      "packing evidence documentation"
+    ],
+    "publishedAt": "2026-09-24",
+    "modifiedAt": "2026-09-24",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A packing-photo instruction should state the feature to document and the point in packing when it is visible.",
+      "Each image should be linked to a parcel or order reference rather than relying on upload sequence.",
+      "Image access and retention expectations should be agreed with the client before routine capture begins."
+    ],
+    "sources": [],
+    "keyAnswer": "A packing-photo instruction should state the feature to document and the point in packing when that feature is visible. Each image should be linked to a parcel or order reference rather than relying on upload sequence, and image access and retention expectations should be agreed with the client before routine capture begins.",
+    "sections": [
+      {
+        "heading": "Naming the feature each photo must show",
+        "paragraphs": [
+          "A packing photo is only useful if the instruction says what the image is meant to prove. The feature could be a label position, a seal, a quantity of items visible in the carton, or the condition of contents before the box is closed. Without that named feature, a photo becomes a general picture of a packing bench and cannot answer a later question about a specific parcel.",
+          "Write the feature in plain terms that a packer can recognise at the station. Avoid instructions that depend on interpretation, such as asking for a clear photo of the packing process. Instead, name the object and the attribute: the shipping label on the top face, the inner protective wrap around the item, or the void fill level above the contents. If two features matter, treat them as two separate shots rather than one crowded image.",
+          "A useful test is whether someone who did not pack the parcel could look at the image and confirm the named feature without asking a follow-up question. If the answer is no, the instruction is still too vague."
+        ]
+      },
+      {
+        "heading": "Timing the shot to the packing step where the feature appears",
+        "paragraphs": [
+          "The instruction should also say when the photo is taken. A feature that is visible only before the carton is sealed cannot be captured after taping, and a label applied at the end of packing will not appear in an early shot. Timing ties the image to a specific step in the packing sequence, which keeps the evidence consistent from parcel to parcel.",
+          "For example, a hypothetical instruction might read: photograph the open carton after the last item is placed but before void fill is added. That wording tells the packer exactly where the shot belongs in the workflow. If the feature is the sealed carton edge, the instruction would instead place the shot after sealing and before the parcel moves to the outbound lane.",
+          "When timing is left out, packers may take photos at different moments, and the resulting set cannot be compared across parcels. The instruction should be specific enough that two people following it would capture the same feature at the same stage."
+        ]
+      },
+      {
+        "heading": "Attaching a parcel or order reference instead of upload order",
+        "paragraphs": [
+          "An image that cannot be tied to a parcel is difficult to use later. The instruction should require that each photo carries a parcel or order reference, such as the order number, the parcel identifier or the carton label reference used at the station. Relying on the sequence in which images are uploaded is fragile, because a re-upload, a skipped shot or a batch transfer can break the assumed order.",
+          "The reference should be captured in a way that survives the upload. That could mean the reference is visible in the frame, entered into a field alongside the image, or written on a card placed in the shot. The method matters less than the result: each image should be traceable to one parcel or order without guessing from timestamps or file names.",
+          "Where a parcel contains multiple cartons, the instruction should also say whether the reference is the order, the carton or both. This prevents a later search from returning several images that appear similar but belong to different boxes."
+        ]
+      },
+      {
+        "heading": "Agreeing access and retention before routine capture",
+        "paragraphs": [
+          "Before packing photos become routine, the client and the warehouse should agree on who can view the images and how long they are kept. These expectations affect how images are stored, who can retrieve them and when they are removed. Leaving the question open until a dispute arises tends to produce either missing images or an archive that no one has authority to clear.",
+          "The agreement does not need to be complex, but it should cover the practical points: which roles can request an image, how a request is made, how quickly a response is expected, and what happens when the retention period ends. If the client needs images for a marketplace or retail dispute process, that should be stated before capture begins so the instruction can include any extra reference or framing requirement.",
+          "Retention and access expectations should be reviewed when the packing process changes, because a new feature or a new parcel type may need a different image or a different reference."
+        ]
+      },
+      {
+        "heading": "Checking a sample image set against the instruction",
+        "paragraphs": [
+          "Before the instruction is used across all packing stations, review a small sample set against the written requirements. The check should confirm that each image shows the named feature, was taken at the stated step, and carries a parcel or order reference. A sample review also reveals whether the instruction is practical at the station or whether it slows packing more than the client intended.",
+          "If the sample shows that a feature is hard to capture, the instruction may need to be rewritten rather than enforced as written. For example, a reflective label may not photograph clearly under the station lighting, and the instruction might need to specify an angle or a different moment. The sample review is the point to catch that, not after hundreds of parcels have been packed.",
+          "Record the outcome of the sample review so the working instruction reflects what was actually agreed. If the instruction changes, the sample should be checked again against the revised wording."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does every parcel need the same number of packing photos?",
+        "answer": "The instruction should define the required shots by feature and packing step, not by a fixed count. If a parcel type has fewer features to document, the instruction can say so, but each required feature should still be captured at its stated moment."
+      },
+      {
+        "question": "What if the parcel reference is not visible in the photo?",
+        "answer": "The reference can be attached in a separate field or shown on a card in the frame, as long as the link between image and parcel is clear. The instruction should state which method is used so the link does not depend on upload order."
+      },
+      {
+        "question": "When should access and retention be revisited?",
+        "answer": "Review them when the packing process, the parcel types or the client's evidence needs change. A new feature or a new dispute process may require a different image or a different retention period."
+      }
+    ],
+    "searchIntent": "What should a packing-photo instruction specify so each image can be matched to the right parcel?"
+  },
+  {
     "briefId": "rework-first-sample-approval",
     "slug": "approving-first-rework-sample-batch-processing",
     "category": "3PL & Warehousing",
