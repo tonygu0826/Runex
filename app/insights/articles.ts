@@ -22,6 +22,104 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "barcode-scan-diagnosis",
+    "slug": "telling-unreadable-barcode-apart-mis-mapped-code",
+    "category": "3PL & Warehousing",
+    "title": "Telling an Unreadable Barcode Apart From a Mis-Mapped Code",
+    "description": "Separate a failed scan from a readable but unrecognised code before replacing labels or adjusting item mappings.",
+    "excerpt": "A barcode exception record should separate failed scans from readable but unrecognised values, then compare the scanned value with the expected item and pack-level mapping.",
+    "keywords": [
+      "barcode scan exception record",
+      "unreadable barcode vs unknown code",
+      "pack-level barcode mapping",
+      "replacement label test scan",
+      "scanned value comparison"
+    ],
+    "publishedAt": "2026-09-25",
+    "modifiedAt": "2026-09-25",
+    "readTime": "7 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A barcode exception record should distinguish a failed scan from a readable but unrecognised value.",
+      "The scanned value should be compared with the expected item and pack-level mapping before a label is replaced.",
+      "A replacement label should be checked with a test scan against the intended product record."
+    ],
+    "sources": [],
+    "keyAnswer": "A barcode exception record should distinguish a failed scan from a readable but unrecognised value, because the two point to different follow-up work. The scanned value should be compared with the expected item and pack-level mapping before any label is replaced, and a replacement label should be checked with a test scan against the intended product record.",
+    "sections": [
+      {
+        "heading": "Recording the scan outcome: failed read versus readable but unrecognised value",
+        "paragraphs": [
+          "When a barcode does not lead to the expected record, the first useful step is to record what actually happened at the scanner. A failed read means no value was captured at all: the scanner could not decode the symbol. A readable but unrecognised value means a value was captured, but the system did not match it to an expected item or pack. These are different events and should not be collapsed into a single note such as 'barcode problem'.",
+          "A barcode exception record should distinguish a failed scan from a readable but unrecognised value. The record can capture the station or process step, the time, the operator, the item or order context, and the raw scanned value where one exists. For a failed read, note that no value was returned and describe the physical condition of the label if that is visible. For an unrecognised value, keep the exact characters captured, including any separators or leading characters, because that string is the evidence used in the next step.",
+          "This separation matters because the follow-up work differs. A failed read points toward the physical label or the scanning setup. A readable but unrecognised value points toward the relationship between the captured value and the item or pack-level mapping. Recording both under one heading makes it harder to choose the right corrective action later."
+        ],
+        "bullets": [
+          "Failed read: no value captured; check the label condition and the scan attempt.",
+          "Readable but unrecognised: a value was captured but did not match an expected record.",
+          "Keep the raw scanned value exactly as captured for comparison."
+        ]
+      },
+      {
+        "heading": "Checking the scanned value against the expected item and pack-level mapping",
+        "paragraphs": [
+          "Once a value has been captured, compare it with what the process expected. The expected item is the product the operator intended to handle. The pack-level mapping is the relationship between the scanned code and the specific pack, case or unit configuration that the code is supposed to represent. A code can be readable and still fail to match because it belongs to a different pack level, a different item, or a mapping that was never set up.",
+          "The scanned value should be compared with the expected item and pack-level mapping before a label is replaced. This comparison is a desk check, not a guess. Look at the captured string, the item record, and the pack-level mapping side by side. Ask whether the value is unknown to the system, known but attached to a different item, or known but attached to a different pack level than the one being handled. Each answer leads to a different next step.",
+          "If the value is unknown, the question is whether the mapping is missing or the label is wrong. If the value is known but attached to another item, the question is whether the wrong label was applied or the mapping was changed. If the value is known but at another pack level, the question is whether the operator scanned the wrong level or the label was printed for a different configuration. The comparison should be recorded in the exception record so the decision is traceable."
+        ]
+      },
+      {
+        "heading": "Deciding between a label problem and a mapping problem",
+        "paragraphs": [
+          "The comparison usually points toward one of two categories: a label problem or a mapping problem. A label problem means the physical label does not carry the value the process expects. A mapping problem means the label carries a value, but the system relationship between that value and the item or pack is missing, wrong, or attached to something else.",
+          "A failed read is more often a label or scanning condition issue, though it can also occur when a label is damaged or poorly placed. A readable but unrecognised value is more often a mapping or label-content issue. Neither category should be assumed from the symptom alone; the captured value and the expected record are what support the decision.",
+          "Before changing anything, confirm who owns the mapping and who owns the label content. If the mapping is owned by the client or a system administrator, the warehouse may need to escalate rather than edit. If the label is produced by the warehouse, the label content and print settings are in scope. The exception record should note the decision and the owner so the same case is not reopened without new evidence."
+        ],
+        "bullets": [
+          "Label problem: the physical label does not carry the expected value.",
+          "Mapping problem: the value exists but is not linked to the expected item or pack level.",
+          "Confirm the decision owner before editing mappings or reprinting labels."
+        ]
+      },
+      {
+        "heading": "Replacing a label and confirming it with a test scan",
+        "paragraphs": [
+          "If the decision is to replace a label, the replacement should not be treated as finished when it comes off the printer. A replacement label should be checked with a test scan against the intended product record. The test scan confirms that the new label carries a value the system recognises and that the value resolves to the correct item and pack level.",
+          "The test scan should be performed in the same scanning context the label will face in normal work, using the same type of scanner and the same process step where practical. If the test scan returns the intended product record, the replacement can proceed. If it does not, the label or mapping still needs work, and the exception record should show what the test scan returned.",
+          "For a mapping problem, replacing the label may not be the right action at all. If the label is correct but the mapping is missing or wrong, the fix belongs with the mapping owner. Replacing a correct label would hide the real issue and could create a second exception later. The exception record should state which path was chosen and why."
+        ]
+      },
+      {
+        "heading": "Closing the exception record against the intended product record",
+        "paragraphs": [
+          "An exception is not closed simply because the immediate scan now works. The record should be closed against the intended product record, meaning the item and pack level the process was supposed to handle. This confirms that the fix addressed the original expectation, not just the symptom at the scanner.",
+          "The closure note can reference the captured value, the comparison result, the decision taken, the replacement label or mapping change, and the test scan outcome. If the case was escalated to a mapping owner, the closure should wait until that owner confirms the change. If the case was a failed read resolved by a new label, the test scan result is the evidence that the label now resolves correctly.",
+          "Keeping the exception record tied to the intended product record also helps when similar cases appear later. A pattern of readable but unrecognised values for the same item or pack level suggests a mapping or label-content issue rather than isolated damage. A pattern of failed reads for the same label stock suggests a print or placement issue. The record structure makes those patterns visible without relying on memory."
+        ],
+        "bullets": [
+          "Close against the intended item and pack level, not just a successful scan.",
+          "Record the captured value, comparison, decision and test scan outcome.",
+          "Use repeated exception patterns to guide mapping or label reviews."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a failed read and an unrecognised value be recorded in the same exception field?",
+        "answer": "They should be distinguishable in the record. A failed read means no value was captured, while an unrecognised value means a value was captured but did not match an expected item or pack. Keeping them separate supports the right follow-up work."
+      },
+      {
+        "question": "When is it appropriate to replace a label?",
+        "answer": "Replacement is appropriate when the comparison shows the physical label does not carry the expected value. If the label is correct but the mapping is missing or wrong, the fix belongs with the mapping owner instead. A replacement label should be checked with a test scan against the intended product record."
+      },
+      {
+        "question": "What should a test scan confirm?",
+        "answer": "A test scan should confirm that the replacement label carries a value the system recognises and that the value resolves to the intended item and pack level. If it does not, the label or mapping still needs work before the exception is closed."
+      }
+    ],
+    "searchIntent": "How can a warehouse distinguish an unreadable barcode from a valid code mapped to the wrong item?"
+  },
+  {
     "briefId": "packing-photo-instructions",
     "slug": "packing-photo-instructions-match-images-parcels",
     "category": "Fulfillment",
