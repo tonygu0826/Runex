@@ -22,6 +22,108 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "warehouse-export-field-mapping",
+    "slug": "mapping-inventory-export-fields-another-system-consumes-them",
+    "category": "3PL & Warehousing",
+    "title": "Mapping Inventory Export Fields Before Another System Consumes Them",
+    "description": "Define each export field's meaning, unit and empty-value treatment, then confirm the mapping with the receiving team.",
+    "excerpt": "Map field meaning, units and empty values, test a sample export, and get receiving-team confirmation before replacing a report.",
+    "keywords": [
+      "inventory export field mapping",
+      "field meaning and unit definition",
+      "permitted empty-value treatment",
+      "sample export identifier check",
+      "receiving team mapping confirmation",
+      "replacing an existing reporting input"
+    ],
+    "publishedAt": "2026-09-26",
+    "modifiedAt": "2026-09-26",
+    "readTime": "7 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An export mapping should define each field's meaning, unit and permitted empty-value treatment.",
+      "A sample export should be checked for preserved identifiers and consistent row-level interpretation.",
+      "The receiving team should confirm the mapping before the export replaces an existing reporting input."
+    ],
+    "sources": [],
+    "keyAnswer": "An export mapping should state, for every field, what it means, which unit it uses and how an empty value is permitted to appear. A sample export should then be checked for preserved identifiers and consistent row-level interpretation, and the receiving team should confirm the mapping before the export replaces an existing reporting input.",
+    "sections": [
+      {
+        "heading": "Writing Down What Each Export Field Means and Which Unit It Uses",
+        "paragraphs": [
+          "An inventory export is only as useful as the agreement behind its columns. Before a file is handed to another system, each field should have a written meaning that a reader can apply without asking the person who built the report. A field named quantity is not self-explanatory: it could mean units, cases, pallets or the number of records in a line. The mapping should say which one, and it should say which unit the number is expressed in.",
+          "The same discipline applies to identifiers, dates, statuses and reference numbers. If a field carries an item code, the mapping should state whether it is the warehouse's internal code, a client code or a supplier code, and whether leading characters are part of the value. If a field carries a date, the mapping should state what the date represents and the format supplied. If a field carries a status, the mapping should list the permitted values rather than leaving the receiving team to infer them from a sample.",
+          "A practical way to test the written meaning is to ask whether two people reading the mapping would interpret a row the same way. Where the answer is uncertain, the field needs a sharper definition, not a footnote. This is also the point to record which fields are required for the receiving system to function and which are informational, so that a missing optional field does not stall the whole file."
+        ],
+        "bullets": [
+          "State the meaning of each field in plain language, not just its column heading.",
+          "State the unit for every numeric field, including quantities and weights.",
+          "Identify which code system each identifier belongs to.",
+          "List permitted values for status and category fields.",
+          "Mark which fields the receiving system requires and which are optional."
+        ]
+      },
+      {
+        "heading": "Deciding How Empty Values Should Appear in the Export",
+        "paragraphs": [
+          "Empty values cause more downstream confusion than almost any other part of an export, because an empty cell can mean several different things. It might mean the value is genuinely unknown, that the field does not apply to this row, that the value is zero, or that the export process failed to populate it. An export mapping should define the permitted empty-value treatment for each field so the receiving team can tell these cases apart.",
+          "The decision is not only about what appears in the cell. It is also about what the receiving system will do when it encounters that value. A field that is allowed to be blank in one context may need an explicit placeholder in another, and a numeric field that is blank may be read as zero by some systems and as an error by others. The mapping should state the agreed treatment and the reason for it, so the choice can be revisited if the receiving system changes.",
+          "It is worth agreeing on a small set of conventions rather than a different rule for every column. For example, the mapping might state that unknown values are left empty, that not-applicable values use a defined marker, and that zero is written as zero rather than left blank. Whatever conventions are chosen, they should be written down and applied consistently across the export."
+        ],
+        "bullets": [
+          "Distinguish unknown, not applicable, zero and failed-to-populate cases.",
+          "State what the receiving system does with each empty-value treatment.",
+          "Keep the number of conventions small and apply them consistently.",
+          "Record the reason for each convention so it can be reviewed later."
+        ]
+      },
+      {
+        "heading": "Checking a Sample Export for Preserved Identifiers and Consistent Rows",
+        "paragraphs": [
+          "A sample export should be checked for preserved identifiers and consistent row-level interpretation. Preserved identifiers means that reference numbers, item codes and lot or batch identifiers arrive in the receiving file exactly as they were held in the source, including leading zeros, separators and any prefix that forms part of the value. A sample that has been opened in a spreadsheet and saved again can quietly change these values, so the check should compare the exported value with the source value rather than trusting the visual appearance of the cell.",
+          "Consistent row-level interpretation means that each row can be read on its own terms. If a row represents an item at a location, the mapping should make clear which fields identify the item and which identify the location. If a row represents a movement, the mapping should make clear which fields identify the source and destination. A sample that mixes these meanings, or that relies on the order of rows to convey information, will be difficult for another system to consume reliably.",
+          "The sample check is also the moment to look for values that fall outside the agreed conventions. A status value that was not listed, a unit that does not match the mapping, or an empty cell in a field marked as required are all signs that the mapping and the export do not yet agree. These findings should be resolved before the file is used for anything beyond testing."
+        ],
+        "bullets": [
+          "Compare exported identifiers with source values, including leading zeros and separators.",
+          "Confirm that each row can be interpreted without relying on row order.",
+          "Check that status, unit and required-field conventions hold across the sample.",
+          "Resolve any value that falls outside the agreed mapping before wider use."
+        ]
+      },
+      {
+        "heading": "Confirming the Mapping With the Team That Will Consume the Report",
+        "paragraphs": [
+          "The receiving team should confirm the mapping before the export replaces an existing reporting input. Confirmation is not a formality; it is the step where the people who will use the file check that the field meanings, units and empty-value treatments match what their system and their process expect. A mapping that looks complete on paper can still fail if the receiving team reads a field differently or if their system cannot accept a value the export produces.",
+          "Confirmation works best when the receiving team is given the written mapping and the sample export together, so they can trace a field from its definition to its value in a row. Questions that arise at this stage are useful: they show where the mapping is ambiguous or where an assumption has been carried over from the previous report. The answers should be folded back into the mapping so that the agreed version is the one that gets used.",
+          "It is also worth confirming who on the receiving side can approve a change to the mapping later. Field meanings and units can drift when source systems are updated, and a named owner on each side keeps that drift visible rather than letting it appear as a data discrepancy."
+        ],
+        "bullets": [
+          "Provide the written mapping and the sample export together for review.",
+          "Ask the receiving team to confirm field meanings, units and empty-value treatments.",
+          "Fold their answers back into the mapping so one agreed version exists.",
+          "Name an owner on each side who can approve later mapping changes."
+        ]
+      },
+      {
+        "heading": "Replacing an Existing Reporting Input Only After That Confirmation",
+        "paragraphs": [
+          "Replacing an existing reporting input is a change to someone else's workflow, even when the new export is technically better. The safe sequence is to confirm the mapping first, then run the new export alongside the existing input for a period, and only then retire the old one. Running in parallel lets the receiving team compare the two sources and raise differences while the old input is still available as a reference.",
+          "During the parallel period, differences should be investigated rather than averaged away. A difference might come from a field meaning that was never written down, a unit that changed, or an empty-value convention that the receiving system handles differently. Each difference is evidence about the mapping, and the mapping should be updated if the evidence shows it was incomplete.",
+          "The old input should be retired only when the receiving team confirms that the new export meets their needs and that no unresolved differences remain. Keeping a note of what changed, when, and who confirmed it gives the next review a starting point and avoids re-litigating decisions that were already made."
+        ],
+        "bullets": [
+          "Run the new export alongside the existing input before retiring the old one.",
+          "Investigate differences as evidence about the mapping rather than ignoring them.",
+          "Retire the old input only after the receiving team confirms the replacement.",
+          "Record what changed, when and who confirmed it."
+        ]
+      }
+    ],
+    "faq": [],
+    "searchIntent": "How should inventory export fields be mapped before a report is consumed by a different system?"
+  },
+  {
     "briefId": "barcode-scan-diagnosis",
     "slug": "telling-unreadable-barcode-apart-mis-mapped-code",
     "category": "3PL & Warehousing",
