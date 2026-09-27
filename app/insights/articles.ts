@@ -22,6 +22,114 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "unit-of-measure-conversions",
+    "slug": "mapping-each-inner-pack-case-quantities-order-import",
+    "category": "3PL & Warehousing",
+    "title": "Mapping Each, Inner-Pack and Case Quantities Before Order Import",
+    "description": "A practical method to map each, inner-pack and case quantities to a base unit before order quantities are imported.",
+    "excerpt": "Map each, inner-pack and case quantities to a base unit with checked examples before importing order quantities.",
+    "keywords": [
+      "each inner-pack case conversion",
+      "unit of measure mapping",
+      "base unit conversion",
+      "pack level quantity mapping",
+      "order import quantity check"
+    ],
+    "publishedAt": "2026-09-27",
+    "modifiedAt": "2026-09-27",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A product record should distinguish the selling unit from the unit used for storage and picking.",
+      "Each pack level should have an explicit conversion to the base unit and a checked example quantity.",
+      "An ambiguous pack conversion should be resolved before quantities are imported or allocated."
+    ],
+    "sources": [],
+    "keyAnswer": "A product record should distinguish the selling unit from the unit used for storage and picking. Each pack level should have an explicit conversion to the base unit and a checked example quantity. An ambiguous pack conversion should be resolved before quantities are imported or allocated.",
+    "sections": [
+      {
+        "heading": "Separate the selling unit from the storage and picking unit",
+        "paragraphs": [
+          "A product record should distinguish the selling unit from the unit used for storage and picking. The selling unit is what a customer orders, such as one each, one inner-pack or one case. The storage and picking unit is what the warehouse handles, moves and counts. These may differ, and treating them as one field is where quantity errors begin.",
+          "Start by naming the base unit for each product. The base unit is the smallest unit the warehouse will track, and every other pack level converts to it. For example, if a product is stored and picked as an each, the base unit is the each. If it is stored as a case and picked as an each, the base unit may still be the each, with the case as a higher pack level. The choice depends on how the product is physically handled, not on how it is sold.",
+          "Record the selling unit and the base unit as separate fields. A product sold by the case but stored and picked by the each needs both facts visible on the product record. Without that separation, an order line that says one case can be read as one each, and the pick instruction will be wrong before any quantity is imported."
+        ],
+        "bullets": [
+          "Name the base unit: the smallest unit the warehouse tracks.",
+          "Record the selling unit separately from the storage and picking unit.",
+          "Confirm which unit is used for counting, picking and allocation."
+        ]
+      },
+      {
+        "heading": "Define an explicit conversion to the base unit for each pack level",
+        "paragraphs": [
+          "Each pack level should have an explicit conversion to the base unit and a checked example quantity. A pack level is any grouping above the base unit, such as an inner-pack or a case. The conversion states how many base units are in one of that pack level. If the base unit is the each, an inner-pack of six has a conversion of six, and a case of four inner-packs has a conversion of twenty-four.",
+          "Write the conversion as a number, not as a description. A note that says a case contains several inner-packs is not a conversion. The product record needs a value that a system can multiply by the ordered quantity. If the same product is sold in more than one pack level, each level needs its own conversion entry.",
+          "Keep the conversion tied to the product record rather than to a single order file. When the conversion lives only in an order file, the next import may use a different assumption. A product-level conversion gives every import the same starting point and makes a mismatch visible when an order line does not fit the expected pack level."
+        ],
+        "bullets": [
+          "State the conversion as a number of base units per pack level.",
+          "Give each pack level its own conversion entry.",
+          "Keep the conversion on the product record, not only in the order file."
+        ]
+      },
+      {
+        "heading": "Verify each conversion with a checked example quantity",
+        "paragraphs": [
+          "A conversion is only useful if it has been checked against a real example. Take one order line that uses the pack level and work it through by hand. If the order is two cases and the case conversion is twenty-four base units, the checked example should show forty-eight base units. Compare that result with what the warehouse would physically pick and count.",
+          "The checked example should use a quantity that is easy to follow, such as one case, two inner-packs or a mixed line. Write the example next to the conversion so the next person can repeat the check without guessing. If the example does not match the physical pack, the conversion is wrong or the pack level is misnamed.",
+          "Repeat the check for every pack level that appears in order files. A product with an each, an inner-pack and a case needs three checked examples. This step is small, but it catches the mismatch before the quantity reaches allocation, where a wrong conversion becomes a wrong pick."
+        ],
+        "bullets": [
+          "Work one order line through by hand for each pack level.",
+          "Compare the calculated base quantity with what would be physically picked.",
+          "Store the checked example beside the conversion for repeatability."
+        ]
+      },
+      {
+        "heading": "Resolve ambiguous pack conversions before importing or allocating quantities",
+        "paragraphs": [
+          "An ambiguous pack conversion should be resolved before quantities are imported or allocated. Ambiguity appears when a pack level could mean more than one thing, when the same word is used for different counts, or when the order file does not state which pack level it uses. Importing an ambiguous quantity moves the problem into picking, where it is harder to correct.",
+          "Hold the affected order lines and ask the information owner to confirm the pack level and count. The confirmation should identify the product, the pack level and the number of base units. Once confirmed, update the product record and the checked example before releasing the lines. If the confirmation changes the conversion, any already-imported lines that used the old value should be reviewed.",
+          "A simple rule helps: if the pack level cannot be converted to the base unit with a number that has been checked, the quantity is not ready to import. Resolving it at the product record keeps the correction in one place instead of repeating it across order files."
+        ],
+        "bullets": [
+          "Hold order lines whose pack level or count is unclear.",
+          "Ask the information owner to confirm the pack level and base-unit count.",
+          "Update the product record and checked example before releasing the lines."
+        ]
+      },
+      {
+        "heading": "Questions to ask before the first import",
+        "paragraphs": [
+          "Before order quantities are imported, ask which unit the customer orders and which unit the warehouse counts. Ask how many base units are in each pack level and where that number is recorded. Ask for a checked example for each pack level that appears in the order file.",
+          "Also ask what happens when an order line does not match a known pack level. The answer should describe who confirms the correct conversion and how the line is held until it is resolved. A clear answer here prevents an ambiguous quantity from becoming a pick instruction.",
+          "Finally, ask how a conversion change is handled after import. If a conversion is corrected later, the affected order lines should be identifiable so they can be reviewed rather than assumed correct."
+        ],
+        "bullets": [
+          "Which unit is ordered, and which unit is counted?",
+          "How many base units are in each pack level, and where is that recorded?",
+          "Who confirms an unclear pack level, and how are affected lines held?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can the selling unit and the base unit be the same?",
+        "answer": "Yes, when the product is sold and handled in the same unit. Even then, the product record should state both roles so a later change in selling unit does not silently change how the warehouse counts."
+      },
+      {
+        "question": "What if an order file uses a pack level that is not on the product record?",
+        "answer": "Treat it as an ambiguous conversion. Hold the line, confirm the pack level and base-unit count with the information owner, and update the product record before importing the quantity."
+      },
+      {
+        "question": "How often should a checked example be repeated?",
+        "answer": "Repeat the check whenever a pack level, conversion or product record changes. A conversion that was correct for an earlier pack may not match the current one."
+      }
+    ],
+    "searchIntent": "How should each, inner-pack and case quantities be mapped before order quantities are imported?"
+  },
+  {
     "briefId": "warehouse-export-field-mapping",
     "slug": "mapping-inventory-export-fields-another-system-consumes-them",
     "category": "3PL & Warehousing",
