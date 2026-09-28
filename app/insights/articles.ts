@@ -22,6 +22,92 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "purchase-order-amendments",
+    "slug": "handling-revised-purchase-orders-double-counting-receipts",
+    "category": "3PL & Warehousing",
+    "title": "Handling Revised Purchase Orders Without Double-Counting Receipts",
+    "description": "A revised purchase order should replace the prior expectation, not add to it, so expected quantities stay accurate.",
+    "excerpt": "How to record a purchase-order revision so replaced quantities are not treated as a second expected receipt.",
+    "keywords": [
+      "revised purchase order",
+      "purchase order revision reference",
+      "superseded expected quantity",
+      "expected receipt balance",
+      "amended line quantities"
+    ],
+    "publishedAt": "2026-09-28",
+    "modifiedAt": "2026-09-28",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A purchase-order revision should identify the original reference, revision and affected line quantities.",
+      "Already received quantities should be distinguished from the balance still expected under the revised instruction.",
+      "The prior expectation should be marked superseded when the amendment replaces rather than adds to it."
+    ],
+    "sources": [],
+    "keyAnswer": "A purchase-order revision should identify the original reference, the revision and the affected line quantities, so the change is traceable to the instruction it replaces. Already received quantities should be separated from the balance still expected, and the prior expectation should be marked superseded when the amendment replaces rather than adds to it.",
+    "sections": [
+      {
+        "heading": "What a revision reference needs to show on the amended instruction",
+        "paragraphs": [
+          "A revised purchase order is an instruction that changes an earlier one, not a new order that sits beside it. The revision should identify the original reference, the revision itself and the affected line quantities. Without those three elements, a receiving team has no reliable way to tell whether the amended instruction replaces the earlier expectation or adds to it.",
+          "The revision reference is what makes the change traceable. If the original reference is missing, the amendment floats free and may be treated as a separate expected receipt. If the revision identifier is missing, two versions of the same instruction can look equally current. If the affected line quantities are missing, staff cannot tell which lines changed and which remain as originally stated.",
+          "A useful practice is to state the change in terms of the line it affects: the item, the quantity now expected and the quantity that was previously expected. That framing makes the replacement relationship visible on the instruction itself, rather than leaving it to be inferred from timing or from a conversation. Where a revision touches only some lines, the unchanged lines should remain clearly identified as unchanged so they are not re-keyed as new expectations."
+        ],
+        "bullets": [
+          "Original purchase order reference",
+          "Revision identifier or version",
+          "Affected line quantities, stated against the prior expectation",
+          "Lines that remain unchanged"
+        ]
+      },
+      {
+        "heading": "Separating quantities already received from the balance still expected",
+        "paragraphs": [
+          "A revision often arrives after part of the order has already been received. In that situation, the amended quantity is not the same as the open receipt expectation. Already received quantities should be distinguished from the balance still expected under the revised instruction, so the warehouse is not waiting for goods that have already arrived or expecting a second delivery of the same units.",
+          "The practical split is straightforward: received quantity, revised total quantity and the difference between them. The difference is the balance still expected. If the revised total is lower than what has already been received, that is a decision point rather than a routine update, because the instruction now describes less than what is physically on hand. That situation should be raised with the party who issued the revision before any further receiving action is taken.",
+          "Keeping the received quantity visible alongside the revised total also protects the receipt record. A receipt that has already been posted should not be rewritten to match a later revision; the revision changes what is still expected, not what was actually received. The two figures answer different questions and should remain separately readable."
+        ]
+      },
+      {
+        "heading": "Marking the earlier expectation as superseded rather than additional",
+        "paragraphs": [
+          "The prior expectation should be marked superseded when the amendment replaces rather than adds to it. This is the step that prevents double-counting. If the earlier expectation stays open while the revised expectation is also open, the system shows more expected units than the supplier intends to send, and the receiving team may hold space, labour or dock time for freight that will not arrive.",
+          "Marking superseded is not the same as deleting. The earlier expectation should remain visible as history so the change can be traced, but it should no longer count toward the open receipt expectation. A revision that genuinely adds quantity is a different case: there, the additional quantity is a new expectation and the earlier one is not superseded. The distinction between replace and add should be stated explicitly on the revision, because the two cases look similar on a quantity line alone.",
+          "Where a revision is ambiguous about whether it replaces or adds, the safe operational move is to hold the change and confirm it with the issuer. Guessing in either direction creates a reconciliation problem: guessing replace when the intent was add leaves the warehouse short of expected units, and guessing add when the intent was replace inflates the expectation."
+        ],
+        "bullets": [
+          "Superseded: the earlier expectation no longer counts toward open receipts",
+          "Additional: the earlier expectation remains and the new quantity is added to it",
+          "Ambiguous: confirm with the issuer before applying the change"
+        ]
+      },
+      {
+        "heading": "Checking the open receipt expectation after the revision is applied",
+        "paragraphs": [
+          "Once the revision is recorded, the open receipt expectation should be checked against the revised instruction. The check is simple in principle: the open expectation should equal the revised total quantity less what has already been received, with the superseded expectation excluded. If it does not, something in the revision was applied twice, applied to the wrong line or not applied at all.",
+          "This check is worth doing at the line level rather than only at the order level. An order-level total can look correct while individual lines are wrong, particularly when a revision changes one line and leaves others untouched. Comparing each affected line against its revised quantity catches the case where a replacement was recorded as an addition on one line and correctly on another.",
+          "It also helps to check the expectation against what the receiving team is actually planning for. If the open expectation and the expected arrival do not agree, that disagreement should be resolved before the freight reaches the receiving point, not after. A revision that is correct in the system but not reflected in the receiving plan still produces the same double-counting problem on the dock."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a revised purchase order replace the original record?",
+        "answer": "The earlier expectation should be marked superseded when the amendment replaces rather than adds to it, but it should remain visible as history. Replacing the record outright removes the traceability that shows what changed and why the open expectation is what it is."
+      },
+      {
+        "question": "What if the revised quantity is lower than what has already been received?",
+        "answer": "That is a decision point rather than a routine update, because the instruction now describes less than what is physically on hand. It should be raised with the party who issued the revision before further receiving action is taken."
+      },
+      {
+        "question": "How can a team tell a replacement revision from an additional one?",
+        "answer": "The revision should state which it is. If it does not, the change should be held and confirmed with the issuer, because the two cases produce different open receipt expectations and cannot be distinguished from the quantity line alone."
+      }
+    ],
+    "searchIntent": "How can a revised purchase order replace expected quantities without being counted as a second receipt?"
+  },
+  {
     "briefId": "unit-of-measure-conversions",
     "slug": "mapping-each-inner-pack-case-quantities-order-import",
     "category": "3PL & Warehousing",
