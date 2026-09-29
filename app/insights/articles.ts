@@ -22,6 +22,90 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "sku-substitution-permission",
+    "slug": "approving-different-sku-unavailable-order-line",
+    "category": "Fulfillment",
+    "title": "Approving a Different SKU for an Unavailable Order Line",
+    "description": "A substitution instruction should name the original item, the permitted alternate and the order lines it covers before any pick is changed.",
+    "excerpt": "Name the original item, the permitted alternate and the affected order lines before replacing an unavailable SKU.",
+    "keywords": [
+      "SKU substitution approval",
+      "alternate item instruction",
+      "unavailable order line",
+      "substitution permission record",
+      "requested versus supplied item"
+    ],
+    "publishedAt": "2026-09-29",
+    "modifiedAt": "2026-09-29",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A substitution instruction should identify the original item, permitted alternate and applicable order lines.",
+      "An alternate should not be inferred solely from similar product descriptions or packaging.",
+      "The shipment record should preserve the distinction between the requested item and the item actually supplied."
+    ],
+    "sources": [],
+    "keyAnswer": "A substitution should be made only under an instruction that identifies the original item, the permitted alternate and the applicable order lines. Similar product descriptions or packaging are not enough to infer an alternate, and the shipment record should keep the requested item distinct from the item actually supplied.",
+    "sections": [
+      {
+        "heading": "What a substitution instruction needs to state",
+        "paragraphs": [
+          "When an order line cannot be filled as requested, the decision to replace it with a different SKU should rest on a written instruction rather than a judgment call at the pick face. That instruction needs three things: the original item that cannot be supplied, the specific alternate that is permitted in its place, and the order lines the permission covers. Without all three, a warehouse team is being asked to guess at commercial intent, and the resulting shipment may not match what the buyer or end customer agreed to accept.",
+          "The instruction should be narrow enough to be actionable. Naming an original item and an alternate is not the same as granting open permission to substitute anything similar in the same category. If the permission applies only to a particular order, a particular customer or a particular date range, that scope belongs in the instruction. A substitution permission record that names the original item, the permitted alternate and the applicable order lines gives the picker a clear boundary and gives the reviewer something concrete to check the shipment against later."
+        ]
+      },
+      {
+        "heading": "Why similar descriptions or packaging are not sufficient",
+        "paragraphs": [
+          "Products that look alike on a shelf or share wording in a description are not interchangeable by default. Two items with near-identical names can differ in size, formulation, compatibility, regulatory labelling or the way a customer uses them. Packaging can be redesigned between production runs, so a visual match is not a reliable signal either. Treating resemblance as permission moves a commercial decision into the warehouse aisle, where the person making it may have no visibility into why the original item was ordered.",
+          "The practical risk runs in both directions. A substitution made on appearance alone can send an item the customer cannot use, creating a return, a credit or a re-ship. A substitution refused on appearance alone can leave an order line unfilled when a valid alternate was available. Both outcomes are avoided by the same discipline: the alternate is confirmed by someone with the authority to permit it, and that permission is recorded before the pick changes."
+        ]
+      },
+      {
+        "heading": "Who confirms the alternate before the order line is changed",
+        "paragraphs": [
+          "The confirmation should come from the party that owns the commercial relationship with the end customer, or from a named delegate acting under an agreed rule. In a typical arrangement, the client provides standing substitution rules for defined items, and the warehouse applies them within that scope. Anything outside the standing rules goes back to the client contact for a decision rather than being resolved at the pick face. The important point is that the role is named in advance, not discovered during an exception.",
+          "A workable approval path answers a few questions before the first exception occurs. Who can approve a substitution, and who covers when that person is unavailable? Is approval given per order line, per order or as a standing rule for a defined item pair? How quickly is a decision expected, and what happens to the order line while the decision is pending? If the answer to the last question is that the line sits unresolved with no owner, the process will stall at exactly the moment it is needed."
+        ],
+        "bullets": [
+          "Name the approver and a backup before exceptions arise.",
+          "State whether permission is per line, per order or a standing rule.",
+          "Define the expected response time and the hold state for the unresolved line.",
+          "Route anything outside the standing rules back to the client contact."
+        ]
+      },
+      {
+        "heading": "Keeping requested and supplied items distinct in the shipment record",
+        "paragraphs": [
+          "Once a substitution is approved, the shipment record should still show what was asked for and what was actually sent. Collapsing the two into a single line loses the audit trail that explains why the shipment differs from the original order. Keeping them distinct lets a reviewer confirm that the substitution was authorised, lets the client reconcile the order against what the customer received, and gives a clear basis for any follow-up if the alternate is rejected on arrival.",
+          "The record should also carry the reference that authorised the change, so the substitution can be traced back to the instruction that permitted it. This matters when the same order is reviewed weeks later, or when a pattern of substitutions on one item prompts a question about whether the original item should be reordered. A record that shows only the supplied item cannot answer either question."
+        ]
+      },
+      {
+        "heading": "What to do when no approved alternate exists",
+        "paragraphs": [
+          "If no alternate has been approved for the unavailable line, the default is to leave the line unresolved and escalate rather than to choose a replacement. The escalation should state the original item, the quantity affected, the reason the line cannot be filled as requested, and the decision needed. That gives the client enough information to approve an alternate, split the order, hold the line or cancel it, without a second round of questions.",
+          "It is worth deciding in advance how unresolved lines are handled at cut-off. Some clients prefer to ship the rest of the order and backorder the affected line; others prefer to hold the whole order until the line is resolved. Either approach can work, but the choice should be made before the exception occurs, because a picker under time pressure will otherwise make it by default. Recording the decision alongside the substitution permission keeps the rule visible for the next occurrence."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a warehouse substitute an item if the customer is likely to accept it?",
+        "answer": "Likelihood is not permission. A substitution should be made only under an instruction that identifies the original item, the permitted alternate and the applicable order lines. If no such instruction exists, the line should be escalated for a decision rather than replaced on an assumption."
+      },
+      {
+        "question": "Should the shipment record show the original item or the substitute?",
+        "answer": "It should preserve the distinction between the requested item and the item actually supplied, along with the reference that authorised the change. Showing only one of the two loses the explanation for why the shipment differs from the order."
+      },
+      {
+        "question": "What if the same substitution keeps coming up?",
+        "answer": "A recurring substitution is a signal to review the standing rules rather than to keep handling it as an exception. If the alternate is consistently acceptable, the client can define it as a standing permission for the relevant item pair and order scope, which removes the repeated escalation."
+      }
+    ],
+    "searchIntent": "What approval is needed before an unavailable order item is replaced with a different SKU?"
+  },
+  {
     "briefId": "purchase-order-amendments",
     "slug": "handling-revised-purchase-orders-double-counting-receipts",
     "category": "3PL & Warehousing",
