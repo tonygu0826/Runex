@@ -22,6 +22,99 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "picked-order-cancellation",
+    "slug": "checking-order-cancelling-after-picking",
+    "category": "Fulfillment",
+    "title": "Checking an Order Before Cancelling It After Picking",
+    "description": "Confirm the physical stage of picked goods and trace them to staging before a cancellation is accepted.",
+    "excerpt": "A cancellation after picking depends on where the goods physically are, not only on the recorded order status.",
+    "keywords": [
+      "picked order cancellation",
+      "physical stage check",
+      "staging position trace",
+      "cancelled order return link",
+      "verified returned quantity"
+    ],
+    "publishedAt": "2026-09-30",
+    "modifiedAt": "2026-09-30",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A cancellation request should be checked against the order's current physical stage, not just its recorded status.",
+      "Picked goods should be traced to their staging or packing position before a cancellation is confirmed.",
+      "Any return of picked goods to storage should be linked to the cancelled order and verified quantity."
+    ],
+    "sources": [],
+    "keyAnswer": "A cancellation request should be checked against the order's current physical stage rather than its recorded status alone. Picked goods should be traced to their staging or packing position before the cancellation is confirmed, and any return of those goods to storage should be linked to the cancelled order with a verified quantity.",
+    "sections": [
+      {
+        "heading": "Why the recorded order status is not enough",
+        "paragraphs": [
+          "An order that shows as picked in a system record is a statement about a transaction, not about where the goods are right now. Between the moment a pick is confirmed and the moment a parcel leaves the building, the goods can sit in a staging lane, wait at a packing bench, be partially packed, or already be sealed and labelled. A cancellation request that is accepted on the strength of the recorded status alone can therefore confirm something that is no longer true on the floor.",
+          "The practical risk is a mismatch between two records: the order record says cancelled, while the physical goods are still moving toward dispatch. That mismatch tends to surface later as a short shipment, an unexplained return to storage, or a stock count that does not reconcile. Treating the cancellation as a physical question rather than a status question is what prevents that gap from opening in the first place.",
+          "This does not mean the recorded status is unimportant. It is the starting point that tells you the order has progressed past allocation and into picking. The check that follows is about confirming where those picked goods actually are before anyone acts on the cancellation."
+        ]
+      },
+      {
+        "heading": "Tracing picked goods to staging or packing",
+        "paragraphs": [
+          "Before a cancellation is confirmed, the picked goods should be traced to their staging or packing position. That trace answers a simple question: can the goods be located as a discrete set, or have they already been merged into a larger flow? A tote or carton sitting in a named staging lane is straightforward to hold. Goods that have been consolidated with other orders, split across packing stations, or loaded onto a dispatch trolley are harder to isolate and need a different response.",
+          "The trace should identify the location, the handling state, and who last touched the goods. A staging position that is only described as somewhere in the outbound area is not a useful trace, because it does not tell a supervisor where to look or whether the goods can still be pulled without disturbing other orders. A packing position is more advanced in the flow, which usually means the goods are closer to being unrecoverable as a clean cancellation.",
+          "Where the trace cannot locate the goods with confidence, the cancellation should not be confirmed on the assumption that they will turn up. The honest position is that the physical stage is unconfirmed, and that is a different answer from a confirmed cancellation."
+        ],
+        "bullets": [
+          "Identify the staging or packing location by its normal identifier, not by a general area.",
+          "Record the handling state: untouched, partially packed, sealed, or already in a dispatch flow.",
+          "Note who last handled the goods so the trace can be verified rather than assumed."
+        ]
+      },
+      {
+        "heading": "Confirming the cancellation against the physical stage",
+        "paragraphs": [
+          "Once the goods are located, the cancellation decision follows from the physical stage rather than from the request itself. Goods still sitting untouched in staging can usually be held and returned to storage. Goods already packed and labelled may need to be unpacked before the stock can be put away, which is additional work that should be recognised rather than absorbed silently. Goods already released to a dispatch flow may not be recoverable as a cancellation at all, and the request may need to be handled as a return instead.",
+          "The confirmation step should record what was found, not just the outcome. A cancellation note that says only cancelled leaves the next person unable to tell whether the goods were recovered, where they went, or whether anything remains outstanding. Recording the physical stage at the moment of confirmation gives the warehouse a defensible basis for the stock movement that follows.",
+          "It is also worth separating the two decisions that are often bundled together: whether the order is cancelled, and whether the picked goods can be returned to saleable storage. Those can diverge. A cancellation can be accepted while the goods are held aside pending inspection, and the order record should not imply that the stock is already back on the shelf."
+        ]
+      },
+      {
+        "heading": "Linking returned goods to the cancelled order",
+        "paragraphs": [
+          "Any return of picked goods to storage should be linked to the cancelled order and verified quantity. Without that link, the stock reappears in inventory as an unexplained increase, and the cancelled order remains open on the exception list because nothing connects the two. The link is what allows a later reviewer to see that the quantity now in storage is the same quantity that was picked for the order that was cancelled.",
+          "The link should carry enough detail to be checked: the cancelled order reference, the item and quantity returned, the storage location the goods went to, and the condition they were in when they arrived there. If the goods were unpacked before returning, that should be visible too, because it affects whether they can go back to a normal pick location or need to be treated differently.",
+          "Where only part of the picked quantity can be recovered, the return should reflect what was actually put away rather than what was originally picked. A partial return that is recorded as a full one creates a stock discrepancy that will be discovered later, usually at the least convenient moment."
+        ]
+      },
+      {
+        "heading": "Verifying quantities before the order is closed",
+        "paragraphs": [
+          "The final check is a quantity comparison between what was picked, what was recovered, and what was returned to storage. These three numbers should reconcile, or the difference should be explained and recorded. A cancellation that is closed while a picked quantity is unaccounted for leaves an open question that no later report can resolve, because the physical goods are no longer in a known place.",
+          "Verification is also the point at which the order can be closed honestly. Closing means the cancellation is complete, the goods are back in a known storage state, and no further handling is expected. If any of those conditions is not met, the order is better left open with a clear note than closed on an assumption.",
+          "The questions a buyer should ask of a warehouse handling this workflow are straightforward. How is the physical stage confirmed before a cancellation is accepted? What is recorded when the goods cannot be located? How is a returned quantity linked back to the cancelled order? And what happens when the recovered quantity does not match the picked quantity? The answers show whether the process rests on a physical check or on a status change."
+        ],
+        "bullets": [
+          "Compare picked, recovered, and returned quantities before closing the order.",
+          "Record any difference with an explanation rather than adjusting the numbers to match.",
+          "Keep the order open when the physical position of the goods is still unresolved."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a cancellation be accepted if the picked goods cannot be located?",
+        "answer": "The physical stage is unconfirmed in that situation, which is not the same as a confirmed cancellation. The order is better held open with a note describing what was searched and what remains unknown, so the goods are not written off by default."
+      },
+      {
+        "question": "What should be recorded when only part of a picked quantity is returned to storage?",
+        "answer": "The return should reflect the quantity actually put away, linked to the cancelled order, with the difference between picked and returned quantities explained. Recording a partial return as a full one creates a stock discrepancy that surfaces later."
+      },
+      {
+        "question": "Does a cancellation mean the goods go back to a normal pick location?",
+        "answer": "Not necessarily. Goods that were unpacked or handled during packing may need a different storage state, and the return record should show the condition and location the goods actually went to rather than assuming they are immediately saleable."
+      }
+    ],
+    "searchIntent": "What must be checked before cancelling an order that has already been picked?"
+  },
+  {
     "briefId": "sku-substitution-permission",
     "slug": "approving-different-sku-unavailable-order-line",
     "category": "Fulfillment",
