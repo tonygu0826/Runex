@@ -22,6 +22,81 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "promotional-insert-versions",
+    "slug": "replacing-expired-promotional-insert-packing-station",
+    "category": "Fulfillment",
+    "title": "Replacing an Expired Promotional Insert at the Packing Station",
+    "description": "A controlled insert changeover keeps the expired campaign version out of orders that should receive the new insert.",
+    "excerpt": "Plan the insert changeover so the expired version is separated and the first affected order is verified.",
+    "keywords": [
+      "promotional insert version control",
+      "packing station insert changeover",
+      "expired insert separation",
+      "campaign version instruction",
+      "first affected order check"
+    ],
+    "publishedAt": "2026-10-01",
+    "modifiedAt": "2026-10-01",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An insert instruction should identify the campaign version and the orders to which it applies.",
+      "Superseded inserts should be separated from the material available at the active packing position.",
+      "A changeover check should verify the first affected order against the revised insert instruction."
+    ],
+    "sources": [],
+    "keyAnswer": "An insert instruction should identify the campaign version and the orders it applies to, so the packing team knows which version is current. Superseded inserts should be separated from the material available at the active packing position, and a changeover check should verify the first affected order against the revised insert instruction.",
+    "sections": [
+      {
+        "heading": "Stating the campaign version and its applicable orders",
+        "paragraphs": [
+          "A promotional insert changeover begins with a written instruction that names the campaign version and states which orders should receive it. Without that pairing, a packer working through a mixed queue has no reliable way to tell whether the insert in hand is current for the order being packed. The instruction should be specific enough that two people reading it would reach the same decision about a given order.",
+          "The applicable-orders portion matters as much as the version name. If the new insert applies only to orders placed after a certain point, or only to a particular sales channel, that boundary should be stated rather than inferred. Where the boundary is unclear, the packing team should treat it as a question for the instruction owner instead of guessing, because a guessed boundary is how expired and current versions end up in the same outbound stream.",
+          "It also helps to note what the instruction replaces. Recording the prior campaign version alongside the new one gives the team a clear reference for what is being retired, and it makes the changeover check later in the process easier to describe and confirm."
+        ]
+      },
+      {
+        "heading": "Removing the superseded insert from the active packing position",
+        "paragraphs": [
+          "Once the revised instruction is in place, the superseded inserts should be separated from the material available at the active packing position. Separation is a physical act, not a note on a clipboard. If the expired version remains within arm's reach of the packer, the risk of it being picked up during a busy stretch stays live regardless of what the instruction says.",
+          "How far the expired stock should move depends on the layout and on whether it will be used again. If the campaign is finished, the material may be routed for disposal or return according to the client's direction. If it might be reused for a later campaign, it still needs to leave the active position and be identified as not current. The key point is that the active position should hold only the version the instruction names.",
+          "A brief visual distinction between versions is worth agreeing on before the changeover, since inserts for successive campaigns can look similar at a glance. The distinction should come from the client or the instruction owner rather than being invented at the station."
+        ]
+      },
+      {
+        "heading": "Checking the first affected order against the revised instruction",
+        "paragraphs": [
+          "The changeover check is the point where the revised instruction meets a real order. The first order affected by the new version should be verified against the instruction before the line resumes its normal pace. That check confirms the packer has the correct insert, that the order genuinely falls within the applicable set, and that the expired version is no longer in play at the station.",
+          "It is worth deciding in advance who performs this check and what happens if it fails. If the first affected order carries the wrong insert, the response is not simply to correct that one parcel; the station should pause and the separation step should be re-examined, because a failed first check suggests the changeover itself was incomplete. Treating the first order as a sample of the new setup, rather than as an isolated parcel, is what gives the check its value.",
+          "The check should be quick enough to fit into normal packing work. It is a confirmation step, not a second full inspection, and it should not require the packer to reconstruct the campaign history from memory."
+        ]
+      },
+      {
+        "heading": "Recording what the changeover check confirmed",
+        "paragraphs": [
+          "A short record of the changeover closes the loop. At minimum, it should identify the campaign version now in use, the order used for the first affected check, and the fact that the check was completed. This record does not need to be elaborate, but it should be findable later if a question arises about when the switch took effect.",
+          "The record also supports the next changeover. When the following campaign arrives, the previous entry shows how the last switch was handled and which order marked the boundary. That continuity reduces the chance that a future changeover is treated as a first-time event with no reference point.",
+          "If the check reveals a problem, the record should say so plainly and note what was done in response, rather than being written as though the changeover succeeded. An accurate record of a corrected changeover is more useful than a clean-looking one that hides the correction."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if the new insert applies to orders already in the packing queue?",
+        "answer": "The instruction should state how in-progress orders are treated, because the applicable-orders boundary may fall inside work already underway. If the instruction does not cover that case, the packing team should raise it with the instruction owner before continuing rather than deciding locally which version those orders receive."
+      },
+      {
+        "question": "How should leftover expired inserts be handled?",
+        "answer": "They should be separated from the active packing position and identified as not current. Whether they are returned, stored for possible reuse or disposed of depends on the client's direction, which should be confirmed rather than assumed at the station."
+      },
+      {
+        "question": "Does every order after the changeover need the same check as the first one?",
+        "answer": "The changeover check verifies the first affected order against the revised instruction. Routine packing continues under the revised instruction after that, with any further verification following the normal quality steps agreed for the account."
+      }
+    ],
+    "searchIntent": "How should a new promotional insert replace an expired version without mixing the two in orders?"
+  },
+  {
     "briefId": "picked-order-cancellation",
     "slug": "checking-order-cancelling-after-picking",
     "category": "Fulfillment",
