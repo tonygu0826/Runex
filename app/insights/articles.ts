@@ -22,6 +22,100 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "packaging-consumables-replenishment",
+    "slug": "replenishing-packaging-consumables-mixing-them-saleable-stock",
+    "category": "3PL & Warehousing",
+    "title": "Replenishing Packaging Consumables Without Mixing Them Into Saleable Stock",
+    "description": "Keep cartons, inserts and other packing materials in separate stock records, then review expected use against available and incoming supply.",
+    "excerpt": "Separate consumable stock records and a replenishment review that compares expected packing use with available and incoming material.",
+    "keywords": [
+      "packaging consumables replenishment",
+      "packing material stock record",
+      "saleable inventory separation",
+      "expected packing use review",
+      "unavailable packaging material alternative"
+    ],
+    "publishedAt": "2026-10-02",
+    "modifiedAt": "2026-10-02",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Packaging consumables should have identifiable stock records separate from saleable product quantities.",
+      "A replenishment review should compare expected packing use with available material and incoming supply.",
+      "An unavailable packaging material needs an agreed alternative or a decision to hold the affected work."
+    ],
+    "sources": [],
+    "keyAnswer": "Packaging consumables should sit in identifiable stock records kept apart from saleable product quantities, so a carton or insert count is never read as sellable stock. A replenishment review then compares expected packing use with available material and incoming supply, and where a material is unavailable, an agreed alternative or a decision to hold the affected work is needed.",
+    "sections": [
+      {
+        "heading": "Why consumable counts belong outside saleable inventory records",
+        "paragraphs": [
+          "Cartons, inserts, void fill, tape and similar packing materials are used up during order preparation. They are not the product being sold. If their quantities sit in the same stock record as saleable units, a reader can mistake a carton count for sellable stock, or treat a low insert balance as a product shortage. The practical fix is to give consumables their own identifiable stock records, kept apart from saleable product quantities. Each record should name the material clearly enough that a person reading a report knows it is packing material and not merchandise.",
+          "Separation also makes the two kinds of count easier to reconcile. Saleable inventory is counted against orders, receipts and adjustments. Consumables are counted against packing activity. Mixing them forces one record to serve two purposes, which makes both harder to trust. Keeping them apart does not require a complex system; it requires a deliberate decision about where each count lives and who reads it."
+        ],
+        "bullets": [
+          "Give each packing material its own stock record with a name that cannot be confused with a product.",
+          "Keep consumable balances out of reports that are used to promise saleable stock.",
+          "Decide who owns the consumable record and who may change it."
+        ]
+      },
+      {
+        "heading": "What a replenishment review compares: expected use, available material, incoming supply",
+        "paragraphs": [
+          "A replenishment review is a comparison, not a guess. It brings together three things: the expected packing use for the coming period, the material currently available, and the supply already on order or otherwise incoming. Expected use should be based on the packing work that is actually planned, including known order patterns and any scheduled campaigns that change what goes into a parcel. Available material is what can be picked up at the packing position now. Incoming supply is what has been requested and is expected to arrive.",
+          "The review is most useful when it is done before the material runs short, not after. If expected use is higher than available material plus incoming supply, the gap is visible while there is still time to act. If incoming supply is later than the work requires, the same review shows the timing problem. The review should also record the assumptions behind expected use, so that when packing patterns change, the comparison can be updated rather than repeated from memory.",
+          "A simple review can be written down: material name, expected use for the period, available quantity, incoming quantity and expected arrival, and the resulting decision. The decision might be to order more, to move a delivery earlier, or to accept the balance as sufficient. What matters is that the comparison is made against a stated period and a stated use, not against a general feeling that stock looks low."
+        ],
+        "bullets": [
+          "State the period the review covers and the packing work it assumes.",
+          "Compare expected use with available material and incoming supply in the same view.",
+          "Record the decision that follows the comparison, including any order placed or timing change requested."
+        ]
+      },
+      {
+        "heading": "When a packaging material is unavailable: agreed alternative or hold the work",
+        "paragraphs": [
+          "Sometimes the review shows that a material cannot be supplied in time for the work that needs it. In that situation, two responses are available. One is an agreed alternative: a different carton, insert or packing material that has been accepted in advance for the affected work. The other is a decision to hold the affected work until the original material is available. Both are legitimate; what matters is that the choice is made deliberately and recorded, rather than improvised at the packing position.",
+          "An agreed alternative should be specific. It should identify the material it replaces, the work it may be used for, and any limits on its use. A generic instruction to use something similar leaves the decision to whoever is packing, which can produce inconsistent parcels. If no alternative has been agreed, the safer course is to hold the affected work and escalate the shortage, so that the decision is made by someone with the authority to accept the change.",
+          "Holding work has its own consequences. It can delay orders, consume staging space, and push other work later. Those consequences should be part of the decision, not discovered afterwards. The point of the review is to surface the shortage early enough that holding work is a choice rather than a surprise."
+        ],
+        "bullets": [
+          "Agree alternatives in advance, naming the material replaced and the work it may cover.",
+          "If no alternative is agreed, hold the affected work and escalate the shortage.",
+          "Record who approved the alternative or the hold, and when."
+        ]
+      },
+      {
+        "heading": "Keeping the consumable record current as packing patterns change",
+        "paragraphs": [
+          "Packing patterns change. A new insert is introduced, a carton size is dropped, a campaign adds a leaflet to every parcel. Each change alters expected use, and the consumable record should reflect it. If the record is not updated, the replenishment review will compare new packing work against an old view of material needs, and the comparison will mislead.",
+          "Keeping the record current is mostly a matter of timing. When a packing instruction changes, the consumable record should be reviewed at the same time, so that expected use is adjusted before the next replenishment decision. The review does not need to be elaborate; it needs to happen close enough to the change that the next comparison is based on the current pattern.",
+          "It also helps to review the consumable record periodically even when nothing obvious has changed. Small shifts in order mix, parcel size or insert usage accumulate. A regular review catches those shifts before they turn into a shortage at the packing position."
+        ],
+        "bullets": [
+          "Update expected use when a packing instruction or campaign changes.",
+          "Review consumable records on a regular cycle, not only when a shortage appears.",
+          "Keep the record readable by the people who pack, so discrepancies are noticed early."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should packaging consumables be counted in the same cycle count as saleable inventory?",
+        "answer": "They can be counted on the same schedule, but the counts should remain in separate records. The purpose of the count differs: saleable inventory is reconciled against orders and receipts, while consumables are reconciled against packing activity. Keeping the records apart prevents one count from being read as the other."
+      },
+      {
+        "question": "What should happen if an agreed alternative is used but the original material later arrives?",
+        "answer": "The consumable record should show what was used and what remains. The original material can return to normal use once it is available, but the record should reflect the period when the alternative was in use so that expected use and available material stay comparable."
+      },
+      {
+        "question": "How often should a replenishment review be done?",
+        "answer": "The right frequency depends on how quickly the material is used and how long incoming supply takes. A review done before each significant packing period, and whenever a packing instruction changes, is usually enough to surface a gap while there is still time to act."
+      }
+    ],
+    "searchIntent": "How should packaging consumables be replenished without confusing them with saleable inventory?"
+  },
+  {
     "briefId": "promotional-insert-versions",
     "slug": "replacing-expired-promotional-insert-packing-station",
     "category": "Fulfillment",
