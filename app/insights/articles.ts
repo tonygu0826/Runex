@@ -22,6 +22,101 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "partial-shipment-permissions",
+    "slug": "instructions-needed-partial-shipment-leaves",
+    "category": "Fulfillment",
+    "title": "Instructions Needed Before a Partial Shipment Leaves",
+    "description": "A partial shipment needs written permission that names which lines may split, how quantities stay linked, and what happens next.",
+    "excerpt": "Before an order with missing lines ships partially, the instruction should name the lines that may split, keep dispatched quantities tied to the order, and set a next action for the balance.",
+    "keywords": [
+      "partial shipment permission",
+      "split order lines",
+      "dispatched quantity link",
+      "remaining quantity next action",
+      "incomplete order shipping instruction"
+    ],
+    "publishedAt": "2026-10-03",
+    "modifiedAt": "2026-10-03",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Partial-shipment instructions should distinguish lines that may ship separately from items that must remain together.",
+      "A split should retain a link between dispatched quantities and the original order lines.",
+      "The remaining quantities should have an explicit next action rather than being treated as a completed order."
+    ],
+    "sources": [],
+    "keyAnswer": "Before an incomplete order ships partially, the instruction should state which lines may ship separately and which items must stay together. Dispatched quantities should remain linked to the original order lines, and the remaining quantities should carry an explicit next action rather than being treated as a completed order.",
+    "sections": [
+      {
+        "heading": "Naming the lines that may ship separately and the items that must stay together",
+        "paragraphs": [
+          "An order that cannot be filled in full is not automatically a candidate for a partial shipment. The first instruction to settle is which lines are permitted to leave ahead of the rest and which items are tied to each other. A line that can stand alone, such as a spare part or a single accessory, may be released on its own. A line that only makes sense as part of a set, a kit, or a matched pair should be held until the whole group is available. Without that distinction, a warehouse team is left to guess, and guesses tend to be made under time pressure at the packing bench.",
+          "The permission should be written rather than implied by a phone call or a note on a picking list. It should name the order, the lines that may split, and the lines that must remain together. If a customer has asked for a partial release, that request belongs in the instruction as well, because it changes the default from hold to ship. Where the answer is unclear, the safe position is to hold the affected lines and ask, since releasing goods that were meant to travel as a set creates a second problem that is harder to unwind than a short delay."
+        ],
+        "bullets": [
+          "Identify the order and the specific lines covered by the permission.",
+          "State which lines may ship separately and which must stay together.",
+          "Record the customer request or internal decision that supports the split.",
+          "Hold and escalate where the instruction does not cover a line."
+        ]
+      },
+      {
+        "heading": "Keeping dispatched quantities linked to the original order lines",
+        "paragraphs": [
+          "When part of an order leaves, the dispatched quantity should stay attached to the order line it came from. That link is what allows anyone reviewing the order later to see that three of ten units shipped and seven remain, rather than seeing a completed order and a separate, unexplained shipment. If the split is recorded only as a new shipment with no reference back, the original order can appear closed while stock is still owed, and the remaining units may never be picked.",
+          "The practical test is whether a person who did not handle the split can reconstruct it from the records. The dispatched quantity, the line it belongs to, and the balance still outstanding should all be visible in the same place. Where the warehouse system creates a child shipment or a release against the order, that reference should be preserved. Where the split is handled manually, the order record itself should carry the dispatched quantity and the balance, so the two are never separated."
+        ],
+        "bullets": [
+          "Record the dispatched quantity against the original order line.",
+          "Show the balance still owed on the same order record.",
+          "Preserve any shipment or release reference created by the split.",
+          "Check that the order does not appear complete while a balance remains."
+        ]
+      },
+      {
+        "heading": "Deciding the next action for quantities left behind",
+        "paragraphs": [
+          "The quantities that did not ship need a stated next step. They may be held until the missing stock arrives, cancelled, substituted, or moved to a backorder for a later release. Each of those outcomes leads to different work, and the instruction should say which one applies. Treating the balance as a completed order removes it from view and leaves the customer waiting without anyone owning the follow-up.",
+          "The next action should also identify who is responsible for it and what triggers the next release. If the balance is waiting on inbound stock, the instruction can point to the expected receipt. If it is waiting on a customer decision, the instruction can name the person who will follow up. A balance with no owner and no trigger tends to sit until someone asks, which is exactly the outcome the permission was meant to prevent."
+        ],
+        "bullets": [
+          "State whether the balance is held, cancelled, substituted or backordered.",
+          "Name the owner of the follow-up action.",
+          "Identify the trigger for the next release, such as an expected receipt.",
+          "Keep the balance visible until it is shipped or formally closed."
+        ]
+      },
+      {
+        "heading": "Recording who authorised the split and when it applies",
+        "paragraphs": [
+          "A partial shipment permission should carry the name of the person who authorised it and the date or period it covers. That record answers the question that arises later when someone asks why an order went out in two parts. It also prevents an old permission from being reused on a new order or a later release that the authoriser never intended to cover.",
+          "The authorisation should be specific to the order and the lines it names. A general instruction to allow partial shipments is not the same as permission for a particular order, and it should not be treated as one. Where the permission is time-bound, the instruction should say so, and the warehouse should check that the release falls within the period. If the authorisation is missing or ambiguous, the release should wait for confirmation rather than proceed on an assumption."
+        ],
+        "bullets": [
+          "Record the name of the person who authorised the split.",
+          "Note the date or period the permission applies to.",
+          "Keep the permission tied to the order and lines it names.",
+          "Do not treat a general preference as order-specific permission."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a warehouse decide on its own to ship part of an order?",
+        "answer": "A warehouse should not release part of an order without an instruction that names the lines that may split and the items that must stay together. Where the instruction is missing or unclear, the affected lines should be held and the question escalated rather than decided at the packing bench."
+      },
+      {
+        "question": "What should happen to the quantities that did not ship?",
+        "answer": "The remaining quantities should carry an explicit next action, such as holding for inbound stock, cancelling, substituting or backordering. They should stay visible against the original order and should not be treated as a completed order."
+      },
+      {
+        "question": "How long should a partial shipment permission remain valid?",
+        "answer": "The permission should state the date or period it covers and the order and lines it applies to. A permission that is not tied to a specific order or period can be misapplied to a later release, so the instruction should be checked before each split."
+      }
+    ],
+    "searchIntent": "Which instructions are needed before an order with missing lines can ship partially?"
+  },
+  {
     "briefId": "packaging-consumables-replenishment",
     "slug": "replenishing-packaging-consumables-mixing-them-saleable-stock",
     "category": "3PL & Warehousing",
