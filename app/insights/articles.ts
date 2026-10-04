@@ -22,6 +22,104 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "sku-alias-mapping",
+    "slug": "mapping-channel-specific-sku-aliases-one-physical-product",
+    "category": "Fulfillment",
+    "title": "Mapping Channel-Specific SKU Aliases to One Physical Product",
+    "description": "A practical way to link marketplace and channel item codes to a single physical product identifier without merging distinct products.",
+    "excerpt": "Map each channel code to one physical product identifier, and check alias changes against open orders before use.",
+    "keywords": [
+      "channel-specific SKU alias",
+      "physical product identifier mapping",
+      "alias table maintenance",
+      "similar item code confusion",
+      "open order alias check"
+    ],
+    "publishedAt": "2026-10-04",
+    "modifiedAt": "2026-10-04",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An alias table should identify the channel code and the physical product identifier it refers to.",
+      "Similar names do not establish that two item codes represent the same size, colour or pack configuration.",
+      "Changes to alias mappings should be checked against open orders before the revised mapping is used."
+    ],
+    "sources": [],
+    "keyAnswer": "An alias table should identify the channel code and the physical product identifier it refers to, so each channel entry resolves to one known product. Similar names do not establish that two item codes represent the same size, colour or pack configuration, so resemblance alone is not enough to merge them. Changes to alias mappings should be checked against open orders before the revised mapping is used.",
+    "sections": [
+      {
+        "heading": "What an Alias Table Needs to Record",
+        "paragraphs": [
+          "An alias table should identify the channel code and the physical product identifier it refers to. That single pairing is the core record: the channel code is the value a marketplace, storefront or trading partner sends, and the physical product identifier is the one product record the warehouse will pick, count and store against. Keeping both values in the same row makes the resolution explicit rather than leaving staff to infer which product a code belongs to.",
+          "A practical table also needs enough context to keep the pairing usable over time. The channel or source of the code, the date the mapping was created or last changed, and a short note describing what the code represents help the next person understand why the row exists. If a channel reuses codes or issues a new code for the same product, the table should show which entry is current rather than leaving two active rows that point in different directions.",
+          "The table is not a substitute for the product record itself. It is a translation layer between channel vocabulary and the physical identifier. When the translation is clear, receiving, picking and inventory reporting can all resolve the same channel code to the same product without reinterpreting the name each time."
+        ],
+        "bullets": [
+          "Channel code as supplied by the marketplace or trading partner.",
+          "Physical product identifier used for storage, picking and counting.",
+          "Channel or source name, change date and a short note on what the code represents.",
+          "A clear indication of which entry is current when a code is replaced."
+        ]
+      },
+      {
+        "heading": "Why Similar Item Names Are Not Proof of a Match",
+        "paragraphs": [
+          "Similar names do not establish that two item codes represent the same size, colour or pack configuration. Two listings can share almost identical wording and still describe different variants, different pack counts or different packaging. Treating resemblance as evidence of a match risks merging distinct products into one physical identifier, which then distorts picking, counting and reporting.",
+          "The safer approach is to confirm the match against the product details that actually distinguish the items. Size, colour, pack configuration and any other variant attribute should be checked before a channel code is linked to a physical identifier. If those details are not available or conflict, the mapping should wait rather than be guessed from the name.",
+          "This matters most when a channel sends abbreviated or reworded titles. A short marketplace title may omit the variant information that the physical product record carries. The alias table should resolve to the identifier that holds the full distinguishing detail, not to whichever product happens to have the closest name."
+        ],
+        "bullets": [
+          "Compare size, colour and pack configuration before linking a code.",
+          "Do not merge codes on the strength of a similar title alone.",
+          "Hold the mapping when distinguishing details are missing or conflicting."
+        ]
+      },
+      {
+        "heading": "Checking Alias Changes Against Open Orders",
+        "paragraphs": [
+          "Changes to alias mappings should be checked against open orders before the revised mapping is used. An order that is already in progress may have been released under the previous mapping, and switching the alias mid-flight can send the pick instruction to a different product than the one the order was built around. The check is a simple comparison: which open orders reference the channel code being changed, and what physical product did those orders expect?",
+          "The outcome of that check determines how the change is applied. If no open orders depend on the old mapping, the revision can take effect for new orders. If open orders do depend on it, the change needs to be sequenced so those orders finish against the mapping they were released under, or the affected orders need to be reviewed before the new mapping is used. Either way, the decision is recorded rather than left to whoever processes the next order.",
+          "This step also protects against a common failure mode: a mapping is corrected in the table, but an order already in the pick queue still carries the old resolution. Checking open orders before the change goes live closes that gap and keeps the correction from creating a second problem."
+        ],
+        "bullets": [
+          "Identify open orders that reference the channel code being changed.",
+          "Confirm which physical product those orders expected.",
+          "Sequence the change so in-progress orders are not redirected mid-flight.",
+          "Record the decision so the next order is not resolved by assumption."
+        ]
+      },
+      {
+        "heading": "Keeping One Physical Identifier Behind Several Channel Codes",
+        "paragraphs": [
+          "A single physical product can legitimately appear under several channel codes. Each channel may use its own numbering, and the alias table is what allows those different codes to resolve to one physical identifier. The goal is not to force every channel to adopt the same code, but to make the translation visible and consistent so the warehouse can tell which product is being handled.",
+          "Maintaining that structure means reviewing the table when channels change, when listings are revised or when new marketplaces are added. A periodic review can catch codes that no longer resolve, duplicate entries that point to different products, and rows that were created for a one-time listing. The review does not need to be elaborate; it needs to confirm that each active channel code still points to the intended physical product.",
+          "When the table is kept current, several channel codes can sit behind one physical identifier without confusion. The physical product remains the unit of storage and counting, while the channel codes remain the vocabulary each sales channel uses. The alias table is the bridge between the two, and its accuracy depends on treating each mapping as a deliberate decision rather than a naming coincidence."
+        ],
+        "bullets": [
+          "Allow multiple channel codes to resolve to one physical identifier.",
+          "Review the table when channels, listings or marketplaces change.",
+          "Look for codes that no longer resolve and duplicates that point elsewhere.",
+          "Treat each mapping as a decision, not a naming coincidence."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can two channel codes point to the same physical product?",
+        "answer": "Yes. Different channels may use their own numbering for the same physical product, and the alias table is what records that each code resolves to the same physical identifier. The table should show the channel or source for each code so the reason for the shared identifier remains visible."
+      },
+      {
+        "question": "What should happen when a channel changes a product code?",
+        "answer": "The new code should be added with its physical product identifier, and the previous entry should be marked as no longer current. Before the revised mapping is used, open orders that reference the old code should be checked so in-progress work is not redirected to a different product."
+      },
+      {
+        "question": "Is a similar product name enough to link two item codes?",
+        "answer": "No. Similar names do not establish that two item codes represent the same size, colour or pack configuration. The match should be confirmed against the details that distinguish the products before the codes are linked to one physical identifier."
+      }
+    ],
+    "searchIntent": "How can channel-specific SKU aliases be mapped without confusing distinct physical products?"
+  },
+  {
     "briefId": "partial-shipment-permissions",
     "slug": "instructions-needed-partial-shipment-leaves",
     "category": "Fulfillment",
