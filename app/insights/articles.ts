@@ -22,6 +22,93 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "seasonal-sku-retirement",
+    "slug": "checking-seasonal-sku-you-retire-code",
+    "category": "3PL & Warehousing",
+    "title": "Checking a Seasonal SKU Before You Retire the Code",
+    "description": "A product-code retirement review should confirm residual stock, open orders and pending receipts before new orders are blocked.",
+    "excerpt": "Confirm residual stock, open orders and pending receipts before a seasonal code stops accepting new orders.",
+    "keywords": [
+      "seasonal SKU retirement",
+      "product code deactivation",
+      "residual stock instruction",
+      "open orders and pending receipts",
+      "historical record retention"
+    ],
+    "publishedAt": "2026-10-05",
+    "modifiedAt": "2026-10-05",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A product-code retirement review should identify residual stock, open orders and pending receipts.",
+      "Deactivation for new orders should be distinguished from deleting the identifier needed for historical records.",
+      "Remaining units should receive a documented instruction rather than becoming unassigned after code retirement."
+    ],
+    "sources": [],
+    "keyAnswer": "Before a seasonal product code is retired, the review should identify residual stock, open orders and pending receipts so nothing is left unassigned. Deactivation for new orders should be kept separate from deleting the identifier that historical records still rely on, and any remaining units need a documented instruction rather than being left without one.",
+    "sections": [
+      {
+        "heading": "Confirming residual stock, open orders and pending receipts",
+        "paragraphs": [
+          "A seasonal code can look finished at the catalogue level while physical and transactional work is still attached to it. The retirement review should start by identifying three things: residual stock, open orders and pending receipts. Residual stock is any quantity still recorded against the code, whether it sits in a pick face, a reserve location or a staging area. Open orders are lines already released that still expect the code. Pending receipts are inbound quantities that have not yet been recorded as received.",
+          "These three categories behave differently. Residual stock needs a physical decision about what happens to the units. Open orders need a fulfilment decision about whether they can still be completed under the existing code or must be changed. Pending receipts need a receiving decision, because a supplier may still be shipping against a purchase order that references the code. Treating them as one lump can hide the fact that an order line is waiting on stock that is about to be retired.",
+          "A practical review lists each category with a reference: the location or order or receipt it belongs to, the quantity involved, and the person or team expected to act. That list becomes the working document for the retirement. If any category cannot be resolved before the retirement date, the retirement should be treated as incomplete rather than assumed to be clean."
+        ],
+        "bullets": [
+          "Residual stock: quantity still on hand, by location or status.",
+          "Open orders: released lines that still expect the code.",
+          "Pending receipts: inbound quantities not yet received.",
+          "For each item, record the reference and the expected next action."
+        ]
+      },
+      {
+        "heading": "Separating deactivation for new orders from deleting the identifier",
+        "paragraphs": [
+          "Deactivation and deletion are different operations and should be handled separately. Deactivation stops the code from accepting new orders, new purchase orders or new allocations. Deletion removes the identifier itself. Historical records, including past shipments, receipts, adjustments and customer documents, may still reference that identifier. If the identifier is deleted, those records can become difficult to interpret or reconcile.",
+          "The safer sequence is to deactivate first and confirm that no new work is being created against the code. Only after the residual stock, open orders and pending receipts are resolved should anyone consider whether the identifier itself needs to be removed. In many cases it does not need to be removed at all; it simply needs to stop being available for new transactions.",
+          "A buyer or operations lead should ask which system holds the authoritative product record, whether deactivation is reversible, and whether any downstream report or integration still expects the code to exist. If a report or integration depends on the code, deleting it can break that dependency even though the seasonal selling period has ended."
+        ]
+      },
+      {
+        "heading": "Giving remaining units a documented instruction",
+        "paragraphs": [
+          "Remaining units should not be left without direction after the code is retired. Each residual quantity needs a documented instruction: return to a holding location, transfer to another code, dispose of, or hold pending a decision. The instruction should identify the quantity it applies to and the person who approved it. Without that, units can sit in an unassigned state where no team owns them and no report explains why they are still on hand.",
+          "The instruction should also state what happens if the quantity does not match the record. A count difference found during retirement is a normal operational event, but it needs a documented resolution path rather than an informal adjustment. If the remaining units are being moved to another code, the movement should preserve a link back to the retired code so the history remains traceable.",
+          "This is also the point to check whether any open order or pending receipt still depends on those units. If an open order expects the residual stock, retiring the code before the order is resolved can leave the order line without a valid source. The instruction for the units and the instruction for the order should be consistent with each other."
+        ],
+        "bullets": [
+          "State the action for each residual quantity.",
+          "Name the approving owner for that action.",
+          "Define how count differences are documented.",
+          "Preserve a link to the retired code when units move."
+        ]
+      },
+      {
+        "heading": "Checking historical records still resolve after retirement",
+        "paragraphs": [
+          "After deactivation, historical records should still make sense. A shipment record, a receipt record or an adjustment that references the retired code should remain readable and linkable to the product it described. If the code has been deleted, that link may be lost. A simple check is to open a small sample of past records and confirm the retired code still resolves to a meaningful description or reference.",
+          "The check should also cover reports and integrations that consume product data. If a report groups activity by product code, a retired code that has been deleted may drop out of historical totals or appear as an unknown value. Deactivation usually avoids this because the identifier still exists for reporting, even though it no longer accepts new orders.",
+          "Retention expectations for historical records should be confirmed with the information owner before the identifier is removed. The retirement review does not need to decide retention policy, but it should confirm that whoever owns the records has been consulted. If retention requirements are unclear, keeping the identifier in a deactivated state is the more conservative option."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a seasonal code be deactivated while an open order still references it?",
+        "answer": "Deactivation blocks new orders, but an existing open order may still need the code to complete. The review should resolve open orders and pending receipts before treating the retirement as complete, or confirm that the remaining work has an agreed alternative."
+      },
+      {
+        "question": "What should happen to residual units after the code is retired?",
+        "answer": "Each residual quantity should have a documented instruction, such as return to holding, transfer to another code, dispose of, or hold pending a decision. The instruction should identify the quantity and the approving owner so the units are not left unassigned."
+      },
+      {
+        "question": "Does retiring a code mean deleting the identifier?",
+        "answer": "No. Deactivation for new orders and deletion of the identifier are separate decisions. Historical records may still rely on the identifier, so deletion should only be considered after confirming that those records and any dependent reports still resolve correctly."
+      }
+    ],
+    "searchIntent": "What should be checked before deactivating a seasonal SKU that still has stock or open orders?"
+  },
+  {
     "briefId": "sku-alias-mapping",
     "slug": "mapping-channel-specific-sku-aliases-one-physical-product",
     "category": "Fulfillment",
