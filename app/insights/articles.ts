@@ -22,6 +22,101 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "stock-reservation-expiry",
+    "slug": "checking-stale-inventory-reservation-release",
+    "category": "3PL & Warehousing",
+    "title": "Checking a Stale Inventory Reservation Before Release",
+    "description": "Review the order, reserved quantity and physical picking activity before releasing a stale reservation.",
+    "excerpt": "A stale reservation release should confirm the order, quantity and picking activity first.",
+    "keywords": [
+      "stale inventory reservation",
+      "reservation expiry review",
+      "release reserved quantity",
+      "physical picking check",
+      "original order next status"
+    ],
+    "publishedAt": "2026-10-06",
+    "modifiedAt": "2026-10-06",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A reservation rule should identify the order, reserved quantity and condition for review or expiry.",
+      "Physical picking activity should be checked before a reservation is released in the records.",
+      "A release should record the quantity made available and the next status of the original order."
+    ],
+    "sources": [],
+    "keyAnswer": "Before a stale reservation is released, the reservation rule should identify the order, the reserved quantity and the condition that triggers review or expiry. Physical picking activity should be checked so a release in the records does not conflict with goods already being handled. The release should then record the quantity made available and the next status of the original order.",
+    "sections": [
+      {
+        "heading": "Identifying the order, reserved quantity and review condition",
+        "paragraphs": [
+          "A stale reservation is not simply an old record. It is a claim on stock that no longer matches the order it was created for. The starting point is the reservation rule itself: it should identify the order, the reserved quantity and the condition that triggers review or expiry. Without those three elements, a release becomes guesswork. The order reference ties the reservation to a specific instruction. The reserved quantity states how much stock is being held. The review condition explains when the reservation should be examined, such as a period without progress or a change in the order's status.",
+          "A practical review begins by confirming that the reservation still belongs to an active order line. If the order has been cancelled, split or amended, the original reserved quantity may no longer be valid. The reviewer should compare the reservation against the current order record rather than assuming the earlier figure still applies. Where the order has changed, the reservation may need to be adjusted or replaced rather than released outright. The goal is to make the stock available only when the order no longer needs it.",
+          "The review condition should be specific enough that two people looking at the same reservation reach the same conclusion. A vague instruction such as 'release old reservations' leaves room for inconsistent decisions. A clearer rule might state that a reservation is reviewed when the order has not progressed to picking within an agreed period. That kind of condition gives the warehouse a defined trigger and a record of why the review happened."
+        ],
+        "bullets": [
+          "Confirm the order reference still matches an active instruction.",
+          "Check whether the reserved quantity is still valid after any order change.",
+          "Apply a review condition that two people would interpret the same way."
+        ]
+      },
+      {
+        "heading": "Confirming whether picking activity has already started",
+        "paragraphs": [
+          "Records and physical work may move at different speeds. A reservation may look stale in the system while a picker has already begun collecting the goods. Physical picking activity should be checked before a reservation is released in the records. If the stock is already being handled, releasing the reservation can create a conflict: the system offers the quantity to another order while the first order's goods are in a tote or on a cart.",
+          "The check should look at the order's current physical stage, not only its recorded status. A pick instruction that has been printed, a staging position that has been assigned or a partial pick already completed all indicate that the reservation is still doing useful work. In those cases, the reservation should not be released until the physical situation is resolved. The order may need to be completed, cancelled through the proper process or returned to storage before the stock can be made available.",
+          "Where picking has not started, the release is more straightforward, but it should still be recorded against the order. The reviewer should note what was checked and when. That note becomes the evidence that the release was deliberate rather than an automatic expiry. It also helps if the same order is reviewed again later, because the earlier check is visible."
+        ],
+        "bullets": [
+          "Look for printed pick instructions, assigned staging positions or partial picks.",
+          "Treat a reservation as active while physical handling is underway.",
+          "Record what was checked before releasing the quantity."
+        ]
+      },
+      {
+        "heading": "Recording the quantity released and the order's next status",
+        "paragraphs": [
+          "A release should record the quantity made available and the next status of the original order. Those two pieces of information keep the inventory record and the order record consistent with each other. The quantity released tells the warehouse how much stock has returned to the available pool. The next status tells anyone reading the order what is expected to happen next, whether that is cancellation, amendment, backorder or a fresh instruction.",
+          "Without a recorded next status, the order can sit in an ambiguous state. Stock has been freed, but the order still appears to be waiting for it. That gap invites duplicate work: someone may re-reserve the same quantity, or the order may be picked later against stock that has already been promised elsewhere. Naming the next status closes that gap and gives the order a clear path.",
+          "The release record should also preserve the link between the released quantity and the original reservation. If the order is later reinstated or amended, the earlier release is part of its history. Keeping that link makes it possible to reconstruct what happened without relying on memory. It also supports any reconciliation between the inventory record and the order record at the end of a period."
+        ],
+        "bullets": [
+          "State the quantity returned to available stock.",
+          "Name the order's next status so it does not remain ambiguous.",
+          "Keep the release linked to the original reservation for later reference."
+        ]
+      },
+      {
+        "heading": "Questions to settle before the release becomes routine",
+        "paragraphs": [
+          "A reservation expiry process works best when the decisions around it are agreed in advance. Who reviews a stale reservation, and who can approve its release? What period counts as stale for different order types? How should a release be handled when the order is partially picked? These questions are easier to answer before a backlog builds than during one.",
+          "It also helps to decide how released quantities are treated if the same order returns. If the order is reinstated, does it receive a new reservation, or does the earlier release get reversed? Either approach can work, but the choice should be consistent and recorded. The same applies to orders that are amended rather than cancelled: the reservation may need to be adjusted to the new quantity instead of released in full.",
+          "Finally, the review should distinguish a genuine expiry from a delay. An order that is simply waiting for stock, documentation or a client decision is not the same as one that has been abandoned. Releasing the reservation on a delayed order can remove stock that the order still needs. The review condition should therefore reflect the reason the order has not progressed, not only the time that has passed."
+        ],
+        "bullets": [
+          "Agree who reviews and who approves a release.",
+          "Decide how reinstated or amended orders are handled.",
+          "Separate a true expiry from an order that is merely delayed."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a stale reservation be released automatically?",
+        "answer": "Automatic release is only safe when the review condition is specific and the physical picking check is built into the process. If picking may have started, a person should confirm the order's physical stage before the quantity is made available."
+      },
+      {
+        "question": "What if the order is only partially picked?",
+        "answer": "A partially picked order still has an active claim on the stock involved. The reservation should not be released until the picked quantity and the remaining quantity are resolved, and the order's next status is recorded."
+      },
+      {
+        "question": "Does releasing a reservation cancel the order?",
+        "answer": "No. Releasing the reserved quantity returns stock to the available pool, but the order itself still needs a next status. That status should be recorded at the same time so the order does not remain in an ambiguous state."
+      }
+    ],
+    "searchIntent": "What should be checked before a stale inventory reservation is released for other orders?"
+  },
+  {
     "briefId": "seasonal-sku-retirement",
     "slug": "checking-seasonal-sku-you-retire-code",
     "category": "3PL & Warehousing",
