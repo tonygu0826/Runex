@@ -22,6 +22,93 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "product-master-revisions",
+    "slug": "handling-supplier-dimension-weight-changes-existing-sku",
+    "category": "3PL & Warehousing",
+    "title": "Handling Supplier Dimension and Weight Changes for an Existing SKU",
+    "description": "A supplier measurement change should update the product record without mixing old and new versions, so stock and orders stay aligned.",
+    "excerpt": "Revising dimensions or weight for an existing SKU means identifying what changed, when it applies and which stock it covers.",
+    "keywords": [
+      "product dimension revision",
+      "weight change existing SKU",
+      "packaging level measured",
+      "effective date product record",
+      "older stock measurements"
+    ],
+    "publishedAt": "2026-10-07",
+    "modifiedAt": "2026-10-07",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A dimension or weight revision should identify the affected product and the packaging level measured.",
+      "The revised record should state when it takes effect and whether older stock uses different measurements.",
+      "Unverified measurements should be flagged for review before they replace the working product record."
+    ],
+    "sources": [],
+    "keyAnswer": "A dimension or weight revision should identify the affected product and the packaging level measured, then state when the change takes effect and whether older stock uses different measurements. Measurements that have not been verified should be flagged for review before they replace the working product record.",
+    "sections": [
+      {
+        "heading": "Confirm which product and packaging level the supplier change affects",
+        "paragraphs": [
+          "A supplier message about a measurement change is not yet a product record revision. The first step is to confirm which product is affected and which packaging level the new measurement describes. A change to the each, inner pack or case can each produce a different number, and a figure that is correct for one level can be misleading if it is applied to another. The revised record should identify the affected product and the packaging level measured before any value is replaced.",
+          "It also helps to ask what prompted the change. A supplier may be reporting a new carton size, a different unit weight or a correction to a previously supplied figure. Those are different situations, and treating them the same can leave the record internally inconsistent. If the supplier has not stated the packaging level, that gap should be resolved before the measurement is used for storage, picking or freight planning."
+        ],
+        "bullets": [
+          "Identify the product and the exact packaging level the new measurement describes.",
+          "Check whether the change is a new specification, a correction or an unclear figure.",
+          "Do not apply a case measurement to an each record, or the reverse, without confirmation."
+        ]
+      },
+      {
+        "heading": "Record the effective date and how older stock is measured",
+        "paragraphs": [
+          "A revised measurement usually applies from a point in time, not to everything already in the warehouse. The revised record should state when it takes effect and whether older stock uses different measurements. That distinction matters when stock received before the change is still on hand, because a single updated figure can imply that all units share the new dimensions when they do not.",
+          "The practical question is which stock the new measurement covers. If the change applies only to future receipts, older stock may need to keep the previous measurement for storage, packing or freight purposes. If the supplier has confirmed that the change applies to existing stock as well, that should be stated rather than assumed. Where the position is unclear, the record should show the effective date and the older measurement rather than silently overwriting it."
+        ],
+        "bullets": [
+          "State the date from which the revised measurement applies.",
+          "Note whether older stock uses the previous measurement.",
+          "Keep the older measurement visible while affected stock remains on hand."
+        ]
+      },
+      {
+        "heading": "Flag unverified measurements before the working record is replaced",
+        "paragraphs": [
+          "Not every supplier figure arrives ready to use. Unverified measurements should be flagged for review before they replace the working product record. A flagged value can sit alongside the current record while it is checked, so warehouse work continues on a known basis rather than on a number that has not been confirmed.",
+          "The review should establish what was measured, at which packaging level and by whom. If the figure came from a document rather than a physical check, that should be recorded as the source. Once the measurement is verified, the flag can be cleared and the working record updated. Until then, the existing record remains the reference for storage, picking and freight planning."
+        ],
+        "bullets": [
+          "Mark unverified figures clearly rather than treating them as final.",
+          "Record the source of the measurement and the packaging level it covers.",
+          "Keep the current working record in place until the new value is confirmed."
+        ]
+      },
+      {
+        "heading": "Keep the revised record distinguishable from the version it supersedes",
+        "paragraphs": [
+          "When a measurement changes, the previous version should remain identifiable rather than disappearing. Keeping the revised record distinguishable from the version it supersedes helps anyone reviewing older stock, open orders or historical receipts understand which measurement applied at the time. Without that distinction, a later review can mistake the current figure for the one that was in use earlier.",
+          "A simple revision reference, the effective date and a note of the superseded value are usually enough. The aim is not to keep every draft, but to preserve the link between a measurement and the stock or orders it described. That link is what allows a warehouse team to answer a question about an older receipt without guessing which version of the product record was active."
+        ],
+        "bullets": [
+          "Retain a reference to the version the revision replaces.",
+          "Link the effective date to the stock or orders it covers.",
+          "Avoid deleting the superseded measurement while affected stock remains."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a supplier measurement change update the record immediately?",
+        "answer": "Only after the affected product and packaging level are confirmed and the measurement has been verified. Unverified measurements should be flagged for review before they replace the working product record."
+      },
+      {
+        "question": "What if older stock was measured differently?",
+        "answer": "The revised record should state when the change takes effect and whether older stock uses different measurements, so the previous figure remains available for the stock it described."
+      }
+    ],
+    "searchIntent": "What should happen when a supplier changes product dimensions or weight for an existing SKU?"
+  },
+  {
     "briefId": "stock-reservation-expiry",
     "slug": "checking-stale-inventory-reservation-release",
     "category": "3PL & Warehousing",
