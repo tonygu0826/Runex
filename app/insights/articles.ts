@@ -22,6 +22,102 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "packed-order-address-change",
+    "slug": "handling-address-change-after-order-packed-labelled",
+    "category": "Fulfillment",
+    "title": "Handling an Address Change After an Order Is Packed and Labelled",
+    "description": "A packed order with a new destination needs amended documents, removed superseded labels and a final check against one approved address.",
+    "excerpt": "Address changes after packing need a clear label and document trail, not a second destination on the same parcel.",
+    "keywords": [
+      "address change after packing",
+      "superseded shipping label",
+      "amended shipping documents",
+      "packed order destination change",
+      "label removal before reissue",
+      "shipment record destination check"
+    ],
+    "publishedAt": "2026-10-08",
+    "modifiedAt": "2026-10-08",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An address amendment should identify the order and whether a shipping label has already been produced.",
+      "Superseded destination labels and documents should be removed from use before amended documents are attached.",
+      "The final parcel and its shipment record should be checked against the same approved destination."
+    ],
+    "sources": [],
+    "keyAnswer": "An address amendment should identify the order and state whether a shipping label has already been produced. Superseded destination labels and documents should be removed from use before amended documents are attached, and the final parcel and its shipment record should be checked against the same approved destination.",
+    "sections": [
+      {
+        "heading": "Confirm the order and whether a label already exists",
+        "paragraphs": [
+          "When a destination changes after an order has been packed, the first step is to establish exactly which order is affected and whether a shipping label has already been produced. An address amendment should identify the order and whether a shipping label has already been produced. That single question determines how much rework is involved: a packed parcel with no label may need only a document update, while a parcel with a printed label needs the old label taken out of circulation before anything new is attached.",
+          "The amendment should also state the new destination clearly and identify who approved it. Without that, a warehouse team is left comparing two addresses and guessing which one is current. If the request arrives as a forwarded email or a verbal message, it is worth pausing until the order reference and the approved destination are written down in one place. This is not about slowing the change down; it is about making sure the parcel that leaves the building matches the destination the client actually wants."
+        ],
+        "bullets": [
+          "Identify the order reference and the current recorded destination.",
+          "Confirm whether a shipping label has already been produced for the parcel.",
+          "Record the approved new destination and who authorised the change.",
+          "Check whether the parcel is still in a position where it can be amended before dispatch."
+        ]
+      },
+      {
+        "heading": "Take superseded labels and documents out of use",
+        "paragraphs": [
+          "Once a label has been printed, it is easy for it to remain on or near the parcel even after the destination changes. Superseded destination labels and documents should be removed from use before amended documents are attached. That means physically removing the old label from the parcel where possible, and removing any spare copies, packing lists or dispatch documents that carry the previous address from the packing station or order file.",
+          "The reason is practical rather than procedural. If two destination labels exist for the same parcel, a carrier or warehouse team may scan or read the wrong one. If an old packing list stays in the document pouch, the recipient may receive paperwork that does not match the parcel. Removing superseded material first, then attaching the amended documents, keeps a single destination visible at the point of handling. Where a label cannot be removed cleanly, the parcel may need to be repacked or the label over-labelled in a way that clearly voids the previous destination, following whatever instruction the client or carrier has provided."
+        ],
+        "bullets": [
+          "Remove the old shipping label from the parcel before attaching a new one.",
+          "Withdraw spare copies of the superseded label from the packing area.",
+          "Replace packing lists, dispatch notes and any address-bearing documents.",
+          "Keep the superseded documents identifiable rather than discarding them without a record."
+        ]
+      },
+      {
+        "heading": "Attach amended documents to the correct parcel",
+        "paragraphs": [
+          "With the old material out of use, the amended documents can be attached. The important detail is that they go onto the same parcel that was originally packed, not a replacement parcel or a different order that happens to be nearby. In a busy dispatch area, parcels can look similar, so the order reference on the amended documents should be checked against the parcel before the label is applied.",
+          "It also helps to decide in advance what happens to the superseded label and documents. Some operations keep them with the order file so the change is traceable; others record the amendment in the shipment record and dispose of the old label. Either approach can work, provided the current destination is unambiguous at the parcel and in the records. If the amendment involves more than a label, such as a change to the carrier or service level, that should be confirmed before the parcel is released, because it may affect how the parcel is routed or staged."
+        ],
+        "bullets": [
+          "Match the amended documents to the original order reference before attaching them.",
+          "Confirm the parcel identity rather than relying on its position in the dispatch area.",
+          "Decide how superseded labels and documents will be recorded or retained.",
+          "Check whether the change affects carrier, service level or staging instructions."
+        ]
+      },
+      {
+        "heading": "Check the parcel and shipment record against one approved destination",
+        "paragraphs": [
+          "The final step is a comparison. The final parcel and its shipment record should be checked against the same approved destination. This means reading the label on the parcel and the destination held in the shipment record side by side, and confirming they match the approved address. If they differ, the parcel should not be released until the difference is resolved.",
+          "This check is simple, but it catches the most common failure in an address change: the parcel is corrected while the record still shows the old destination, or the record is updated while the parcel still carries the old label. Either situation can lead to a delivery attempt at the wrong address or a dispute about where the parcel was sent. A short verification step before dispatch keeps the physical parcel and the administrative record aligned, and gives the team a clear point at which the amendment is considered complete."
+        ],
+        "bullets": [
+          "Compare the parcel label with the shipment record before dispatch.",
+          "Confirm both match the single approved destination.",
+          "Hold the parcel if the label and record disagree.",
+          "Record the completed amendment so the change is traceable."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a new label simply be placed over the old one?",
+        "answer": "Over-labelling can work if the old destination is fully covered and cannot be read or scanned, but the safer approach is to remove the superseded label first. If any part of the old address remains visible, the parcel carries two destinations and the risk of the wrong one being used increases."
+      },
+      {
+        "question": "What if the parcel has already left the packing area?",
+        "answer": "The same principles apply, but the check becomes more urgent. The shipment record should be updated to the approved destination, and the carrier or next handling point should be told which destination is current. If the parcel cannot be intercepted, the amendment should still be recorded so the discrepancy is visible."
+      },
+      {
+        "question": "Who should approve the new destination?",
+        "answer": "The client or the party responsible for the order should confirm the approved destination in writing. The warehouse team needs a single source of truth rather than two competing addresses, and the approval should be linked to the order reference so the change can be traced later."
+      }
+    ],
+    "searchIntent": "How should an address change be handled after an order has been packed and labelled?"
+  },
+  {
     "briefId": "product-master-revisions",
     "slug": "handling-supplier-dimension-weight-changes-existing-sku",
     "category": "3PL & Warehousing",
