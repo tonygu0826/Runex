@@ -55,7 +55,7 @@ export function SiteFooter() {
       <small>© 2026 Runex Logistics Inc.</small>
       <nav className="footer-legal" aria-label="Legal information">
         <Link href="/privacy-policy#privacy-policy">Privacy Policy</Link>
-        <Link href="/privacy-policy">Terms &amp; Conditions</Link>
+        <Link href="/privacy-policy#terms-and-conditions">Terms &amp; Conditions</Link>
       </nav>
     </footer>
   );
