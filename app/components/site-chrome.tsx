@@ -53,6 +53,10 @@ export function SiteFooter() {
         {navigation.map((item) => <Link href={item.href} key={item.label}>{item.label}</Link>)}
       </div>
       <small>© 2026 Runex Logistics Inc.</small>
+      <nav className="footer-legal" aria-label="Legal information">
+        <Link href="/privacy-policy#privacy-policy">Privacy Policy</Link>
+        <Link href="/privacy-policy">Terms &amp; Conditions</Link>
+      </nav>
     </footer>
   );
 }
