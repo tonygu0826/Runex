@@ -13,6 +13,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/about`, lastModified: siteUpdated },
     { url: `${baseUrl}/insights`, lastModified: new Date(publishedArticles[0]?.publishedAt ?? siteUpdated) },
     { url: `${baseUrl}/contact`, lastModified: siteUpdated },
+    { url: `${baseUrl}/privacy-policy`, lastModified: new Date("2026-10-08") },
     ...publishedArticles
       .filter((article) => article.qualityGatePassed)
       .map((article) => ({ url: `${baseUrl}/insights/${article.slug}`, lastModified: new Date(article.modifiedAt ?? article.publishedAt) })),
