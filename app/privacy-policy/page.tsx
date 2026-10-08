@@ -29,7 +29,7 @@ export default function PrivacyPolicyPage() {
           <p>{"You: Yourself and the entity you represent."}</p>
         </section>
         <section className="legal-section" aria-labelledby="use-of-runex-com">
-          <h2 id="use-of-runex-com">{"2. Use of Runex.com"}</h2>
+          <h2 id="use-of-runex-com">{"2. Use of runexlogi.com"}</h2>
           <p>{"The Runex website is provided for current and potential Runex customers and users to obtain information about Runex and its services and to communicate with Runex."}</p>
           <p>{"All information, services, shipment-related information, tracking information, documents, and other materials provided through the website are intended for legitimate business and customer-related purposes."}</p>
           <p>{"You agree not to use the Runex website for any unlawful purpose or in any manner that violates these Terms and Conditions."}</p>
@@ -42,7 +42,7 @@ export default function PrivacyPolicyPage() {
         </section>
         <section className="legal-section" aria-labelledby="submissions">
           <h2 id="submissions">{"4. Submissions"}</h2>
-          <p>{"Runex may receive inquiries, comments, information, or other submissions through  does not accept ideas, concepts for new services or products through the website. If such information or comments are received Runex will have no obligation to maintain such information confidential, you are granting Runex unrestricted use to communicate, distribute and exploit such comments anyway it chooses."}</p>
+          <p>{"Runex may receive inquiries, comments, information, or other submissions through the website. Runex does not accept ideas or concepts for new services or products through the website. If such information or comments are received, Runex has no obligation to keep them confidential. By submitting such information or comments, you grant Runex unrestricted rights to communicate, distribute, and exploit them in any manner it chooses."}</p>
         </section>
         <section className="legal-section" aria-labelledby="limitation-of-liability">
           <h2 id="limitation-of-liability">{"5. Limitation of Liability"}</h2>
