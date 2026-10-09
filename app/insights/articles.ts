@@ -22,6 +22,90 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "backorder-release-sequence",
+    "slug": "assigning-replenished-stock-across-waiting-backorders",
+    "category": "Fulfillment",
+    "title": "Assigning Replenished Stock Across Waiting Backorders",
+    "description": "A release rule sets the order in which waiting backorders receive newly available units for the same SKU.",
+    "excerpt": "Decide the priority order for waiting backorders, keep reserved units separate from free stock, and record which lines were filled.",
+    "keywords": [
+      "backorder release rule",
+      "backorder priority order",
+      "reserved versus available quantity",
+      "allocation review record",
+      "unfilled order lines",
+      "replenished stock allocation"
+    ],
+    "publishedAt": "2026-10-09",
+    "modifiedAt": "2026-10-09",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A backorder release rule should specify how waiting orders are prioritised when supply is insufficient.",
+      "Reserved quantities should be distinguished from quantities available for newly received orders.",
+      "An allocation review should record which order lines received stock and which remain unfilled."
+    ],
+    "sources": [],
+    "keyAnswer": "A backorder release rule should state how waiting orders are prioritised when supply is insufficient, so the sequence is decided in advance rather than at the moment stock arrives. Reserved quantities should be kept distinct from quantities available for newly received orders, and the allocation review should record which order lines received stock and which remain unfilled.",
+    "sections": [
+      {
+        "heading": "Writing the priority rule before stock arrives",
+        "paragraphs": [
+          "When several orders are waiting for the same SKU, the moment replenishment is received is a poor time to decide who gets the units. A backorder release rule should specify how waiting orders are prioritised when supply is insufficient, so the sequence is settled while there is still time to explain it, test it against past situations and adjust it without pressure. The rule does not need to be complicated, but it does need to be written down and agreed by the people who will apply it.",
+          "A practical rule names the basis for priority and the order in which criteria are applied. Common bases include the date the order was accepted, the date the customer was originally promised, the channel or account the order belongs to, or a manual ranking agreed with the client. The important point is that the rule states which criterion comes first and what happens when two orders share the same value. If the rule leaves ties unresolved, the person releasing stock will still be making an ad hoc decision, which is what the rule was meant to prevent.",
+          "The rule should also state who can approve an exception. Urgent requests, key accounts and customer escalations will happen, and the rule is more likely to survive if it includes a named approver and a short description of what counts as a valid exception. An exception that is granted should be recorded against the order so the allocation review can show why the normal sequence was not followed."
+        ]
+      },
+      {
+        "heading": "Separating reserved units from free-to-allocate units",
+        "paragraphs": [
+          "Before any release decision is made, the quantity that has already been reserved for specific orders must be separated from the quantity that is genuinely free. Reserved quantities should be distinguished from quantities available for newly received orders. If the two are mixed together, a replenishment receipt can look larger than it is, and units that were already committed to an earlier order may be released a second time to a later one.",
+          "A useful way to keep this clear is to treat the receipt as creating a pool of free units, then subtract reservations that were already in place before the receipt arrived. The remaining figure is what the release rule can actually distribute. Where a reservation has become stale, it should be reviewed under the reservation process rather than quietly counted as free stock, because releasing a reservation that is still being picked creates a different problem.",
+          "It also helps to record the free quantity at the moment of the release decision. If the number changes later in the same day because another receipt lands or another reservation is taken, the allocation review can still show what the rule was applied against. Without that snapshot, a later disagreement about who should have received stock becomes difficult to reconstruct."
+        ]
+      },
+      {
+        "heading": "Applying the rule when available units are fewer than waiting lines",
+        "paragraphs": [
+          "The hardest case is when the free quantity is smaller than the number of waiting lines. The rule should be applied in sequence until the free quantity is exhausted, and the line where the stock runs out should be identified explicitly rather than left to inference. Partially filling a line is a decision in itself: it may be acceptable where the customer can use a partial quantity, and it may be worse than waiting where the order only makes sense complete. The rule should say which approach applies, or who decides.",
+          "Where several lines have equal priority under the rule, a documented tie-breaker keeps the outcome repeatable. A simple secondary criterion, such as the earlier acceptance time or the earlier promised date, is usually enough. If the tie-breaker is left to the person releasing stock, two people applying the same rule on different days can produce different results, which undermines confidence in the process even when the primary rule is sound.",
+          "It is also worth deciding in advance what happens to lines that cannot be filled at all in this release. They should remain visibly waiting rather than being treated as though the order is complete. The next expected receipt, if one is known, gives the team something concrete to communicate, but the rule should not promise a date that has not been confirmed."
+        ]
+      },
+      {
+        "heading": "Recording filled and unfilled order lines in the allocation review",
+        "paragraphs": [
+          "An allocation review should record which order lines received stock and which remain unfilled. This record is what allows the release decision to be explained later, whether to a customer asking why their order moved ahead or behind, or to an internal reviewer checking whether the rule was followed. The review does not need to be elaborate, but it should be specific enough that someone who was not present can follow what happened.",
+          "A workable review entry identifies the SKU, the receipt or supply event that created the free quantity, the free quantity available at the time, the lines considered in priority order, the quantity released to each line, and the lines that remain waiting. Where an exception was approved, the entry should note the approver and the reason. Where a line was partially filled, the entry should show both the released quantity and the balance still outstanding.",
+          "The review also supports the next release. When the following receipt arrives, the team can start from the recorded list of unfilled lines rather than rebuilding the queue from scratch. That continuity reduces the chance that a line is overlooked simply because it has been waiting a long time."
+        ]
+      },
+      {
+        "heading": "Reviewing the rule when the same SKU keeps returning to backorder",
+        "paragraphs": [
+          "If the same SKU repeatedly produces more waiting lines than the incoming supply can cover, the release rule is doing its job but the underlying supply pattern deserves attention. A recurring backorder on one item is a signal to look at how demand is being promised against available and expected supply, not just at how the queue is ordered. The release rule should not be adjusted every time a popular item runs short, because constant changes make the sequence unpredictable for everyone.",
+          "A periodic review can look at how often the rule was applied, how often exceptions were granted, and whether the same lines waited through several releases. If exceptions are frequent, the rule may not reflect the priorities the business actually wants. If the same lines wait repeatedly, the issue may be the supply position rather than the sequence. Either finding is useful, and both are easier to see when the allocation review has been kept consistently.",
+          "The review should also confirm that the rule still matches the client instructions it was built from. Priorities can change as accounts change, and a rule that was correct a year ago may no longer reflect the current arrangement. Updating it deliberately, with the change recorded, is preferable to drifting away from it through undocumented exceptions."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a backorder release rule fill orders completely before moving to the next line?",
+        "answer": "That is one valid approach, but it should be stated in the rule rather than assumed. The alternative is to spread available units across several lines, which may suit customers who can use partial quantities. Whichever approach is chosen, the rule should say how partial fills are handled and who decides when a partial fill is not acceptable."
+      },
+      {
+        "question": "What should happen if the free quantity changes during the release?",
+        "answer": "The free quantity at the moment of the decision should be recorded, and any later change should be treated as a separate event. If another receipt or reservation changes the pool, the next release should start from the updated figure and the recorded list of unfilled lines, so the earlier decision remains traceable."
+      },
+      {
+        "question": "How often should the priority rule itself be reviewed?",
+        "answer": "There is no fixed interval that suits every operation. A review is worth doing when exceptions become frequent, when the same lines wait through several releases, or when client priorities change. The allocation review provides the evidence for that decision."
+      }
+    ],
+    "searchIntent": "How should newly available units be assigned when several backorders are waiting for the same SKU?"
+  },
+  {
     "briefId": "packed-order-address-change",
     "slug": "handling-address-change-after-order-packed-labelled",
     "category": "Fulfillment",
