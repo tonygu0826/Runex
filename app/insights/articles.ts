@@ -22,6 +22,122 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "kit-instruction-revisions",
+    "slug": "introducing-revised-kit-specification-after-assembly-has-started",
+    "category": "Fulfillment",
+    "title": "Introducing a Revised Kit Specification After Assembly Has Started",
+    "description": "A changed kit specification needs a version identifier, an effective work-order boundary and a check on units already assembled.",
+    "excerpt": "Version the revised kit instruction, set a work-order boundary, identify earlier units and authorise any rework separately.",
+    "keywords": [
+      "revised kit instruction version",
+      "effective work-order boundary",
+      "units assembled under earlier version",
+      "kit specification change",
+      "separately authorised rework",
+      "kit design change control"
+    ],
+    "publishedAt": "2026-10-10",
+    "modifiedAt": "2026-10-10",
+    "readTime": "7 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A revised kit instruction should carry a version identifier and an effective work-order boundary.",
+      "Units assembled under the earlier version should be identified before revised instructions are introduced.",
+      "Any rework of earlier kits should be separately authorised instead of inferred from the new specification."
+    ],
+    "sources": [],
+    "keyAnswer": "A revised kit instruction should carry a version identifier and an effective work-order boundary, so it is clear which work orders follow the new specification. Units already assembled under the earlier version should be identified before the revised instruction is introduced, and any rework of those earlier kits should be separately authorised rather than inferred from the new specification.",
+    "sections": [
+      {
+        "heading": "Marking the revised kit instruction with a version identifier",
+        "paragraphs": [
+          "When a kit specification changes, the revised instruction needs a version identifier that distinguishes it from the instruction already in use. A version identifier is not a formality: it is the reference that lets a packing station, a supervisor and a client all confirm which document they are working from. Without it, two people can hold two different sheets of paper, both labelled as the kit instruction, and neither can tell which one is current.",
+          "The version identifier should appear on the instruction itself and in any record that points to it, such as a work order or a kitting record. If the change is small, the temptation is to treat the revision as a correction to the existing instruction rather than a new version. That choice should be deliberate. A revision that replaces the previous specification is easier to trace when it is issued as a new version, because the earlier version remains identifiable for the units that were built under it."
+        ],
+        "bullets": [
+          "Give the revised instruction a version identifier that is distinct from the earlier one.",
+          "Carry that identifier into work orders and kitting records that reference the instruction.",
+          "Decide deliberately whether the change is a new version or a correction, and record the decision."
+        ]
+      },
+      {
+        "heading": "Setting the effective work-order boundary for the new specification",
+        "paragraphs": [
+          "A version identifier alone does not say when the new specification starts to apply. The revised instruction should state an effective work-order boundary: the point at which work orders begin to follow the new specification. The boundary might be expressed as a work-order number, a release date or another marker that the warehouse already uses to sequence work. The important quality is that it is unambiguous, so a work order can be placed on one side of the boundary or the other without interpretation.",
+          "The boundary also protects the units in progress. Work orders that were released before the boundary continue under the earlier instruction, while work orders released at or after it follow the revised one. Where a work order spans the boundary, the instruction should say how that case is handled rather than leaving it to the packing station to decide. A boundary that is stated but not applied consistently is no better than no boundary at all."
+        ],
+        "bullets": [
+          "State the boundary in a marker the warehouse already uses, such as a work-order number or release date.",
+          "Confirm how a work order that spans the boundary should be treated.",
+          "Check that the boundary is applied consistently, not only stated on the instruction."
+        ]
+      },
+      {
+        "heading": "Identifying units already assembled under the earlier version",
+        "paragraphs": [
+          "Before the revised instruction is introduced, the units already assembled under the earlier version should be identified. This is a records question as much as a physical one. The warehouse needs to know which finished kits, and which partially assembled kits, were built to the earlier specification, and where they are. If those units are mixed into the same staging area or the same finished-goods count as kits built to the new specification, the distinction is lost at the point it is most needed.",
+          "Identification does not require a full audit of every kit ever built. It requires a practical answer to a narrow question: which units were assembled under the version that is now being replaced, and can they be located or set apart? The answer may come from work-order records, kitting logs or a physical check of the staging area. Where the records are incomplete, the gap should be noted rather than assumed away, because the next decision depends on knowing what was built to the old specification."
+        ],
+        "bullets": [
+          "Use work-order records, kitting logs or a physical check to locate units built to the earlier version.",
+          "Keep earlier-version kits distinguishable from kits built to the revised specification.",
+          "Record any gaps in the records rather than assuming the units are equivalent."
+        ]
+      },
+      {
+        "heading": "Deciding what happens to earlier kits before the changeover",
+        "paragraphs": [
+          "Once the earlier units are identified, someone has to decide what happens to them. The options are limited but the choice matters: the units may be accepted as they are, held pending a decision, or reworked to the revised specification. Each option carries a different consequence for the client and for the warehouse, and the decision should be made by the party responsible for the kit specification rather than by the packing station.",
+          "This is also the point to check whether the earlier units are still fit for their intended use. A specification change may be cosmetic, or it may affect how the kit functions or how it is presented. The instruction should not imply that earlier units are automatically acceptable or automatically obsolete. Stating the decision explicitly, and recording who made it, keeps the changeover from drifting into an assumption."
+        ],
+        "bullets": [
+          "Decide explicitly whether earlier kits are accepted, held or reworked.",
+          "Record who made the decision and on what basis.",
+          "Avoid implying that earlier units are automatically acceptable or obsolete."
+        ]
+      },
+      {
+        "heading": "Authorising rework separately from the new specification",
+        "paragraphs": [
+          "If earlier kits are to be reworked, that work should be authorised separately rather than inferred from the revised instruction. The revised instruction describes how new kits are built; it does not, by itself, tell the warehouse to open finished kits and rebuild them. Treating the new specification as an implicit rework order creates two problems: the rework is not planned or resourced, and the record of what was changed on the earlier units is lost.",
+          "A separate authorisation should identify the units affected, the work to be performed and the version of the instruction the reworked units should meet. It should also say what happens to components removed during rework and how the reworked units are identified afterwards. Where the rework is substantial, a first completed unit may need to be checked against the authorisation before the rest of the batch proceeds, so that a misunderstanding is caught on one kit rather than many."
+        ],
+        "bullets": [
+          "Authorise rework as a distinct instruction rather than inferring it from the new specification.",
+          "Identify the affected units, the work to be done and the version the reworked units should meet.",
+          "State how removed components and reworked units are recorded and identified."
+        ]
+      },
+      {
+        "heading": "Confirming the first work order that follows the revised instruction",
+        "paragraphs": [
+          "The changeover is not complete until the first work order that follows the revised instruction has been confirmed. That confirmation is a check against the version identifier and the effective boundary: the work order should be on the correct side of the boundary, and the instruction at the packing station should be the version that applies to it. A quick check at this point catches the common failure where the new instruction is issued but the old one is still in use at the bench.",
+          "The same check should confirm that the earlier-version units have been dealt with, so that kits from two specifications are not moving through the same process without distinction. If the first work order under the revised instruction reveals a problem, the fix belongs in the instruction before further work orders are released. Treating the first work order as a checkpoint rather than a formality is what keeps the boundary meaningful after the changeover."
+        ],
+        "bullets": [
+          "Check the first work order against the version identifier and the effective boundary.",
+          "Confirm the instruction in use at the packing station matches the applicable version.",
+          "Resolve any problem found at this checkpoint before releasing further work orders."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can the revised instruction be treated as the rework instruction for earlier kits?",
+        "answer": "No. The revised instruction describes how new kits are built. Rework of earlier kits should be separately authorised, with its own identification of affected units and the version the reworked units should meet."
+      },
+      {
+        "question": "What if the records do not show which units were built to the earlier version?",
+        "answer": "The gap should be recorded rather than assumed away. A physical check of staging and finished-goods areas may help locate earlier units, and the decision on what happens to them should account for the uncertainty."
+      },
+      {
+        "question": "Does every specification change need a new version identifier?",
+        "answer": "The choice between issuing a new version and correcting the existing instruction should be deliberate. A revision that replaces the previous specification is easier to trace when it is issued as a new version, because the earlier version remains identifiable for the units built under it."
+      }
+    ],
+    "searchIntent": "How should a changed kit specification be introduced when some units have already been assembled?"
+  },
+  {
     "briefId": "backorder-release-sequence",
     "slug": "assigning-replenished-stock-across-waiting-backorders",
     "category": "Fulfillment",
