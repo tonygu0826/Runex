@@ -22,6 +22,105 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "serial-number-order-links",
+    "slug": "linking-serial-numbers-dispatched-order-lines",
+    "category": "Fulfillment",
+    "title": "Linking Serial Numbers to Dispatched Order Lines",
+    "description": "How dispatch records connect each captured serial number to the order line and physical unit it was shipped on, and how exceptions are reviewed.",
+    "excerpt": "How serial number capture, order line association and exception review keep dispatch records traceable.",
+    "keywords": [
+      "serial number order line link",
+      "serial number capture instruction",
+      "dispatched unit identifier record",
+      "duplicate serial entry review",
+      "missing serial number check"
+    ],
+    "publishedAt": "2026-10-11",
+    "modifiedAt": "2026-10-11",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A serial-number capture instruction should specify which items require individual identifiers to be recorded.",
+      "Each captured identifier should be associated with the relevant order line and physical unit.",
+      "A missing or duplicated serial entry should be reviewed before the associated record is marked complete."
+    ],
+    "sources": [],
+    "keyAnswer": "A dispatch record connects a serial number to an order line by associating each captured identifier with the relevant order line and physical unit. The capture instruction should state which items require individual identifiers, and any missing or duplicated serial entry should be reviewed before the associated record is marked complete.",
+    "sections": [
+      {
+        "heading": "What the serial-number capture instruction needs to state",
+        "paragraphs": [
+          "The capture instruction is the document that tells warehouse staff what to record and when. Its first job is to specify which items require individual identifiers to be recorded. Without that scope, teams face an avoidable choice on every order: record everything and slow the line, or record nothing and lose traceability. The instruction should name the product or product group, the point in the outbound process where the identifier becomes visible, and the field or record where the value is entered.",
+          "A workable instruction also states what to do when the expected identifier cannot be found or read. That is not the same as a missing entry caused by a skipped step, and the two should not be treated as one exception type. The instruction can direct staff to pause the line, flag the unit for review, or record the condition and continue, but the choice should be made in advance rather than improvised at the packing bench.",
+          "Keep the instruction narrow enough to be usable. If only some items in a mixed order carry serial numbers, the instruction should make that boundary explicit so staff do not apply the rule to the whole order or skip it because part of the order is exempt."
+        ],
+        "bullets": [
+          "Which items require individual identifiers to be recorded.",
+          "Where in the outbound process the identifier is captured.",
+          "Which record or field receives the captured value.",
+          "What to do when an identifier is unreadable, absent or does not match the expected item."
+        ]
+      },
+      {
+        "heading": "Associating each captured identifier with an order line and physical unit",
+        "paragraphs": [
+          "A serial number on its own is only a string of characters. It becomes useful when each captured identifier is associated with the relevant order line and physical unit. The order line carries the commercial detail, such as the item and quantity the customer expects. The physical unit is the specific box, device or carton that actually left the building. The dispatch record should hold both links so a later question can be answered from one place.",
+          "This association matters most when an order line has a quantity greater than one. If three units ship against a single line, the record should show which three identifiers were dispatched, not merely that three were captured. Where a line is split across parcels or cartons, the link should follow the unit into the parcel it travelled in, so the record does not imply that all units moved together.",
+          "A practical check before the record is closed is to compare the number of captured identifiers against the dispatched quantity on the line. A mismatch is a signal to look closer, not a reason to adjust the count silently. The person reviewing should be able to see the order line, the unit and the identifier side by side."
+        ],
+        "bullets": [
+          "Order line: the item and quantity the customer expects.",
+          "Physical unit: the specific item that was packed and dispatched.",
+          "Parcel or carton reference: where the unit travelled.",
+          "Capture point and time: when the identifier was recorded."
+        ]
+      },
+      {
+        "heading": "Reviewing missing or duplicated serial entries before completion",
+        "paragraphs": [
+          "A missing or duplicated serial entry should be reviewed before the associated record is marked complete. Marking a record complete while an exception is open tends to bury the problem, because later users assume the record is trustworthy. The review step is what separates a captured value from a verified one.",
+          "A duplicate entry can arise from a genuine second unit, a re-scan of the same unit, or a transcription error. The reviewer needs enough context to tell these apart: the order line, the quantity, the capture time and the operator or station where the value was entered. If the same identifier appears twice against a line that expects one unit, the record should not be closed until the discrepancy is explained.",
+          "A missing entry is often a process signal rather than a data problem. It may mean the item was not scanned, the label was unreadable, or the instruction did not cover that item. The review should record which of these applies, because the fix differs in each case. The review outcome should be attached to the same dispatch record so the exception and its resolution stay together."
+        ],
+        "bullets": [
+          "Confirm whether a duplicate is a second unit or a repeated scan.",
+          "Check whether a missing entry reflects a skipped step or an unreadable label.",
+          "Record the review outcome against the dispatch record.",
+          "Do not close the record while an exception remains unexplained."
+        ]
+      },
+      {
+        "heading": "Keeping the dispatch record traceable after the order leaves",
+        "paragraphs": [
+          "Once the order leaves the warehouse, the dispatch record is often the only remaining link between a customer question and the unit that was sent. Traceability depends on the record being complete, internally consistent and retrievable. A record that links identifiers to order lines but cannot be found later provides little practical value.",
+          "Retention and access expectations should be agreed before routine capture begins, because the answer affects how records are stored and who can retrieve them. The agreement should cover how long records are kept, who may access them, and how a lookup is performed when a customer provides an order reference rather than a serial number. These are operational decisions, not legal ones, and they should be documented in the same place as the capture instruction.",
+          "It also helps to define what a completed record looks like. A record is complete when every required identifier is present, each one is linked to an order line and unit, and any exception has a recorded outcome. That definition gives reviewers a clear finish line and gives anyone auditing the record a consistent standard to apply."
+        ],
+        "bullets": [
+          "Agree retention and access expectations before routine capture begins.",
+          "Make sure a lookup can start from an order reference, not only a serial number.",
+          "Define what a completed dispatch record contains.",
+          "Keep exception outcomes with the record they belong to."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should every item on an order carry a serial number?",
+        "answer": "No. The capture instruction should specify which items require individual identifiers to be recorded. Applying the rule to items that do not need it adds handling time without adding traceability, while skipping items that do need it leaves gaps in the dispatch record."
+      },
+      {
+        "question": "What should happen when the same serial number is captured twice?",
+        "answer": "The duplicate should be reviewed before the record is marked complete. The reviewer should check the order line, dispatched quantity and capture context to determine whether the duplicate reflects a genuine second unit, a repeated scan or a transcription error."
+      },
+      {
+        "question": "Can a dispatch record be closed with a missing serial entry?",
+        "answer": "A missing serial entry should be reviewed before the associated record is marked complete. The review should establish why the entry is missing, record the outcome, and keep that outcome attached to the same dispatch record."
+      }
+    ],
+    "searchIntent": "What records connect an individual serial number to the order line on which it was dispatched?"
+  },
+  {
     "briefId": "kit-instruction-revisions",
     "slug": "introducing-revised-kit-specification-after-assembly-has-started",
     "category": "Fulfillment",
