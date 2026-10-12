@@ -58,7 +58,12 @@ export function validateProposedBrief(raw, { existingArticles, existingBriefs, f
     new Set(known.evidence.filter((item) => evidence.includes(item))).size >= 2)) {
     throw new Error("A new brief may not reuse two evidence statements from published or reserved coverage.");
   }
-  const plan = validateTopicPlan({ ...raw.plan, briefId: id }, [brief], [...existingArticles, ...existingBriefs.map(proposedCoverage)]);
+  // Bind repeated fields locally. Asking a model to emit the question and
+  // evidence twice can make a sound proposal fail through inconsistent copies.
+  // The resulting plan still passes the same gates, and the independent review
+  // assesses the evidence itself against its cited foundation.
+  const plan = validateTopicPlan({ ...raw.plan, briefId: id, searchIntent: readerQuestion, operationalBasis: evidence },
+    [brief], [...existingArticles, ...existingBriefs.map(proposedCoverage)]);
   return { ...brief, reviewedPlan: plan };
 }
 
@@ -89,8 +94,8 @@ Approved foundation: ${JSON.stringify(foundation)}
 Existing published coverage, including retired pages: ${formatExistingCoverage(existingArticles)}
 Existing briefs, including unused questions that must not be duplicated: ${JSON.stringify(existingBriefs.map((item) => ({ id: item.id, question: item.readerQuestion || item.area, evidence: item.evidence })))}
 ${feedback ? `Prior rejection feedback; do not evade these objections: ${feedback.slice(0, 5_000)}` : ""}
-Each candidate needs 2-4 specific recommendations supported by 2-6 foundation IDs, and a useful plan that directly answers its EXACT readerQuestion. Evidence is guidance, not a claim about Runex. Do not draft an article.
-Return only {"briefs":[{"area":"specific operating decision, 15-100 characters","readerQuestion":"one narrow question, 30-240 characters","evidence":["2-4 distinct conditional operating recommendations"],"foundationRefs":["approved foundation ID"],"plan":{"searchIntent":"copy readerQuestion exactly","title":"complete phrase, 20-75 characters","description":"complete sentence, 70-160 characters","excerpt":"complete summary, 40-200 characters","keywords":["3-6 specific phrases"],"keyAnswer":"2-3 grounded sentences, at least 60 characters","operationalBasis":["at least two EXACT evidence statements"],"outline":["3-6 distinct specific headings"]}}],"reason":"only needed if no new questions are supported"}.`;
+Each candidate needs 2-4 specific recommendations supported by AT LEAST TWO distinct exact foundation IDs, and a useful plan that directly answers its readerQuestion. Evidence is guidance, not a claim about Runex. Do not draft an article. Emit readerQuestion and evidence ONLY ONCE; the program binds them to the plan's searchIntent and operationalBasis.
+Return only {"briefs":[{"area":"specific operating decision, 15-100 characters","readerQuestion":"one narrow question, 30-240 characters","evidence":["first conditional operating recommendation","second distinct conditional operating recommendation"],"foundationRefs":["first exact approved foundation ID","second distinct exact approved foundation ID"],"plan":{"title":"complete phrase, 20-75 characters","description":"complete sentence, 70-160 characters","excerpt":"complete summary, 40-200 characters","keywords":["3-6 specific phrases"],"keyAnswer":"2-3 grounded sentences, at least 60 characters","outline":["3-6 distinct specific headings"]}}],"reason":"only needed if no new questions are supported"}.`;
 }
 
 function reviewPrompt({ candidates, foundation, existingArticles, existingBriefs }) {
