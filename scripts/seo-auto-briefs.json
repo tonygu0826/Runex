@@ -1,7 +1,99 @@
 {
   "version": 1,
   "refillPending": false,
-  "consecutiveFailures": 1,
-  "briefs": [],
-  "lastFailure": "No automatic brief was approved after 5 requests. Operational basis must reproduce at least two distinct supplied evidence statements exactly.; Operational basis must reproduce at least two distinct supplied evidence statements exactly."
+  "consecutiveFailures": 0,
+  "briefs": [
+    {
+      "id": "auto-should-putaway-task-recorded-only-part-received-quantity",
+      "area": "Reconciling partial putaway against a single receipt balance",
+      "readerQuestion": "How should a putaway task be recorded when only part of a received quantity has been moved to storage?",
+      "evidence": [
+        "A putaway record should distinguish the quantity already placed in storage from the balance still awaiting a destination, rather than closing the receipt when the first movement is recorded.",
+        "The receiving record and the putaway task should remain linked so the same physical units are not counted as both received and still outstanding.",
+        "A parent receipt should not be marked complete while a child putaway task still shows an unplaced balance."
+      ],
+      "foundationRefs": [
+        "partial-completion",
+        "physical-record-alignment"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-should-putaway-task-recorded-only-part-received-quantity",
+        "title": "Recording Partial Putaway Without Closing the Receipt",
+        "description": "How to keep a receipt open while only part of the received quantity has been moved into storage.",
+        "excerpt": "A partial putaway should show placed and unplaced quantities separately, stay linked to the receipt, and not close the parent record early.",
+        "keywords": [
+          "partial putaway record",
+          "receipt balance outstanding",
+          "placed versus unplaced quantity",
+          "parent receipt completion",
+          "putaway task link"
+        ],
+        "keyAnswer": "A putaway task that has moved only part of a received quantity should record the placed quantity and the balance still awaiting a destination. The receipt should stay open and linked to that task so the same units are not counted twice. The parent receipt should not be closed while an unplaced balance remains.",
+        "operationalBasis": [
+          "A putaway record should distinguish the quantity already placed in storage from the balance still awaiting a destination, rather than closing the receipt when the first movement is recorded.",
+          "The receiving record and the putaway task should remain linked so the same physical units are not counted as both received and still outstanding.",
+          "A parent receipt should not be marked complete while a child putaway task still shows an unplaced balance."
+        ],
+        "searchIntent": "How should a putaway task be recorded when only part of a received quantity has been moved to storage?",
+        "outline": [
+          "Separating placed quantity from the unplaced balance",
+          "Keeping the putaway task linked to its receipt",
+          "Why the parent receipt stays open",
+          "Confirming the destination balance before closing"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-10-12T19:47:16.288Z",
+        "rationale": "Every evidence statement is a reasonable conditional deduction from the cited foundations: partial-completion supports separating placed quantity from the unplaced balance and not closing a parent record while a child task is incomplete; physical-record-alignment supports keeping the receipt and putaway task linked so the same physical units are not counted twice. The decision is distinct from published and unused briefs, which cover partial shipment permissions, unloading-sequence receipt balances, receipt-reference splits and carton-content amendments, but none address recording a partially completed putaway against a single receipt balance while keeping the parent receipt open."
+      }
+    },
+    {
+      "id": "auto-should-retried-warehouse-task-message-checked-does-not",
+      "area": "Handling a retry of a warehouse task message already accepted",
+      "readerQuestion": "How should a retried warehouse task message be checked so it does not create a second physical task for work already accepted?",
+      "evidence": [
+        "A retry should preserve the identity of the original business request so the receiver can recognise work already accepted rather than treating the message as new.",
+        "Work already accepted should be distinguished from work still pending, so a retry does not silently generate another physical task.",
+        "A successful transmission should be distinguished from accepted business processing before the retry is treated as complete."
+      ],
+      "foundationRefs": [
+        "retry-continuity",
+        "interface-contracts"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-should-retried-warehouse-task-message-checked-does-not",
+        "title": "Checking a Retried Task Message Before It Repeats Work",
+        "description": "How to confirm a retried warehouse task message does not create a duplicate physical task.",
+        "excerpt": "A retry should keep the original request identity, separate accepted from pending work, and not treat transmission as acceptance.",
+        "keywords": [
+          "retry continuity",
+          "duplicate physical task",
+          "original request identity",
+          "accepted versus pending work",
+          "transmission versus acceptance"
+        ],
+        "keyAnswer": "A retried task message should carry the identity of the original business request so already accepted work is recognised. Accepted work should be separated from work still pending before the retry is processed. Successful transmission alone should not be treated as accepted business processing.",
+        "operationalBasis": [
+          "A retry should preserve the identity of the original business request so the receiver can recognise work already accepted rather than treating the message as new.",
+          "Work already accepted should be distinguished from work still pending, so a retry does not silently generate another physical task.",
+          "A successful transmission should be distinguished from accepted business processing before the retry is treated as complete."
+        ],
+        "searchIntent": "How should a retried warehouse task message be checked so it does not create a second physical task for work already accepted?",
+        "outline": [
+          "Preserving the original request identity",
+          "Separating accepted work from pending work",
+          "Why transmission is not acceptance",
+          "Recording the retry outcome against the original request"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-10-12T19:47:16.289Z",
+        "rationale": "Every evidence statement is a reasonable conditional deduction from the cited foundations: retry-continuity directly supports preserving the original business request identity, distinguishing accepted from pending work, and not creating a second physical task; interface-contracts supports distinguishing successful transmission from accepted business processing. The decision is distinct from published and unused briefs such as order-import-deduplication, partial-file-import-results, incremental-export-watermarks and failed-message-quarantine, which cover resubmitted order files, partial row acceptance, export boundaries and quarantined messages, but not checking a retried warehouse task message against already accepted work to avoid a duplicate physical task."
+      }
+    }
+  ]
 }
