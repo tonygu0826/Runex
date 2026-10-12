@@ -13,6 +13,10 @@ on:
       - main
     paths:
       - ".github/workflows/daily-seo-article.yml"
+      - "scripts/seo-editorial-*.mjs"
+      - "scripts/seo-topic-planner.mjs"
+      - "scripts/generate-seo-article.mjs"
+      - "scripts/verify-seo-live.mjs"
   workflow_dispatch:
     inputs:
       topic:
@@ -22,6 +26,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: daily-seo-article
@@ -30,7 +35,8 @@ concurrency:
 jobs:
   generate-and-publish:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    # 14-minute bounded generation + a bounded build + 5-minute live check.
+    timeout-minutes: 30
     steps:
       - name: Check out latest main
         uses: actions/checkout@v6
@@ -54,16 +60,10 @@ jobs:
         # Node is configured first because the freshness check uses the same
         # parser for the working tree and the final remote snapshot.
         id: freshness
-        env:
-          EVENT_NAME: ${{ github.event_name }}
         run: |
           set -euo pipefail
-          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-            echo "should_publish=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
           TODAY="$(TZ=America/Toronto date +%F)"
+          echo "PUBLICATION_DATE=$TODAY" >> "$GITHUB_ENV"
           PUBLISHED="$(node scripts/check-seo-publication.mjs "$TODAY")"
           if [ "$PUBLISHED" = "true" ]; then
             echo "Article for $TODAY already exists; skipping this run."
@@ -72,6 +72,10 @@ jobs:
             echo "No article for $TODAY; publishing now."
             echo "should_publish=true" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Check editorial capacity before generation
+        if: steps.freshness.outputs.should_publish == 'true'
+        run: node scripts/seo-editorial-health.mjs --require-capacity
 
       - name: Generate article with DeepSeek
         id: generation
@@ -90,6 +94,10 @@ jobs:
             echo "The generator completed without producing an article." >&2
             exit 1
           fi
+          if [ "$(node scripts/check-seo-publication.mjs "$PUBLICATION_DATE")" != "true" ]; then
+            echo "The draft does not publish an active article for $PUBLICATION_DATE." >&2
+            exit 1
+          fi
           echo "passed=true" >> "$GITHUB_OUTPUT"
 
       - name: Install dependencies
@@ -103,16 +111,9 @@ jobs:
       - name: Recheck today's article before commit
         id: final_freshness
         if: steps.quality_gate.outputs.passed == 'true'
-        env:
-          EVENT_NAME: ${{ github.event_name }}
         run: |
           set -euo pipefail
-          if [ "$EVENT_NAME" = "workflow_dispatch" ]; then
-            echo "should_commit=true" >> "$GITHUB_OUTPUT"
-            exit 0
-          fi
-
-          TODAY="$(TZ=America/Toronto date +%F)"
+          TODAY="$PUBLICATION_DATE"
           git fetch origin main
           PUBLISHED="$(git show origin/main:app/insights/articles.ts | node scripts/check-seo-publication.mjs "$TODAY" -)"
           if [ "$PUBLISHED" = "true" ]; then
@@ -131,9 +132,30 @@ jobs:
           git config user.email "actions@users.noreply.github.com"
           git add app/insights/articles.ts
           if git diff --cached --quiet; then
-            echo "No article changes to commit."
-            exit 0
+            echo "The validated draft disappeared before commit." >&2
+            exit 1
           fi
           git commit -m "Publish daily logistics insight"
           git pull --rebase origin main
           git push origin HEAD:main
+
+      - name: Verify the committed article is live
+        # Also checks the existing article when primary/backup/manual runs skip.
+        # A repository commit is not proof that its deployment has succeeded.
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git show origin/main:app/insights/articles.ts > "$RUNNER_TEMP/published-articles.ts"
+          ARTICLES_PATH="$RUNNER_TEMP/published-articles.ts" node scripts/verify-seo-live.mjs "$PUBLICATION_DATE"
+
+      - name: Maintain the editorial replenishment alert
+        if: always() && !cancelled()
+        # An issue API outage must not prevent or undo a valid publication.
+        continue-on-error: true
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          git show origin/main:app/insights/articles.ts > "$RUNNER_TEMP/editorial-archive.ts"
+          ARTICLES_PATH="$RUNNER_TEMP/editorial-archive.ts" node scripts/seo-editorial-health.mjs --notify

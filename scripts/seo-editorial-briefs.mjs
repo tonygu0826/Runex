@@ -1,3 +1,5 @@
+import { expandedBriefs } from "./seo-editorial-expansion.mjs";
+
 // These are editorial recommendations, not evidence of Runex capabilities or results.
 // Keep historical wording stable: it also identifies coverage published before briefId existed.
 export const legacyBriefs = [
@@ -392,4 +394,4 @@ export const granularBriefs = [
   },
 ];
 
-export const editorialBriefs = [...legacyBriefs, ...granularBriefs];
+export const editorialBriefs = [...legacyBriefs, ...granularBriefs, ...expandedBriefs];
