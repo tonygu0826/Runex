@@ -22,6 +22,110 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "voided-label-manifest-removal",
+    "slug": "checking-dispatch-manifest-after-carrier-label-voided",
+    "category": "Distribution",
+    "title": "Checking a Dispatch Manifest After a Carrier Label Is Voided",
+    "description": "Review how a voided label is shown, reconciled and linked to its replacement in the dispatch manifest.",
+    "excerpt": "A voided label should be distinguishable from an active parcel, reconciled to physical handover, and linked to its replacement.",
+    "keywords": [
+      "voided carrier label manifest",
+      "dispatch manifest reconciliation",
+      "replacement label reference link",
+      "active parcel versus voided label",
+      "physical handover parcel count"
+    ],
+    "publishedAt": "2026-10-12",
+    "modifiedAt": "2026-10-12",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A voided label should be distinguishable from an active parcel in the dispatch manifest.",
+      "The manifest should be reconciled to the physical parcels handed over rather than the number of labels printed.",
+      "A replacement label should remain linked to the voided reference without counting both as dispatched parcels."
+    ],
+    "sources": [],
+    "keyAnswer": "After a carrier label is voided, the dispatch manifest should show that label as distinguishable from an active parcel rather than as a dispatched item. The manifest should be reconciled to the parcels physically handed over, and any replacement label should stay linked to the voided reference without both being counted as dispatched.",
+    "sections": [
+      {
+        "heading": "How a voided label should appear in the dispatch manifest",
+        "paragraphs": [
+          "When a carrier label is voided, the dispatch manifest should not continue to present that label as a dispatched parcel. The manifest is a record of what left the building, so a voided label needs to be distinguishable from an active parcel. That distinction can be as simple as a status field, a separate line state, or a note that the label was voided before handover. What matters is that someone reading the manifest can tell which references represent parcels that were actually dispatched and which ones were cancelled.",
+          "A voided label that remains visually identical to an active parcel creates a false count. If the manifest is later used to confirm what a carrier collected, the voided reference can be mistaken for a shipped item. The check is straightforward: confirm that the voided label is marked in a way that separates it from active parcels, and confirm that the mark is visible wherever the manifest is reviewed, not only in a separate report."
+        ],
+        "bullets": [
+          "Confirm the voided label carries a status or marker that separates it from active parcels.",
+          "Check that the marker appears in the manifest view used for dispatch confirmation.",
+          "Do not treat a voided label as a dispatched item simply because it was printed."
+        ]
+      },
+      {
+        "heading": "Reconciling the manifest to parcels physically handed over",
+        "paragraphs": [
+          "The manifest should be reconciled to the physical parcels handed over rather than the number of labels printed. Labels can be printed, voided, reprinted or set aside, so the printed count is not a reliable measure of what was dispatched. The physical handover is the point where the parcel count is real: the parcels that were placed on the vehicle or handed to the carrier are the ones that belong on the manifest as dispatched.",
+          "A practical reconciliation compares the manifest against the parcels present at handover. If the manifest lists a label that was voided and no parcel exists for it, that line should not be counted as dispatched. If a replacement parcel was prepared, it should appear under its own reference and be counted once. The goal is a manifest whose dispatched lines match the parcels that actually left, not a manifest that mirrors every label ever produced."
+        ],
+        "bullets": [
+          "Compare the manifest against the parcels present at the handover point.",
+          "Treat the physical parcel count as the reference, not the number of labels printed.",
+          "Investigate any manifest line that has no corresponding physical parcel before the manifest is treated as final."
+        ]
+      },
+      {
+        "heading": "Keeping the replacement label linked to the voided reference",
+        "paragraphs": [
+          "When a label is voided and a replacement is produced, the replacement should remain linked to the voided reference. The link preserves the history of the change: it shows that the replacement exists because the earlier label was voided, and it allows someone reviewing the dispatch record to follow the sequence without guessing. Without that link, a replacement label can appear as an unrelated parcel, and the voided reference can look like a missing shipment.",
+          "The link does not mean the voided label is dispatched. It means the two references are connected so that the replacement can be understood in context. A reviewer should be able to see the voided reference, see the replacement reference, and understand that only the replacement represents a parcel that was handed over. This is a record-keeping distinction, not a change to the physical parcel."
+        ],
+        "bullets": [
+          "Record the replacement reference alongside the voided reference.",
+          "Make clear which reference represents the parcel that was handed over.",
+          "Keep the link visible in the dispatch record so the sequence can be followed later."
+        ]
+      },
+      {
+        "heading": "Avoiding a double count of voided and replacement labels",
+        "paragraphs": [
+          "The most common risk after a label is voided is that both the voided reference and the replacement are counted as dispatched parcels. That double count overstates what left the building and can create a mismatch with the carrier's record or with the receiving end. The manifest should count the replacement once and exclude the voided reference from the dispatched total.",
+          "A simple check is to total the dispatched lines and compare that total with the physical parcels handed over. If the total is higher than the parcels present, a voided label may still be counted. If the total matches but a voided reference remains in an active state, the manifest may still be misleading even though the count is correct. Both the count and the status of each line should be consistent."
+        ],
+        "bullets": [
+          "Count the replacement label once and exclude the voided reference from dispatched totals.",
+          "Compare the dispatched total with the physical parcels handed over.",
+          "Check that no voided reference remains in an active state after the replacement is recorded."
+        ]
+      },
+      {
+        "heading": "What to confirm before the manifest is treated as final",
+        "paragraphs": [
+          "Before the manifest is treated as final, confirm three things: the voided label is distinguishable from an active parcel, the manifest reconciles to the parcels physically handed over, and the replacement label is linked to the voided reference without both being counted as dispatched. These checks are about consistency between the record and the physical handover, not about the carrier's own systems.",
+          "It is also worth confirming who owns the decision to void a label and who confirms the replacement. If the void and the replacement are handled by different people or at different times, the manifest can drift out of step with the physical parcels. A named owner for the void and a named owner for the replacement confirmation reduce the chance that a voided reference stays active or a replacement goes unrecorded."
+        ],
+        "bullets": [
+          "Confirm the voided label is distinguishable from an active parcel.",
+          "Confirm the manifest reconciles to the parcels physically handed over.",
+          "Confirm the replacement is linked to the voided reference and counted once.",
+          "Confirm who owns the void decision and who confirms the replacement."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a voided label be deleted from the dispatch manifest?",
+        "answer": "Deleting the voided reference can remove the link to its replacement and make the sequence harder to follow. The safer approach is to keep the voided reference visible but distinguishable from an active parcel, so the replacement can be understood in context without the voided label being counted as dispatched."
+      },
+      {
+        "question": "What if the replacement label was never produced?",
+        "answer": "If no replacement was produced, the voided label should still be distinguishable from an active parcel and excluded from the dispatched count. The manifest should reconcile to the parcels physically handed over, which in this case would not include a parcel for the voided reference."
+      },
+      {
+        "question": "Does the manifest need to match the carrier's record exactly?",
+        "answer": "The manifest should reflect the parcels physically handed over. If the carrier's record differs, that difference is worth reviewing, but the starting point is the physical handover and the manifest's own consistency between voided references, replacements and dispatched parcels."
+      }
+    ],
+    "searchIntent": "What should be checked in a dispatch manifest after a carrier label has been voided?"
+  },
+  {
     "briefId": "serial-number-order-links",
     "slug": "linking-serial-numbers-dispatched-order-lines",
     "category": "Fulfillment",
