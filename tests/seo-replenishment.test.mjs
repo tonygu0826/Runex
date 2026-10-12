@@ -49,6 +49,20 @@ test("semantic review cannot approve a partially supported or duplicate candidat
   assert.throws(() => acceptedSemanticReviews(reviews([{ id: "foreign" }]), [candidate]), /Invalid or incomplete/);
 });
 
+test("the program binds the approved candidate fields instead of requiring inconsistent model copies", () => {
+  const raw = refillCandidates()[0];
+  const withoutCopies = structuredClone(raw);
+  delete withoutCopies.plan.searchIntent;
+  delete withoutCopies.plan.operationalBasis;
+  const checked = validate(withoutCopies);
+  assert.deepEqual(checked.reviewedPlan.operationalBasis, raw.evidence);
+  assert.equal(checked.reviewedPlan.searchIntent, raw.readerQuestion);
+  const inconsistent = { ...raw, plan: { ...raw.plan, searchIntent: "A stale unrelated repeated question", operationalBasis: ["A copied foundation principle instead of the new evidence."] } };
+  assert.deepEqual(validate(inconsistent).reviewedPlan, checked.reviewedPlan);
+  // Local binding cannot rescue an unsupported body or a different answer.
+  assert.throws(() => validate({ ...withoutCopies, plan: { ...withoutCopies.plan, keyAnswer: "This always works for every customer." } }), /unsupported wording/);
+});
+
 test("the committed automatic pool contains only structurally validated, reviewed records", async () => {
   const committed = JSON.parse(await readFile(new URL("../scripts/seo-auto-briefs.json", import.meta.url), "utf8"));
   assert.doesNotThrow(() => validateAutoStore(committed));
