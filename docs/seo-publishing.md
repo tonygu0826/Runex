@@ -58,18 +58,23 @@ transport, reporting and commercial-workflow decisions. These are general
 operating recommendations, not customer evidence, Runex capabilities,
 statistics or regulatory advice. No historical brief text has changed.
 
-The pool is finite editorial input. It must not be recycled when exhausted.
+Each approved pool batch is finite editorial input. It must not be recycled when exhausted.
 At one article per day, 62 unused briefs provide at most 62 further publishing
 days; model topic rejections may reduce usable capacity. Do not describe this
 as an indefinite publication guarantee.
 
 `node scripts/seo-editorial-health.mjs` validates the pool and reads the whole
 archive. A `--require-capacity` check stops an exhausted run before any model
-request. Daily runs report remaining capacity in their job summary and manage
-one GitHub issue when capacity reaches 30, 14, 7 and 0 unused briefs. The issue
-is created once, updated only on escalation and closed after replenishment
-above 30. Routine publications do not create issues or repeated comments.
-The alert recommends restoring at least a 60-day buffer. The workflow needs
+request. Daily runs report capacity; a separate automatic replenishment job
+checks at 08:17 Toronto time and starts a refill at 30 unused briefs, targeting
+60. A partial refill remains pending and continues on the next run even after
+capacity has risen above 30. It uses the existing DeepSeek key and model.
+
+Normal low-capacity crossings are handled automatically without a human issue.
+One GitHub issue is maintained only if refill attempts fail twice consecutively
+or capacity is critically low (7 or fewer). The issue is updated only on
+escalation and closed after recovery above 30. Routine publications and
+successful refills do not create repeated comments. The workflow needs
 `issues: write`; a notification API failure is visible in its step but does
 not undo or prevent valid article publication.
 
@@ -120,3 +125,38 @@ and main without a key or model calls. New plan probes are checked against the
 full archive at the exhaustion incident and against every other new probe.
 These validate candidate metadata, not a guarantee that generated prose will
 pass or that lexical comparison detects every semantic duplicate.
+
+## Automatic replenishment safeguards
+
+`scripts/seo-editorial-foundation.mjs` contains reviewed general operating
+principles. A proposed brief must cite 2-6 of those principles and derive
+conditional recommendations, rather than invent external facts or Runex
+capabilities. Named-platform rules, regulatory and specialised handling advice,
+service claims and numeric service limits are outside automatic scope.
+
+The replenisher checks the entire published archive and every existing unused
+question, rejects reused IDs, similar questions and repeated evidence pairs,
+and validates each proposed plan through the unchanged topic gates. A separate
+model request then reviews semantic novelty and the support for EVERY evidence
+statement. All support/novelty/approval decisions must be affirmative. The
+review model, time and rationale are retained with the brief. This is automated
+editorial screening, not a claim of perfect semantic validation.
+
+Only accepted records can be appended to `scripts/seo-auto-briefs.json`.
+Existing reviewed records cannot be deleted or modified by replenishment.
+After rebasing on current main, a final archive check and offline regressions
+run before pushing. The workflow can change only the automatic JSON pool.
+Articles and website configuration are untouched. An article still goes through
+the full planning, writing, content, build and live-publication gates.
+
+The process is bounded by six model requests, 120 seconds per request and an
+eight-minute total budget, in a separate twelve-minute job. A provider outage
+cannot consume the daily article job's time. The first activation verifies a
+small two-brief batch even while capacity is healthy; subsequent healthy checks
+use no model calls. A first deferred refill preserves the publishing reserve and
+retries at the next scheduled check; repeated or critical failures escalate.
+
+The bot commits with the repository GITHUB_TOKEN, so these pushes do not trigger
+recursive Actions runs. The next daily article checkout reads the updated pool.
+If the reviewed foundation cannot support additional distinct topics, the job
+abstains and requests review instead of recycling questions or lowering gates.

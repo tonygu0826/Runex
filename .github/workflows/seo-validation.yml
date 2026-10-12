@@ -5,6 +5,8 @@ on:
     paths:
       - ".github/workflows/daily-seo-article.yml"
       - ".github/workflows/seo-validation.yml"
+      - ".github/workflows/seo-replenishment.yml"
+      - "scripts/seo-auto-briefs.json"
       - "scripts/*seo*.mjs"
       - "scripts/deepseek-client.mjs"
       - "tests/seo-*.test.mjs"
@@ -15,6 +17,8 @@ on:
     branches: [main]
     paths:
       - ".github/workflows/seo-validation.yml"
+      - ".github/workflows/seo-replenishment.yml"
+      - "scripts/seo-auto-briefs.json"
       - "scripts/*seo*.mjs"
       - "scripts/deepseek-client.mjs"
       - "tests/seo-*.test.mjs"

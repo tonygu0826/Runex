@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import test from "node:test";
-import { editorialBriefs, granularBriefs, legacyBriefs } from "../scripts/seo-editorial-briefs.mjs";
+import { editorialBriefs, manualEditorialBriefs, granularBriefs, legacyBriefs } from "../scripts/seo-editorial-briefs.mjs";
 import { expandedBriefs } from "../scripts/seo-editorial-expansion.mjs";
 import { capacityLevel, inspectEditorialPool, syncCapacityIssue } from "../scripts/seo-editorial-health.mjs";
 import { extractExistingArticleSignals, slugifyTitle } from "../scripts/seo-quality.mjs";
@@ -21,7 +21,7 @@ test("reproduces the exhausted 40-brief pool and restores 62 distinct questions"
   const oldPool = inspectEditorialPool(exhaustedSource, [...legacyBriefs, ...granularBriefs]);
   assert.equal(oldPool.remaining, 0);
   assert.equal(oldPool.level, "depleted");
-  const health = inspectEditorialPool(exhaustedSource);
+  const health = inspectEditorialPool(exhaustedSource, manualEditorialBriefs);
   assert.equal(health.total, 102);
   assert.equal(health.consumed, 40);
   assert.equal(health.remaining, 62);
@@ -85,4 +85,13 @@ test("maintains one alert, leaves normal days quiet, escalates once and closes o
 
 test("an alert permission failure is explicit and cannot be misreported as a successful notification", async () => {
   await assert.rejects(syncCapacityIssue({ ...args, health: healthFor(30), request: async () => ({ ok: false, status: 403 }) }), /issues:write/);
+});
+
+test("automatic recovery suppresses routine low-pool alerts until it repeatedly fails", async () => {
+  const h = issueHarness();
+  assert.equal((await syncCapacityIssue({ ...args, health: healthFor(30), automatic: true, request: h.request })).action, "none");
+  assert.equal(h.calls.length, 1);
+  assert.equal((await syncCapacityIssue({ ...args, health: healthFor(30), automatic: true, consecutiveFailures: 2, request: h.request })).action, "created");
+  const critical = issueHarness();
+  assert.equal((await syncCapacityIssue({ ...args, health: healthFor(7), automatic: true, request: critical.request })).action, "created");
 });
