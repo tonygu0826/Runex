@@ -1,0 +1,38 @@
+name: SEO publishing regression checks
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/daily-seo-article.yml"
+      - ".github/workflows/seo-validation.yml"
+      - "scripts/*seo*.mjs"
+      - "scripts/deepseek-client.mjs"
+      - "tests/seo-*.test.mjs"
+      - "tests/deepseek-client.test.mjs"
+      - "tests/fixtures/seo-*.mjs"
+      - "docs/seo-publishing.md"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/seo-validation.yml"
+      - "scripts/*seo*.mjs"
+      - "scripts/deepseek-client.mjs"
+      - "tests/seo-*.test.mjs"
+      - "tests/deepseek-client.test.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  seo-regression:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Test editorial coverage, generation, recovery and live verification
+        run: node --test tests/seo-*.test.mjs tests/deepseek-client.test.mjs
+      - name: Report current capacity
+        run: node scripts/seo-editorial-health.mjs --require-capacity

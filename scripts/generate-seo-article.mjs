@@ -11,6 +11,8 @@ import {
 } from "./seo-generation-policy.mjs";
 import { extractExistingArticleSignals, findTopicCollision, jaccard, normalizeWords, slugifyTitle } from "./seo-quality.mjs";
 import { editorialBriefs } from "./seo-editorial-briefs.mjs";
+import { REPLENISH_AT } from "./seo-editorial-health.mjs";
+import { hasArticlePublishedOn } from "./check-seo-publication.mjs";
 import { applyFieldRepairs, articleFieldProblems, ArticleFieldRepairError, buildFieldRepairPrompt } from "./seo-field-repairs.mjs";
 import {
   assertDraftFollowsPlan, assertSupportedWording, buildTopicPlanningPrompt,
@@ -45,12 +47,15 @@ export async function generateSeoArticle({
   const existingArticles = extractExistingArticleSignals(source);
   const existingSlugs = existingArticles.map((article) => article.slug);
   const existingTitles = existingArticles.map((article) => article.title);
-  const publishedAt = new Intl.DateTimeFormat("en-CA", {
+  const publishedAt = env.PUBLICATION_DATE || new Intl.DateTimeFormat("en-CA", {
     timeZone: "America/Toronto",
     year: "numeric",
     month: "2-digit",
     day: "2-digit",
   }).format(new Date(now()));
+  // Validate the shared run date. Crossing midnight cannot change the day
+  // between planning, committing and the live deployment check.
+  hasArticlePublishedOn(source, publishedAt);
 
   const requestedTopic = env.ARTICLE_TOPIC?.trim();
   const selectableBriefs = rotateBriefs(unusedEditorialBriefs(briefs, existingArticles), env.GITHUB_RUN_NUMBER);
@@ -58,7 +63,7 @@ export async function generateSeoArticle({
     throw new Error("No unused editorial briefs remain. Add distinct reader questions and grounded operational evidence; no article was written.");
   }
   logger.log(`Editorial coverage: ${briefs.length - selectableBriefs.length} consumed brief(s), ${selectableBriefs.length} unused.`);
-  if (selectableBriefs.length < 7) logger.warn(`::warning::Editorial pool is low: ${selectableBriefs.length} unused brief(s); review and add new reader questions soon.`);
+  if (selectableBriefs.length <= REPLENISH_AT) logger.warn(`::warning::Editorial pool is low: ${selectableBriefs.length} unused brief(s); review and add new reader questions soon.`);
 
   let approvedSources = [];
   if (env.ARTICLE_SOURCES_JSON?.trim()) {
