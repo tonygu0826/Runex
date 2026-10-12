@@ -1,6 +1,7 @@
 {
   "version": 1,
   "refillPending": false,
-  "consecutiveFailures": 0,
-  "briefs": []
+  "consecutiveFailures": 1,
+  "briefs": [],
+  "lastFailure": "No automatic brief was approved after 5 requests. Operational basis must reproduce at least two distinct supplied evidence statements exactly.; Operational basis must reproduce at least two distinct supplied evidence statements exactly."
 }
