@@ -1,4 +1,6 @@
 import { expandedBriefs } from "./seo-editorial-expansion.mjs";
+import autoPool from "./seo-auto-briefs.json" with { type: "json" };
+import { validateAutoStore } from "./seo-auto-store.mjs";
 
 // These are editorial recommendations, not evidence of Runex capabilities or results.
 // Keep historical wording stable: it also identifies coverage published before briefId existed.
@@ -394,4 +396,5 @@ export const granularBriefs = [
   },
 ];
 
-export const editorialBriefs = [...legacyBriefs, ...granularBriefs, ...expandedBriefs];
+export const manualEditorialBriefs = [...legacyBriefs, ...granularBriefs, ...expandedBriefs];
+export const editorialBriefs = [...manualEditorialBriefs, ...validateAutoStore(autoPool).briefs];

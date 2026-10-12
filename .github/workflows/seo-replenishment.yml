@@ -1,0 +1,72 @@
+name: Automatic SEO editorial replenishment
+
+on:
+  schedule:
+    - cron: "17 8 * * *"
+      timezone: "America/Toronto"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/seo-replenishment.yml"
+      - "scripts/seo-replenishment.mjs"
+      - "scripts/seo-editorial-foundation.mjs"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  issues: write
+
+concurrency:
+  group: seo-editorial-replenishment
+  cancel-in-progress: false
+
+jobs:
+  replenish-editorial-pool:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - name: Check out latest main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+      - uses: actions/setup-node@v6
+        with:
+          node-version: 22
+      - name: Refresh main
+        run: git pull --ff-only origin main
+      - name: Automatically replenish reviewed reader questions
+        id: refill
+        env:
+          DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+          DEEPSEEK_MODEL: deepseek-v4-flash
+        run: node scripts/seo-replenishment.mjs
+      - name: Revalidate and commit only the automatic pool
+        run: |
+          set -euo pipefail
+          if git diff --quiet -- scripts/seo-auto-briefs.json; then
+            echo "No replenishment needed; nothing to commit."
+            exit 0
+          fi
+          git config user.name "runex-seo-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add scripts/seo-auto-briefs.json
+          git commit -m "Maintain automatic SEO editorial pool"
+          git pull --rebase origin main
+          git show origin/main:scripts/seo-auto-briefs.json > "$RUNNER_TEMP/auto-base.json"
+          AUTO_BASE_PATH="$RUNNER_TEMP/auto-base.json" node scripts/seo-replenishment.mjs --validate-pending
+          node --test tests/seo-*.test.mjs tests/deepseek-client.test.mjs
+          if [ "$(git diff --name-only origin/main HEAD)" != "scripts/seo-auto-briefs.json" ]; then
+            echo "Automatic replenishment attempted to change another file." >&2
+            exit 1
+          fi
+          git push origin HEAD:main
+      - name: Maintain actionable capacity alert
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: node scripts/seo-editorial-health.mjs --notify
+      - name: Escalate repeated or critical refill failure
+        if: steps.refill.outputs.needs_review == 'true'
+        run: |
+          echo "Automatic replenishment needs review; daily article publishing still uses its available pool." >&2
+          exit 1

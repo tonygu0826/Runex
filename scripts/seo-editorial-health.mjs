@@ -2,6 +2,7 @@ import { readFile, appendFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { editorialBriefs } from "./seo-editorial-briefs.mjs";
+import autoPool from "./seo-auto-briefs.json" with { type: "json" };
 import { extractExistingArticleSignals, extractPublicationRecords, normalizeWords } from "./seo-quality.mjs";
 import { unusedEditorialBriefs } from "./seo-topic-planner.mjs";
 
@@ -58,7 +59,7 @@ function issueBody(health, runUrl) {
 
 // Maintain one repository-owned issue. Normal days cause no issue mutation;
 // escalation happens only at 30, 14, 7 and 0 briefs. Recovery closes the issue.
-export async function syncCapacityIssue({ health, repository, token, runUrl, request = fetch }) {
+export async function syncCapacityIssue({ health, repository, token, runUrl, request = fetch, automatic = false, consecutiveFailures = 0 }) {
   if (!/^[A-Za-z0-9_.-]+\/[A-Za-z0-9_.-]+$/.test(repository || "") || !token) {
     throw new Error("Capacity notification requires GITHUB_REPOSITORY and a scoped GITHUB_TOKEN.");
   }
@@ -82,6 +83,10 @@ export async function syncCapacityIssue({ health, repository, token, runUrl, req
     if (issue?.state === "open") await api(`/issues/${issue.number}`, "PATCH", { state: "closed", state_reason: "completed" });
     return { action: issue?.state === "open" ? "closed" : "none" };
   }
+  // A normal threshold crossing is handled by the independent automatic
+  // refill. Notify only if that recovery has repeatedly failed or stock is
+  // critically low; do not turn an expected refill into a human alert.
+  if (automatic && health.remaining > 7 && consecutiveFailures < 2) return { action: "none", reason: "automatic refill pending" };
   const body = issueBody(health, runUrl);
   if (!issue) {
     const created = await api("/issues", "POST", { title: "SEO editorial pool needs replenishment", body });
@@ -103,6 +108,7 @@ async function main() {
   if (health.level !== "healthy") console.warn(`::warning::Editorial pool needs review: ${health.remaining} unused brief(s), state ${health.level}.`);
   if (process.argv.includes("--notify")) {
     console.log(await syncCapacityIssue({ health, repository: process.env.GITHUB_REPOSITORY, token: process.env.GITHUB_TOKEN,
+      automatic: true, consecutiveFailures: autoPool.consecutiveFailures,
       runUrl: `${process.env.GITHUB_SERVER_URL || "https://github.com"}/${process.env.GITHUB_REPOSITORY}/actions/runs/${process.env.GITHUB_RUN_ID}` }));
   }
   if (health.level === "depleted" && process.argv.includes("--require-capacity")) throw new Error("No unused editorial briefs remain. Replenish the pool before publication.");
