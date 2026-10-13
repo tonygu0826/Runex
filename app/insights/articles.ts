@@ -22,6 +22,96 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "proof-of-delivery-corrections",
+    "slug": "linking-corrected-proof-delivery-original-record",
+    "category": "Distribution",
+    "title": "Linking a Corrected Proof of Delivery to the Original Record",
+    "description": "A corrected delivery document should point back to the original reference and show exactly what was amended.",
+    "excerpt": "Keep the original observation distinguishable from the correction, and cite the version reviewed in any decision.",
+    "keywords": [
+      "corrected proof of delivery",
+      "original delivery record reference",
+      "amended delivery document",
+      "superseded delivery evidence",
+      "version reviewed citation"
+    ],
+    "publishedAt": "2026-10-13",
+    "modifiedAt": "2026-10-13",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A corrected delivery document should identify the original reference and the specific information amended.",
+      "The original observation should remain distinguishable from a later correction.",
+      "Any decision based on the correction should cite the version reviewed rather than an overwritten attachment."
+    ],
+    "sources": [],
+    "keyAnswer": "A corrected proof of delivery should identify the original reference and the specific information amended, so the correction can be read alongside the record it changes. The original observation should stay distinguishable from the later correction rather than being replaced by it. When a decision relies on the correction, the version reviewed should be cited instead of an overwritten attachment.",
+    "sections": [
+      {
+        "heading": "What the corrected document must name: original reference and amended detail",
+        "paragraphs": [
+          "A correction only works if a reader can find the record it changes. The corrected proof of delivery should name the original delivery record it relates to, and it should state the specific information that was amended. That could be a quantity, a date, a signature, a condition note or another field that was entered incorrectly the first time. Naming the original reference and the amended detail turns a standalone document into a linked pair, so anyone reviewing the file can see both the earlier observation and the change.",
+          "The amended detail should be described precisely enough that a reader does not have to guess what moved. If the correction changes a count, the corrected document should show the original figure and the revised figure. If it changes a condition note, the correction should quote or describe the earlier wording and the replacement wording. This is not about writing a long narrative; it is about making the difference between the two versions visible without requiring the reader to compare two files side by side and infer what happened."
+        ],
+        "bullets": [
+          "Name the original delivery record reference on the corrected document.",
+          "State the field or observation that was amended.",
+          "Show the earlier value and the revised value where a value changed.",
+          "Keep the correction attached to the same shipment or delivery reference."
+        ]
+      },
+      {
+        "heading": "Keeping the original observation readable next to the correction",
+        "paragraphs": [
+          "The original observation should remain distinguishable from a later correction. If the correction replaces the original text entirely, the file loses the ability to show what was first recorded and why a change was made. Keeping both readable does not mean treating the original as correct; it means preserving it as the earlier version so the correction has context. A reader can then see that a delivery was first noted one way and later amended another way.",
+          "In practice, this can be handled by storing the correction as a linked document or a clearly labelled amendment rather than by editing the original in place. The original stays as the record of what was observed at the time, and the correction sits alongside it with its own reference. This separation matters when a question arises months later about what was recorded at the point of delivery and what was changed afterwards."
+        ]
+      },
+      {
+        "heading": "Why an overwritten attachment hides which version was used",
+        "paragraphs": [
+          "When a corrected document simply overwrites the earlier attachment, the file no longer shows that a change occurred. Anyone opening the record sees only the final version and has no way to tell whether it reflects the original observation or a later amendment. That ambiguity becomes a problem when a decision, a dispute or a reconciliation depends on knowing which version was actually reviewed.",
+          "An overwritten attachment also makes it harder to check the correction itself. If the earlier version is gone, a reviewer cannot confirm what was amended or whether the amendment was justified. Keeping the earlier version available, even when it is superseded, gives the correction something to be checked against. The goal is not to preserve every draft, but to preserve the version that was in use before the correction so the change has a traceable starting point."
+        ]
+      },
+      {
+        "heading": "Citing the reviewed version when a decision depends on the correction",
+        "paragraphs": [
+          "Any decision based on the correction should cite the version reviewed rather than an overwritten attachment. If a claim, a credit, a re-delivery or an internal review relies on the corrected proof of delivery, the record of that decision should point to the specific version that was examined. Citing a generic attachment name or a folder location is not enough when more than one version exists.",
+          "A useful citation identifies the corrected document and the original reference it amends, so a later reader can retrieve both. This is a small discipline that pays off when a decision is questioned. Instead of reopening a debate about which document was used, the citation shows the exact version that informed the decision and the original record it was linked to."
+        ],
+        "bullets": [
+          "Cite the corrected document by its own reference, not just the shipment number.",
+          "Include the original delivery record reference in the citation.",
+          "Note the version or date of the corrected document that was reviewed.",
+          "Avoid citing an attachment that has since been overwritten."
+        ]
+      },
+      {
+        "heading": "Checking the correction against the delivery record before it is relied on",
+        "paragraphs": [
+          "Before a correction is used to support a decision, it should be checked against the delivery record it amends. The check confirms that the original reference is correct, that the amended detail matches what the correction claims to change, and that no other version of the document is still in circulation. This is a review step, not a legal determination, and it can be done by comparing the corrected document with the original record and any related notes.",
+          "Questions worth asking during that check include: does the corrected document name the original record, and does that reference resolve to the expected delivery? Is the amended detail described clearly enough to be verified? Is the earlier version still available for comparison, or has it been overwritten? If a decision has already been made on the correction, does the decision record cite the version that was actually reviewed? Where any of these answers is unclear, the correction should be resolved before it is relied on further."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should the original proof of delivery be deleted once a correction is issued?",
+        "answer": "No. The original observation should remain distinguishable from the later correction. Deleting it removes the context for the amendment and makes it harder to verify what was changed. The correction should be linked to the original rather than replacing it."
+      },
+      {
+        "question": "What should a decision record cite when it relies on a corrected proof of delivery?",
+        "answer": "It should cite the version reviewed, together with the original delivery record reference the correction amends. Citing an overwritten attachment or a generic file name does not show which version informed the decision."
+      },
+      {
+        "question": "How detailed should the amended detail be on a corrected document?",
+        "answer": "Detailed enough that a reader can see what changed without guessing. Where a value changed, showing the earlier value and the revised value makes the correction verifiable against the original record."
+      }
+    ],
+    "searchIntent": "How should a corrected proof of delivery be linked to the original delivery record?"
+  },
+  {
     "briefId": "voided-label-manifest-removal",
     "slug": "checking-dispatch-manifest-after-carrier-label-voided",
     "category": "Distribution",
