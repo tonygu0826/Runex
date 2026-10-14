@@ -22,6 +22,99 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "unloading-sequence-records",
+    "slug": "linking-multiple-unloading-sessions-one-receipt",
+    "category": "3PL & Warehousing",
+    "title": "Linking Multiple Unloading Sessions to One Receipt",
+    "description": "Keep each unloading session tied to the same expected receipt while the running balance shows what is still outstanding.",
+    "excerpt": "Link each unloading session to one expected receipt and keep the remaining balance visible until the receipt closes.",
+    "keywords": [
+      "multiple unloading sessions one receipt",
+      "running receipt balance",
+      "remaining expected units",
+      "unloading session reference",
+      "receipt close outstanding balance"
+    ],
+    "publishedAt": "2026-10-14",
+    "modifiedAt": "2026-10-14",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Each unloading session should have a distinct reference linked to the same expected receipt.",
+      "The running receipt balance should distinguish units unloaded in earlier sessions from units still expected.",
+      "Closing a receipt should account for every unloading session and identify any outstanding balance."
+    ],
+    "sources": [],
+    "keyAnswer": "Give each unloading session its own reference and link it to the same expected receipt, so the running balance can show units already unloaded separately from units still expected. When the receipt is closed, account for every unloading session and identify any balance that remains outstanding.",
+    "sections": [
+      {
+        "heading": "Why one receipt can span several unloading sessions",
+        "paragraphs": [
+          "A single expected receipt does not have to be unloaded in one continuous dock session. A trailer may be partially unloaded before a shift change, a container may be held while a discrepancy is checked, or a delivery may arrive in more than one vehicle against the same expectation. In each case, the receipt remains the same commitment, but the physical work happens in stages.",
+          "The risk is that each stage gets treated as a separate event. If the first unloading session is recorded as a completed receipt, the units still on the trailer have no expectation to attach to. If later sessions are recorded without a link to the original, the total unloaded can drift away from the total expected. The practical answer is to keep one expected receipt open and attach every unloading session to it."
+        ]
+      },
+      {
+        "heading": "Giving each unloading session its own reference",
+        "paragraphs": [
+          "Each unloading session should have a distinct reference linked to the same expected receipt. The reference is what lets a reviewer point to a specific period of dock work, such as the first part of a trailer or a second delivery, without confusing it with another session on the same receipt.",
+          "The reference should carry enough context to be useful later: which receipt it belongs to, when the session took place, and what was counted or unloaded during it. It does not need to duplicate the whole receipt record. Its job is to be a distinguishable event that rolls up into the receipt balance.",
+          "A practical test is whether someone who was not on the dock could read the session reference and the receipt together and understand which units arrived in which session. If two sessions on the same receipt look identical in the records, the link is not doing its work."
+        ],
+        "bullets": [
+          "One expected receipt, one running balance, many session references.",
+          "Each session reference should identify the receipt it belongs to.",
+          "Session records should be distinguishable from one another, not merged into a single undated entry."
+        ]
+      },
+      {
+        "heading": "Reading the running balance between sessions",
+        "paragraphs": [
+          "The running receipt balance should distinguish units unloaded in earlier sessions from units still expected. That distinction is the whole point of keeping the receipt open: at any moment between sessions, a reader should be able to see how much has been accounted for and how much remains.",
+          "This matters most when work pauses. If a trailer is left partially unloaded overnight, the balance is the handover note. It tells the next shift what has already been counted and what should still be on the vehicle or due to arrive. Without that separation, the next session starts from an unclear baseline and may double-count or miss units.",
+          "The balance should be updated as each session is recorded, not reconstructed at the end. A balance that only appears when the receipt closes cannot guide decisions during the unloading window, such as whether to keep a trailer on the dock or release it."
+        ]
+      },
+      {
+        "heading": "What to check before closing the receipt",
+        "paragraphs": [
+          "Closing a receipt should account for every unloading session and identify any outstanding balance. Closing is the point where the expectation stops being open, so it should not happen while a session is unrecorded or a difference is unexplained.",
+          "Before closing, confirm that each session reference is attached to the receipt and that the sessions together explain the units received. Then compare the total unloaded against the expected quantity. If a balance remains, decide explicitly what it means: units still to arrive, units short, or a counting difference that needs review. The decision should be recorded rather than left implicit in the numbers.",
+          "A receipt that closes with an unexplained balance creates a gap that surfaces later, often when someone tries to reconcile inventory or answer a supplier question. Identifying the outstanding balance at close keeps the record honest about what was and was not received."
+        ],
+        "bullets": [
+          "Every unloading session is linked to the receipt before it closes.",
+          "The total unloaded is compared with the expected quantity.",
+          "Any remaining balance is identified and given an explicit meaning.",
+          "The reason for closing with a balance, if one exists, is recorded."
+        ]
+      },
+      {
+        "heading": "Questions to settle with the receiving team",
+        "paragraphs": [
+          "The mechanics of session references and running balances depend on how the warehouse records receiving work. Before relying on this approach, it is worth agreeing on a few points with the team that will use it.",
+          "Ask how a session reference is created and who is responsible for attaching it to the receipt. Ask where the running balance is visible and how often it is updated during a multi-session unload. Ask what happens when a session is recorded against the wrong receipt, and how that correction is made without losing the original entry. Ask who has authority to close a receipt when a balance remains, and what evidence they need before doing so.",
+          "These questions are about ownership and visibility rather than system features. A clear answer to each one is what keeps multiple unloading sessions tied to a single receipt instead of drifting into separate, unreconciled records."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a receipt be closed if one unloading session is still unrecorded?",
+        "answer": "Closing a receipt should account for every unloading session. If a session is unrecorded, the balance cannot be trusted, so the session should be recorded or its absence explained before the receipt is closed."
+      },
+      {
+        "question": "What should the running balance show between sessions?",
+        "answer": "It should distinguish units unloaded in earlier sessions from units still expected, so the next session starts from a clear baseline rather than an assumed one."
+      },
+      {
+        "question": "What happens to an outstanding balance when a receipt closes?",
+        "answer": "It should be identified and given an explicit meaning, such as units still to arrive or a difference under review, rather than left as an unexplained gap in the record."
+      }
+    ],
+    "searchIntent": "How can several unloading sessions be linked to one receipt without losing the remaining balance?"
+  },
+  {
     "briefId": "proof-of-delivery-corrections",
     "slug": "linking-corrected-proof-delivery-original-record",
     "category": "Distribution",
