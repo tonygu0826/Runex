@@ -22,6 +22,92 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "pallet-footprint-booking",
+    "slug": "confirming-pallet-footprint-details-transport-booking",
+    "category": "3PL & Warehousing",
+    "title": "Confirming Pallet Footprint Details Before a Transport Booking",
+    "description": "Confirm base dimensions and load overhang so transport space is booked against the loaded unit, not an assumed pallet size.",
+    "excerpt": "Confirm base dimensions and overhang before booking transport space against a standard pallet size.",
+    "keywords": [
+      "pallet footprint record",
+      "load overhang dimensions",
+      "booking dimensions loaded unit",
+      "irregular loaded dimensions",
+      "transport space confirmation"
+    ],
+    "publishedAt": "2026-10-15",
+    "modifiedAt": "2026-10-15",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A pallet footprint record should distinguish the base dimensions from any load overhang.",
+      "Booking dimensions should describe the loaded unit rather than an assumed empty pallet size.",
+      "Irregular loaded dimensions should be communicated before transport space is confirmed."
+    ],
+    "sources": [],
+    "keyAnswer": "A pallet footprint record should distinguish the base dimensions from any load overhang, because booking dimensions need to describe the loaded unit rather than an assumed empty pallet size. Where the loaded dimensions are irregular, that information should be communicated before transport space is confirmed.",
+    "sections": [
+      {
+        "heading": "Why an assumed pallet size is not the loaded unit",
+        "paragraphs": [
+          "A transport booking describes the space a shipment will occupy in a vehicle. When that booking is built from a standard pallet size alone, it describes the base, not the freight. The loaded unit is the pallet plus whatever sits on it, and the two can differ in every direction. A carton that sits flush with the pallet edge, a hood that hangs past the stringer, or a stack that rises above the usual height all change what the carrier is actually being asked to move.",
+          "The practical risk is not only that the load may not fit the space reserved. It is that the booking record and the physical unit disagree, so the person loading the vehicle is working from a number that does not describe what is in front of them. Treating the standard pallet size as a default is reasonable only until a load departs from it. The footprint record exists to capture that departure before the booking is confirmed, not after the truck is at the dock."
+        ]
+      },
+      {
+        "heading": "Separating base dimensions from load overhang in the footprint record",
+        "paragraphs": [
+          "A pallet footprint record should distinguish the base dimensions from any load overhang. Keeping these as separate fields matters because they answer different questions. The base dimensions describe the pallet itself, which is useful for handling equipment, storage positions and stacking. The overhang describes how far the load extends beyond that base, which is what affects the space the shipment occupies in a vehicle and how it can be positioned next to other freight.",
+          "In practice, the record should state the base length and width, then state the loaded length and width, and note where the difference comes from. If the load overhangs on one side only, that is different from a load that overhangs evenly on all sides, even when the total dimensions are similar. Height deserves the same treatment: the loaded height is not the pallet height, and a load that is taller than expected can affect how it is stacked or whether it can be double-stacked at all.",
+          "The record should also note anything that makes the loaded unit irregular rather than simply larger. A load that is wider at the top than at the base, a pallet with a protruding strap or banding, or a base that is not square all affect how the unit sits against other freight. These details are not administrative extras; they are the difference between a booking that describes the shipment and one that describes an assumption."
+        ],
+        "bullets": [
+          "Record base length, width and height separately from loaded length, width and height.",
+          "Note whether overhang is on one side, opposite sides, or all sides.",
+          "Flag loads that are irregular in shape, not just larger than the base.",
+          "Keep the footprint record with the shipment reference so it can be checked at booking."
+        ]
+      },
+      {
+        "heading": "Recording irregular loaded dimensions before space is confirmed",
+        "paragraphs": [
+          "Irregular loaded dimensions should be communicated before transport space is confirmed. The point of confirming them early is that transport space is a shared resource. A booking made against an assumed size may reserve less room than the load needs, which can affect how the freight is loaded alongside other shipments. Once the vehicle is being loaded, the options for adjusting are narrower than they were when the booking was first discussed.",
+          "Communicating irregular dimensions does not require a formal process for every pallet. It requires a clear point at which the loaded unit is measured or verified and a clear route for passing that information to whoever confirms the booking. If the loaded dimensions are not yet known when the booking is requested, that should be stated rather than filled in with a default. A booking confirmed on an unknown dimension is a booking confirmed on an assumption.",
+          "Where a load is known to be irregular, the record should say so plainly and describe the irregularity. A note that a pallet overhangs on the long side is more useful than a single loaded dimension that hides where the extra size sits. The same applies to height: a load that is taller than the base pallet but stable is different from one that is tall and top-heavy, and the booking conversation should reflect that difference."
+        ]
+      },
+      {
+        "heading": "What to pass to the transport booking once the footprint is agreed",
+        "paragraphs": [
+          "Once the loaded unit has been described, the booking should be built from that description rather than from the pallet base. Booking dimensions should describe the loaded unit rather than an assumed empty pallet size. That means the length, width and height passed to the booking are the loaded figures, with the base dimensions available as supporting detail if the carrier or planner asks how the load is constructed.",
+          "The booking should also carry the handling notes that follow from the footprint. If the load overhangs, the booking should say so. If the loaded height affects stacking, that should be stated. If the unit is irregular in a way that affects how it can be placed next to other freight, that belongs in the booking record too. These notes are not a substitute for the dimensions; they explain what the dimensions mean for the person planning the load.",
+          "Finally, the footprint record and the booking should refer to the same shipment or load reference. When the two are linked, a later question about why a particular space was reserved can be answered from the record rather than from memory. If the loaded dimensions change after the booking is confirmed, the change should be communicated and the booking reviewed rather than left to be discovered at loading."
+        ],
+        "bullets": [
+          "Pass loaded length, width and height to the booking, not the pallet base size.",
+          "Include handling notes that explain any overhang or irregular shape.",
+          "Link the footprint record to the same shipment reference used in the booking.",
+          "Communicate any change to loaded dimensions after confirmation so the booking can be reviewed."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Is the pallet base size still useful if the booking uses loaded dimensions?",
+        "answer": "Yes. The base size describes the pallet itself and is useful for handling equipment, storage positions and stacking. It is the booking that should use the loaded dimensions, because the booking describes the space the shipment occupies in a vehicle."
+      },
+      {
+        "question": "What if the loaded dimensions are not known when the booking is requested?",
+        "answer": "That should be stated rather than replaced with a default pallet size. A booking confirmed on an unknown dimension is confirmed on an assumption, and the loaded dimensions should be communicated before space is finalised."
+      },
+      {
+        "question": "Should an overhang be reported separately from the loaded dimensions?",
+        "answer": "The loaded dimensions are the primary figure for the booking, but noting where the overhang sits is useful because a load that extends on one side is handled differently from one that extends evenly on all sides, even when the total dimensions are similar."
+      }
+    ],
+    "searchIntent": "Which pallet footprint details should be confirmed before a transport booking is based on a standard size?"
+  },
+  {
     "briefId": "unloading-sequence-records",
     "slug": "linking-multiple-unloading-sessions-one-receipt",
     "category": "3PL & Warehousing",
