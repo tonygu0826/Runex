@@ -22,6 +22,101 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "unexpected-sample-deliveries",
+    "slug": "identifying-unannounced-sample-enters-saleable-stock",
+    "category": "3PL & Warehousing",
+    "title": "Identifying an Unannounced Sample Before It Enters Saleable Stock",
+    "description": "Match an unexpected sample to its sender and intended recipient, and record its ownership and use apart from a purchase-order receipt.",
+    "excerpt": "An unannounced sample should be matched to a sender and recipient, and kept distinguishable from saleable units until its identity is agreed.",
+    "keywords": [
+      "unannounced sample delivery",
+      "sample versus purchase-order receipt",
+      "sample ownership record",
+      "product identifier for samples",
+      "saleable inventory separation"
+    ],
+    "publishedAt": "2026-10-16",
+    "modifiedAt": "2026-10-16",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An unexpected sample should be matched to a sender and intended recipient before a stock record is created.",
+      "Sample ownership and its intended use should be recorded separately from a purchase-order receipt.",
+      "A sample without an agreed product identifier should remain distinguishable from saleable units."
+    ],
+    "sources": [],
+    "keyAnswer": "An unexpected sample should be matched to a sender and intended recipient before a stock record is created. Its ownership and intended use should be recorded separately from a purchase-order receipt, and a sample without an agreed product identifier should remain distinguishable from saleable units.",
+    "sections": [
+      {
+        "heading": "Matching the delivery to a sender and intended recipient",
+        "paragraphs": [
+          "When a parcel or pallet arrives without a purchase order behind it, the first task is not to decide where it will be stored. It is to establish who sent it and who inside the business is expecting it. A sample can arrive from a supplier, a sales representative, a marketplace contact or another internal team, and each of those possibilities implies a different owner and a different next step. Until the sender and the intended recipient are matched, the delivery has no clear home in the operation.",
+          "The matching work is usually a short set of checks. Look for a sender name on the label, an internal contact named in any accompanying note, and a reference that connects the delivery to a conversation, a product enquiry or a trade event. If the sender is identifiable but the recipient is not, the delivery should be treated as unresolved rather than assigned to the nearest available person. A sample that is quietly absorbed into the nearest open receipt creates a record that no one can later explain.",
+          "It helps to decide in advance who is allowed to confirm the match. A receiving team can usually confirm that a delivery exists and describe what arrived, but the confirmation that a sample is expected and wanted normally belongs to the person or team that requested it. Naming that decision owner before the first unannounced sample arrives prevents the delivery from sitting in a staging area while people assume someone else is handling it."
+        ],
+        "bullets": [
+          "Record the sender as shown on the label or accompanying note, not as guessed from the product.",
+          "Identify the intended recipient or state clearly that the recipient is unconfirmed.",
+          "Treat a delivery with a known sender but no recipient as unresolved, not as received stock."
+        ]
+      },
+      {
+        "heading": "Recording sample ownership and intended use apart from a purchase-order receipt",
+        "paragraphs": [
+          "A sample is not the same as a purchase-order receipt, even when the physical unit looks identical to saleable stock. A purchase-order receipt answers a specific expectation: this quantity was ordered, at this price, for this purpose. A sample answers a different question: who owns it, why is it here, and what is it meant to demonstrate or test. Recording the sample through the purchase-order process blurs those two questions and can leave the business believing it holds saleable units it never bought.",
+          "The practical alternative is a separate sample record. That record should state who owns the unit, what the intended use is, and who is responsible for it while it is in the warehouse. Ownership matters because a sample may still belong to the sender, may have been supplied free of charge, or may have been purchased under a separate arrangement. Intended use matters because a sample held for evaluation, photography or a customer demonstration is not available to fulfil orders, and should not be counted as if it were.",
+          "Keeping the sample record separate also makes the eventual decision easier. When the evaluation ends, the business can decide whether the unit becomes saleable stock, is returned, is consumed in testing, or is disposed of. Each of those outcomes can be handled deliberately because the unit was never mixed into the saleable quantity in the first place."
+        ],
+        "bullets": [
+          "State the owner of the sample and the person responsible for it while it is held.",
+          "State the intended use, such as evaluation, photography or demonstration.",
+          "Do not create a purchase-order receipt for a unit that was not ordered under a purchase order."
+        ]
+      },
+      {
+        "heading": "Holding units without an agreed product identifier away from saleable stock",
+        "paragraphs": [
+          "A sample often arrives before its product identifier has been agreed. The item may be a pre-production version, a variant that has not yet been set up in the product record, or a unit whose label does not match anything the warehouse can scan. In that situation, the safe position is physical and logical separation. The unit should be held in a location that is clearly not part of saleable stock, and it should not be given an identifier borrowed from a similar-looking product.",
+          "Borrowing an identifier is tempting because it makes the unit scannable and easy to move. The risk is that the borrowed identifier carries its own meaning: a pack configuration, a size, a colour or a revision that the sample may not share. Once that identifier is attached, later readers cannot tell whether the record describes the sample or the genuine product. Similar names or packaging do not establish that two items are the same.",
+          "Separation can be simple. A designated sample or hold location, a label that clearly marks the unit as a sample, and a note in the sample record explaining that no product identifier has been agreed are usually enough. The point is that anyone picking, counting or reviewing stock can see at a glance that this unit is not part of the quantity available to sell."
+        ],
+        "bullets": [
+          "Do not assign an existing product identifier to a sample merely because the item looks similar.",
+          "Keep unagreed samples in a location that is visibly separate from saleable stock.",
+          "Note in the sample record that the product identifier is still unconfirmed."
+        ]
+      },
+      {
+        "heading": "Confirming the sample's identity before a stock record is created",
+        "paragraphs": [
+          "The final step is the point at which the sample stops being an unidentified delivery and becomes a described item in the records. That step should happen only after the sender and recipient are matched, ownership and intended use are recorded, and any product identifier question has been resolved or explicitly left open. Creating a stock record earlier does not make the sample easier to manage; it simply moves the uncertainty into a record that other people will later trust.",
+          "Confirmation normally involves the recipient or the requesting team agreeing what the unit is and what should happen to it. If the unit is to be evaluated, the record should say so and identify who will make the decision afterwards. If the unit is to become saleable stock, the transition should be a deliberate change of status rather than an assumption. If the unit is to be returned or disposed of, that outcome should be recorded against the same sample reference.",
+          "The value of this sequence is that it keeps the sample distinguishable from saleable units for as long as its identity is unsettled. It also gives the business a clear answer when someone later asks why a unit is in the warehouse, who owns it, and whether it was ever counted as inventory available for sale."
+        ],
+        "bullets": [
+          "Create the stock record only after the sample's identity and intended use are agreed.",
+          "Record any later change of status, such as conversion to saleable stock, against the same sample reference.",
+          "Keep the sample reference traceable so the unit's history can be explained later."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can an unannounced sample be received against an open purchase order to save time?",
+        "answer": "Receiving a sample against an open purchase order changes the meaning of that order's expected balance and can make the sample appear to be purchased stock. A separate sample record keeps the purchase-order receipt accurate and preserves the sample's own ownership and intended-use details."
+      },
+      {
+        "question": "What should happen if the sender is known but no recipient can be identified?",
+        "answer": "The delivery should remain unresolved rather than being assigned to whoever is available. The sender can be recorded, the unit held separately from saleable stock, and the decision about its owner and purpose left with the team responsible for confirming incoming samples."
+      },
+      {
+        "question": "How long should a sample be held before a decision is made?",
+        "answer": "The appropriate holding period depends on the intended use and the owner's instructions, so it should be agreed when the sample record is created. The record should identify who is responsible for the unit and what decision is expected, so the sample does not remain indefinitely without direction."
+      }
+    ],
+    "searchIntent": "How should an unannounced sample delivery be identified before it enters saleable inventory?"
+  },
+  {
     "briefId": "pallet-footprint-booking",
     "slug": "confirming-pallet-footprint-details-transport-booking",
     "category": "3PL & Warehousing",
