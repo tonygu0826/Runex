@@ -22,6 +22,120 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "pickup-no-show-records",
+    "slug": "evidence-gather-booked-carrier-pickup-does-not-occur",
+    "category": "Distribution",
+    "title": "Evidence to Gather When a Booked Carrier Pickup Does Not Occur",
+    "description": "A practical record of the booking, pickup window, warehouse readiness and carrier arrival when a scheduled collection does not happen.",
+    "excerpt": "Gather the confirmed booking, pickup window, ready shipment references, warehouse readiness and carrier arrival record separately.",
+    "keywords": [
+      "carrier pickup no-show record",
+      "booked pickup did not occur",
+      "pickup window evidence",
+      "warehouse readiness record",
+      "carrier arrival record",
+      "replacement pickup instruction"
+    ],
+    "publishedAt": "2026-10-17",
+    "modifiedAt": "2026-10-17",
+    "readTime": "7 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A no-show review should identify the confirmed booking, pickup window and ready shipment references.",
+      "Warehouse readiness and the carrier's arrival record should be documented separately.",
+      "A replacement pickup instruction should state whether the original booking remains active or has been cancelled."
+    ],
+    "sources": [],
+    "keyAnswer": "Start with the confirmed booking, the agreed pickup window and the references for shipments that were ready. Record warehouse readiness and the carrier's arrival information as separate entries so the two are not blended. If a replacement pickup is arranged, state whether the original booking stays active or has been cancelled.",
+    "sections": [
+      {
+        "heading": "Confirming the booking and pickup window",
+        "paragraphs": [
+          "When a booked carrier pickup does not occur, the first record to assemble is the confirmed booking itself. This should show the booking reference, the carrier and service involved, the agreed pickup window and the shipment references the booking was intended to collect. A booking confirmation is the anchor for every later comparison, so it should be kept as issued rather than reconstructed from memory or from a later message.",
+          "The pickup window deserves its own entry. Record the start and end of the agreed window, the date it applies to and the time zone used in the booking. If the window was later amended, keep the original and the amendment distinguishable, and note which version was in force on the day. A no-show review that blends an original window with a revised one cannot show clearly whether the carrier was expected inside the agreed period.",
+          "It also helps to note how the booking was communicated and whether any acknowledgement was received. This is not about assigning fault; it is about making the record complete enough that a reader can see what was agreed and when. Questions a buyer should ask include: which reference identifies the booking, what window was agreed, and where the confirmation is stored so it can be retrieved without relying on a single person's inbox."
+        ],
+        "bullets": [
+          "Booking reference, carrier and service",
+          "Agreed pickup window with date and time zone",
+          "Shipment references the booking was meant to collect",
+          "Any amendment, kept separate from the original window"
+        ]
+      },
+      {
+        "heading": "Recording which shipments were ready",
+        "paragraphs": [
+          "The next record is the list of shipments that were ready for collection. Each entry should carry its own reference, such as an order, shipment or parcel reference, and should state the quantity and packaging stage at the time of the pickup window. This list should be built from the warehouse's own preparation records rather than from the carrier booking, so the two can be compared later without one being treated as proof of the other.",
+          "Readiness should be described in concrete terms: which shipments were packed, labelled and staged, and which were not. If some shipments were ready and others were not, say so explicitly instead of treating the booking as a single all-or-nothing event. A partial readiness record is more useful than a general statement that the warehouse was ready, because it shows exactly what the carrier would have collected had the pickup occurred.",
+          "Keep the ready shipment references linked to the booking reference. If the booking covered several shipments, the link should be visible for each one. This matters when a replacement pickup is later arranged, because the replacement instruction can then refer to the same shipment references rather than creating a new and disconnected list."
+        ],
+        "bullets": [
+          "Shipment or parcel reference for each ready unit",
+          "Quantity and packaging stage at the pickup window",
+          "Clear note of any shipments that were not ready",
+          "Link from each shipment reference back to the booking"
+        ]
+      },
+      {
+        "heading": "Documenting warehouse readiness separately from carrier arrival",
+        "paragraphs": [
+          "Warehouse readiness and the carrier's arrival record should be kept as two separate entries. The readiness entry describes what the warehouse had prepared and staged, with times and references. The arrival entry describes what is known about the carrier's presence or absence at the pickup point, such as an arrival time, a departure time, a gate or dock record, or a note that no arrival was observed. Combining the two into one narrative tends to obscure which facts came from which source.",
+          "The arrival record should state what was actually observed and by whom, without inferring a cause. If no arrival was recorded, say that no arrival was recorded rather than that the carrier did not arrive, unless the record supports the stronger statement. If an arrival was recorded but no collection took place, that is a different situation and should be described in its own terms. The point is to keep the evidence factual and attributable.",
+          "A buyer reviewing this record should be able to ask: what did the warehouse have ready, what did the arrival record show, and are those two entries independent? If the same person wrote both entries at the same time from memory, that limitation should be noted. Separate entries are more useful when they come from separate sources, such as a staging check and a gate log."
+        ],
+        "bullets": [
+          "Readiness entry: what was staged, when and by which reference",
+          "Arrival entry: observed arrival or absence, time and source",
+          "No inferred cause in either entry",
+          "Note where the two entries share a source or author"
+        ]
+      },
+      {
+        "heading": "Writing the replacement pickup instruction and booking status",
+        "paragraphs": [
+          "If a replacement pickup is arranged, the instruction should state clearly whether the original booking remains active or has been cancelled. This single statement prevents the most common confusion in a no-show situation: two bookings appearing to cover the same shipments. The replacement instruction should carry its own reference, the new pickup window, the shipment references it covers and the status of the original booking.",
+          "Where the original booking is cancelled, record the cancellation reference and the time it took effect. Where it remains active, say so and explain how the replacement relates to it, for example whether the replacement covers all or only some of the original shipments. If the original booking is left active without explanation, a later reader may treat both bookings as live and expect a double collection.",
+          "The replacement instruction should also preserve the link to the original no-show record. That link lets a reader trace the sequence from the original booking, through the readiness and arrival entries, to the replacement arrangement. Questions to ask include: which booking is now authoritative, what window applies, and which shipment references are covered by the replacement rather than the original."
+        ],
+        "bullets": [
+          "Replacement booking reference and new pickup window",
+          "Shipment references covered by the replacement",
+          "Explicit statement that the original is active or cancelled",
+          "Link back to the original no-show record"
+        ]
+      },
+      {
+        "heading": "Keeping the record usable after the event",
+        "paragraphs": [
+          "A no-show record is most useful when it can be read by someone who was not present. That means consistent references, clear separation between what was agreed, what was ready and what was observed, and a short note on where each entry came from. Avoid merging the booking, readiness and arrival entries into a single summary, because the summary tends to lose the distinctions that make the record evidential.",
+          "It is also worth agreeing in advance who holds each part of the record and how long it is kept. The brief does not set retention rules, so the appropriate period should be agreed between the parties rather than assumed. A buyer should ask where the booking confirmation, readiness entry, arrival record and replacement instruction are stored, and whether they can be retrieved together when a question arises.",
+          "Finally, treat the record as a description rather than a judgment. Its purpose is to show what happened and what was arranged next, not to decide who was responsible. That decision, if one is needed, can be made later from a record that has kept its facts separate and traceable."
+        ],
+        "bullets": [
+          "Consistent references across all entries",
+          "Source noted for each entry",
+          "Agreed storage location and retention period",
+          "Description kept separate from any later judgment"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should the warehouse readiness note and the carrier arrival note be written by the same person?",
+        "answer": "They can be, but the record should note where the two entries share a source. Separate entries from separate sources, such as a staging check and a gate log, are easier to compare because one is not standing in for the other."
+      },
+      {
+        "question": "What should a replacement pickup instruction say about the original booking?",
+        "answer": "It should state whether the original booking remains active or has been cancelled, and give the reference and time of any cancellation. It should also list the shipment references the replacement covers and link back to the original no-show record."
+      },
+      {
+        "question": "Is it enough to record that the carrier did not arrive?",
+        "answer": "Only if the record supports that statement. Otherwise, describe what was observed, such as no arrival being recorded at the pickup point, and note who made the observation and when. This keeps the arrival entry factual and distinguishable from the readiness entry."
+      }
+    ],
+    "searchIntent": "What evidence should be gathered when a booked carrier pickup does not occur?"
+  },
+  {
     "briefId": "unexpected-sample-deliveries",
     "slug": "identifying-unannounced-sample-enters-saleable-stock",
     "category": "3PL & Warehousing",
