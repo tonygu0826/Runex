@@ -22,6 +22,92 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "empty-bin-verification",
+    "slug": "checking-system-empty-bin-assigning-new-product",
+    "category": "3PL & Warehousing",
+    "title": "Checking a System-Empty Bin Before Assigning a New Product",
+    "description": "A bin that reads empty in the system still needs a physical check and a review of open tasks before a new product is assigned.",
+    "excerpt": "Confirm a system-empty bin physically and review open putaway or picking tasks before assigning a new product to that location.",
+    "keywords": [
+      "system-empty bin check",
+      "bin reassignment verification",
+      "open putaway tasks",
+      "unrecorded bin contents",
+      "physical bin confirmation"
+    ],
+    "publishedAt": "2026-10-18",
+    "modifiedAt": "2026-10-18",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A system-empty bin should be physically checked before it is assigned to a new product.",
+      "Open putaway or picking tasks should be reviewed for units still associated with that bin.",
+      "Unrecorded contents should be resolved separately from the proposed slot assignment."
+    ],
+    "sources": [],
+    "keyAnswer": "Before a bin that appears empty in the system is assigned to a new product, the location should be physically checked and open putaway or picking tasks reviewed for units still associated with it. Any unrecorded contents found should be resolved separately from the proposed slot assignment.",
+    "sections": [
+      {
+        "heading": "Why a system-empty status is not the same as a confirmed empty bin",
+        "paragraphs": [
+          "A bin that shows zero available units in the warehouse system has passed a records test, not a physical one. The status reflects what has been recorded, adjusted or reserved in the system at that moment. It does not confirm that the shelf, floor position or pallet space is actually clear. Units can be present without a current record: a putaway that was completed physically but not confirmed, a pick that was reversed without a corresponding move, or stock that was placed in the location outside the normal task flow.",
+          "Treating the system status as final before assigning a new product creates a specific risk. Two products can end up sharing one location without either being flagged, which complicates picking, counting and any later investigation. The check described here is a deliberate pause between the system showing empty and the slot being reused. It is not a full inventory audit; it is a confirmation step for one location before a new product identifier is attached to it."
+        ]
+      },
+      {
+        "heading": "The physical check: what to look for at the location",
+        "paragraphs": [
+          "The physical check should confirm that the location is clear of the previous product and of anything else that would interfere with the new assignment. Look at the full location, not only the position where the last unit was recorded. Check the shelf or floor space, the back of the location and any adjacent space that could be confused with it. Confirm that no units, partial cartons, packaging or labels from the previous product remain.",
+          "The check should also confirm that the location identifier itself is correct and legible. A bin label that is missing, damaged or placed on the wrong shelf can cause a physical check to be performed at the wrong location. If the identifier cannot be confirmed, the assignment should wait until the location is clearly identified. The person performing the check should record what was observed, including any contents found, rather than only confirming that the location appeared clear."
+        ],
+        "bullets": [
+          "Confirm the location identifier matches the bin being reassigned.",
+          "Check the full location, including the back and adjacent space.",
+          "Look for residual units, partial cartons, packaging or old labels.",
+          "Record the observation, including any contents found."
+        ]
+      },
+      {
+        "heading": "Reviewing open putaway and picking tasks tied to the bin",
+        "paragraphs": [
+          "Before the physical check is treated as complete, open tasks that reference the bin should be reviewed. A putaway task that is still open may mean units are expected to arrive at the location, or may mean units were placed there without the task being closed. A picking task that remains open may mean units are still expected to be removed, or that a pick was recorded against the wrong location. In either case, the bin is not simply empty in operational terms.",
+          "The review should identify each open task, its status and the units associated with it. The question is whether those units are still physically in the bin, already removed, or expected to arrive. If a task is open but the units are no longer present, the task needs to be resolved before the location is reused. If units are expected to arrive, assigning a new product to the same bin would create a conflict. The task review and the physical check should agree before the assignment proceeds."
+        ]
+      },
+      {
+        "heading": "Handling unrecorded contents before the new assignment",
+        "paragraphs": [
+          "If the physical check finds units that are not reflected in the system, those contents should be handled as a separate issue. They should not be absorbed into the new product's record, moved to another bin without a record, or left in place while the new assignment is made. The unrecorded contents need their own resolution: identify what they are, determine why they are not recorded, and decide where they should go. That decision belongs to the inventory control process, not to the slot assignment.",
+          "Keeping the two issues separate matters because the resolution of unrecorded contents may change what the bin should be used for. If the contents belong to an active product, the bin may need to remain associated with that product until the units are properly recorded and moved. If the contents are unidentified, the location may need to be held while the investigation continues. The proposed assignment should wait until the contents are resolved and the bin is confirmed clear."
+        ]
+      },
+      {
+        "heading": "Recording the check and confirming the slot assignment",
+        "paragraphs": [
+          "The check should leave a record that connects the bin, the person or team performing the check, the date and the outcome. The record should state whether the bin was found clear, what open tasks were reviewed and how they were resolved, and what happened to any unrecorded contents. This record supports the assignment decision and gives a reference point if the location is later questioned.",
+          "Only after the physical check, the task review and the resolution of any unrecorded contents should the new product be assigned to the bin. The assignment record should reference the completed check so that the link between the confirmation and the new product is visible. If any part of the check could not be completed, the assignment should be held rather than made on the assumption that the system status was correct."
+        ],
+        "bullets": [
+          "Record the bin identifier, date and outcome of the physical check.",
+          "Note the open tasks reviewed and how each was resolved.",
+          "Document the resolution of any unrecorded contents separately.",
+          "Reference the completed check in the new product assignment."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a system-empty bin be assigned to a new product if the physical check is delayed?",
+        "answer": "The assignment should wait until the physical check and task review are complete. A delayed check leaves the location in an unconfirmed state, and assigning a new product before confirmation risks mixing products or overwriting the evidence needed to resolve any discrepancy."
+      },
+      {
+        "question": "What should happen if open picking tasks reference the bin but no units are found?",
+        "answer": "The open task should be resolved before the bin is reused. The task may indicate a recording error, a pick from the wrong location or units that were removed without confirmation. Resolving the task first keeps the bin's history consistent and prevents the new assignment from inheriting an unexplained discrepancy."
+      }
+    ],
+    "searchIntent": "What should be checked before assigning a new product to a bin that appears empty in the system?"
+  },
+  {
     "briefId": "pickup-no-show-records",
     "slug": "evidence-gather-booked-carrier-pickup-does-not-occur",
     "category": "Distribution",
