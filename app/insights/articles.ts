@@ -22,6 +22,108 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "packing-material-equivalence",
+    "slug": "confirming-alternative-packing-material-replaces-specified-one",
+    "category": "Fulfillment",
+    "title": "Confirming an Alternative Packing Material Before It Replaces the Specified One",
+    "description": "Check function, dimensions and instruction updates before a substitute packing material enters routine use.",
+    "excerpt": "A practical check for approving a packing material substitute against the current work instruction.",
+    "keywords": [
+      "alternative packing material approval",
+      "packing material substitution check",
+      "work instruction material change",
+      "substitute material dimensions",
+      "packing material equivalence review"
+    ],
+    "publishedAt": "2026-10-19",
+    "modifiedAt": "2026-10-19",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A packing-material alternative should be compared with the function and dimensions required by the current instruction.",
+      "A similar appearance or supplier description should not be treated as approval of the substitute material.",
+      "The accepted alternative should be identified in the affected work instruction before routine use."
+    ],
+    "sources": [],
+    "keyAnswer": "Compare the proposed substitute with the function and dimensions the current work instruction requires, rather than relying on a similar appearance or supplier description. Once accepted, identify the alternative in the affected work instruction before it is used routinely.",
+    "sections": [
+      {
+        "heading": "Reading the current instruction for the material's required function",
+        "paragraphs": [
+          "Start with the work instruction that names the specified packing material. Read it for what the material is expected to do in the packed order, not only for its product name or code. The instruction may describe the material's role in protecting the item, separating components, filling void space, closing or sealing a carton, or presenting the order at unpacking. That stated function is the reference point for judging any alternative.",
+          "If the instruction is vague about the material's role, the substitution decision is being made without a clear requirement. In that case, the gap should be resolved with the person who owns the instruction before a substitute is considered. A material that looks interchangeable may serve a different purpose in the pack, and the instruction is the record that should settle the question."
+        ],
+        "bullets": [
+          "Identify the material named in the current instruction and the packing step it applies to.",
+          "Note the function the instruction assigns to the material, such as protection, separation, filling or closure.",
+          "Confirm whether the instruction states dimensions, quantities per order or handling expectations.",
+          "Escalate unclear or missing requirements rather than filling them in by assumption."
+        ]
+      },
+      {
+        "heading": "Comparing dimensions and function of the proposed substitute",
+        "paragraphs": [
+          "With the required function established, compare the proposed substitute against it on two fronts: what the material does and how it measures. Dimensions matter because a substitute that is thicker, thinner, wider or shorter can change how an item sits in the carton, how much void space remains, or whether the packed unit closes and handles as intended. A material that performs the same broad function at a different dimension is not automatically equivalent for the packing step.",
+          "The comparison should be recorded rather than held in memory. A short written check that lists the required function, the substitute's dimensions and any differences gives the reviewer something concrete to accept or reject. Where the substitute differs in a way that affects the pack, the difference should be resolved before the material is used, not discovered during a later order."
+        ],
+        "bullets": [
+          "Compare the substitute's dimensions with those the current instruction requires.",
+          "Check whether the substitute performs the same function at the same point in packing.",
+          "Record the comparison and any differences for the person approving the change.",
+          "Resolve material differences before the substitute is introduced to routine work."
+        ]
+      },
+      {
+        "heading": "Why a similar look or supplier wording is not approval",
+        "paragraphs": [
+          "A substitute that resembles the specified material, or that a supplier describes in similar terms, has not thereby been approved. Appearance and supplier wording are inputs to a comparison, not the comparison itself. Two materials can look alike while differing in dimension, strength or the way they behave when packed, and a supplier description is written for a general audience rather than for the specific work instruction in question.",
+          "Treating resemblance as approval shifts the decision away from the instruction and onto an impression. The safer pattern is to keep the comparison explicit: the instruction states the requirement, the substitute is measured against it, and the outcome is recorded. This also gives the reviewer a clear basis for declining a substitute that does not match, without needing to argue from appearance."
+        ]
+      },
+      {
+        "heading": "Recording the accepted alternative in the affected work instruction",
+        "paragraphs": [
+          "Once a substitute is accepted, the affected work instruction should identify it before the material is used routinely. An approval that lives only in a conversation or a separate note leaves the packing station working from an instruction that still names the original material. Updating the instruction keeps the written requirement aligned with what is actually being packed.",
+          "The update should be specific enough that someone reading the instruction can tell which material is now approved and for which step. If the original material remains acceptable alongside the substitute, the instruction should say so rather than implying a permanent replacement. If the change is temporary, that should be visible in the instruction as well, so the record does not outlast the condition that prompted it."
+        ],
+        "bullets": [
+          "Name the accepted alternative in the work instruction that governs the packing step.",
+          "State whether the original material remains acceptable or has been replaced.",
+          "Make any temporary approval visible so it can be reviewed later.",
+          "Keep the instruction and the material in use consistent with each other."
+        ]
+      },
+      {
+        "heading": "Checking the first orders packed under the revised instruction",
+        "paragraphs": [
+          "The revised instruction should be checked against real work before it is treated as settled. Looking at the first orders packed under the change helps show whether the substitute behaves as the comparison suggested and whether the instruction reads clearly at the packing station. This is a check on the decision, not a promise about future orders, and it gives the reviewer a chance to catch a mismatch while the change is still new.",
+          "If the first orders reveal a problem, the instruction and the material decision should be revisited together rather than patched informally at the station. A substitute that does not perform as expected is evidence that the comparison missed something, and that gap is worth recording so the next substitution review starts from a better requirement."
+        ],
+        "bullets": [
+          "Review the first orders packed under the revised instruction.",
+          "Confirm the substitute performs the function the instruction requires.",
+          "Check that the instruction is clear to the people packing the orders.",
+          "Revisit the comparison and the instruction together if a problem appears."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a supplier's description of a packing material be used as the basis for approval?",
+        "answer": "A supplier description can inform the comparison, but it should not be treated as approval of the substitute. The decision should rest on the function and dimensions the current work instruction requires, compared explicitly with the proposed material."
+      },
+      {
+        "question": "What should happen if the work instruction does not state the material's required function?",
+        "answer": "The gap should be resolved with the person who owns the instruction before a substitute is considered. Without a stated requirement, there is no clear basis for judging whether an alternative is equivalent for the packing step."
+      },
+      {
+        "question": "Does an accepted substitute have to replace the original material permanently?",
+        "answer": "Not necessarily. The instruction should state whether the original remains acceptable alongside the substitute and whether the change is temporary, so the written record matches the intended use."
+      }
+    ],
+    "searchIntent": "What should be confirmed before an alternative packing material replaces the material named in a work instruction?"
+  },
+  {
     "briefId": "empty-bin-verification",
     "slug": "checking-system-empty-bin-assigning-new-product",
     "category": "3PL & Warehousing",
