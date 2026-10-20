@@ -18,7 +18,8 @@ test("one deployed warm Worker hides a prepared article on every surface, then r
     return { status: response.status, body: await response.text() };
   };
   const url = `/insights/${record.slug}`;
-  const service = target.category === "Distribution" || target.category === "Supply Chain" ? "/solutions/transportation-cross-docking-canada" : "/solutions/warehousing-fulfillment-canada";
+  const service = target.category === "Distribution" || target.category === "Supply Chain" ? "/solutions/transportation-cross-docking-canada" :
+    target.category === "FBA & E-commerce" ? "/solutions/fba-ecommerce-prep-canada" : "/solutions/warehousing-fulfillment-canada";
   const surfaces = ["/insights", "/sitemap.xml", "/llms.txt", service];
   const hidden = await request(url);
   assert.equal(hidden.status, 404);
