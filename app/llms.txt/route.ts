@@ -1,5 +1,8 @@
-import { publishedArticles } from "../insights/articles";
+import { getPublishedArticles } from "../insights/publications";
 import { services } from "../solutions/services";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const baseUrl = "https://runexlogi.com";
 const coreTopics = [
@@ -16,7 +19,7 @@ const coreTopics = [
 export function GET() {
   // Google does not use llms.txt for Search ranking. Keep this file limited to
   // content that has passed the site's publication quality gate for other agents.
-  const recentArticles = publishedArticles.filter((article) => article.qualityGatePassed).slice(0, 12);
+  const recentArticles = getPublishedArticles().filter((article) => article.qualityGatePassed).slice(0, 12);
   const topicPhrases = [
     ...coreTopics,
     ...recentArticles.flatMap((article) => article.keywords ?? [article.title]),
@@ -58,7 +61,7 @@ export function GET() {
   return new Response(body, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, max-age=3600",
+      "Cache-Control": "no-store",
     },
   });
 }

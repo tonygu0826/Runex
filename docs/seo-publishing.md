@@ -35,16 +35,18 @@ future checks; existing articles and URLs are unchanged.
 - Each request is capped at 120 seconds (including response-body reads) and the
   remaining overall generation time. A shorter configured request timeout is
   honoured. Generation has a 14-minute budget within the 30-minute workflow.
-  The additional time is reserved for build and the bounded live deployment
-  check, not extra model requests.
+  A queue maintenance run may prepare up to two articles, each with its own
+  unchanged request/quality budget, within a 45-minute workflow. The remaining
+  time is reserved for build and a shared five-minute deployment check.
 - Backoff remains bounded by the remaining time. Primary and backup runs start
   from different six-brief windows when enough unused briefs remain.
 - `ARTICLE_TOPIC` still requires an unused, grounded brief. It considers the
   whole unused pool, but does not override duplicate or quality gates.
-- Exhaustion, timeout or invalid content exits unsuccessfully without writing
-  an article. The workflow schedule is unchanged. Merging an editorial or
-  publishing fix into main also attempts recovery for the current day, subject
-  to the same freshness checks. Both freshness checks, including manual runs, parse
+- Exhaustion, timeout or invalid content cannot write that article. If a
+  second queued draft fails, the first validated draft can still be built and
+  committed; final reserve verification then fails until the missing day is
+  recovered. Merging an editorial or publishing fix into main also restores
+  current and queued dates, subject to the same freshness checks. Both freshness checks, including manual runs, parse
   an active article's exact `publishedAt` value; a matching `modifiedAt` or date
   in example text cannot suppress publication. Read or parse errors fail the
   check instead of being treated as an unpublished day.
@@ -109,10 +111,10 @@ and verification, including a run that crosses midnight. Manual dispatch
 uses the same initial and final freshness checks as scheduled runs; supplying
 a topic does not permit a second article on the same day.
 
-After committing (or skipping because an article exists), the workflow checks
-the final remote main snapshot. `verify-seo-live.mjs` requires exactly one
+After committing (or skipping because the current day and reserve exist), the
+workflow checks the final remote main snapshot. `verify-seo-live.mjs` requires exactly one
 active article for that date, and verifies its live HTTP response, canonical,
-Article structured-data title/date and indexing setting. The Insights listing
+Article structured-data title/date and indexing setting. For a released article the Insights listing
 must link to it and the sitemap must contain its URL; the homepage and contact
 form must render. A successful GitHub commit alone is not a successful final
 publication. The read-only check retries deployment propagation for at most
@@ -160,3 +162,41 @@ The bot commits with the repository GITHUB_TOKEN, so these pushes do not trigger
 recursive Actions runs. The next daily article checkout reads the updated pool.
 If the reviewed foundation cannot support additional distinct topics, the job
 abstains and requests review instead of recycling questions or lowering gates.
+
+
+## Release time independent of GitHub cron latency
+
+The 2026-10-13 through 2026-10-19 scheduled events were created 3-7 hours after
+09:07 Toronto. On October 19 the runner started four seconds after run creation
+and finished in under two minutes: the delay preceded job creation. The existing
+IANA timezone is valid; simply changing the clock offset would be incorrect.
+GitHub documents that schedule events can be delayed or dropped under load:
+https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#schedule
+
+The scheduled jobs now maintain the current day plus a **two-day deployed
+reserve**. `seo-publication-queue.mjs` chooses missing exact dates in order,
+prepares at most two validated articles per run and reuses the complete archive
+between drafts. Already prepared dates, including manual dispatches, do not
+spend model calls or create another article. Current-day gaps take priority.
+The final remote check refuses a concurrent duplicate before commit.
+
+Articles are built and deployed ahead of release. The public site evaluates
+`America/Toronto` at request time and opens the dated article at **09:00**,
+including the correct DST offset. The index, direct route and metadata, service
+recommendations, sitemap and llms.txt use the same visibility rule. Related
+routes are dynamic and send `no-store`, including pre-release 404s, so a warm
+Worker or pre-release cache cannot hold yesterday's visibility. No new external
+scheduler, paid service, API key or Cloudflare configuration is required.
+
+`/api/seo-status` returns only preparation dates and their release instants,
+not future titles, slugs or text. Final verification requires today's released
+article (yesterday before 09:00) to be live, both upcoming dates to be present
+in the deployed status, future direct routes to return 404, and future content
+to be absent from index/sitemap/llms.txt. Missing reserves and early exposure
+fail the workflow rather than being presented as a successful publication.
+
+The built-Worker regression advances the clock across 09:00 in the **same
+Worker instance** and checks all public surfaces without redeploying. Separate
+tests cover winter/summer DST, midnight, partial recovery and idempotent retries.
+A two-day buffer tolerates a delayed or missed daily maintenance run; it does
+not guarantee availability through an indefinite model or deployment outage.

@@ -3,13 +3,12 @@ import Link from "next/link";
 import { notFound, redirect } from "next/navigation";
 import { Arrow, SiteFooter, SiteHeader } from "../../components/site-chrome";
 import { getService } from "../../solutions/services";
-import { articles, getArticle, publishedArticles } from "../articles";
+import { getArticle, getPublishedArticles } from "../publications";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
-export function generateStaticParams() {
-  return articles.flatMap((article) => [article.slug, ...(article.legacySlugs ?? [])].map((slug) => ({ slug })));
-}
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
@@ -45,7 +44,7 @@ export default async function ArticlePage({ params }: PageProps) {
     "Supply Chain": "transportation-cross-docking-canada",
   };
   const relatedService = getService(serviceByCategory[article.category]);
-  const relatedArticles = publishedArticles
+  const relatedArticles = getPublishedArticles()
     .filter((item) => item.slug !== article.slug && item.category === article.category)
     .slice(0, 3);
   const jsonLd = [

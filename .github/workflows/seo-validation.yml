@@ -13,6 +13,13 @@ on:
       - "tests/deepseek-client.test.mjs"
       - "tests/fixtures/seo-*.mjs"
       - "docs/seo-publishing.md"
+      - "app/insights/**"
+      - "app/api/seo-status/**"
+      - "app/sitemap.ts"
+      - "app/llms.txt/**"
+      - "app/solutions/**"
+      - "worker/index.ts"
+      - "tests/rendered-publication-time.test.mjs"
   push:
     branches: [main]
     paths:
@@ -23,6 +30,14 @@ on:
       - "scripts/deepseek-client.mjs"
       - "tests/seo-*.test.mjs"
       - "tests/deepseek-client.test.mjs"
+      - ".github/workflows/daily-seo-article.yml"
+      - "app/insights/**"
+      - "app/api/seo-status/**"
+      - "app/sitemap.ts"
+      - "app/llms.txt/**"
+      - "app/solutions/**"
+      - "tests/rendered-publication-time.test.mjs"
+      - "worker/index.ts"
 
 permissions:
   contents: read
@@ -30,13 +45,15 @@ permissions:
 jobs:
   seo-regression:
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-node@v6
         with:
           node-version: 22
-      - name: Test editorial coverage, generation, recovery and live verification
-        run: node --test tests/seo-*.test.mjs tests/deepseek-client.test.mjs
+      - name: Install locked dependencies
+        run: npm ci
+      - name: Test rendered release times, editorial coverage and publishing recovery
+        run: npm test
       - name: Report current capacity
         run: node scripts/seo-editorial-health.mjs --require-capacity

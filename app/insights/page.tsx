@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import { Arrow, SiteFooter, SiteHeader } from "../components/site-chrome";
-import { publishedArticles } from "./articles";
+import { getPublishedArticles } from "./publications";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const ARTICLES_PER_PAGE = 4;
 
@@ -19,6 +22,7 @@ function readPage(searchParams?: { page?: string | string[] }) {
 }
 
 export async function generateMetadata({ searchParams }: InsightsPageProps): Promise<Metadata> {
+  const publishedArticles = getPublishedArticles();
   const page = readPage(await searchParams);
   const suffix = page > 1 ? ` — Page ${page}` : "";
   return {
@@ -41,6 +45,7 @@ function paginationItems(currentPage: number, totalPages: number) {
 }
 
 export default async function InsightsPage({ searchParams }: InsightsPageProps) {
+  const publishedArticles = getPublishedArticles();
   const params = (await searchParams) ?? {};
   const requestedPage = readPage(params);
   const totalPages = Math.max(1, Math.ceil(publishedArticles.length / ARTICLES_PER_PAGE));

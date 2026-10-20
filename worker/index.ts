@@ -190,7 +190,19 @@ const worker = {
       }, allowedWidths);
     }
 
-    return handler.fetch(request, env, ctx);
+    const response = await handler.fetch(request, env, ctx);
+    // A warm Worker and CDN must re-evaluate the release clock on every request,
+    // including pre-release 404s and RSC navigations. Preserve streaming bodies.
+    if (url.pathname === "/insights" || url.pathname.startsWith("/insights/") ||
+        url.pathname.startsWith("/solutions/") || url.pathname === "/sitemap.xml" ||
+        url.pathname === "/llms.txt" || url.pathname === "/api/seo-status") {
+      const uncached = new Response(response.body, response);
+      uncached.headers.set("Cache-Control", "no-store");
+      uncached.headers.set("CDN-Cache-Control", "no-store");
+      uncached.headers.set("Cloudflare-CDN-Cache-Control", "no-store");
+      return uncached;
+    }
+    return response;
   },
 };
 

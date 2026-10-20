@@ -49,10 +49,20 @@ test("waits through deployment propagation but fails within a bounded deadline",
   assert.equal(clock, 30_000);
 });
 
-test("the workflow applies freshness to manual runs and verifies the final remote snapshot", async () => {
+test("the workflow applies queue freshness to manual runs and verifies the final remote snapshot", async () => {
   const workflow = await readFile(new URL("../.github/workflows/daily-seo-article.yml", import.meta.url), "utf8");
   assert.doesNotMatch(workflow, /EVENT_NAME.*workflow_dispatch|should_publish=true[\s\S]*exit 0/);
-  assert.match(workflow, /node scripts\/check-seo-publication\.mjs "\$TODAY"/);
+  assert.match(workflow, /node scripts\/seo-publication-queue\.mjs --plan/);
   assert.match(workflow, /git show origin\/main:app\/insights\/articles\.ts > "\$RUNNER_TEMP\/published-articles\.ts"/);
-  assert.match(workflow, /node scripts\/verify-seo-live\.mjs "\$PUBLICATION_DATE"/);
+  assert.match(workflow, /node scripts\/seo-publication-queue\.mjs --verify/);
+});
+
+test("prepared-page verification requires deployment evidence AND absence from public content", async () => {
+  const clock = () => Date.parse("2026-10-12T12:00:00Z");
+  const queuedRequest = async (address) => ({ status: address === url ? 404 : 200, text: async () =>
+    address.endsWith("/api/seo-status") ? JSON.stringify({ timeZone: "America/Toronto", releaseHour: 9, prepared: [{ date: target.publishedAt, releaseAt: "2026-10-12T13:00:00.000Z" }] }) : "Not available" });
+  assert.equal((await checkLivePublication({ target, clock, request: queuedRequest })).status, "prepared");
+  await assert.rejects(checkLivePublication({ target, clock, request: async (address) => address === url ? { status: 200 } : queuedRequest(address) }), /expected 404/);
+  await assert.rejects(checkLivePublication({ target, clock, request: async (address) => ({ ...await queuedRequest(address), ...(address.endsWith("/sitemap.xml") ? { text: async () => `<loc>${url}</loc>` } : {}) }) }), /exposed/);
+  await assert.rejects(checkLivePublication({ target, clock, request: async (address) => ({ ...await queuedRequest(address), ...(address.endsWith("/api/seo-status") ? { text: async () => '{"prepared":[]}' } : {}) }) }), /does not contain/);
 });

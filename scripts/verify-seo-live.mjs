@@ -4,6 +4,7 @@ import { fileURLToPath } from "node:url";
 import { setTimeout as delay } from "node:timers/promises";
 import { extractExistingArticleSignals, extractPublicationRecords } from "./seo-quality.mjs";
 import { hasArticlePublishedOn } from "./check-seo-publication.mjs";
+import { publicationReleaseAt } from "../app/insights/publication-time.mjs";
 
 export function publicationTarget(source, date) {
   if (!hasArticlePublishedOn(source, date)) throw new Error(`No active article was committed for ${date}.`);
@@ -44,10 +45,28 @@ export function assertLiveArticle(html, target, url) {
   if (robots && /\bnoindex\b/i.test(attribute(robots[0], "content"))) throw new Error("Live article unexpectedly disallows indexing.");
 }
 
-export async function checkLivePublication({ target, origin = "https://runexlogi.com", request = fetch, timeoutMs = 10_000 }) {
+export async function checkLivePublication({ target, origin = "https://runexlogi.com", request = fetch, timeoutMs = 10_000, clock = Date.now }) {
   const base = new URL(origin);
   if (base.protocol !== "https:" || base.pathname !== "/" || base.search || base.username || base.password) throw new Error("Live verification requires a plain HTTPS origin.");
   const articleUrl = new URL(`/insights/${target.slug}`, base).href;
+  if (clock() < Date.parse(publicationReleaseAt(target.publishedAt))) {
+    const paths = [`/insights/${target.slug}`, "/api/seo-status", "/insights", "/sitemap.xml", "/llms.txt"];
+    const responses = await Promise.all(paths.map(async (pathname, index) => {
+      const response = await request(new URL(pathname, base).href, { signal: AbortSignal.timeout(timeoutMs), headers: { "Cache-Control": "no-cache" }, redirect: "error" });
+      const expected = index === 0 ? 404 : 200;
+      if (response.status !== expected) throw new Error(`Queued article verification: ${pathname} returned HTTP ${response.status}; expected ${expected}.`);
+      return response.text();
+    }));
+    const status = JSON.parse(responses[1]);
+    if (status.timeZone !== "America/Toronto" || status.releaseHour !== 9 ||
+        !status.prepared?.some((item) => item.date === target.publishedAt && item.releaseAt === publicationReleaseAt(target.publishedAt))) {
+      throw new Error(`Deployed publication reserve does not contain ${target.publishedAt}.`);
+    }
+    if ([responses[0], ...responses.slice(2)].some((body) => body.includes(articleUrl) || body.includes(`/insights/${target.slug}`) || body.includes(target.title))) {
+      throw new Error(`Queued article ${target.publishedAt} is exposed before its release time.`);
+    }
+    return { url: articleUrl, publishedAt: target.publishedAt, status: "prepared" };
+  }
   const urls = [articleUrl, new URL("/insights", base).href, new URL("/sitemap.xml", base).href, base.href, new URL("/contact", base).href];
   const responses = await Promise.all(urls.map(async (url) => {
     const response = await request(url, { signal: AbortSignal.timeout(timeoutMs), headers: { "Cache-Control": "no-cache" }, redirect: "error" });
