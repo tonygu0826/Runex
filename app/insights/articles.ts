@@ -22,6 +22,164 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "split-pickup-load-balances",
+    "slug": "tracking-freight-left-behind-after-partial-carrier-collection",
+    "category": "Distribution",
+    "title": "Tracking Freight Left Behind After a Partial Carrier Collection",
+    "description": "A partial collection should record units taken and units remaining against the same booking, with staging references kept for the balance.",
+    "excerpt": "How to keep leftover freight visible against its original booking after a partial carrier collection.",
+    "keywords": [
+      "partial carrier collection record",
+      "freight left behind tracking",
+      "outstanding balance collection",
+      "staging reference remaining units",
+      "booking reconciliation after pickup"
+    ],
+    "publishedAt": "2026-10-21",
+    "modifiedAt": "2026-10-21",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A partial collection record should identify the units taken and the units remaining against the same booking.",
+      "The remaining units should retain their staging references instead of appearing as a completed load.",
+      "A later collection should reconcile the outstanding balance without redispatching units already taken."
+    ],
+    "sources": [],
+    "keyAnswer": "Record the partial collection against the original booking, naming the units taken and the units remaining. Keep the remaining units under their existing staging references so they are not treated as a completed load, and reconcile a later collection against the outstanding balance without redispatching units already taken.",
+    "sections": [
+      {
+        "heading": "What the partial collection record should show against the booking",
+        "paragraphs": [
+          "When a carrier collects only part of a booked load, the collection record should stay attached to the original booking rather than becoming a separate, unrelated event. The record needs to name two things clearly: the units that were taken and the units that remain. This distinction is the difference between a booking that is partially complete and one that appears finished when it is not.",
+          "A useful record identifies the booking reference, the carrier and collection details, and then lists the quantities taken against each line or handling unit. The remaining quantity should be stated explicitly, not left as an implied difference. If the booking covered several order lines or staging positions, the record should show which of those were collected and which were not, so a later reader does not have to reconstruct the split from memory or from a carrier's paperwork alone.",
+          "The record should also make clear that the booking is still open. A partial collection is not a completed load, and the status should reflect that. Questions a buyer or operations lead should ask include: Does the record name both taken and remaining units? Is the remaining quantity tied to the same booking reference? Can someone unfamiliar with the pickup tell from the record that freight is still on site?"
+        ]
+      },
+      {
+        "heading": "Keeping leftover units visible at their staging references",
+        "paragraphs": [
+          "Freight left behind should keep the staging references it already had. If the remaining units are moved to a generic holding area or lose their original location reference, they become harder to find and easier to mistake for stock that is free to use or already dispatched. Retaining the staging reference keeps the leftover units visible as part of the same booking and preserves the link between the physical position and the outstanding balance.",
+          "This matters because a completed load and a partial load can look similar in a system that only records that a collection occurred. The remaining units should not be marked as dispatched, closed, or otherwise treated as a completed load. Where the staging area is shared with other bookings, the reference should be specific enough to distinguish this booking's balance from neighbouring freight.",
+          "A practical check is to walk the staging position after the carrier leaves and confirm that the units still there match the remaining quantity in the record. If the physical count and the record disagree, that difference should be resolved before the booking is used for any later collection. Buyers should ask how leftover freight is labelled, whether the staging reference survives the partial collection, and who confirms the balance on the floor."
+        ]
+      },
+      {
+        "heading": "Reconciling a later collection to the outstanding balance",
+        "paragraphs": [
+          "When a second collection is arranged, it should be reconciled against the outstanding balance on the original booking, not treated as a new and separate shipment. The starting point is the remaining quantity recorded after the first collection. The later collection record should show what was taken this time and what, if anything, still remains, so the booking can move toward closure without ambiguity.",
+          "The main risk is redispatching units that were already taken. If the later collection is prepared from the original booking quantity rather than the outstanding balance, the warehouse may stage or release units that are no longer there, or may duplicate paperwork for freight that has already left. Reconciling to the balance avoids this by making the remaining quantity the reference point for the second pickup.",
+          "A later collection should also preserve the link to the original booking reference and the earlier partial collection record. That way the history shows one booking with two collection events rather than two unrelated loads. Questions to ask include: Is the later collection prepared from the outstanding balance? Does the record show the original booking and the earlier partial collection? What happens if the second collection is also partial, and how is the new balance recorded?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a partial collection be recorded as a new booking?",
+        "answer": "No. The partial collection should be recorded against the original booking, naming the units taken and the units remaining. A separate booking can obscure the outstanding balance and make it harder to reconcile a later collection without redispatching units already taken."
+      },
+      {
+        "question": "What should happen to the staging reference for freight left behind?",
+        "answer": "The remaining units should retain their existing staging references rather than being moved to an unlinked holding position. Keeping the reference helps ensure the leftover freight is not treated as a completed load and remains visible for the next collection."
+      },
+      {
+        "question": "How is a second collection reconciled if the first was partial?",
+        "answer": "The second collection should be reconciled against the outstanding balance recorded after the first collection. The record should show what was taken in the second collection and any quantity still remaining, while preserving the link to the original booking."
+      }
+    ],
+    "searchIntent": "How should freight left behind after a partial carrier collection be tracked against the original booking?"
+  },
+  {
+    "briefId": "replenishment-minimum-rounding",
+    "slug": "rounding-replenishment-quantity-stock-moves-only-full-cases",
+    "category": "3PL & Warehousing",
+    "title": "Rounding a Replenishment Quantity When Stock Moves Only in Full Cases",
+    "description": "A replenishment rule should name its requested unit and permitted handling unit, then show any rounding to a full case as a visible difference.",
+    "excerpt": "Rounding replenishment to full cases should stay visible and be checked against destination capacity before release.",
+    "keywords": [
+      "replenishment quantity rounding",
+      "full case replenishment",
+      "replenishment unit of measure",
+      "bin capacity check",
+      "rounded quantity difference"
+    ],
+    "publishedAt": "2026-10-20",
+    "modifiedAt": "2026-10-20",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A replenishment rule should state its requested unit and the permitted physical handling unit.",
+      "Rounding to a full case should remain visible as a difference from the original calculated demand.",
+      "The destination's agreed capacity should be checked before a rounded quantity is released."
+    ],
+    "sources": [],
+    "keyAnswer": "A replenishment rule should state the unit in which demand is requested and the physical handling unit permitted for the move. When the calculated demand is rounded to a full case, that difference should remain visible rather than being absorbed silently, and the destination's agreed capacity should be checked before the rounded quantity is released.",
+    "sections": [
+      {
+        "heading": "Naming the requested unit and the permitted handling unit in the rule",
+        "paragraphs": [
+          "A replenishment rule answers a simple question: how much stock should move to a destination? The answer depends on two separate definitions. The requested unit is the measure in which demand is calculated, such as eaches, inner-packs or cases. The permitted handling unit is the physical form in which the move may occur, such as a full case only. If the rule does not name both, the same instruction can be read in different ways by the person calculating demand and the person moving stock.",
+          "For example, a hypothetical rule might calculate that a pick face needs 37 eaches. If the permitted handling unit is a full case of 12, the move cannot be 37 eaches. The rule should make clear whether the calculated demand is expressed in eaches and then converted, or whether demand is calculated directly in cases. Stating both units in the rule removes that ambiguity before any rounding takes place."
+        ],
+        "bullets": [
+          "State the unit in which demand is calculated, such as eaches or cases.",
+          "State the physical handling unit permitted for the move, such as a full case.",
+          "Confirm that the two definitions are consistent with how the destination is stocked and picked."
+        ]
+      },
+      {
+        "heading": "Recording the rounded quantity alongside the original calculated demand",
+        "paragraphs": [
+          "When calculated demand is rounded to a full case, the rounded quantity is not the same as the original demand. That difference should be recorded rather than absorbed silently. A visible difference allows a reviewer to see that the move was adjusted for handling reasons, not because the original demand was wrong. It also gives the next person a clear starting point if the destination fills faster or slower than expected.",
+          "A practical record might show the calculated demand, the rounding rule applied, the rounded quantity and the resulting difference. For instance, a calculated demand of 37 eaches rounded to full cases of 12 becomes 36 eaches, a difference of one each below the calculated demand. Alternatively, rounding up to 48 eaches creates a difference of 11 above demand. Either direction can be valid, but the direction and size of the difference should be visible in the replenishment record rather than left to inference."
+        ],
+        "bullets": [
+          "Record the original calculated demand before rounding.",
+          "Record the rounded quantity that will actually move.",
+          "Show the difference and whether rounding went up or down."
+        ]
+      },
+      {
+        "heading": "Checking destination capacity before the rounded quantity is released",
+        "paragraphs": [
+          "Rounding changes the quantity that arrives at the destination. Before that quantity is released, the destination's agreed capacity should be checked. A pick face or bin may have a defined capacity that was set for the requested unit, not for a full-case quantity. If the rounded quantity exceeds that capacity, the move can create overflow, double handling or a mismatch between the recorded location and the physical stock.",
+          "The capacity check should use the same unit definitions as the replenishment rule. If capacity is expressed in eaches and the move is in full cases, the check should convert consistently. Where the rounded quantity does not fit within the agreed capacity, the rule should identify what happens next, such as holding the move for review or directing the excess to a separate agreed location. The important point is that the check happens before release, not after the stock has arrived."
+        ],
+        "bullets": [
+          "Confirm the destination's agreed capacity in a stated unit.",
+          "Compare the rounded quantity with that capacity before release.",
+          "Define an agreed next step when the rounded quantity does not fit."
+        ]
+      },
+      {
+        "heading": "Reviewing rounding differences when a pick face fills faster or slower than expected",
+        "paragraphs": [
+          "Rounding differences are not only a record-keeping detail. They can affect how quickly a pick face empties or overfills. If a rule consistently rounds up, the destination may reach its capacity sooner than the calculated demand suggested. If it consistently rounds down, the pick face may run short before the next replenishment is due. Reviewing the recorded differences alongside actual replenishment timing helps show whether the rounding direction still suits the destination.",
+          "A review should ask whether the difference was expected, whether the destination capacity was respected and whether the next replenishment was triggered earlier or later than planned. If a pattern appears, the rule's requested unit, permitted handling unit or rounding direction may need adjustment. The review should be based on the recorded differences, not on recollection, so that any change to the rule can be traced to observed replenishment behaviour."
+        ],
+        "bullets": [
+          "Compare recorded rounding differences with actual replenishment timing.",
+          "Check whether the destination reached capacity or ran short before the next move.",
+          "Adjust the rule only after the recorded differences have been reviewed."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should rounding go up to the next full case?",
+        "answer": "The brief does not prescribe a rounding direction. What matters is that the direction is stated in the rule and that the resulting difference from calculated demand remains visible. Rounding up may suit some destinations, while rounding down may suit others, depending on capacity and replenishment timing."
+      },
+      {
+        "question": "What if the destination capacity is not recorded in the same unit as the replenishment rule?",
+        "answer": "The capacity check should convert between units consistently before comparing the rounded quantity with the agreed capacity. If the conversion is unclear, that ambiguity should be resolved before the rounded quantity is released."
+      },
+      {
+        "question": "Does a visible rounding difference mean the replenishment was wrong?",
+        "answer": "Not necessarily. A visible difference shows that the calculated demand was adjusted to a permitted handling unit. The review question is whether that adjustment still fits the destination's capacity and replenishment timing, not whether rounding occurred at all."
+      }
+    ],
+    "searchIntent": "How should a replenishment quantity be rounded when stock is moved only in full cases?"
+  },
+  {
     "briefId": "packing-material-equivalence",
     "slug": "confirming-alternative-packing-material-replaces-specified-one",
     "category": "Fulfillment",
