@@ -22,6 +22,111 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "seal-observation-records",
+    "slug": "recording-container-seal-discrepancy-against-arrival-document",
+    "category": "3PL & Warehousing",
+    "title": "Recording a Container Seal Discrepancy Against the Arrival Document",
+    "description": "What to capture when an observed container seal differs from the value on the arrival document, and how to keep later instructions separate.",
+    "excerpt": "Capture the document reference, both seal values and the observation time before handling changes the condition.",
+    "keywords": [
+      "container seal discrepancy record",
+      "observed versus documented seal value",
+      "seal observation time stamp",
+      "arrival document reference",
+      "instruction to proceed record"
+    ],
+    "publishedAt": "2026-10-22",
+    "modifiedAt": "2026-10-22",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A seal observation should preserve the document reference, recorded seal value and value physically observed.",
+      "The observation should be time-stamped before handling changes the condition being documented.",
+      "An instruction to proceed should be recorded separately from the original seal observation."
+    ],
+    "sources": [],
+    "keyAnswer": "Record the arrival document reference alongside both the seal value it shows and the value physically observed on the container. Time-stamp the observation before any handling changes the condition being documented, and keep any later instruction to proceed as a separate entry from the original observation.",
+    "sections": [
+      {
+        "heading": "Linking the observation to the arrival document reference",
+        "paragraphs": [
+          "A seal discrepancy record is only useful if it can be traced back to the document that stated the expected seal value. Start by identifying the arrival document reference, whether that is a bill of lading, delivery receipt, packing list or another inbound document that carries the seal number. Write that reference into the observation record before describing the discrepancy. Without it, a later reader cannot tell which document the observed value was compared against.",
+          "The reference should be specific enough to locate the exact document version. If the arrival paperwork has a revision or issue date, include it. If several containers arrived under one document, identify the container or unit the observation relates to so the record is not applied to the wrong box. The goal is a record that someone unfamiliar with the arrival can follow from the document to the physical container without guessing."
+        ],
+        "bullets": [
+          "Name the arrival document type and its reference.",
+          "Note any revision or issue date on that document.",
+          "Identify the specific container or unit observed."
+        ]
+      },
+      {
+        "heading": "Capturing both seal values side by side",
+        "paragraphs": [
+          "The observation record should show two values together: the seal value recorded on the arrival document and the value physically observed on the container. Presenting them side by side makes the discrepancy obvious and prevents a later reader from assuming the observed value replaced the documented one. Do not overwrite the documented value with the observed value, and do not record only the difference. Both values are part of the evidence.",
+          "Transcribe each value carefully, including any letters, digits, separators or leading zeros. If a character is unclear on the physical seal, say so rather than guessing. If the seal is missing, damaged or unreadable, describe that condition in plain terms instead of forcing a value into the field. The record should reflect what was actually seen, not what was expected."
+        ],
+        "bullets": [
+          "Documented seal value, copied exactly as shown.",
+          "Observed seal value, copied exactly as seen.",
+          "A short note if the seal was missing, damaged or unreadable."
+        ]
+      },
+      {
+        "heading": "Why the time stamp comes before handling",
+        "paragraphs": [
+          "The observation should be time-stamped before any handling changes the condition being documented. Opening the container, moving it, removing a seal or starting unloading can alter the very condition the record is meant to preserve. A time stamp taken after handling begins is weaker evidence because it no longer shows the state of the seal at the point of arrival.",
+          "Record the date and time the seal was observed, and note the stage of the arrival at that moment, such as before unloading or at the receiving point. If the observation is made some time after the container arrived, say so. The time stamp is not a claim about when the discrepancy occurred; it is a marker of when the condition was seen and recorded."
+        ],
+        "bullets": [
+          "Date and time of the observation.",
+          "The stage of arrival or handling at that moment.",
+          "A note if the observation was made after the container had already been moved."
+        ]
+      },
+      {
+        "heading": "Keeping the instruction to proceed separate from the observation",
+        "paragraphs": [
+          "An instruction to proceed should be recorded separately from the original seal observation. The observation describes what was seen; the instruction describes what someone decided should happen next. Mixing them into one entry blurs the line between evidence and decision, and makes it harder to review later why handling continued.",
+          "The separate instruction entry should identify who gave the instruction, when it was given and what it permitted, such as unloading or moving the container to a holding area. It should reference the original observation rather than restating or altering it. If the instruction changes later, add a further entry instead of editing the first one. This keeps the sequence of observation, decision and action visible."
+        ],
+        "bullets": [
+          "Who gave the instruction to proceed.",
+          "When the instruction was given.",
+          "What the instruction permitted.",
+          "A link back to the original observation record."
+        ]
+      },
+      {
+        "heading": "Questions to settle before the record is used",
+        "paragraphs": [
+          "A discrepancy record often becomes the starting point for a conversation with a carrier, supplier or client. Before that happens, agree who reviews the record, what supporting evidence is kept and how long it is retained. A photograph of the seal, if taken, should be linked to the same record rather than stored separately. The record should also state whether the container was held, opened or moved after the observation, so a reader can tell what condition the evidence reflects.",
+          "It is worth asking, before an incident occurs, which document is treated as the arrival reference, who is authorised to give an instruction to proceed, and where the separate instruction entry is kept. These are operational choices, not legal conclusions, and they should be confirmed with the parties involved rather than assumed."
+        ],
+        "bullets": [
+          "Who reviews the discrepancy record and with whom it is shared.",
+          "Whether a photograph or other evidence is linked to the record.",
+          "Who is authorised to give an instruction to proceed.",
+          "How the record and any instruction are retained."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should the observed seal value replace the documented value in the record?",
+        "answer": "No. Keep both values visible so the discrepancy remains clear. Replacing the documented value with the observed one removes the comparison the record exists to show."
+      },
+      {
+        "question": "What if the seal was already removed before anyone recorded it?",
+        "answer": "Record what is known: the documented value, the condition found, and the time the condition was observed. Note that the observation was made after the seal had been removed or altered, so the record does not imply the seal was seen intact."
+      },
+      {
+        "question": "Can the instruction to proceed be added to the same entry as the observation?",
+        "answer": "It is better kept as a separate entry. The observation records what was seen; the instruction records a later decision. Separating them preserves the sequence and makes review easier."
+      }
+    ],
+    "searchIntent": "What should be recorded when an observed container seal differs from the arrival document?"
+  },
+  {
     "briefId": "split-pickup-load-balances",
     "slug": "tracking-freight-left-behind-after-partial-carrier-collection",
     "category": "Distribution",
