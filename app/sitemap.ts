@@ -1,10 +1,14 @@
 import type { MetadataRoute } from "next";
-import { publishedArticles } from "./insights/articles";
+import { getPublishedArticles } from "./insights/publications";
 import { services } from "./solutions/services";
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const baseUrl = "https://runexlogi.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
+  const publishedArticles = getPublishedArticles();
   const siteUpdated = new Date("2026-08-08");
   return [
     { url: baseUrl, lastModified: siteUpdated },

@@ -2,10 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow, SiteFooter, SiteHeader } from "../../components/site-chrome";
-import { publishedArticles } from "../../insights/articles";
+import { getPublishedArticles } from "../../insights/publications";
 import { getService, services } from "../services";
 
 type PageProps = { params: Promise<{ slug: string }> };
+
+export const dynamic = "force-dynamic";
+export const revalidate = 0;
 
 const siteUrl = "https://runexlogi.com";
 
@@ -43,7 +46,7 @@ export default async function ServicePage({ params }: PageProps) {
     "fba-ecommerce-prep-canada": ["FBA & E-commerce", "Fulfillment"],
     "transportation-cross-docking-canada": ["Distribution", "Supply Chain"],
   };
-  const relatedInsights = publishedArticles
+  const relatedInsights = getPublishedArticles()
     .filter((article) => categoryMap[service.slug]?.includes(article.category))
     .slice(0, 3);
   const jsonLd = [
