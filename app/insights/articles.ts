@@ -22,6 +22,76 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "batch-sample-stock-consumption",
+    "slug": "accounting-sample-inspection-units-cannot-return-saleable-stock",
+    "category": "3PL & Warehousing",
+    "title": "Accounting for Sample Inspection Units That Cannot Return to Saleable Stock",
+    "description": "Link each inspection sample to its batch and quantity, then record whether units were consumed or returned unchanged.",
+    "excerpt": "A sample inspection record should tie removed units to the batch and distinguish consumed units from those returned unchanged.",
+    "keywords": [
+      "sample inspection stock record",
+      "batch sample quantity removed",
+      "consumed versus returned sample units",
+      "batch balance sample outcome"
+    ],
+    "publishedAt": "2026-10-23",
+    "modifiedAt": "2026-10-23",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An inspection sample should be linked to the batch and the quantity removed for the review.",
+      "Units consumed or changed during inspection should be distinguished from units returned unchanged.",
+      "The batch balance should reflect the documented sample outcome rather than assuming every sample was returned."
+    ],
+    "sources": [],
+    "keyAnswer": "An inspection sample should be linked to the batch it came from and the quantity removed for the review. Units consumed or changed during inspection should be recorded separately from units returned unchanged, so the batch balance reflects the documented outcome rather than assuming every sample came back.",
+    "sections": [
+      {
+        "heading": "Linking the sample to its batch and removed quantity",
+        "paragraphs": [
+          "When units are pulled from a batch for inspection, the first record should identify the batch and the exact quantity removed. This link matters because the batch balance is the reference point for later reconciliation, and a sample that is not tied to a specific batch can leave the remaining stock ambiguous. The record should state the batch identifier, the quantity taken, and the date or point at which the units left the batch.",
+          "A practical approach is to treat the sample removal as a distinct entry against the batch rather than as a general stock adjustment. That entry should remain visible even after the inspection is complete, so anyone reviewing the batch can see that units were removed for a defined purpose. If the sample is drawn from a specific location or pallet, that detail can be added, but the essential link is between the batch and the quantity removed.",
+          "Questions a buyer or operations lead should ask include: Does the sample record reference the batch directly, or only the product code? Is the removed quantity stated in the same unit of measure as the batch balance? Who is responsible for confirming that the sample was drawn from the intended batch? These questions help prevent a sample from becoming an unexplained reduction in stock."
+        ]
+      },
+      {
+        "heading": "Recording consumed or changed units apart from unchanged returns",
+        "paragraphs": [
+          "Inspection can consume units or alter their condition. A unit may be opened, tested to destruction, or otherwise changed so that it cannot return to saleable stock. Other units may be inspected and returned unchanged. These two outcomes should be recorded separately, because they have different implications for the batch balance and for any later decision about the remaining stock.",
+          "The record should state, for each sample or group of samples, whether the units were consumed, changed, or returned unchanged. If some units were consumed and others returned, the quantities should be split accordingly. This distinction prevents a common error: assuming that all sampled units are available for sale because they were removed only temporarily. A consumed unit is no longer part of saleable stock, and the record should make that clear.",
+          "A useful check is to ask whether the inspection outcome is described in terms that a person unfamiliar with the inspection could understand. Terms such as consumed, changed, and returned unchanged are more precise than a general note that the sample was reviewed. The record should also identify who made the determination, so that any later question about the outcome can be directed to the right person."
+        ]
+      },
+      {
+        "heading": "Reconciling the batch balance to the documented sample outcome",
+        "paragraphs": [
+          "The batch balance should reflect what actually happened to the sampled units, not an assumption that every sample was returned. Reconciliation means comparing the original batch quantity with the documented removals and outcomes. If the sample record shows that some units were consumed, the batch balance should be reduced by that quantity. If units were returned unchanged, they can remain in the balance, but the record should still show that they were temporarily removed for inspection.",
+          "A practical reconciliation step is to review open sample records against the batch balance at defined intervals. Any sample that has been removed but has no recorded outcome should be flagged for follow-up. This helps prevent a situation where units are neither in saleable stock nor accounted for as consumed or changed. The reconciliation should be documented, with a reference to the sample record and the batch balance it affects.",
+          "Limitations to acknowledge: this approach depends on timely and accurate recording at the point of inspection. If the inspection team does not record outcomes promptly, the batch balance may be temporarily overstated or understated. The reconciliation process should therefore include a way to identify and resolve missing outcomes, rather than assuming that silence means the units were returned unchanged."
+        ]
+      },
+      {
+        "heading": "Questions to ask before setting up the record",
+        "paragraphs": [
+          "Before adopting a sample inspection record, clarify how samples are currently handled and where the record will live. Ask whether the same record will be used for all inspection types or only for those that may consume or change units. Confirm who is responsible for recording the removed quantity, who records the outcome, and who reviews the batch balance. These roles should be named rather than left to informal practice.",
+          "Also ask how the record will handle partial returns: if a sample of ten units is taken and three are consumed while seven are returned unchanged, the record should show both quantities. Consider whether the record needs to distinguish between units that are changed but still usable for a different purpose and units that are fully consumed. The answer will depend on how the business defines saleable stock and what happens to changed units.",
+          "Finally, ask how the record will be reviewed over time. A sample inspection record is only useful if it is checked against the batch balance and if discrepancies are investigated. The review should be scheduled and assigned, not left to chance. These questions help ensure that the record supports the batch balance rather than becoming another source of ambiguity."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if the inspection outcome is not known immediately?",
+        "answer": "The sample record should be marked as pending, and the batch balance should not treat the units as returned until the outcome is documented. A follow-up step should be assigned to confirm the outcome and update the record."
+      },
+      {
+        "question": "Should changed units that remain usable be treated as consumed?",
+        "answer": "That depends on how the business defines saleable stock. The record should state the condition of the units and whether they are available for sale, held for another purpose, or consumed. The key is to avoid assuming they are unchanged."
+      }
+    ],
+    "searchIntent": "How should product units used in a sample inspection be accounted for if they cannot return to saleable stock?"
+  },
+  {
     "briefId": "seal-observation-records",
     "slug": "recording-container-seal-discrepancy-against-arrival-document",
     "category": "3PL & Warehousing",
