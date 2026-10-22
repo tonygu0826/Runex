@@ -22,6 +22,95 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "decimal-separator-imports",
+    "slug": "importing-decimal-quantities-source-files-use-different",
+    "category": "3PL & Warehousing",
+    "title": "Importing Decimal Quantities When Source Files Use Different Separators",
+    "description": "A practical way to specify decimal and thousands separators, keep original text traceable, and reject ambiguous quantities for clarification.",
+    "excerpt": "Set separator rules in the import specification, keep the original text linked to the parsed number, and reject ambiguous quantities for clarification.",
+    "keywords": [
+      "decimal separator import",
+      "thousands separator warehouse data",
+      "numeric import specification",
+      "ambiguous quantity clarification",
+      "original text traceability"
+    ],
+    "publishedAt": "2026-10-24",
+    "modifiedAt": "2026-10-24",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A numeric import specification should identify the decimal separator and any thousands separator.",
+      "The original text value should remain traceable to the numeric value produced by parsing.",
+      "Ambiguous quantities should be rejected for clarification rather than converted using an assumed locale."
+    ],
+    "sources": [],
+    "keyAnswer": "A numeric import specification should state which decimal separator and which thousands separator the source file uses before quantities are parsed. The original text value should stay traceable to the numeric value produced by parsing, and quantities that remain ambiguous should be rejected for clarification rather than converted using an assumed locale.",
+    "sections": [
+      {
+        "heading": "Why separator conventions differ between source files",
+        "paragraphs": [
+          "Source files arrive from different systems, regions and suppliers, and each may follow its own convention for writing numbers. One file may write a quantity as 1,234.5, using a comma to group thousands and a period for the decimal. Another may write 1.234,5, using a period for grouping and a comma for the decimal. A third may use a space or no grouping at all. None of these is inherently wrong; the problem is that the same characters can mean different things depending on the convention in use.",
+          "For warehouse work, the consequence is practical. A quantity that is parsed with the wrong separator can be off by a factor of a thousand, or a decimal value can be read as a whole number. That affects receiving counts, stock records, order quantities and replenishment decisions. The risk is highest when the file is imported automatically and no one inspects the original text. The aim is not to guess the convention but to state it explicitly and to keep the original value visible alongside the parsed result."
+        ]
+      },
+      {
+        "heading": "Writing the separator rules into the import specification",
+        "paragraphs": [
+          "A numeric import specification should identify the decimal separator and any thousands separator before quantities are parsed. This can be as simple as a written line in the import instructions: for this source, the decimal separator is a comma and the thousands separator is a period. The specification should also state how spaces, apostrophes or other grouping characters are treated, and whether a leading plus or minus sign is expected. The point is to remove ambiguity before the file is processed, not to rely on a default setting.",
+          "The specification should also name the person or role who confirms the convention when a new source file is introduced. If a supplier changes its export format, the specification needs to be updated before routine imports continue. A short checklist can help: confirm the decimal character, confirm the grouping character, confirm how negative values appear, and record an example value from the source file. These details are operational, not legal or regulatory, and they should be agreed with the party that produces the file."
+        ],
+        "bullets": [
+          "State the decimal separator explicitly for each source file.",
+          "State any thousands separator and how other grouping characters are handled.",
+          "Record an example value from the source file in the specification.",
+          "Name who confirms the convention when a new source is added."
+        ]
+      },
+      {
+        "heading": "Keeping the original text linked to the parsed quantity",
+        "paragraphs": [
+          "The original text value should remain traceable to the numeric value produced by parsing. In practice, this means the import record keeps both the raw string from the source file and the parsed number, along with a reference to the file and row it came from. If a quantity is later questioned, the warehouse can compare the parsed value with the original text without reopening the source file. This traceability is useful during reconciliation, cycle counting and dispute review.",
+          "Traceability also supports correction. If a parsing rule is found to be wrong, the original text allows the affected records to be identified and reprocessed rather than reconstructed from memory. The link should be preserved in the same record that carries the quantity, not stored in a separate informal note. A simple approach is to keep the raw value in a dedicated field and the parsed value in the quantity field, with a reference to the import batch. The exact implementation depends on the systems in use, but the principle is to keep both values visible."
+        ]
+      },
+      {
+        "heading": "Flagging ambiguous quantities for clarification instead of assuming a locale",
+        "paragraphs": [
+          "Ambiguous quantities should be rejected for clarification rather than converted using an assumed locale. A value such as 1,234 could mean one thousand two hundred thirty-four under one convention or one point two three four under another. If the specification does not resolve it, the import should flag the row and hold it rather than choose a default. The same applies to values with multiple separators, unusual grouping or missing decimal characters where the specification expects them.",
+          "Rejection is not a failure of the import; it is a control that prevents incorrect stock records. The flagged quantity should be returned to the party who supplied the file, with the original text and the specific question: is the comma a decimal separator or a thousands separator? The response should be recorded against the import specification so the same question does not recur. This approach keeps the warehouse from acting on a number that no one has confirmed."
+        ],
+        "bullets": [
+          "Hold rows where the separator convention is not confirmed by the specification.",
+          "Return the original text and a specific question to the file supplier.",
+          "Record the clarification against the import specification for future files."
+        ]
+      },
+      {
+        "heading": "Checking a sample file before routine imports begin",
+        "paragraphs": [
+          "Before a new source file is imported routinely, a sample should be checked against the specification. The sample should include typical quantities, values with grouping characters, values with decimal parts and any edge cases such as negative quantities or zero. The check confirms that the parsing rules produce the expected numbers and that the original text is retained. Any mismatch should be resolved before the first routine import, not after stock records have been affected.",
+          "The sample check is also an opportunity to confirm who reviews flagged rows and how quickly clarifications are expected. A buyer or operations lead should ask the warehouse or import team to show the specification, the sample check record and an example of a flagged quantity. These questions are practical: they show whether the import process is controlled or whether it relies on assumptions. The answers help set expectations for how separator issues will be handled when they arise."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should happen if a source file uses a space as a thousands separator?",
+        "answer": "The import specification should state how spaces are treated before parsing. If the specification does not cover the case, the affected quantities should be flagged for clarification rather than parsed with an assumed rule."
+      },
+      {
+        "question": "Can the original text be discarded once the quantity is parsed?",
+        "answer": "The original text value should remain traceable to the numeric value produced by parsing. Keeping both allows later checks and corrections without reopening the source file."
+      },
+      {
+        "question": "Who should confirm the separator convention for a new supplier file?",
+        "answer": "The party that produces the file should confirm the convention, and the confirmation should be recorded in the import specification. The warehouse should not infer the convention from a single example."
+      }
+    ],
+    "searchIntent": "How should decimal quantities be imported when source files use different number separators?"
+  },
+  {
     "briefId": "batch-sample-stock-consumption",
     "slug": "accounting-sample-inspection-units-cannot-return-saleable-stock",
     "category": "3PL & Warehousing",
