@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-import { extractExistingArticleSignals, findTopicCollision, slugifyTitle } from "../scripts/seo-quality.mjs";
+import { extractExistingArticleSignals, findTopicCollision, slugifyBriefId, slugifyTitle } from "../scripts/seo-quality.mjs";
 
 test("builds short, complete slugs from long titles", () => {
   assert.equal(
@@ -14,12 +14,28 @@ test("builds short, complete slugs from long titles", () => {
   );
 });
 
-test("never cuts through a word when a slug exceeds the limit", () => {
-  const slug = slugifyTitle("Preparing Inbound Shipments for a Smoother Warehouse Receiving Experience With Detailed Instructions", 48);
+test("shortens a long title to a complete relevant keyword phrase", () => {
+  const title = "Importing Decimal Quantities When Source Files Use Different Separators";
+  assert.equal(slugifyTitle(title, 64, ["decimal separator import", "original text traceability"]), "decimal-separator-import");
+  assert.equal(slugifyTitle("When Volume Shifts: A Practical Way to Adjust Warehouse Capacity Without Surprises", 48,
+    ["warehouse capacity planning", "volume shifts"]), "warehouse-capacity-planning");
+});
 
-  assert.ok(slug.length <= 48);
-  assert.equal(slug, "preparing-inbound-shipments-smoother-warehouse");
-  assert.doesNotMatch(slug, /-$/);
+test("never clips a phrase to meet the preferred URL length", () => {
+  const title = "Preparing Inbound Shipments for a Smoother Warehouse Receiving Experience With Detailed Instructions";
+  const complete = "preparing-inbound-shipments-smoother-warehouse-receiving-experience-detailed-instructions";
+  assert.equal(slugifyTitle(title, 48), complete);
+  assert.equal(slugifyTitle(title, 48, ["unrelated carrier invoices", "x", null, title]), complete);
+  assert.equal(slugifyTitle("Importing Decimal Quantities When Source Files Use Different Separators"),
+    "importing-decimal-quantities-source-files-use-different-separators");
+  assert.equal(slugifyTitle("标签"), "");
+});
+
+test("keeps persisted automatic brief IDs stable while public slug rules evolve", () => {
+  assert.equal(slugifyBriefId("How should a putaway task be recorded when only part of the received quantity was moved?", 56),
+    "should-putaway-task-recorded-only-part-received-quantity");
+  assert.equal(slugifyBriefId("How should a retried warehouse task message be checked so it does not change the stock twice?", 56),
+    "should-retried-warehouse-task-message-checked-does-not");
 });
 
 test("extracts quality signals from quoted and unquoted article records", () => {

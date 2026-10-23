@@ -161,9 +161,6 @@ export async function generateSeoArticle({
     if (titleCollision && (titleCollision.existing.toLowerCase() === title.toLowerCase() || titleCollision.score > 0.58)) {
       throw new Error(`Title "${title}" is too similar to existing title "${titleCollision.existing}". Choose a materially different search intent, preferably from another editorial brief.`);
     }
-    const slug = slugifyTitle(title);
-    if (!slug) throw new Error(`Title "${title}" cannot produce a valid URL slug. Use a clear English title.`);
-    if (existingSlugs.includes(slug)) throw new Error(`Title "${title}" produces an existing URL slug "${slug}". Choose a different search intent and title.`);
 
     const categories = new Set(["3PL & Warehousing", "FBA & E-commerce", "Distribution", "Fulfillment", "Supply Chain"]);
     if (!categories.has(generated.category)) throw new Error("Category is not allowed.");
@@ -182,6 +179,10 @@ export async function generateSeoArticle({
     const faq = generated.faq.map((item, index) => ({ question: requireString(item.question, `FAQ ${index + 1} question`, 10), answer: requireString(item.answer, `FAQ ${index + 1} answer`, 30) }));
     const keywords = [...new Set(generated.keywords.map((item, index) => requireString(item, `keyword ${index + 1}`, 4)))];
     if (keywords.length < 3) throw new Error("Keywords must be unique.");
+
+    const slug = slugifyTitle(title, 64, keywords);
+    if (!slug) throw new Error(`Title "${title}" cannot produce a valid URL slug. Use a clear English title.`);
+    if (existingSlugs.includes(slug)) throw new Error(`Title "${title}" produces an existing URL slug "${slug}". Choose a different search intent and title.`);
 
     const keyAnswer = requireString(generated.keyAnswer, "keyAnswer", 60);
     const prose = [keyAnswer, ...sections.flatMap((section) => [...section.paragraphs, ...(section.bullets || [])]), ...faq.map((item) => item.answer)].join(" ");

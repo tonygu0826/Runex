@@ -23,7 +23,8 @@ export type Article = {
 export const articles: Article[] = [
   {
     "briefId": "decimal-separator-imports",
-    "slug": "importing-decimal-quantities-source-files-use-different",
+    "slug": "decimal-quantity-import-separator-rules",
+    "legacySlugs": ["importing-decimal-quantities-source-files-use-different"],
     "category": "3PL & Warehousing",
     "title": "Importing Decimal Quantities When Source Files Use Different Separators",
     "description": "A practical way to specify decimal and thousands separators, keep original text traceable, and reject ambiguous quantities for clarification.",

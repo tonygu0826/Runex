@@ -3,7 +3,7 @@ import test from "node:test";
 import { generateSeoArticle } from "../scripts/generate-seo-article.mjs";
 import { granularBriefs, legacyBriefs } from "../scripts/seo-editorial-briefs.mjs";
 import { extractExistingArticleSignals } from "../scripts/seo-quality.mjs";
-import { GENERATION_BUDGET_MS } from "../scripts/seo-topic-planner.mjs";
+import { GENERATION_BUDGET_MS, validateTopicPlan } from "../scripts/seo-topic-planner.mjs";
 import { planFor, unitDraft, unitPlan } from "./fixtures/seo-plans.mjs";
 import { historicalArchive as archive, historicalSource as realSource } from "./fixtures/seo-archive.mjs";
 
@@ -192,4 +192,15 @@ test("the total deadline reserves build time and caps even oversized configured 
   assert.equal(h.calls.length, 1);
   assert.equal(h.calls[0].timeoutMs, 120_000);
   assert.equal(h.writes.length, 0);
+});
+
+
+test("planning and final generation use complete keyword slugs without changing the archive", async () => {
+  const plan = { ...unitPlan, title: "Mapping Inner-Pack and Case Quantities Before Importing Ambiguous Order Lines" };
+  const draft = { ...unitDraft(), title: plan.title };
+  const h = harness([plan, draft]);
+  const result = await h.run();
+  assert.equal(result.article.slug, "case-pack-quantities");
+  assert.deepEqual(extractExistingArticleSignals(h.writes[0]).slice(1), archive);
+  assert.throws(() => validateTopicPlan(plan, granularBriefs, [{ title: "Unrelated", slug: result.article.slug }]), /existing URL slug/);
 });

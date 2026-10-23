@@ -19,7 +19,7 @@ test("the 24 granular plan probes pass unchanged topic gates against the archive
   const coverage = [...archive];
   for (const brief of unusedEditorialBriefs(granularBriefs, archive)) {
     const plan = validateTopicPlan(planFor(brief), [brief], coverage);
-    coverage.unshift({ ...plan, slug: slugifyTitle(plan.title) });
+    coverage.unshift({ ...plan, slug: slugifyTitle(plan.title, 64, plan.keywords) });
     assert.ok(!unusedEditorialBriefs([brief], coverage).length);
   }
 });

@@ -33,7 +33,7 @@ test("every new plan probe passes unchanged gates against all past and new cover
   assert.equal(coverage.length, 75);
   for (const brief of expandedBriefs) {
     const plan = validateTopicPlan(planFor(brief), [brief], coverage);
-    coverage.unshift({ ...plan, slug: slugifyTitle(plan.title) });
+    coverage.unshift({ ...plan, slug: slugifyTitle(plan.title, 64, plan.keywords) });
   }
   assert.equal(coverage.length, 137);
 });
