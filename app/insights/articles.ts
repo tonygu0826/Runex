@@ -22,6 +22,95 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "mixed-pallet-breakdown",
+    "slug": "recording-mixed-inbound-pallet-carton-separation",
+    "category": "3PL & Warehousing",
+    "title": "Recording a Mixed Inbound Pallet Before Carton Separation",
+    "description": "How to link a mixed pallet's outer identifier to its item and carton breakdown before cartons are separated.",
+    "excerpt": "A mixed pallet record should tie the outer identifier to the supplied breakdown, keep cartons linked to their pallet, and flag unexplained cartons for review.",
+    "keywords": [
+      "mixed pallet record",
+      "pallet breakdown link",
+      "carton separation trace",
+      "unexplained carton review",
+      "outer pallet identifier"
+    ],
+    "publishedAt": "2026-10-25",
+    "modifiedAt": "2026-10-25",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A mixed pallet record should link its outer identifier to the item and carton breakdown supplied for it.",
+      "Separating cartons should preserve the link to their original pallet rather than relying on unloading order.",
+      "An unexplained carton should be investigated against the pallet breakdown before its product identity is assumed."
+    ],
+    "sources": [],
+    "keyAnswer": "A mixed pallet record should link the pallet's outer identifier to the item and carton breakdown supplied for it, so the contents are documented before any cartons are separated. Separating cartons should preserve the link to their original pallet rather than relying on unloading order. Any unexplained carton should be investigated against the pallet breakdown before its product identity is assumed.",
+    "sections": [
+      {
+        "heading": "Linking the outer pallet identifier to the supplied breakdown",
+        "paragraphs": [
+          "A mixed inbound pallet carries a single outer identifier, such as a pallet label or shipment reference, but its contents span multiple items and carton counts. The receiving record should connect that outer identifier to the item and carton breakdown supplied for the pallet, so the documented contents exist as a linked record rather than a loose description. This link is what allows a later question about a specific carton to be traced back to the pallet it arrived on.",
+          "Before any cartons are removed, confirm that the breakdown supplied with the pallet is the version being used. If the breakdown is missing, incomplete or conflicts with the outer identifier, record that gap explicitly rather than filling it from assumption. The record should show what was supplied, what was observed and where the two do not yet reconcile. A buyer or receiving supervisor should ask which document the breakdown came from and whether that document is the current one for this pallet."
+        ],
+        "bullets": [
+          "Record the outer pallet identifier exactly as it appears on the pallet.",
+          "Attach the supplied item and carton breakdown to that identifier before handling begins.",
+          "Note any missing or conflicting breakdown information as an open point."
+        ]
+      },
+      {
+        "heading": "Recording item and carton detail before separation begins",
+        "paragraphs": [
+          "The practical reason to record before separation is that separation changes what can be observed. Once cartons are removed from a mixed pallet and distributed to different locations, the pallet-level view is gone. Capturing item detail and carton counts while the pallet is intact gives the warehouse a baseline that later records can be checked against. This does not require counting every unit; it requires that the breakdown supplied for the pallet is recorded and linked before cartons move.",
+          "A useful record distinguishes between what the breakdown states and what has been physically confirmed. If the breakdown lists four items across a stated number of cartons, the record should show those item lines and carton quantities as supplied, with a separate field or note for any physical check performed at receipt. Where a check has not been done, the record should not imply that it has. This distinction matters when a discrepancy is raised later, because it shows whether the pallet was verified at arrival or only documented from paperwork."
+        ]
+      },
+      {
+        "heading": "Keeping separated cartons tied to their original pallet",
+        "paragraphs": [
+          "When cartons are separated from a mixed pallet, each carton should retain a reference to the pallet it came from. Relying on unloading order or physical proximity is not a reliable link, because cartons from different pallets can be staged together and the sequence of unloading does not survive the first move. The link should be recorded at the point of separation, not reconstructed afterwards from memory or from a staging position.",
+          "In practice this means the carton record or the handling instruction should carry the original pallet identifier alongside the item and quantity being moved. If cartons are split across multiple destinations, each destination record should still point back to the same source pallet. A buyer reviewing the process should ask how a carton separated today can be traced to its pallet next week, and whether that trace depends on a person remembering where it was unloaded."
+        ],
+        "bullets": [
+          "Record the source pallet identifier on each carton or movement record at separation.",
+          "Do not use unloading sequence or staging location as the only link.",
+          "Where cartons go to different destinations, keep the same source reference on each."
+        ]
+      },
+      {
+        "heading": "Handling an unexplained carton against the breakdown",
+        "paragraphs": [
+          "An unexplained carton is one that cannot be matched to the supplied breakdown, either because its item is not listed, its quantity is not accounted for, or its labelling does not correspond to a line on the pallet record. The correct response is to investigate it against the breakdown before assuming what product it contains. Assuming identity from appearance, similar packaging or partial labelling risks introducing an item into stock under the wrong record, which is harder to correct once the carton has been put away.",
+          "The investigation should record what was observed, what the breakdown states and what remains unresolved. If the carton can be matched after checking, the record should show the basis for the match. If it cannot, the carton should remain flagged and separated from routine putaway until the question is resolved with the party who supplied the breakdown. A buyer should ask who is responsible for resolving an unexplained carton and what happens to it in the meantime, so that unresolved cartons do not quietly enter saleable stock."
+        ],
+        "bullets": [
+          "Compare the carton against the supplied breakdown before assigning a product identity.",
+          "Record the observation, the breakdown line and the unresolved question.",
+          "Hold the carton from routine putaway until the discrepancy is resolved."
+        ]
+      },
+      {
+        "heading": "Questions to ask about the mixed pallet record",
+        "paragraphs": [
+          "The record design should be tested against realistic questions. Can a carton be traced to its pallet after separation? Does the record show whether the breakdown was physically checked or only received? Is there a clear place to record an unexplained carton and its resolution? These questions help confirm that the record supports the work rather than existing as a separate administrative step.",
+          "It is also worth asking how the record handles a pallet whose breakdown arrives late or changes after receipt. The record should be able to show the version in use and any later correction without overwriting the original entry. This is a record-keeping discipline, and the process should be clear about what happens when a pallet does not reconcile."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does every carton on a mixed pallet need to be scanned individually before separation?",
+        "answer": "The brief does not require individual scanning. It requires that the pallet's outer identifier is linked to the supplied item and carton breakdown before separation, and that separated cartons preserve the link to their original pallet. How that link is recorded is a process decision for the warehouse."
+      },
+      {
+        "question": "What should happen if the breakdown arrives after the cartons have already been separated?",
+        "answer": "The record should show that separation occurred before the breakdown was available, and the cartons should still be linked to their source pallet so the later breakdown can be reconciled against them. The gap should be visible rather than closed by assumption."
+      }
+    ],
+    "searchIntent": "How should the contents of a mixed inbound pallet be recorded before its cartons are separated?"
+  },
+  {
     "briefId": "decimal-separator-imports",
     "slug": "decimal-quantity-import-separator-rules",
     "legacySlugs": ["importing-decimal-quantities-source-files-use-different"],
