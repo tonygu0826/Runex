@@ -200,3 +200,13 @@ Worker instance** and checks all public surfaces without redeploying. Separate
 tests cover winter/summer DST, midnight, partial recovery and idempotent retries.
 A two-day buffer tolerates a delayed or missed daily maintenance run; it does
 not guarantee availability through an indefinite model or deployment outage.
+
+### Complete article URL phrases
+
+Article slugs keep all meaningful title words when they fit the preferred
+64-character length. For a longer title, the planner and final article validator
+use the same selection of a complete, validated keyword phrase with at least two
+shared topic words. If no suitable whole phrase fits, the full title slug is kept:
+64 characters is a preference, not a truncation limit. Existing published URLs
+are not regenerated. Automatic brief IDs retain their original algorithm so
+stored approved briefs remain valid.

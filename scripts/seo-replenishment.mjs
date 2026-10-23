@@ -4,7 +4,7 @@ import { fileURLToPath } from "node:url";
 import { manualEditorialBriefs } from "./seo-editorial-briefs.mjs";
 import { editorialFoundation } from "./seo-editorial-foundation.mjs";
 import { inspectEditorialPool, REPLENISH_AT } from "./seo-editorial-health.mjs";
-import { extractExistingArticleSignals, jaccard, slugifyTitle } from "./seo-quality.mjs";
+import { extractExistingArticleSignals, jaccard, slugifyBriefId } from "./seo-quality.mjs";
 import { assertSupportedWording, validateTopicPlan, unusedEditorialBriefs } from "./seo-topic-planner.mjs";
 import { formatExistingCoverage } from "./seo-generation-policy.mjs";
 import { deepSeekRequestSettings, requestDeepSeekContent, waitBeforeRetry } from "./deepseek-client.mjs";
@@ -38,7 +38,7 @@ export function validateProposedBrief(raw, { existingArticles, existingBriefs, f
   if (!raw || typeof raw !== "object" || Object.keys(raw).some((key) => !["area", "readerQuestion", "evidence", "foundationRefs", "plan"].includes(key))) throw new Error("A candidate must contain only area, readerQuestion, evidence, foundationRefs and plan.");
   const area = text(raw.area, "area", 15, 100);
   const readerQuestion = text(raw.readerQuestion, "readerQuestion", 30, 240);
-  const id = `auto-${slugifyTitle(readerQuestion, 56)}`;
+  const id = `auto-${slugifyBriefId(readerQuestion, 56)}`;
   if (existingBriefs.some((item) => item.id === id)) throw new Error("The automatic brief identifier already exists.");
   validateFoundationRefs(raw.foundationRefs, foundation);
   if (!Array.isArray(raw.evidence) || raw.evidence.length < 2 || raw.evidence.length > 4) throw new Error("Supply 2-4 focused operating recommendations.");

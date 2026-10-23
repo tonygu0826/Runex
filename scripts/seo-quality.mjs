@@ -95,7 +95,7 @@ function overlapCoefficient(left, right) {
   return intersection / Math.max(1, Math.min(a.size, b.size));
 }
 
-export function slugifyTitle(title, maxLength = 64) {
+export function slugifyBriefId(title, maxLength = 56) {
   const allWords = String(title ?? "")
     .normalize("NFKD")
     .toLowerCase()
@@ -114,6 +114,29 @@ export function slugifyTitle(title, maxLength = 64) {
   }
 
   return selected.join("-");
+}
+
+// Public URLs use complete phrases. The target length is a preference, not a
+// reason to silently drop subject words. Brief IDs keep their historical rule.
+export function slugifyTitle(title, maxLength = 64, keywords = []) {
+  const words = String(title ?? "").normalize("NFKD").toLowerCase()
+    .replace(/[^a-z0-9]+/g, " ").trim().split(/\s+/).filter(Boolean);
+  const meaningfulWords = words.filter((word) => !slugStopWords.has(word));
+  const complete = (meaningfulWords.length >= 3 ? meaningfulWords : words).join("-");
+  if (complete.length <= maxLength) return complete;
+
+  const titleWords = new Set(normalizeWords(title));
+  for (const keyword of keywords) {
+    if (typeof keyword !== "string") continue;
+    const phrase = keyword.normalize("NFKD").toLowerCase()
+      .replace(/[^a-z0-9]+/g, " ").trim().split(/\s+/).filter(Boolean).join("-");
+    const topicWords = new Set(normalizeWords(keyword));
+    const shared = [...topicWords].filter((word) => titleWords.has(word)).length;
+    // Select one entire keyword phrase already validated with the article.
+    // Do not assemble fragments or accept a keyword about another subject.
+    if (phrase.length <= maxLength && topicWords.size >= 2 && shared >= 2 && shared / topicWords.size >= 0.5) return phrase;
+  }
+  return complete;
 }
 
 function extractTopLevelObjects(source, strict = false) {

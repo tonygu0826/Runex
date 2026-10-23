@@ -56,7 +56,7 @@ export function validateTopicMetadata(generated, briefs, existingArticles) {
   if (operationalBasis.length < 2 || operationalBasis.some((item) => !brief.evidence.includes(item))) {
     throw new Error("Operational basis must reproduce at least two distinct supplied evidence statements exactly.");
   }
-  const slug = slugifyTitle(title);
+  const slug = slugifyTitle(title, 64, keywords);
   if (!slug) throw new Error(`Title "${title}" cannot produce a valid URL slug. Use a clear English title.`);
   if (existingArticles.some((item) => item.slug === slug)) throw new Error(`Title "${title}" produces an existing URL slug "${slug}". Choose a different search intent and title.`);
   const metadata = { briefId: brief.id, title, description, excerpt, keywords, keyAnswer, operationalBasis };

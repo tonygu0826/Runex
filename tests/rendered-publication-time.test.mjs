@@ -18,12 +18,16 @@ test("one deployed warm Worker hides a prepared article on every surface, then r
     return { status: response.status, body: await response.text() };
   };
   const url = `/insights/${record.slug}`;
+  // The repaired Oct 24 route keeps the old candidate URL as a safe alias.
+  const aliases = record.slug === "decimal-quantity-import-separator-rules"
+    ? ["/insights/importing-decimal-quantities-source-files-use-different"] : [];
   const service = target.category === "Distribution" || target.category === "Supply Chain" ? "/solutions/transportation-cross-docking-canada" :
     target.category === "FBA & E-commerce" ? "/solutions/fba-ecommerce-prep-canada" : "/solutions/warehousing-fulfillment-canada";
   const surfaces = ["/insights", "/sitemap.xml", "/llms.txt", service];
   const hidden = await request(url);
   assert.equal(hidden.status, 404);
   assert.ok(!hidden.body.includes(target.title));
+  for (const alias of aliases) assert.equal((await request(alias)).status, 404);
   for (const surface of surfaces) {
     const result = await request(surface);
     assert.equal(result.status, 200);
@@ -32,7 +36,15 @@ test("one deployed warm Worker hides a prepared article on every surface, then r
   const status = JSON.parse((await request("/api/seo-status")).body);
   assert.ok(status.prepared.some((row) => row.date === record.publishedAt));
   t.mock.timers.setTime(release);
-  assert.equal((await request(url)).status, 200);
+  const live = await request(url);
+  assert.equal(live.status, 200);
+  assert.ok(live.body.includes(`https://runexlogi.com${url}`));
+  for (const alias of aliases) {
+    const response = await worker.fetch(new Request(`http://localhost${alias}`, { headers: { accept: "text/html" } }),
+      { ASSETS: { fetch: async () => new Response("Not found", { status: 404 }) } }, { waitUntil() {}, passThroughOnException() {} });
+    assert.equal(response.status, 307);
+    assert.equal(new URL(response.headers.get("location"), "http://localhost").pathname, url);
+  }
   for (const surface of surfaces) {
     const result = await request(surface);
     assert.equal(result.status, 200);
