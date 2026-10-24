@@ -22,6 +22,81 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "appointment-reference-replacement",
+    "slug": "handling-earlier-delivery-appointment-after-shipment-rebooked",
+    "category": "Distribution",
+    "title": "Handling an Earlier Delivery Appointment After a Shipment Is Rebooked",
+    "description": "A rebooking should link the old appointment to its replacement and keep superseded details out of active delivery instructions.",
+    "excerpt": "Link the old appointment to its replacement, mark it superseded for the carrier, and check active documents for obsolete details.",
+    "keywords": [
+      "delivery appointment rebooking",
+      "superseded appointment reference",
+      "linked appointment references",
+      "carrier appointment instructions",
+      "obsolete appointment details"
+    ],
+    "publishedAt": "2026-10-26",
+    "modifiedAt": "2026-10-26",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A rebooking record should identify the old appointment and its replacement as linked references.",
+      "The previous appointment should be distinguishable as superseded in instructions sent to the carrier.",
+      "The shipment's active delivery documents should be checked for obsolete appointment details."
+    ],
+    "sources": [],
+    "keyAnswer": "A rebooking record should identify the earlier appointment and its replacement as linked references, so the two are not treated as separate bookings. Instructions sent to the carrier should mark the previous appointment as superseded rather than simply omitting it. The shipment's active delivery documents should then be checked for obsolete appointment details before dispatch.",
+    "sections": [
+      {
+        "heading": "Recording the old and new appointment as linked references",
+        "paragraphs": [
+          "When a delivery appointment is rebooked, the record should not simply replace the old reference with a new one. A rebooking record should identify the old appointment and its replacement as linked references. This makes clear that the two entries describe the same shipment's delivery plan, not two separate bookings that might both be acted on.",
+          "The link can take different forms depending on the systems in use: a shared rebooking identifier, a cross-reference field, or a parent-child relationship between the records. What matters is that someone reviewing the shipment can see the earlier appointment, the replacement, and the fact that they are connected. Without that link, a carrier or warehouse might treat the old appointment as still active or the new one as an unrelated booking.",
+          "A practical question for a buyer or operations lead is whether the warehouse management system or transport management system preserves this link automatically or requires a manual note. If it requires a manual step, the rebooking procedure should state who records the link and where it is visible. The goal is not extra paperwork but a record that prevents the earlier appointment from being mistaken for a live instruction."
+        ]
+      },
+      {
+        "heading": "Marking the earlier appointment as superseded in carrier instructions",
+        "paragraphs": [
+          "The previous appointment should be distinguishable as superseded in instructions sent to the carrier. Omitting the old reference is not the same as marking it superseded. If the carrier's system still holds the earlier appointment, a message that only mentions the new one may leave the old appointment active in the carrier's view, creating a risk of the carrier arriving against the wrong slot or treating the shipment as having two bookings.",
+          "Carrier instructions should therefore state clearly that the earlier appointment is superseded and identify the replacement reference. The wording should be unambiguous: which appointment is no longer valid, which one replaces it, and which shipment the change applies to. This is especially important when the rebooking happens close to the original appointment window, because the carrier may already have planned around the earlier time.",
+          "A useful check is to ask how the carrier acknowledges a superseded appointment. If the carrier's process requires a cancellation reference or a specific message format, the warehouse should know that before sending the instruction. The brief does not prescribe a particular carrier format, so the practical step is to confirm the expected method with the carrier and record it in the rebooking procedure."
+        ]
+      },
+      {
+        "heading": "Checking active delivery documents for obsolete appointment details",
+        "paragraphs": [
+          "After the rebooking is recorded and the carrier is informed, the shipment's active delivery documents should be checked for obsolete appointment details. Documents such as packing lists, delivery notes, dispatch sheets, or labels may carry the earlier appointment reference or time. If those documents are still in use, they can contradict the carrier instruction and confuse the receiving location.",
+          "The check should focus on documents that will travel with the shipment or be used at dispatch. Obsolete details should be removed or replaced, and the replacement reference should appear consistently. Where a document has already been printed, the rebooking procedure should state whether it is reprinted, amended, or withdrawn from use. The aim is to avoid a situation where the physical paperwork and the carrier instruction describe different appointments.",
+          "This step also applies to internal records that dispatch staff rely on. If a staging sheet or dispatch board still shows the old appointment, the rebooking is not complete in practice. The question for a buyer is whether the warehouse has a defined point at which active documents are rechecked after a rebooking, and who is responsible for that check."
+        ]
+      },
+      {
+        "heading": "Confirming the replacement reference before dispatch instructions are issued",
+        "paragraphs": [
+          "Before dispatch instructions are issued, the replacement appointment reference should be confirmed. Confirmation means checking that the new reference is the one the carrier has acknowledged, that it is linked to the earlier appointment in the rebooking record, and that active documents show the same reference. This is a final consistency check rather than a new step in the process.",
+          "A practical way to structure the confirmation is to compare three things: the rebooking record, the carrier instruction, and the active delivery documents. If any of the three shows a different reference or still shows the superseded appointment, the dispatch instruction should not be released until the difference is resolved. The brief does not specify who performs this check, so the operating procedure should name the role responsible.",
+          "The limitation is that this process depends on the carrier's own systems and acknowledgement. The warehouse can control its records and instructions, but it cannot determine how the carrier updates its appointment system. That is why the superseded marking and the confirmation step matter: they give the carrier a clear instruction and give the warehouse a documented basis for follow-up if the appointment is not reflected correctly."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should the old appointment be deleted after a rebooking?",
+        "answer": "The brief does not call for deletion. It calls for the old and new appointments to be linked and for the earlier one to be marked superseded in carrier instructions. Deleting the old reference can remove the context that shows a rebooking occurred, so the linked record is the safer approach."
+      },
+      {
+        "question": "What if the carrier does not acknowledge the superseded appointment?",
+        "answer": "The warehouse should keep the rebooking record and the instruction sent, and follow up through the agreed carrier contact. The brief does not define an escalation path, so the operating procedure should state who follows up and what evidence is retained."
+      },
+      {
+        "question": "Do all delivery documents need to be reprinted after a rebooking?",
+        "answer": "Only documents that carry the obsolete appointment details and are still active need attention. The check should identify which documents are affected and whether they are amended, reprinted, or withdrawn. Documents without appointment details do not need to change for this reason alone."
+      }
+    ],
+    "searchIntent": "How should an earlier delivery appointment reference be handled after a shipment is rebooked?"
+  },
+  {
     "briefId": "mixed-pallet-breakdown",
     "slug": "recording-mixed-inbound-pallet-carton-separation",
     "category": "3PL & Warehousing",
