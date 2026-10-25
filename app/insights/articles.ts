@@ -22,6 +22,83 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "shipment-weight-reconciliation",
+    "slug": "comparing-measured-shipment-weight-booking-weight",
+    "category": "Distribution",
+    "title": "Comparing Measured Shipment Weight With the Booking Weight",
+    "description": "A practical way to compare a packed shipment's measured weight with the value used for its carrier booking.",
+    "excerpt": "Match the measured and booked weight values on packaging and unit before reviewing any difference.",
+    "keywords": [
+      "shipment weight reconciliation",
+      "packed weight versus booking weight",
+      "packaging included weight check",
+      "weight unit comparison",
+      "parcel configuration weight record"
+    ],
+    "publishedAt": "2026-10-27",
+    "modifiedAt": "2026-10-27",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A weight comparison should identify whether each value includes packaging and its stated unit.",
+      "The measurement reference should remain linked to the parcel configuration that was weighed.",
+      "A material difference should be reviewed before the booking value is replaced or an invoice difference is accepted."
+    ],
+    "sources": [],
+    "keyAnswer": "Compare the two weight values only after confirming that each includes or excludes packaging in the same way and that both use the same stated unit. Keep the measurement linked to the parcel configuration that was actually weighed, so the comparison refers to the same packed unit. Where the difference is material, review it before replacing the booking value or accepting an invoice difference.",
+    "sections": [
+      {
+        "heading": "Confirming what each weight value includes",
+        "paragraphs": [
+          "A measured weight and a booking weight can differ for reasons that have nothing to do with the shipment itself. Before treating any gap as a discrepancy, establish what each value represents. One may describe the product alone, while the other describes the packed parcel with carton, filler and labels. If the two values are built on different definitions, the difference is expected rather than exceptional.",
+          "The practical check is to ask, for each value, whether packaging is included and which packaging elements are counted. A booking weight taken from a product master may exclude the outer carton. A measured weight taken at the packing bench may include it. Neither is wrong, but they are not directly comparable until the basis is aligned. Record the basis alongside each value so a later reviewer can see why the numbers were treated as comparable or not."
+        ],
+        "bullets": [
+          "State whether the value is product-only or packed weight.",
+          "Note which packaging elements are included in the packed value.",
+          "Keep the basis visible next to the number rather than in a separate note."
+        ]
+      },
+      {
+        "heading": "Checking that both values use the same unit",
+        "paragraphs": [
+          "Weight units are a common source of apparent differences. A value recorded in kilograms and a value recorded in pounds will not match even when they describe the same parcel. Before comparing, confirm the stated unit for each value and convert only when the conversion is explicit and traceable. A converted value should remain linked to the original so the change can be reviewed.",
+          "This step is easy to skip when both numbers are familiar. It is also where a small unit error can look like a large weight discrepancy. Treat the unit as part of the value, not as an afterthought, and make the unit visible wherever the weight is stored or displayed."
+        ]
+      },
+      {
+        "heading": "Keeping the measurement tied to the weighed parcel",
+        "paragraphs": [
+          "A measured weight is only meaningful for the parcel configuration that was on the scale. If the parcel was later repacked, split or combined, the measurement may no longer describe the unit being booked. The measurement reference should remain linked to the parcel configuration that was weighed, so the comparison refers to the same packed unit rather than to a similar one.",
+          "Where a parcel configuration changes, the earlier measurement should be treated as historical rather than current. A new measurement should be taken for the new configuration, and the link between the measurement and the configuration should be preserved. This prevents a booking from being compared against a weight that belonged to a different packed unit."
+        ],
+        "bullets": [
+          "Link each measurement to the parcel configuration it describes.",
+          "Treat earlier measurements as historical after repacking or splitting.",
+          "Take a new measurement for a changed configuration rather than reusing an old value."
+        ]
+      },
+      {
+        "heading": "Reviewing a material difference before changing the booking",
+        "paragraphs": [
+          "Once the basis and unit are aligned and the measurement is linked to the correct parcel, any remaining difference can be reviewed on its merits. A material difference should be reviewed before the booking value is replaced or an invoice difference is accepted. The review should identify what changed, whether the measurement or the booking value is more likely to reflect the packed unit, and who is responsible for confirming the correction.",
+          "Replacing the booking value without this review can hide a packaging change, a unit error or a measurement taken from the wrong parcel. Accepting an invoice difference without the same review can do the same in the other direction. The review does not need to be elaborate, but it should be recorded so the decision can be traced later."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if the measured weight and booking weight differ only slightly?",
+        "answer": "A small difference may still be worth noting if the basis or unit is unclear. Confirm both values describe the same packed unit and use the same stated unit before deciding whether the difference needs further review."
+      },
+      {
+        "question": "Should the booking value be updated whenever a new measurement is taken?",
+        "answer": "Not automatically. A new measurement should first be linked to the parcel configuration it describes and compared on a consistent basis. A material difference should be reviewed before the booking value is replaced."
+      }
+    ],
+    "searchIntent": "How should a packed shipment's measured weight be compared with the weight used for its carrier booking?"
+  },
+  {
     "briefId": "appointment-reference-replacement",
     "slug": "handling-earlier-delivery-appointment-after-shipment-rebooked",
     "category": "Distribution",
