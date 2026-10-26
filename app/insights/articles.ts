@@ -22,6 +22,98 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "partial-file-import-results",
+    "slug": "resubmitting-order-file-after-partial-import",
+    "category": "3PL & Warehousing",
+    "title": "Resubmitting an Order File After a Partial Import",
+    "description": "A partial import needs a resubmission that keeps accepted rows intact and corrects only the rejected rows against their specific errors.",
+    "excerpt": "Keep accepted rows untouched, preserve original row references, and fix rejected rows against their stated errors.",
+    "keywords": [
+      "partial order import resubmission",
+      "accepted and rejected rows",
+      "original row references",
+      "correcting rejected import rows",
+      "order file import results"
+    ],
+    "publishedAt": "2026-10-28",
+    "modifiedAt": "2026-10-28",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An import result should identify the accepted and rejected rows of the original file separately.",
+      "A resubmission should preserve the original row references so accepted work is not recreated.",
+      "Rejected rows should be corrected against their specific error rather than by replacing the entire accepted batch."
+    ],
+    "sources": [],
+    "keyAnswer": "An import result should separate the accepted rows from the rejected rows of the original file so each can be handled on its own terms. When resubmitting, keep the original row references so accepted work is not recreated. Correct rejected rows against their specific error rather than replacing the entire accepted batch.",
+    "sections": [
+      {
+        "heading": "Reading the import result: accepted rows versus rejected rows",
+        "paragraphs": [
+          "When an order file is imported, the result should not be treated as a single pass or fail. The import result should identify the accepted and rejected rows of the original file separately. This separation is the starting point for any resubmission because it tells you which rows already have a valid order record and which rows still need attention.",
+          "A useful import result lists each row with its original position in the file, its status, and, for rejected rows, the specific error that caused the rejection. Without that row-level detail, you cannot tell whether a rejection was due to a missing field, an unrecognised product code, a quantity issue, or another cause. The result should be detailed enough that each rejected row can be matched back to the exact line in the source file."
+        ],
+        "bullets": [
+          "Accepted rows: rows that created or updated an order record and should not be processed again.",
+          "Rejected rows: rows that did not create an order record and need correction.",
+          "Original row references: the position or identifier that links each result line back to the source file."
+        ]
+      },
+      {
+        "heading": "Why original row references matter on resubmission",
+        "paragraphs": [
+          "A resubmission should preserve the original row references so accepted work is not recreated. If the resubmitted file does not carry the same row references, the import process may treat previously accepted rows as new submissions. That can lead to duplicate order records, duplicate pick instructions, or confusion about which version of a row is authoritative.",
+          "Preserving row references also makes the resubmission auditable. Anyone reviewing the file later can see that a given row was rejected on the first attempt and corrected on the second, rather than appearing as an unrelated new order. This is particularly important when multiple people touch the file or when the resubmission happens days after the original import."
+        ],
+        "bullets": [
+          "Keep the original row number or identifier on every row in the resubmitted file.",
+          "Do not renumber or reorder rows in a way that breaks the link to the first import result.",
+          "If a row must be split or merged, document the change and its relationship to the original row reference."
+        ]
+      },
+      {
+        "heading": "Correcting a rejected row against its stated error",
+        "paragraphs": [
+          "Rejected rows should be corrected against their specific error rather than by replacing the entire accepted batch. Each rejection carries a reason, and the correction should address that reason directly. For example, if a row was rejected because a product code was not recognised, the correction is to supply a valid code or confirm the intended item, not to rewrite unrelated fields.",
+          "Correcting only the rejected rows reduces the risk of introducing new errors into rows that were already accepted. It also keeps the resubmission smaller and easier to review. When a rejected row has more than one error, the import result should list each error so the correction can address all of them in one pass."
+        ],
+        "bullets": [
+          "Read the stated error for each rejected row before making any change.",
+          "Change only the fields needed to resolve the error, leaving other fields as they were.",
+          "If the error is unclear, seek clarification rather than guessing at a correction."
+        ]
+      },
+      {
+        "heading": "Checking the resubmitted file before it is sent again",
+        "paragraphs": [
+          "Before resubmitting, check that the file contains only the rejected rows, each corrected against its stated error, and that the original row references are intact. Confirm that accepted rows are not included in the resubmission unless the import process explicitly requires the full file with a status marker. Including accepted rows without a clear marker can cause them to be processed again.",
+          "A second check should confirm that the corrections themselves are valid: product codes exist, quantities are in the expected format, and required fields are populated. Where possible, compare the corrected rows against the original import result line by line. This step catches accidental changes to fields that were not part of the error and confirms that every rejected row has been addressed."
+        ],
+        "bullets": [
+          "Verify that the resubmitted file contains only the rows that need correction.",
+          "Confirm that original row references are preserved exactly.",
+          "Check each corrected field against the stated error and the source data.",
+          "Ask the receiving team to confirm how the resubmission will be matched to the original import."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should the resubmitted file include the accepted rows as well?",
+        "answer": "That depends on how the import process matches submissions. If the process requires the full file, accepted rows should be clearly marked so they are not processed again. If it accepts only rejected rows, submit only those. Confirm the expected format with the team that manages the import before sending."
+      },
+      {
+        "question": "What if a rejected row has no clear error message?",
+        "answer": "A rejection without a specific error cannot be corrected reliably. Seek clarification from the team that produced the import result, and ask for the row-level error before making changes. Guessing at the cause can introduce new errors or leave the row rejected again."
+      },
+      {
+        "question": "How can duplicate order records be avoided after a partial import?",
+        "answer": "Preserve the original row references on the resubmitted file and correct only the rejected rows. Before resubmitting, confirm with the receiving team how the import will recognise rows that were already accepted, so that accepted work is not recreated."
+      }
+    ],
+    "searchIntent": "How should an order file be resubmitted when only some rows were accepted on the first import?"
+  },
+  {
     "briefId": "shipment-weight-reconciliation",
     "slug": "comparing-measured-shipment-weight-booking-weight",
     "category": "Distribution",
