@@ -22,6 +22,109 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "receipt-reversal-links",
+    "slug": "correcting-receipt-posted-wrong-purchase-reference",
+    "category": "3PL & Warehousing",
+    "title": "Correcting a Receipt Posted to the Wrong Purchase Reference",
+    "description": "Link the erroneous receipt to its replacement so the correction fixes the record without receiving the same physical units twice.",
+    "excerpt": "A linked correction pair keeps the wrong receipt and its replacement traceable while the physical units stay counted once.",
+    "keywords": [
+      "receipt correction linked pair",
+      "wrong purchase reference receipt",
+      "avoid second stock increase",
+      "downstream allocation check",
+      "receipt reversal record"
+    ],
+    "publishedAt": "2026-10-29",
+    "modifiedAt": "2026-10-29",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A receipt correction should identify the erroneous entry and its replacement as a linked pair.",
+      "The physical units should be distinguished from the record correction so they are not received a second time.",
+      "Downstream allocations should be checked before reversing a receipt already used by other transactions."
+    ],
+    "sources": [],
+    "keyAnswer": "Treat the fix as a linked pair: identify the erroneous receipt and its replacement so the record correction is traceable. Keep the physical units separate from that correction so they are not received a second time, and check any downstream allocations before reversing a receipt that other transactions already use.",
+    "sections": [
+      {
+        "heading": "Why a wrong-reference receipt needs a linked correction, not a fresh receipt",
+        "paragraphs": [
+          "When a receipt is posted against the wrong purchase reference, the instinct is often to create a new receipt against the correct reference. That approach can leave the original error in place and, if the physical units are still on the floor, risk counting the same goods twice. A linked correction pair avoids that by treating the erroneous entry and its replacement as two parts of one correction, with a clear relationship between them.",
+          "The linked pair serves two purposes. It preserves the audit trail showing what was originally recorded and why it was wrong, and it gives the replacement entry a reference back to the original so the correction can be followed later. Without that link, a future review may see two receipts and no explanation of which one is valid. The pair should be identifiable as a correction, not as two independent receiving events."
+        ],
+        "bullets": [
+          "Identify the erroneous receipt by its original reference and the purchase order it was wrongly posted against.",
+          "Create the replacement receipt against the correct purchase reference and record the link to the original.",
+          "Mark the original entry as superseded by the correction rather than deleting it."
+        ]
+      },
+      {
+        "heading": "Recording the erroneous entry and its replacement as one pair",
+        "paragraphs": [
+          "The correction record should state which entry is being replaced and which entry replaces it. This can be as simple as a cross-reference field on both records, or a separate correction note that names both references. The important point is that someone reviewing the purchase reference later can see that the first receipt was wrong and the second is its replacement, rather than finding two receipts with no explanation.",
+          "The pair should also capture the reason for the correction in operational terms, such as a transposed purchase order number or a receipt entered against a similar reference. That reason helps the next person decide whether other receipts might share the same error. It is not necessary to build an elaborate workflow; a consistent reference field and a short note are enough to keep the correction traceable."
+        ],
+        "bullets": [
+          "Record the original receipt reference, the replacement receipt reference and the date of correction.",
+          "Note the operational reason for the wrong reference so similar errors can be checked.",
+          "Keep both records visible in the receipt history rather than hiding the superseded entry."
+        ]
+      },
+      {
+        "heading": "Keeping physical units separate from the record correction",
+        "paragraphs": [
+          "The physical units received are a separate fact from the record that describes them. If the goods are already in stock, the correction should adjust the records without creating a second physical receipt. If the goods have not yet been put away, the correction should be made before any putaway task is released against the wrong reference, so the units are not moved twice or counted twice.",
+          "A practical way to keep this separation is to treat the correction as a record-level change and confirm the physical quantity once. The replacement receipt should reflect the same units that were actually delivered, not an additional delivery. Where the original receipt already triggered a stock increase, the correction should reverse that increase and apply it to the correct reference in a way that leaves the total quantity unchanged."
+        ],
+        "bullets": [
+          "Confirm the physical quantity received before making the record correction.",
+          "Avoid creating a second stock increase for units that are already counted.",
+          "Check that putaway or staging tasks are not duplicated by the correction."
+        ]
+      },
+      {
+        "heading": "Checking downstream allocations before reversing",
+        "paragraphs": [
+          "A receipt that has already been used by other transactions cannot simply be reversed without checking what depends on it. Allocations to orders, reservations, putaway tasks or replenishment suggestions may reference the original receipt. Reversing it without review can leave those downstream records pointing at a receipt that no longer exists or no longer supports the quantity they assumed.",
+          "Before reversing, list the transactions that reference the erroneous receipt and decide whether each should be repointed to the replacement, left as is, or adjusted separately. In some cases the simplest path is to correct the reference on the existing receipt rather than reverse and re-enter, provided the system supports that change and the audit trail remains clear. The decision should be recorded so the next person understands why one approach was chosen."
+        ],
+        "bullets": [
+          "Identify open allocations, reservations and tasks linked to the erroneous receipt.",
+          "Decide whether each downstream record should follow the correction or be handled separately.",
+          "Record the decision and the transactions reviewed before reversing anything."
+        ]
+      },
+      {
+        "heading": "Confirming the corrected reference reconciles to the delivery",
+        "paragraphs": [
+          "After the correction, the purchase reference should reconcile to the delivery documentation: the quantity received, the units in stock and the receipt records should agree. This check is the point at which a linked correction proves its value, because the pair can be reviewed together against the delivery note or packing list. If the quantities do not match, the correction is not complete.",
+          "The reconciliation should also confirm that the wrong reference no longer shows an active receipt for those units. A common failure is to create the replacement but leave the original active, so the wrong purchase order still appears to have received goods. Closing that loop, and noting the correction in the receipt history, keeps the record clean for the next receiving cycle."
+        ],
+        "bullets": [
+          "Compare the corrected receipt quantity with the delivery documentation.",
+          "Confirm the wrong purchase reference no longer shows an active receipt for the units.",
+          "Record the reconciliation check and who performed it."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can the wrong reference simply be edited on the original receipt?",
+        "answer": "If the system supports changing the reference while preserving an audit trail, that may be simpler than a reversal and replacement. The key is that the change remains traceable and that downstream allocations are checked before the edit is made."
+      },
+      {
+        "question": "What if the erroneous receipt has already been used to allocate stock to an order?",
+        "answer": "Check the allocation before reversing. The order may need to be repointed to the replacement receipt or reviewed separately so the correction does not leave the order without a valid stock source."
+      },
+      {
+        "question": "How long should the linked correction pair be kept?",
+        "answer": "Retention depends on the business's record-keeping needs and any client or system requirements. The pair should remain available at least as long as the purchase reference and related inventory records are active, so the correction can be explained if questions arise."
+      }
+    ],
+    "searchIntent": "How should a receipt entered against the wrong purchase reference be corrected without a second stock increase?"
+  },
+  {
     "briefId": "partial-file-import-results",
     "slug": "resubmitting-order-file-after-partial-import",
     "category": "3PL & Warehousing",
