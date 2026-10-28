@@ -22,6 +22,93 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "misdirected-freight-arrivals",
+    "slug": "checking-freight-appears-addressed-another-warehouse",
+    "category": "3PL & Warehousing",
+    "title": "Checking Freight That Appears Addressed to Another Warehouse",
+    "description": "Compare arriving freight with the destination on its shipment document before treating the arrival as a receipt at your warehouse.",
+    "excerpt": "Compare the arriving freight with the destination on the shipment document, and keep any redirection linked to the original reference.",
+    "keywords": [
+      "suspected misdelivery check",
+      "shipment document destination",
+      "arrival is not confirmation",
+      "redirection instruction record",
+      "original destination reference"
+    ],
+    "publishedAt": "2026-10-30",
+    "modifiedAt": "2026-10-30",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A suspected misdelivery should be compared with the destination named on the shipment document.",
+      "Physical arrival at a warehouse should not be treated as confirmation that it is the intended recipient.",
+      "Any redirection instruction should preserve the original destination reference and identify the party that supplied it."
+    ],
+    "sources": [],
+    "keyAnswer": "A suspected misdelivery should be compared with the destination named on the shipment document, since physical arrival at a warehouse does not confirm that the warehouse is the intended recipient. If a redirection is instructed, the instruction should preserve the original destination reference and identify the party that supplied it.",
+    "sections": [
+      {
+        "heading": "Comparing the arrival with the destination on the shipment document",
+        "paragraphs": [
+          "When freight arrives that appears to belong to another warehouse, the first step is to compare the physical arrival with the destination named on the shipment document. The document, not the unloading dock, is the reference point for whether the freight was intended for this location. Check the destination field on the document against the address and identifiers on the freight itself, and note any discrepancy before the freight is moved into a receiving area.",
+          "This comparison is a records check, not a judgment about whether the freight looks familiar. A shipment can arrive at the wrong dock for many reasons, and the document is the evidence that shows what was originally intended. If the destination on the document matches your warehouse, the arrival can proceed through normal receiving steps. If it names a different location, the freight should be held apart from received stock while the discrepancy is reviewed."
+        ],
+        "bullets": [
+          "Identify the destination named on the shipment document before unloading or staging the freight as received.",
+          "Compare that destination with the address and references physically present on the freight.",
+          "Record the discrepancy rather than resolving it by assumption."
+        ]
+      },
+      {
+        "heading": "Why physical arrival does not confirm the intended recipient",
+        "paragraphs": [
+          "Freight standing on a dock is evidence that a carrier delivered something to that location. It is not evidence that the warehouse is the intended recipient. Treating arrival as confirmation can create a stock record for goods that belong elsewhere, complicate the other warehouse's receipt, and make the eventual correction harder to trace.",
+          "The practical consequence is that receiving should not begin simply because the trailer was unloaded at your door. The shipment document should be checked first, and any mismatch should be documented before the freight is entered into inventory. This keeps the question open until the destination is confirmed, rather than closing it by default when the freight is physically present."
+        ],
+        "bullets": [
+          "Separate the physical event of arrival from the record decision to receive.",
+          "Hold suspect freight in a distinguishable state rather than mixing it with received stock.",
+          "Document the observation before any handling changes the condition or location of the freight."
+        ]
+      },
+      {
+        "heading": "Recording a redirection without losing the original destination reference",
+        "paragraphs": [
+          "If the freight is to be redirected, the instruction should preserve the original destination reference. A redirection record that only names the new destination loses the link to what the shipment document originally said, which makes later reconciliation harder. The record should show both the original destination and the new instruction as connected parts of the same shipment history.",
+          "A hypothetical example: a pallet arrives addressed to a warehouse in another city, and the carrier is asked to take it onward. The redirection note should cite the original destination from the shipment document and the new destination, so that anyone reviewing the shipment later can see why the freight moved and what it was originally meant to do. The original reference should not be overwritten by the new instruction."
+        ],
+        "bullets": [
+          "Keep the original destination reference visible in the redirection record.",
+          "State the new destination separately rather than replacing the original entry.",
+          "Link the redirection to the shipment document it amends."
+        ]
+      },
+      {
+        "heading": "Identifying who supplied the redirection instruction",
+        "paragraphs": [
+          "A redirection instruction should identify the party that supplied it. Without that attribution, a warehouse may act on an instruction whose authority is unclear, and later reviews cannot establish who asked for the change. The record should name the source of the instruction alongside the original destination reference and the new destination.",
+          "This is a record-keeping question rather than a question about who is right. The warehouse's role is to capture the instruction accurately and keep it linked to the shipment, so that the parties responsible for the freight can confirm or dispute the change through their own channels. If the instruction is unclear or conflicting, the freight should remain in its held state until the source is identified and the instruction is recorded."
+        ],
+        "bullets": [
+          "Record the party that supplied the redirection instruction.",
+          "Keep that attribution linked to the original destination reference.",
+          "Leave the freight in a distinguishable state while the instruction is unresolved."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should suspect freight be unloaded before the destination is checked?",
+        "answer": "The shipment document should be compared with the arrival before the freight is treated as received. Unloading may be necessary for practical reasons, but the freight should remain distinguishable from received stock until the destination question is resolved."
+      },
+      {
+        "question": "What should a redirection record contain?",
+        "answer": "It should preserve the original destination reference from the shipment document, state the new destination, and identify the party that supplied the instruction."
+      }
+    ],
+    "searchIntent": "What should be checked when arriving freight appears to be addressed to a different warehouse?"
+  },
+  {
     "briefId": "receipt-reversal-links",
     "slug": "correcting-receipt-posted-wrong-purchase-reference",
     "category": "3PL & Warehousing",
