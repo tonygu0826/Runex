@@ -22,6 +22,82 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "counted-weight-tare-separation",
+    "slug": "recording-container-tare-stock-counted-weight",
+    "category": "3PL & Warehousing",
+    "title": "Recording Container Tare When Stock Is Counted by Weight",
+    "description": "A weight-based stock count should keep the gross measurement and the container tare separate so the net quantity stays traceable.",
+    "excerpt": "Separate gross weight from container tare, record both inputs and units, and recheck the tare basis when container type changes.",
+    "keywords": [
+      "container tare recording",
+      "weight-based stock count",
+      "gross and net weight",
+      "tare basis change",
+      "weight unit traceability"
+    ],
+    "publishedAt": "2026-10-31",
+    "modifiedAt": "2026-10-31",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A weight-based stock observation should distinguish the gross measurement from the container tare used.",
+      "The resulting net quantity should remain traceable to both measurement inputs and their units.",
+      "A change in container type should prompt a check of the tare basis before quantities are compared."
+    ],
+    "sources": [],
+    "keyAnswer": "Record the gross measurement and the container tare used as two separate inputs, each with its stated unit, so the net quantity can be traced back to both. When the container type changes, check the tare basis before comparing quantities recorded under the earlier container.",
+    "sections": [
+      {
+        "heading": "Why gross weight and tare belong in separate fields",
+        "paragraphs": [
+          "When stock is counted by weight, the scale reading includes the product and whatever holds it. If that single reading is stored as the quantity, the container's weight is silently folded into the stock figure. The count may look complete, but the net quantity cannot be reconstructed later without guessing what container was on the scale.",
+          "Keeping the gross measurement and the container tare in separate fields preserves the arithmetic behind the net quantity. Each field should carry its own value and its stated unit, so a reader can see whether the gross was recorded in kilograms or pounds and whether the tare came from a container specification, a previous weighing, or a stated container type. The net quantity is then a derived result, not an opaque number.",
+          "This separation matters most when the same product is counted in different containers over time. A bulk container, a tote, and a smaller bin each contribute a different tare. If those tares are buried inside a single net figure, later comparisons between counts have no common basis. Separate fields make the container assumption visible at the point of recording."
+        ]
+      },
+      {
+        "heading": "Keeping the net quantity traceable to both inputs and their units",
+        "paragraphs": [
+          "Traceability here means that anyone reviewing the count can follow the net quantity back to the gross measurement and the tare that produced it. That requires more than storing three numbers. The record should show which gross value was used, which tare value was applied, and the unit attached to each. A net figure without those links is difficult to defend if a discrepancy is questioned.",
+          "Units deserve explicit attention because weight counts often cross documents. A gross reading taken in one unit and a tare stated in another should be reconciled deliberately, with the conversion visible in the record rather than applied silently. The same discipline applies when a tare is taken from a container specification rather than from a scale. The record should indicate the source of the tare so a reviewer knows whether it was measured or referenced.",
+          "A practical test is whether a second person could recompute the net quantity from the record alone. If the gross, the tare, their units, and the container they relate to are all present, the net can be checked. If any of those is missing, the net quantity is effectively an assertion rather than a traceable observation."
+        ],
+        "bullets": [
+          "Record the gross measurement with its unit as a distinct field.",
+          "Record the container tare with its unit and note whether it was measured or taken from a specification.",
+          "Show the net quantity as derived from those two inputs rather than as a standalone figure."
+        ]
+      },
+      {
+        "heading": "What to recheck when the container type changes",
+        "paragraphs": [
+          "A change in container type is the point where a previously valid tare basis can quietly become wrong. If a product moves from one bin style to another, or from a returnable tote to a disposable carton, the tare associated with the earlier container no longer describes the current one. Comparing a new gross reading against an old net quantity without checking the tare basis can make a normal container change look like a stock difference.",
+          "Before quantities recorded under different containers are compared, the tare basis should be confirmed for each. That means identifying which container each count used and whether the tare applied matches that container. Where the tare basis has changed, the comparison should be made on a consistent footing, for example by recomputing net quantities from the recorded gross and the appropriate tare for each count.",
+          "This check is also a useful moment to confirm that the container type itself is recorded. A tare value without a container reference is hard to validate later. Recording the container type alongside the tare gives the next reviewer a way to judge whether the tare still applies."
+        ]
+      },
+      {
+        "heading": "Recording the tare basis alongside the count",
+        "paragraphs": [
+          "The tare basis is the explanation of where the tare came from and what it describes. It might be a measured empty container, a specification for a named container type, or an agreed standard for a class of containers. Recording that basis next to the count turns the tare from an unexplained number into a checkable assumption.",
+          "A useful record identifies the container, the tare value and unit, and the basis used. It also notes the gross measurement and unit, and the resulting net. Where the basis is a specification rather than a measurement, the record should say so, because a specification may not reflect wear, moisture, or a substituted container. That distinction helps a reviewer decide whether the tare needs re-measuring.",
+          "Questions a buyer or operations lead can ask of a weight-based count process include: Are gross and tare stored as separate fields with units? Can the net quantity be recomputed from the record? Is the container type recorded with the tare? When container types change, is the tare basis checked before comparisons? Does the record distinguish a measured tare from a specified one? These questions test whether the process supports traceability rather than merely producing a number."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can the tare be stored as a single standard value for all containers of a type?",
+        "answer": "A standard tare can be used as a basis, but the record should identify it as a specification rather than a measurement and should note the container type it applies to. If containers of the same type vary, or if the type changes, the basis should be rechecked before quantities are compared."
+      },
+      {
+        "question": "What should happen if the gross and tare are recorded in different units?",
+        "answer": "The conversion should be made deliberately and shown in the record, so the net quantity remains traceable to both original values and their units. A silent conversion makes the arithmetic hard to verify later."
+      }
+    ],
+    "searchIntent": "How should container tare be recorded when stock is counted by weight?"
+  },
+  {
     "briefId": "misdirected-freight-arrivals",
     "slug": "checking-freight-appears-addressed-another-warehouse",
     "category": "3PL & Warehousing",
