@@ -22,6 +22,90 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "client-furnished-packaging-loss",
+    "slug": "client-supplied-packing-material-record",
+    "category": "3PL & Warehousing",
+    "title": "Recording Damaged Client-Supplied Packing Materials Apart From Routine Use",
+    "description": "Separate damaged client-supplied packing materials from units consumed in packing so replenishment decisions rest on a clear loss record.",
+    "excerpt": "Keep consumed and damaged client-supplied materials in distinct records, and base any replacement decision on the loss record.",
+    "keywords": [
+      "client-supplied packing material record",
+      "damaged packing material log",
+      "consumed versus damaged units",
+      "material loss observation",
+      "replenishment decision record"
+    ],
+    "publishedAt": "2026-11-01",
+    "modifiedAt": "2026-11-01",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Client-supplied material records should distinguish units consumed in packing from units lost or damaged.",
+      "A material loss observation should identify the material reference, quantity and condition recorded.",
+      "A replacement or replenishment decision should refer to the material loss record instead of changing a saleable product balance."
+    ],
+    "sources": [],
+    "keyAnswer": "Client-supplied material records should keep units consumed in packing separate from units lost or damaged, so routine use is not confused with a loss. A material loss observation should identify the material reference, the quantity and the condition recorded, and any replacement or replenishment decision should refer to that loss record rather than adjusting a saleable product balance.",
+    "sections": [
+      {
+        "heading": "Why consumed and damaged units need separate records",
+        "paragraphs": [
+          "Client-supplied packing materials move through a warehouse in two very different ways. Most units are consumed in packing: they are taken from the material stock, used to prepare an order, and recorded as part of routine work. A smaller number may be lost or damaged before they can be used. If both outcomes are recorded in the same way, the material record no longer shows whether a shortfall reflects normal packing activity or a genuine loss. That distinction matters when the client asks why the material balance has fallen, or when someone needs to decide whether to send more.",
+          "The practical fix is to keep the two outcomes in separate records from the start. A consumption entry answers the question of how much material was used in packing. A loss entry answers a different question: how much material became unusable, and under what condition. Keeping them apart means routine use is not mistaken for a loss, and a loss is not buried inside normal consumption. The separation also gives the client a clearer basis for reviewing their own supply and for deciding whether a replacement shipment is needed."
+        ]
+      },
+      {
+        "heading": "What a material loss observation should identify",
+        "paragraphs": [
+          "A material loss observation should be specific enough that someone who was not present can understand what happened. At a minimum, it should identify the material reference, the quantity and the condition recorded. The material reference ties the observation to the correct client-supplied item, which matters when several similar materials are held at the same site. The quantity states how many units are affected. The condition describes what was observed, such as crushed cartons, torn wrapping or water damage, so the record explains why the units cannot be used.",
+          "It is also useful to record when the observation was made and where the material was located at the time. These details help the client and the warehouse review the loss without relying on memory. The observation should be written as a factual record of what was seen, not as a conclusion about cause. If the cause is unclear, the record can say so. A loss observation that states only a number, without the condition and reference, is difficult to act on later and easy to confuse with routine consumption."
+        ],
+        "bullets": [
+          "Material reference: the client-supplied item affected.",
+          "Quantity: the number of units lost or damaged.",
+          "Condition recorded: what was observed and why the units are unusable.",
+          "Date and location: when and where the observation was made."
+        ]
+      },
+      {
+        "heading": "Keeping the loss record apart from saleable product balances",
+        "paragraphs": [
+          "Client-supplied packing materials are not saleable product. A loss of packing material should not be recorded by adjusting a saleable product balance, because that would misstate the product inventory and obscure what actually happened. The loss belongs in the material record, where it can be reviewed alongside consumption and available stock. This separation protects both sets of records: product balances continue to reflect product, and material records continue to reflect material.",
+          "In practice, this means the warehouse needs a clear place to record material losses that is distinct from the product inventory system. The record should be visible to the people who manage client-supplied materials and to the client, so that replacement decisions are based on the same information. Where a warehouse management system is used, the material record may sit in a separate module or a simple log; the important point is that the loss is recorded once, in the right place, and is not used to change a product quantity."
+        ]
+      },
+      {
+        "heading": "Referring to the loss record when deciding on replacement",
+        "paragraphs": [
+          "When the client considers sending replacement packing material, the decision should refer to the loss record rather than to a general impression that material is running low. The loss record shows how many units were lost or damaged and under what condition. The consumption record shows how much material routine packing is using. Together, they give the client a clearer picture: a shortfall caused by loss is a different problem from a shortfall caused by higher-than-expected packing use, and the response may differ.",
+          "A replacement decision should therefore cite the loss record it is based on. If the client decides to send more material, the decision can note the loss observation and the quantity involved. If the client decides not to replace, that decision can also be recorded against the same observation. This keeps the material record complete and gives both parties a shared reference if the question comes up again. It also avoids the common problem of a replacement being sent without anyone being able to say later why it was needed."
+        ]
+      },
+      {
+        "heading": "Questions to ask before setting up the record",
+        "paragraphs": [
+          "Before changing how client-supplied packing materials are recorded, it is worth asking a few practical questions. Who at the warehouse will record a loss observation, and who at the client will review it? What condition descriptions will be used, and will photographs be attached? How will the loss record be kept separate from the product inventory system? And how will a replacement decision be linked back to the observation? The answers will shape a record that is simple enough to use consistently and detailed enough to support decisions.",
+          "It is also worth agreeing what counts as a loss rather than normal consumption. Material damaged in storage, material that cannot be used because of a condition observed on arrival, and material lost in handling are all candidates for a loss observation. Material used in packing is consumption. Drawing that line clearly at the start prevents later disagreement about which record an item belongs in, and keeps the material record useful for the replenishment decisions it is meant to support."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a damaged packing material loss be recorded in the same system as product inventory?",
+        "answer": "The loss should be recorded in the client-supplied material record, not by adjusting a saleable product balance. Keeping the two apart prevents the loss from misstating product inventory and keeps the material record clear for replacement decisions."
+      },
+      {
+        "question": "What is the minimum information for a material loss observation?",
+        "answer": "A material loss observation should identify the material reference, the quantity and the condition recorded. Adding the date and location helps someone who was not present understand the observation later."
+      },
+      {
+        "question": "How does the loss record support a replacement decision?",
+        "answer": "A replacement or replenishment decision should refer to the material loss record rather than changing a saleable product balance. The record shows how many units were lost or damaged and under what condition, so the client can decide whether to send more material on that basis."
+      }
+    ],
+    "searchIntent": "How should damaged client-supplied packing materials be recorded separately from routine consumption?"
+  },
+  {
     "briefId": "counted-weight-tare-separation",
     "slug": "recording-container-tare-stock-counted-weight",
     "category": "3PL & Warehousing",
