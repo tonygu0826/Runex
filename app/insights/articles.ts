@@ -22,6 +22,93 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "storage-billing-snapshot-basis",
+    "slug": "storage-billing-snapshot",
+    "category": "3PL & Warehousing",
+    "title": "Reconciling the Storage Billing Snapshot With Operational Inventory Reports",
+    "description": "A billing snapshot and a live inventory report answer different questions, so the unit, date and disputed quantities need to be traced before any correction is agreed.",
+    "excerpt": "Separate the historical billing snapshot from the current operational balance, then trace disputed quantities to the recorded snapshot before correcting.",
+    "keywords": [
+      "storage billing snapshot",
+      "operational inventory report",
+      "billing measurement unit",
+      "observation date basis",
+      "disputed quantity trace",
+      "billing correction record"
+    ],
+    "publishedAt": "2026-11-02",
+    "modifiedAt": "2026-11-02",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A storage billing basis should state the measurement unit and observation date or period.",
+      "A current operational balance should be distinguished from the historical snapshot used in a billing calculation.",
+      "Disputed quantities should be traced to the recorded billing snapshot before a correction is agreed."
+    ],
+    "sources": [],
+    "keyAnswer": "Start by confirming that the billing basis states its measurement unit and the date or period it observes, because an operational report usually reflects a current balance rather than that historical point. When the two figures differ, trace the disputed quantity back to the recorded billing snapshot before agreeing any correction.",
+    "sections": [
+      {
+        "heading": "Why a billing snapshot and an operational report can differ without either being wrong",
+        "paragraphs": [
+          "A storage billing snapshot and an operational inventory report are built to answer different questions. The billing snapshot records the quantity, unit and observation point used to calculate a storage charge for a defined period. The operational report typically shows the current balance after receipts, picks, transfers and adjustments that occurred after that point. A difference between the two figures is therefore not automatically an error in either record.",
+          "The practical risk is treating the live operational balance as if it were the billing basis. If a business compares today's on-hand quantity with a charge calculated from an earlier snapshot, it may dispute a correct invoice or accept an incorrect one. The reconciliation question is narrower: does the billing basis state what was measured, in which unit, and at what date or period, and can the disputed quantity be traced back to that recorded snapshot?"
+        ]
+      },
+      {
+        "heading": "Confirming the measurement unit and observation date on the billing basis",
+        "paragraphs": [
+          "Before comparing any numbers, check that the billing basis states its measurement unit and the date or period it observes. Storage can be expressed in pallets, cartons, units, cubic measure or weight, and a figure without a stated unit cannot be reliably compared with an operational report that may use a different one. The observation date or period matters for the same reason: a snapshot taken at the start of a month and a report run at the end of that month describe different moments.",
+          "A useful check is to read the billing basis as a self-contained statement. It should identify the item or storage category, the quantity, the unit and the observation point. If any of these is missing or ambiguous, the first step is to clarify the basis with the party that issued it, not to adjust the operational report to match. This is a documentation question rather than a pricing dispute, and resolving it early prevents the same confusion on later invoices."
+        ],
+        "bullets": [
+          "Confirm the unit used for the charge and the unit used in the operational report.",
+          "Identify the exact date or period the billing snapshot observes.",
+          "Check whether the snapshot covers all locations or only a subset.",
+          "Ask which party recorded the snapshot and where it is retained."
+        ]
+      },
+      {
+        "heading": "Reading a current operational balance against a historical snapshot",
+        "paragraphs": [
+          "A current operational balance should be distinguished from the historical snapshot used in a billing calculation. The operational report is useful for day-to-day decisions about picking, replenishment and space, but it is not a substitute for the recorded billing basis. When the two are placed side by side, the comparison should be framed as a question about timing and movement, not as a direct contradiction.",
+          "One practical approach is to reconstruct the movement between the snapshot date and the report date. If receipts, picks and adjustments recorded in the operational system explain the difference, the two records are consistent and no billing correction is needed. If they do not explain it, the unexplained portion becomes the disputed quantity to investigate. This keeps the review focused on evidence rather than on which figure looks more plausible."
+        ]
+      },
+      {
+        "heading": "Tracing a disputed quantity to the recorded billing snapshot",
+        "paragraphs": [
+          "When a quantity is disputed, trace it back to the recorded billing snapshot before agreeing any correction. The trace should identify the specific line in the snapshot, the unit and observation date it carries, and the operational movements that followed. This is different from simply comparing totals, because a total can hide offsetting differences between items or locations.",
+          "The trace also establishes what evidence exists. If the snapshot is retained with its original unit and date, the dispute can be resolved by reference to that record. If the snapshot was overwritten or recalculated after the fact, the original basis may no longer be available, and the correction discussion becomes harder to ground. For this reason, the trace should be documented as it proceeds, including which records were reviewed and which movements were accepted as explaining the difference."
+        ],
+        "bullets": [
+          "Identify the specific snapshot line and its stated unit and date.",
+          "List the operational movements recorded after the snapshot.",
+          "Separate explained differences from the unexplained balance.",
+          "Record which evidence was reviewed during the trace."
+        ]
+      },
+      {
+        "heading": "Recording the agreed correction without overwriting the original basis",
+        "paragraphs": [
+          "Once a correction is agreed, record it as a separate entry that references the original billing snapshot rather than replacing it. Overwriting the original basis removes the evidence needed to understand later invoices and makes it difficult to show what changed and why. A correction record should identify the snapshot it relates to, the quantity and unit adjusted, the reason agreed and the party that approved the change.",
+          "This approach also supports consistency across periods. If the same unit or date ambiguity caused differences on several invoices, a correction record linked to the original basis makes the pattern visible. The operational report can continue to show the current balance, while the billing record preserves the historical snapshot and the agreed adjustment as distinct items. Neither record needs to be forced to match the other for the reconciliation to be complete."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does a difference between the billing snapshot and the operational report mean the invoice is wrong?",
+        "answer": "No. The two records usually observe different points in time and may use different units. The difference should be explained by movements recorded after the snapshot before any correction is considered."
+      },
+      {
+        "question": "What should a correction record include?",
+        "answer": "It should reference the original billing snapshot, state the quantity and unit adjusted, give the reason agreed and identify who approved the change, so the original basis remains available."
+      }
+    ],
+    "searchIntent": "How should the stock snapshot used for storage billing be reconciled with operational inventory reports?"
+  },
+  {
     "briefId": "client-furnished-packaging-loss",
     "slug": "client-supplied-packing-material-record",
     "category": "3PL & Warehousing",
