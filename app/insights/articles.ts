@@ -22,6 +22,80 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "handling-charge-transaction-links",
+    "slug": "linking-handling-charge-warehouse-task-behind",
+    "category": "3PL & Warehousing",
+    "title": "Linking a Handling Charge to the Warehouse Task Behind It",
+    "description": "A handling-charge line can be tied to warehouse work by recording the completed task reference and the quantity basis used.",
+    "excerpt": "Practical guidance on connecting a handling-charge line to the completed warehouse task, the quantity basis and the agreed rate structure.",
+    "keywords": [
+      "handling charge task reference",
+      "quantity basis handling charge",
+      "multi-step task billing",
+      "questioned charge trace",
+      "billable task distinction"
+    ],
+    "publishedAt": "2026-11-03",
+    "modifiedAt": "2026-11-03",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A handling-charge record should identify the completed task reference and the quantity basis used.",
+      "A task performed in several steps should be distinguished from separate billable tasks under the agreed rate structure.",
+      "A questioned charge should be traced to its task record before either is amended."
+    ],
+    "sources": [],
+    "keyAnswer": "A handling-charge record should identify the completed task reference and the quantity basis used, so the charge points to specific warehouse work rather than a general period. Where a task was performed in several steps, the record should distinguish that from separate billable tasks under the agreed rate structure. A questioned charge should be traced to its task record before either the charge or the task record is amended.",
+    "sections": [
+      {
+        "heading": "What a Handling-Charge Line Should Reference From the Completed Task",
+        "paragraphs": [
+          "A handling charge is easiest to review when it points to a specific piece of finished warehouse work rather than to a date range or a general description such as handling. The charge line should carry the reference of the completed task it relates to, so that a reader can move from the invoice line to the task record and back again without guesswork. That reference is what turns a charge into something that can be checked against what actually happened on the floor.",
+          "The task reference should be the one used when the work was closed, not a new identifier created at billing time. If the billing system cannot hold the task reference directly, a documented cross-reference between the charge line and the task record serves the same purpose, provided it is stable and can be followed in both directions. The test is simple: given a charge line, can someone find the task, and given the task, can someone find the charge?"
+        ]
+      },
+      {
+        "heading": "Recording the Quantity Basis Alongside the Task Reference",
+        "paragraphs": [
+          "A task reference alone does not explain the size of a charge. The record should also state the quantity basis used, meaning the unit and the count to which the agreed rate was applied. A charge for receiving might rest on cartons, pallets or units; a charge for labelling might rest on units labelled. The basis should be named explicitly rather than left to be inferred from the rate.",
+          "Where the quantity on the charge differs from a quantity recorded elsewhere, such as a receipt count or an order line count, the basis explains why. Recording it at the point the charge is created keeps that explanation attached to the charge instead of depending on someone reconstructing it later. It also gives the person reviewing a charge a concrete question to ask: is this the right basis, and is this the right count on that basis?"
+        ]
+      },
+      {
+        "heading": "Separating a Multi-Step Task From Separate Billable Tasks",
+        "paragraphs": [
+          "Some warehouse work is naturally performed in stages. Unloading, checking and putaway may all belong to one receiving task, or they may be treated as distinct billable activities, depending on what has been agreed. The billing record should make clear which of these applies. A multi-step task recorded as one task should not generate several charges as though each step were a separate job, and separate billable tasks should not be collapsed into a single line that hides what was done.",
+          "The agreed rate structure is the reference point for this distinction. Before charges are raised, the parties should be able to say which activities are included within a task and which stand alone. Where a task was split across several sessions or steps, the record should show that they belong to the same task rather than presenting them as unrelated work. This is a matter of describing the work accurately, not of deciding after the fact which version produces a more favourable total."
+        ]
+      },
+      {
+        "heading": "Tracing a Questioned Charge to Its Task Record Before Amending Either",
+        "paragraphs": [
+          "When a charge is questioned, the first step is to trace it to the task record it references and compare the two. The question may concern the rate, the quantity basis, the count, or whether the work belongs on the invoice at all. Tracing before changing anything keeps the original evidence intact and shows which part of the record is actually in dispute.",
+          "A questioned charge should be traced to its task record before either the charge or the task record is amended. Amending one side first can leave the pair inconsistent and make it harder to establish what was originally recorded. Once the trace is complete, the correction can be made deliberately, with a note of what was changed and why, so the link between charge and task remains usable for the next review."
+        ]
+      },
+      {
+        "heading": "Questions to Ask Before Agreeing a Handling-Charge Format",
+        "paragraphs": [
+          "The format of a handling-charge record is usually settled between the client and the warehouse before invoicing begins, and a few practical questions help. Ask which task reference will appear on the charge line, whether the billing system can hold it, and how a reader would move from the charge to the task. Ask which quantity basis applies to each charge type and where that basis is captured. Ask how multi-step work will be described, and which activities the agreed rate structure treats as separate billable tasks.",
+          "It is also worth agreeing how a questioned charge will be handled: who traces it, what evidence is compared, and how a correction is recorded. These points do not resolve every dispute, but they give both parties a shared method for reading a charge line and following it back to the work behind it."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does every handling charge need its own task reference?",
+        "answer": "The aim is that each charge line can be followed to the completed work it relates to. Where several charge lines arise from one task, they can share the task reference, provided the quantity basis for each line is still stated."
+      },
+      {
+        "question": "What if the task record was closed before the charge was raised?",
+        "answer": "The charge should still cite the closed task reference. If the task record lacks detail needed to support the charge, that gap is worth noting when the charge is reviewed rather than filling it in silently."
+      }
+    ],
+    "searchIntent": "How can a handling-charge line be linked to the warehouse work that produced it?"
+  },
+  {
     "briefId": "storage-billing-snapshot-basis",
     "slug": "storage-billing-snapshot",
     "category": "3PL & Warehousing",
