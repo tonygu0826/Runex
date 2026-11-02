@@ -22,6 +22,84 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "best-before-delivery-margin",
+    "slug": "remaining-shelf-life-requirement",
+    "category": "3PL & Warehousing",
+    "title": "Checking a Buyer's Remaining Shelf-Life Window Against Expected Delivery",
+    "description": "A practical way to state a shelf-life acceptance window and compare it with the expected delivery date before units are committed.",
+    "excerpt": "State the date field and assessment point, then compare the selected lot date with the expected delivery date before committing units.",
+    "keywords": [
+      "remaining shelf-life requirement",
+      "shelf-life acceptance window",
+      "expected delivery date check",
+      "lot date comparison",
+      "ambiguous acceptance rule"
+    ],
+    "publishedAt": "2026-11-04",
+    "modifiedAt": "2026-11-04",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A buyer's acceptance window should state the date field and the point in the delivery process at which it is assessed.",
+      "The selected lot date should be compared with the expected delivery date using the agreed window.",
+      "An uncertain delivery date or ambiguous acceptance rule should be resolved before affected units are committed."
+    ],
+    "sources": [],
+    "keyAnswer": "A buyer's acceptance window should name the date field being measured and the point in the delivery process where it is assessed, so the check has a defined basis. The selected lot date is then compared with the expected delivery date using that agreed window. If the delivery date is uncertain or the acceptance rule is ambiguous, resolve it before affected units are committed.",
+    "sections": [
+      {
+        "heading": "Naming the date field and the point of assessment in the acceptance window",
+        "paragraphs": [
+          "A remaining shelf-life requirement is only useful if it is specific about what is being measured and when. The acceptance window should state the date field being used, such as a best-before date, an expiry date or a production date, and the point in the delivery process at which the window is assessed. Without both parts, two parties can apply the same percentage or day count to different dates and reach different conclusions about the same lot.",
+          "The point of assessment matters because shelf life is consumed between dispatch and receipt. A window assessed at the moment the buyer receives the goods is not the same as a window assessed when the order is placed or when the carrier collects the freight. The acceptance rule should therefore identify the reference event, for example the expected delivery date or the actual receipt date, so that the comparison has a fixed anchor rather than an assumed one.",
+          "It also helps to record the window in a form that can be checked against a lot record. A statement such as a minimum number of days remaining at the expected delivery date is clearer than a general expectation of fresh stock. The buyer and the warehouse can then look at the same lot date and the same reference event and agree on whether the requirement is met."
+        ],
+        "bullets": [
+          "State the date field: best-before, expiry or production date.",
+          "State the assessment point: order date, dispatch date, expected delivery date or actual receipt date.",
+          "Express the window as a checkable rule, such as days remaining at the reference event."
+        ]
+      },
+      {
+        "heading": "Comparing the selected lot date with the expected delivery date",
+        "paragraphs": [
+          "Once the acceptance window is defined, the check is a comparison between two recorded values: the date on the selected lot and the expected delivery date. The lot date should come from the lot that is actually being committed, not from a general product record or an earlier shipment. If the lot date is recorded from a label or supplier document, that source should remain traceable so the comparison can be reviewed later.",
+          "The expected delivery date is equally important. It should be the date used in the delivery plan at the time the units are committed, not a later estimate that changes after the check. Where the delivery date is a range or an estimate, the acceptance rule should say which end of the range is used for the comparison. This prevents a lot from appearing acceptable under one reading of the delivery date and unacceptable under another.",
+          "A practical way to run the check is to calculate the remaining shelf life at the expected delivery date and compare it with the agreed minimum. The result should be recorded against the lot and the order so that the decision is visible to both the buyer and the warehouse. If the lot does not meet the window, the units should not be committed until the buyer and supplier have agreed on an alternative, such as a different lot or a revised delivery plan."
+        ],
+        "bullets": [
+          "Use the lot date from the specific lot being committed.",
+          "Use the expected delivery date from the current delivery plan.",
+          "Record the comparison result against the lot and order."
+        ]
+      },
+      {
+        "heading": "What to do when the delivery date or acceptance rule is unresolved",
+        "paragraphs": [
+          "An uncertain delivery date or an ambiguous acceptance rule should be resolved before affected units are committed. Committing units against an unresolved rule creates a decision that may later be disputed, and it can be difficult to reverse once the stock has been allocated or dispatched. The safer approach is to hold the commitment and ask the buyer to confirm the missing detail.",
+          "If the delivery date is uncertain, the buyer should confirm which date will be used for the assessment and whether the rule allows a range. If the acceptance rule is ambiguous, the buyer should clarify the date field, the assessment point and the minimum remaining shelf life in writing. These clarifications should be recorded alongside the order so that the warehouse can apply them consistently to the selected lot.",
+          "In some cases the answer may be to hold the units until the delivery plan is confirmed. That is a legitimate outcome of the check, not a failure of the process. The important point is that the decision to commit, hold or reject is made against a defined rule rather than an assumption about what the buyer intended."
+        ],
+        "bullets": [
+          "Hold the commitment until the delivery date or acceptance rule is confirmed.",
+          "Ask the buyer to confirm the date field, assessment point and minimum remaining shelf life.",
+          "Record the clarification with the order so the check can be repeated consistently."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can the acceptance window be checked after the units are picked?",
+        "answer": "The check is more reliable before units are committed, because the lot and delivery date are still open to adjustment. Checking after picking may still be useful, but it can lead to rework if the lot does not meet the window."
+      },
+      {
+        "question": "What if the buyer's rule refers to a percentage of shelf life rather than a number of days?",
+        "answer": "The same principles apply: the rule should state the date field and the assessment point, and the comparison should use the selected lot date and the expected delivery date. The percentage should be converted into a checkable value against those dates."
+      }
+    ],
+    "searchIntent": "How should a buyer's remaining shelf-life requirement be checked against the expected delivery date?"
+  },
+  {
     "briefId": "handling-charge-transaction-links",
     "slug": "linking-handling-charge-warehouse-task-behind",
     "category": "3PL & Warehousing",
