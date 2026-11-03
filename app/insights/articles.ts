@@ -22,6 +22,78 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "outer-pack-open-permission",
+    "slug": "specifying-permission-open-supplier-sealed-outer-packaging",
+    "category": "3PL & Warehousing",
+    "title": "Specifying Permission to Open Supplier-Sealed Outer Packaging",
+    "description": "A loose-unit pick instruction should state whether supplier-sealed outer packaging may be opened and how remaining contents stay traceable.",
+    "excerpt": "Before loose units are picked from sealed outer packaging, the instruction should say whether opening is permitted and keep remaining contents referenced.",
+    "keywords": [
+      "supplier-sealed outer packaging",
+      "loose-unit pick instruction",
+      "packaging layer permission",
+      "opened outer package contents",
+      "packaging change instruction"
+    ],
+    "publishedAt": "2026-11-05",
+    "modifiedAt": "2026-11-05",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A loose-unit pick instruction should state whether supplier-sealed outer packaging may be opened.",
+      "Permission to pick a smaller quantity should not be inferred as permission to change all packaging layers.",
+      "The remaining contents should retain their product and quantity references after an outer package is opened."
+    ],
+    "sources": [],
+    "keyAnswer": "The loose-unit pick instruction should state explicitly whether supplier-sealed outer packaging may be opened. Permission to pick a smaller quantity should not be read as permission to change every packaging layer, and the remaining contents should keep their product and quantity references after an outer package is opened.",
+    "sections": [
+      {
+        "heading": "What the loose-unit pick instruction needs to say about sealed outer packaging",
+        "paragraphs": [
+          "A loose-unit pick instruction tells a warehouse team to take fewer units than the full quantity held in a supplier-sealed outer package. The instruction should state explicitly whether that sealed outer packaging may be opened. Without that statement, the person picking has to guess whether breaking the seal is allowed, and different people may guess differently on different shifts.",
+          "The instruction should identify the packaging layer in question and the action permitted. For example, a hypothetical instruction might say that the supplier carton may be opened to reach individual units, while the inner retail pack must remain intact. The point is not to write a long packaging policy; it is to make the permitted action clear at the point where the pick happens, so the physical work matches the instruction."
+        ]
+      },
+      {
+        "heading": "Why a smaller pick quantity is not the same as packaging-layer permission",
+        "paragraphs": [
+          "A request for a smaller quantity answers a quantity question. It does not answer a packaging question. Permission to pick a smaller quantity should not be inferred as permission to change all packaging layers. A buyer may be content for a warehouse to break a supplier carton, but not to open inner packs, remove protective wrapping or alter labels that the supplier applied.",
+          "This distinction matters when the instruction is passed between parties. A client email asking for ten units instead of a full case may reach the warehouse without any statement about the case seal. The warehouse then has to decide whether opening the case is routine or whether it needs confirmation. The safer practice is to treat the packaging-layer question as a separate item that the instruction must answer, rather than something implied by the quantity requested."
+        ],
+        "bullets": [
+          "State the quantity to be picked and the packaging layer that may be opened as separate points.",
+          "Name any layer that must stay sealed, such as an inner pack or supplier label.",
+          "Record who confirmed the packaging permission if it was not part of the original instruction."
+        ]
+      },
+      {
+        "heading": "Recording the product and quantity references for opened package contents",
+        "paragraphs": [
+          "Once an outer package is opened, the units left inside are no longer described by the sealed package alone. The remaining contents should retain their product and quantity references after an outer package is opened. That means the record should still show which product the units belong to and how many remain, rather than leaving an opened carton whose contents are only known by looking inside it.",
+          "A practical way to handle this is to treat the opened package as a location or container with its own reference, linked to the product and the quantity remaining. If the opened package is returned to storage, the reference should travel with it so the next person does not have to reopen and recount. Where the remaining units are combined with other stock, the quantity reference should be updated so the total remains traceable to the units that were taken and the units that stayed."
+        ]
+      },
+      {
+        "heading": "Checking the instruction before loose units are picked",
+        "paragraphs": [
+          "Before loose units are picked, the person responsible should check that the instruction answers the packaging question. A short check is enough: does the instruction say whether the supplier-sealed outer packaging may be opened, and does it say what happens to the remaining contents? If either answer is missing, the instruction should be clarified before the seal is broken.",
+          "The check should also confirm that the quantity requested and the packaging permission are consistent. A hypothetical case is an instruction that permits opening the outer carton but requires the inner pack to stay sealed; if the requested quantity cannot be met without opening the inner pack, the instruction needs a decision rather than an improvised workaround. Recording that decision, and the reference of the package that was opened, keeps the remaining contents traceable and gives the next person a clear starting point."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does a pick instruction for a smaller quantity automatically allow opening the supplier carton?",
+        "answer": "No. The instruction should state separately whether supplier-sealed outer packaging may be opened. A smaller quantity request answers a quantity question, not a packaging-layer question."
+      },
+      {
+        "question": "What should happen to the units left in an opened outer package?",
+        "answer": "The remaining contents should keep their product and quantity references, so the opened package can be identified and the balance counted without relying on memory or a visual check alone."
+      }
+    ],
+    "searchIntent": "What instruction is needed before supplier-sealed outer packaging is opened for loose-unit picking?"
+  },
+  {
     "briefId": "best-before-delivery-margin",
     "slug": "remaining-shelf-life-requirement",
     "category": "3PL & Warehousing",
