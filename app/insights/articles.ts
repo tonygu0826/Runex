@@ -22,6 +22,90 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "staging-lane-occupancy-references",
+    "slug": "keeping-shared-staging-lane-shipment-groups-identifiable",
+    "category": "3PL & Warehousing",
+    "title": "Keeping Shared Staging Lane Shipment Groups Identifiable",
+    "description": "How to keep each shipment group separately referenced when several groups occupy one shared staging lane.",
+    "excerpt": "Shared staging lanes need a separate reference per shipment group, and lane occupancy alone does not prove a shared dispatch.",
+    "keywords": [
+      "shared staging lane reference",
+      "shipment group identification",
+      "lane occupancy versus dispatch",
+      "staging reference before loading",
+      "physical group matching"
+    ],
+    "publishedAt": "2026-11-06",
+    "modifiedAt": "2026-11-06",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A shared staging lane should retain a separate reference for each shipment group placed in it.",
+      "Lane occupancy should not be treated as evidence that every unit belongs to the same dispatch.",
+      "The physical group selected for loading should be matched to its shipment reference before removal."
+    ],
+    "sources": [],
+    "keyAnswer": "Each shipment group placed in a shared staging lane should keep its own reference, so occupancy of the lane is not read as proof that every unit belongs to one dispatch. Before units are removed for loading, the physical group selected should be matched to its shipment reference.",
+    "sections": [
+      {
+        "heading": "Why one lane can hold several shipment groups",
+        "paragraphs": [
+          "A staging lane is a physical space, not a shipment record. When outbound volume rises or several orders are prepared at once, a single lane may receive units from more than one shipment group. The lane fills up, but the units inside it can still belong to different dispatches, destinations or order sets.",
+          "The risk is that the lane itself becomes the only visible identifier. Staff see a full lane and assume it represents one load. That assumption can carry through to loading, where units from one group are removed alongside units from another. The lane's occupancy tells you that space is in use; it does not tell you what belongs together."
+        ]
+      },
+      {
+        "heading": "Assigning a separate reference to each group in the lane",
+        "paragraphs": [
+          "A shared staging lane should retain a separate reference for each shipment group placed in it. The reference should travel with the group from the moment it enters the lane, whether it is attached to the units, the staging position or the handling instruction that placed them there.",
+          "The reference does not need to be elaborate. What matters is that it distinguishes one group from another within the same lane and remains readable while the units are staged. If two groups share a lane, each should be traceable to its own shipment reference rather than to the lane as a whole.",
+          "A practical question for a warehouse provider is how a group's reference is recorded when the lane is shared. Ask whether the reference is linked to the shipment record, whether it is visible at the staging position, and what happens when a group is split across more than one position in the same lane."
+        ],
+        "bullets": [
+          "Confirm that each group entering a shared lane carries its own reference.",
+          "Check that the reference is readable at the staging position, not only in a system record.",
+          "Ask how a group split across positions in one lane keeps a single reference."
+        ]
+      },
+      {
+        "heading": "Reading lane occupancy without assuming a single dispatch",
+        "paragraphs": [
+          "Lane occupancy should not be treated as evidence that every unit belongs to the same dispatch. A full lane may reflect one large group, several small groups, or a mix of groups waiting on different loading instructions. The physical condition of the lane does not resolve which is which.",
+          "This matters most when loading begins under time pressure. If the lane is read as one dispatch, units can be removed in the order they sit rather than the order their references require. A separate reference per group gives the loading team a way to check what they are taking before it leaves the lane.",
+          "A useful question for a buyer is how the warehouse distinguishes a lane that is fully occupied by one group from a lane shared by several. The answer should describe a reference-based check, not a visual estimate of how full the lane appears."
+        ]
+      },
+      {
+        "heading": "Matching the physical group to its reference before loading",
+        "paragraphs": [
+          "The physical group selected for loading should be matched to its shipment reference before removal. This is the point where a shared lane is most likely to produce a mix-up, because units from different groups can sit close together and look similar.",
+          "The match should happen before the units leave the lane, not after they are loaded. Once units are on a vehicle or moved to a loading area, correcting a mismatch becomes a separate task with its own handling. A check at the lane keeps the correction in the same place the error occurred.",
+          "A buyer reviewing a staging process can ask what evidence is recorded when a group is matched to its reference. The answer should identify the group, the reference it was checked against, and the point in the loading sequence where the check took place."
+        ],
+        "bullets": [
+          "Match the physical group to its shipment reference before units are removed from the lane.",
+          "Record the reference used for the match, not only the fact that a check occurred.",
+          "Treat a mismatch found at the lane differently from one found after loading has started."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does a separate reference per group mean each group needs its own lane?",
+        "answer": "No. The point of a separate reference is to keep groups identifiable while they share a lane. The lane remains shared; the reference is what distinguishes one group from another within it."
+      },
+      {
+        "question": "What should happen if a group in a shared lane has no readable reference?",
+        "answer": "The group should be held until its shipment reference can be established. Loading it on the assumption that it belongs with the rest of the lane reintroduces the risk the reference is meant to prevent."
+      },
+      {
+        "question": "Is lane occupancy useful at all if it does not prove a single dispatch?",
+        "answer": "It is useful as a space and workload signal. It shows that the lane is in use and may need attention, but it should be read alongside the references for the groups placed there rather than as a statement about what belongs together."
+      }
+    ],
+    "searchIntent": "How should several shipment groups remain identifiable when they share one staging lane?"
+  },
+  {
     "briefId": "outer-pack-open-permission",
     "slug": "specifying-permission-open-supplier-sealed-outer-packaging",
     "category": "3PL & Warehousing",
