@@ -22,6 +22,89 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "receipt-reference-splits",
+    "slug": "delivery-allocation-across-purchase-references",
+    "category": "3PL & Warehousing",
+    "title": "Allocating One Physical Delivery Across Several Purchase References",
+    "description": "A practical way to split delivered quantities across purchase references while keeping the total reconciled to the physical delivery.",
+    "excerpt": "How to allocate one delivery across several purchase references, keep the totals reconciled and leave unassigned units visible.",
+    "keywords": [
+      "delivery allocation across purchase references",
+      "receipt quantity split",
+      "unassigned units visibility",
+      "purchase reference allocation record",
+      "delivery reconciliation"
+    ],
+    "publishedAt": "2026-11-07",
+    "modifiedAt": "2026-11-07",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A delivery allocation should state which item quantities belong to each purchase reference.",
+      "The sum of allocated quantities should reconcile to the physical delivery without recording the same units twice.",
+      "Unassigned units should be visible instead of being forced onto the first matching purchase reference."
+    ],
+    "sources": [],
+    "keyAnswer": "State, for each purchase reference, which item quantities belong to it, and check that the allocated quantities add up to the physical delivery without any unit being recorded twice. Units that cannot yet be matched should stay visible as unassigned rather than being pushed onto the first matching purchase reference.",
+    "sections": [
+      {
+        "heading": "What the allocation record needs to show for each purchase reference",
+        "paragraphs": [
+          "When one physical delivery arrives against several purchase references, the allocation record is the bridge between what was counted at the dock and what each reference will later show as received. For every purchase reference involved, the record should state the item and the quantity that belongs to that reference. A reference that receives more than one item needs a line for each item, and an item that is split across references needs its quantity stated separately for each one. The record should also identify the delivery it came from, so the split can be traced back to the physical arrival rather than existing as a set of disconnected entries.",
+          "The record is not a substitute for the receiving count. It sits alongside the count and explains how the counted units are distributed. That distinction matters when a reference is later questioned: the reader should be able to see the physical delivery, the total quantity observed, and the portion assigned to each reference without having to reconstruct the logic from memory. Keeping the allocation at item-and-quantity level, rather than at delivery level only, is what makes the split reviewable."
+        ],
+        "bullets": [
+          "Identify the physical delivery the allocation belongs to.",
+          "For each purchase reference, list the item and the quantity assigned to it.",
+          "Where an item is split, show the quantity against each reference separately.",
+          "Keep the allocation readable without reference to verbal instructions."
+        ]
+      },
+      {
+        "heading": "Checking that allocated quantities reconcile to the physical delivery",
+        "paragraphs": [
+          "The central check is arithmetic: the quantities assigned across all purchase references should add up to the quantity observed in the physical delivery, and no unit should appear under two references. This sounds simple, but it is where most allocation errors surface. A unit counted once at the dock can be entered twice if two references both appear to match the same carton, and a shortfall can hide if one reference is quietly reduced to make the totals agree. The reconciliation should be performed against the physical count, not against what the references expected to receive.",
+          "A useful practice is to record the physical total and the allocated total side by side before the split is released. If they differ, the difference should be explained rather than absorbed. A difference may mean a counting error, a misread label, or a reference that has not yet been identified. Treating the difference as a prompt to investigate keeps the allocation honest and prevents a small discrepancy from being buried inside a reference that looks complete."
+        ]
+      },
+      {
+        "heading": "Where unassigned units should sit until a reference is confirmed",
+        "paragraphs": [
+          "Not every unit in a delivery can be matched immediately. A carton may carry a reference that is unclear, a label may be missing, or the paperwork may not yet confirm which purchase reference the goods belong to. In those cases the units should remain visible as unassigned rather than being attached to the first reference that appears plausible. Forcing an uncertain unit onto a reference creates a record that looks settled but is not, and it removes the very signal that would prompt someone to resolve the question.",
+          "Unassigned units need their own place in the allocation record, with the item and quantity stated and a note of what is missing. That note might be a missing reference, an unreadable label, or a pending confirmation from the buyer. The important point is that the units stay countable and traceable while the question is open. When the reference is confirmed, the units move from unassigned to the relevant reference, and the reconciliation is repeated so the totals still agree."
+        ],
+        "bullets": [
+          "Keep unmatched units in a distinct unassigned position in the record.",
+          "State the item, quantity and the reason the unit is unassigned.",
+          "Do not attach uncertain units to a reference merely to close the split.",
+          "Re-run the reconciliation after any unit moves out of unassigned."
+        ]
+      },
+      {
+        "heading": "Reviewing the split before it feeds downstream receiving records",
+        "paragraphs": [
+          "The allocation is usually the input to receiving records that update stock, expected balances and purchase reference status. Before that handover, a short review is worth the time. Check that each reference in the allocation exists and is the one intended, that the item quantities match the physical count, and that unassigned units are still visible rather than having been quietly dropped. If the allocation has changed since it was first drafted, confirm that the version being released is the current one and that earlier drafts are not still in circulation.",
+          "It is also worth asking who reviews the split and what happens when the review finds a problem. A reviewer who can only approve or reject has limited options; a reviewer who can send a unit back to unassigned, or flag a reference for confirmation, can resolve the issue without distorting the record. The review step should leave a trace of what was checked, so that a later question about a reference can be answered from the record rather than from recollection."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a single unit be allocated to more than one purchase reference?",
+        "answer": "No. The allocation should record each physical unit once. If two references appear to claim the same unit, that is a signal to check the physical delivery and the references before the split is released, not a reason to record the unit twice."
+      },
+      {
+        "question": "What should happen if the allocated total does not match the physical count?",
+        "answer": "The difference should be investigated before the allocation feeds downstream records. It may indicate a counting error, a misread label or a reference that is not yet confirmed, and treating it as a prompt to check is safer than adjusting a reference to make the totals agree."
+      },
+      {
+        "question": "How long should unassigned units remain visible?",
+        "answer": "Until the purchase reference is confirmed and the units can be allocated. Keeping them visible in the meantime preserves the ability to reconcile the delivery and avoids creating a record that appears complete when it is not."
+      }
+    ],
+    "searchIntent": "How should one physical delivery be allocated across several purchase references?"
+  },
+  {
     "briefId": "staging-lane-occupancy-references",
     "slug": "keeping-shared-staging-lane-shipment-groups-identifiable",
     "category": "3PL & Warehousing",
