@@ -22,6 +22,97 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "incremental-export-watermarks",
+    "slug": "incremental-stock-export-should-record-between-batches",
+    "category": "3PL & Warehousing",
+    "title": "What an Incremental Stock Export Should Record Between Batches",
+    "description": "An incremental stock export needs a confirmed transaction boundary so the next batch resumes without skipping or repeating transactions.",
+    "excerpt": "Record the last confirmed transaction boundary, advance it only after the receiver accepts a batch, and keep retries distinguishable from new work.",
+    "keywords": [
+      "incremental stock export boundary",
+      "last confirmed transaction watermark",
+      "batch acceptance before boundary advance",
+      "retry versus already accepted transaction",
+      "warehouse export resume point"
+    ],
+    "publishedAt": "2026-11-08",
+    "modifiedAt": "2026-11-08",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An incremental export should preserve the last confirmed transaction boundary used by the receiver.",
+      "A boundary should advance after the corresponding batch is accepted rather than merely generated.",
+      "Retry handling should distinguish an already accepted transaction from a transaction not yet delivered."
+    ],
+    "sources": [],
+    "keyAnswer": "An incremental stock export should record the last confirmed transaction boundary that the receiver has accepted, so the next batch starts from that point rather than from what was merely generated. The boundary should advance only after the corresponding batch is accepted. Retry handling should distinguish a transaction already accepted from one not yet delivered, so a retry does not skip or duplicate work.",
+    "sections": [
+      {
+        "heading": "What the export should record as its resume point",
+        "paragraphs": [
+          "The resume point for an incremental stock export is not simply the timestamp of the most recent transaction the warehouse system produced. It is the last confirmed transaction boundary that the receiving system has accepted. That distinction matters because a batch can be generated, transmitted, and even partially processed without being fully accepted by the receiver. If the export records the generation point as its resume point, the next batch may begin after transactions that were never successfully delivered or accepted.",
+          "A practical record should identify the boundary value itself, the batch or transmission reference associated with it, and the acceptance status returned by the receiver. The boundary value might be a transaction sequence number, a change version, or a timestamp, depending on how the export is designed. What matters is that the recorded value corresponds to a batch the receiver has confirmed, not merely to work the warehouse system has finished preparing. The record should also note when the boundary was last updated and which batch caused the update, so the resume point can be traced back to a specific accepted transmission.",
+          "This record is separate from the export file itself. The file is a delivery mechanism; the boundary record is the durable state that tells the next run where to start. Keeping the boundary in a persistent location that survives restarts, redeployments, and operator changes prevents the export from silently resetting to an earlier point or jumping ahead based on an unconfirmed batch."
+        ],
+        "bullets": [
+          "Record the boundary value, the batch reference, and the receiver's acceptance status together.",
+          "Keep the boundary record separate from the generated export file.",
+          "Note when the boundary was last updated and which batch caused the change."
+        ]
+      },
+      {
+        "heading": "Why the boundary advances on acceptance, not generation",
+        "paragraphs": [
+          "A boundary should advance after the corresponding batch is accepted rather than merely generated. Generation only proves that the warehouse system produced a file. It does not prove that the receiver received the file, parsed it correctly, or committed the transactions. If the boundary moves forward at generation time, any failure between generation and acceptance leaves a gap: the next batch starts after transactions the receiver never accepted, and those transactions are effectively skipped.",
+          "Advancing on acceptance creates a deliberate handshake. The export generates a batch, the receiver processes it, and the receiver returns a confirmation that identifies the batch and the boundary it covers. Only then does the export update its recorded resume point. This sequencing means a failed transmission, a rejected file, or a partial processing result leaves the boundary where it was, so the next run retries from the last known good point rather than from an optimistic one.",
+          "The trade-off is that acceptance must be observable. If the receiver cannot return a clear confirmation, the export cannot safely advance its boundary, and the workflow needs a defined way to obtain or infer acceptance before proceeding. That is a design question for the integration, not something the export should assume."
+        ],
+        "bullets": [
+          "Treat generation as preparation, not as delivery.",
+          "Update the boundary only after the receiver confirms the batch.",
+          "If acceptance cannot be observed, pause boundary advancement rather than guessing."
+        ]
+      },
+      {
+        "heading": "Separating an accepted transaction from an undelivered one during retry",
+        "paragraphs": [
+          "Retry handling should distinguish an already accepted transaction from a transaction not yet delivered. These two situations look similar from the export side, because in both cases the boundary has not advanced past the transaction. But they require different responses. An undelivered transaction should be sent again. An already accepted transaction should not be sent again as if it were new work, because doing so can create duplicate records or force the receiver to reconcile transactions it has already committed.",
+          "The practical way to keep these apart is to record acceptance at the batch level and to associate each batch with the boundary range it covers. When a retry is triggered, the export can check whether the batch covering the affected transactions was accepted. If it was, the retry should not resend those transactions; the boundary should be advanced to reflect the accepted batch. If it was not, the retry should resend the batch or the undelivered portion, and the boundary should remain unchanged until acceptance is confirmed.",
+          "This also means the retry logic needs a clear rule for partial acceptance. If a receiver accepts some transactions in a batch and rejects others, the boundary cannot simply advance to the end of the batch. The export needs to know which transactions were accepted and which were not, so the resume point reflects the accepted portion and the rejected portion remains eligible for correction or resend. Without that distinction, a retry can either skip rejected work or duplicate accepted work."
+        ],
+        "bullets": [
+          "Check batch acceptance before resending transactions covered by that batch.",
+          "Do not treat an accepted transaction as new work during a retry.",
+          "Define how partial acceptance affects the boundary before retries occur."
+        ]
+      },
+      {
+        "heading": "Checking the recorded boundary before the next batch runs",
+        "paragraphs": [
+          "Before each batch runs, the export should read the recorded boundary and confirm it is usable. A missing boundary, a boundary that points to a batch with no acceptance record, or a boundary that is older than the last confirmed acceptance are all conditions that should stop the run or trigger a review. Starting a batch from an uncertain resume point risks skipping or repeating transactions, and the cost of that risk is usually discovered later during reconciliation.",
+          "The check should also confirm that the boundary record and the receiver's records agree. If the receiver reports a different last accepted batch than the export has recorded, that disagreement should be resolved before new work is generated. In many cases the fix is to reconcile the two records and update the export's boundary to the confirmed acceptance point. In other cases the disagreement points to a transmission that was accepted but not recorded, or recorded but not accepted, and the underlying cause needs attention.",
+          "A short pre-run check is cheaper than a reconciliation after a bad batch. It can be as simple as verifying that the boundary exists, that it is linked to an accepted batch, and that the receiver's confirmation matches. The exact checks depend on how the export and receiver exchange acceptance information, but the principle is the same: the next batch should start from a point both sides agree on."
+        ],
+        "bullets": [
+          "Verify the boundary exists and is linked to an accepted batch before running.",
+          "Compare the export's boundary with the receiver's last accepted batch.",
+          "Resolve disagreements before generating new work."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can the boundary be a timestamp instead of a sequence number?",
+        "answer": "A timestamp can work as a boundary if it is precise enough to distinguish transactions and if the receiver confirms acceptance against the same value. The important requirement is that the recorded boundary corresponds to an accepted batch, not to the moment the export was generated."
+      },
+      {
+        "question": "What should happen if the receiver accepts a batch but the export fails before recording the new boundary?",
+        "answer": "The next run should detect that the receiver's last accepted batch is ahead of the export's recorded boundary. That condition should be treated as a reconciliation point: confirm the acceptance, update the boundary to match, and avoid resending the accepted transactions as new work."
+      }
+    ],
+    "searchIntent": "What should an incremental stock export record so its next batch does not skip transactions?"
+  },
+  {
     "briefId": "receipt-reference-splits",
     "slug": "delivery-allocation-across-purchase-references",
     "category": "3PL & Warehousing",
