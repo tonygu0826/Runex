@@ -22,6 +22,93 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "nonstackable-freight-declaration",
+    "slug": "identifying-nonstackable-freight-booking-transport-capacity",
+    "category": "Distribution",
+    "title": "Identifying Nonstackable Freight Before Booking Transport Capacity",
+    "description": "A practical way to declare which loaded units cannot carry another load so the restriction reaches the team booking transport.",
+    "excerpt": "Declare nonstackable freight by loaded unit, keep it distinct from pallet dimensions, and carry it with the shipment reference.",
+    "keywords": [
+      "nonstackable freight declaration",
+      "stacking restriction instruction",
+      "loaded unit restriction",
+      "transport booking details",
+      "shipment reference restriction"
+    ],
+    "publishedAt": "2026-11-09",
+    "modifiedAt": "2026-11-09",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A nonstackable freight instruction should identify which loaded units the restriction applies to.",
+      "A booking should distinguish a declared stacking restriction from a standard pallet dimension.",
+      "The restriction should travel with the shipment reference to the team arranging the transport."
+    ],
+    "sources": [],
+    "keyAnswer": "A nonstackable freight instruction should name which loaded units the restriction applies to, rather than describing the whole shipment loosely. The booking should record this as a declared stacking restriction separate from standard pallet dimensions, and the restriction should travel with the shipment reference to the team arranging transport.",
+    "sections": [
+      {
+        "heading": "Naming the loaded units covered by the restriction",
+        "paragraphs": [
+          "A nonstackable instruction is only useful if it points to specific loaded units. Describing an entire shipment as nonstackable when only some pallets or containers cannot bear weight above them leaves the transport team with an all-or-nothing rule that may be applied too broadly or ignored. The declaration should list the loaded units by their shipment reference, pallet identifier or handling unit number, so each restricted unit can be matched to the physical load.",
+          "For example, a hypothetical shipment might contain six loaded pallets, of which two carry fragile display units that cannot support another pallet. The instruction should name those two pallets rather than stating that the shipment is nonstackable. This lets the booking team plan space for the remaining four pallets to be stacked if the carrier and load plan allow it, while protecting the two restricted units."
+        ],
+        "bullets": [
+          "Identify each restricted loaded unit by a reference that appears on the physical load.",
+          "State whether the restriction applies to the whole loaded unit or only to a specific part of it.",
+          "Avoid using a general shipment-level description when only some units are affected."
+        ]
+      },
+      {
+        "heading": "Separating a stacking restriction from pallet dimensions in the booking",
+        "paragraphs": [
+          "Pallet dimensions describe the footprint and height of a loaded unit. A stacking restriction describes whether another load may be placed on top of it. These are different pieces of information, and a booking that records only dimensions may leave the transport team without the instruction they need. The booking should carry a separate field or note for the declared stacking restriction, clearly labelled so it is not mistaken for a dimension or weight value.",
+          "A hypothetical booking line might show a pallet footprint of 48 by 40 inches and a height of 60 inches, with a separate note stating that the unit is nonstackable. If the restriction were entered only in a dimensions field, it could be overlooked or misread as a height limit. Keeping the restriction distinct helps the person arranging capacity see it as a handling instruction rather than a measurement."
+        ],
+        "bullets": [
+          "Record the stacking restriction in its own field or note, not inside a dimension or weight field.",
+          "Use plain wording that states the restriction applies to stacking, not to the pallet size.",
+          "Check that the booking screen or document shows the restriction alongside, not instead of, the dimensions."
+        ]
+      },
+      {
+        "heading": "Carrying the restriction with the shipment reference to the transport team",
+        "paragraphs": [
+          "The restriction needs to reach the team that arranges transport capacity, not stay in a warehouse note or an internal file. The shipment reference is the thread that connects the booking, the load plan and the physical units. When the restriction is attached to that reference, anyone who opens the booking or the transport instruction can see which units cannot be stacked.",
+          "A practical approach is to include the restriction in the same message or system record that carries the shipment reference to the booking team. If the booking is made by a separate department or a transport provider, the restriction should be repeated in the instruction they receive. A hypothetical handover might include a line such as: shipment reference ABC123, two of six loaded units nonstackable, see unit identifiers. This keeps the restriction visible at the point where capacity is confirmed."
+        ],
+        "bullets": [
+          "Attach the restriction to the shipment reference used in the transport booking.",
+          "Repeat the restriction in any instruction sent to a carrier or booking team.",
+          "Confirm that the receiving team can see the restriction before capacity is confirmed."
+        ]
+      },
+      {
+        "heading": "Checking the declaration before capacity is confirmed",
+        "paragraphs": [
+          "Before transport capacity is confirmed, the booking team should check that the nonstackable declaration is complete and matches the physical load. A quick review can catch a restriction that was left out, attached to the wrong shipment reference, or written in a way that could be confused with a dimension. The check does not need to be elaborate, but it should happen before the booking is finalised.",
+          "Questions worth asking at this point include: does the declaration name the affected loaded units? Is the restriction recorded separately from the pallet dimensions? Does the shipment reference on the declaration match the one on the booking? If any answer is unclear, the declaration should be corrected before capacity is committed. This is a practical control rather than a promise that every handling issue will be avoided, but it can reduce the chance that a stacking restriction is missed."
+        ],
+        "bullets": [
+          "Verify that each restricted unit is named and can be matched to the physical load.",
+          "Check that the restriction is separate from dimension and weight fields.",
+          "Confirm the shipment reference is consistent across the declaration and the booking."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a nonstackable restriction be recorded as a note on the pallet dimension line?",
+        "answer": "It is better to record it separately. A note on a dimension line may be overlooked or read as a measurement, whereas a distinct stacking restriction field makes the instruction clear to the booking team."
+      },
+      {
+        "question": "What if only one pallet in a shipment is nonstackable?",
+        "answer": "Name that pallet specifically in the declaration. The restriction should identify the loaded unit it applies to, so the transport team can plan around it without treating the whole shipment as nonstackable."
+      }
+    ],
+    "searchIntent": "How should nonstackable freight be identified before transport capacity is booked?"
+  },
+  {
     "briefId": "incremental-export-watermarks",
     "slug": "incremental-stock-export-should-record-between-batches",
     "category": "3PL & Warehousing",
