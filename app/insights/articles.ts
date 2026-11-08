@@ -22,6 +22,79 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "slotting-velocity-review",
+    "slug": "reviewing-product-slotting-using-pick-frequency-unit-volume",
+    "category": "3PL & Warehousing",
+    "title": "Reviewing Product Slotting Using Pick Frequency and Unit Volume",
+    "description": "A slotting review should separate how often a location is visited from how many units move, and state the period observed.",
+    "excerpt": "Separate pick visits from units moved, state the observation period, and weigh replenishment effort before changing a slot.",
+    "keywords": [
+      "pick frequency slotting review",
+      "order lines versus unit volume",
+      "slotting observation period",
+      "pick visits and replenishment effort",
+      "proposed slot change review"
+    ],
+    "publishedAt": "2026-11-10",
+    "modifiedAt": "2026-11-10",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A slotting review should distinguish the number of pick visits from the number of units moved.",
+      "The observation period should be stated so a short promotion is not treated as a permanent demand pattern.",
+      "A proposed slot change should account for both pick visits and replenishment effort."
+    ],
+    "sources": [],
+    "keyAnswer": "Use pick frequency to show how often a location is visited, and keep unit volume as a separate measure so a high-line, low-unit item is not treated the same as a high-volume one. State the observation period behind both measures, then weigh replenishment effort alongside pick visits before proposing a slot change.",
+    "sections": [
+      {
+        "heading": "Why pick visits and unit volume answer different questions",
+        "paragraphs": [
+          "A slotting review is often reduced to a single velocity number, but pick frequency and unit volume describe different kinds of warehouse work. Pick frequency, or the number of pick visits to a location, reflects how often a picker travels to that slot. Unit volume reflects how many units are drawn from it. An item picked frequently in small quantities creates repeated visits with little quantity per trip. An item picked less often in large quantities creates fewer visits but heavier handling per visit. Treating these as the same measure can lead to slot changes that improve one dimension while worsening another.",
+          "The practical consequence is that a high-line, low-unit item and a low-line, high-unit item should not be slotted by the same rule. The first may benefit from a position that reduces travel for frequent visits. The second may need a position that supports efficient replenishment and handling of larger quantities. A slotting review should record both measures for each item or location so the trade-off is visible before any change is proposed."
+        ]
+      },
+      {
+        "heading": "Recording the observation period so short promotions stay visible",
+        "paragraphs": [
+          "Both pick frequency and unit volume depend on the period observed. A short promotion can lift pick visits or unit volume for a few days, and if that window is not stated, the review may treat a temporary pattern as a permanent demand signal. The observation period should be recorded alongside the measures so anyone reading the review knows what was counted and when.",
+          "This does not mean every review needs a long historical window. It means the period should be explicit and appropriate to the question being asked. A review intended to adjust slotting for ongoing demand should use a period that reflects normal operations, while a review focused on a known promotion should state that the period covers the promotion. In either case, the period is part of the evidence, not an afterthought."
+        ]
+      },
+      {
+        "heading": "Reading pick frequency alongside replenishment effort",
+        "paragraphs": [
+          "Pick visits are only one part of the work a slot generates. A location that is visited frequently for picks may also require frequent replenishment, and moving it closer to picking areas could increase the distance for replenishment trips. A proposed slot change should account for both pick visits and replenishment effort so that the total handling picture is considered.",
+          "In practice, this means the review should note how replenishment is performed for the item and whether a slot change would alter that work. For example, a hypothetical item with high pick frequency but low unit volume might be replenished in full cases at a frequency that makes a forward location convenient. A different item with lower pick frequency but high unit volume might need a location that supports larger replenishment quantities. The review does not need to solve every trade-off, but it should make the replenishment implication visible."
+        ]
+      },
+      {
+        "heading": "Documenting a proposed slot change with both measures",
+        "paragraphs": [
+          "When a slot change is proposed, the documentation should show the pick frequency and unit volume that informed the proposal, the observation period for each, and the replenishment consideration. This allows a reviewer to see why the change is suggested and what evidence supports it. It also creates a record that can be compared with later observations.",
+          "A useful proposed change record might include the current slot, the proposed slot, the measures for the item, the period observed, and a note on replenishment effort. If the proposal is approved, the record becomes a reference for the change. If it is deferred, the record shows what was considered. In either case, the separation of pick visits and unit volume remains clear."
+        ],
+        "bullets": [
+          "State the observation period for pick frequency and unit volume.",
+          "Record pick visits and units moved as separate measures.",
+          "Note replenishment effort and how the proposed slot affects it.",
+          "Keep the proposed change record linked to the item and locations involved."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should pick frequency or unit volume be the primary slotting measure?",
+        "answer": "Neither measure is universally primary. The review should keep both visible and weigh them alongside replenishment effort for the specific item and slot. The appropriate balance depends on the handling profile and the work the slot generates."
+      },
+      {
+        "question": "How long should the observation period be?",
+        "answer": "The period should be long enough to reflect the demand pattern being reviewed, and the observation period should be stated so a short promotion is not treated as a permanent demand pattern. A period that includes a promotion should be identified as such so the promotion is not mistaken for a lasting pattern."
+      }
+    ],
+    "searchIntent": "How can pick frequency be used to review slotting without confusing order lines with unit volume?"
+  },
+  {
     "briefId": "nonstackable-freight-declaration",
     "slug": "identifying-nonstackable-freight-booking-transport-capacity",
     "category": "Distribution",
