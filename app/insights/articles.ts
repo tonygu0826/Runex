@@ -22,6 +22,82 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "order-cycle-time-boundaries",
+    "slug": "measuring-order-cycle-time-creation-acceptance-dispatch-differ",
+    "category": "Fulfillment",
+    "title": "Measuring Order Cycle Time When Creation, Acceptance and Dispatch Differ",
+    "description": "A practical way to name the starting and ending events of order cycle time so measures stay comparable across orders.",
+    "excerpt": "Define the start and end events of order cycle time, separate waiting on incomplete instructions from active warehouse work, and compare like with like.",
+    "keywords": [
+      "order cycle time measurement",
+      "cycle time start and end events",
+      "warehouse acceptance timestamp",
+      "dispatch event definition",
+      "incomplete order instruction wait time",
+      "comparable cycle time observation window"
+    ],
+    "publishedAt": "2026-11-11",
+    "modifiedAt": "2026-11-11",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A cycle-time measure should name its starting and ending events explicitly.",
+      "Time waiting for an incomplete customer instruction should be distinguishable from active warehouse processing.",
+      "Comparisons should use the same event definitions and observation window."
+    ],
+    "sources": [],
+    "keyAnswer": "Name the starting and ending events explicitly, such as order creation, warehouse acceptance or dispatch, so the measure states what it covers. Keep time spent waiting on an incomplete customer instruction distinguishable from active warehouse processing. When comparing orders or periods, use the same event definitions and the same observation window.",
+    "sections": [
+      {
+        "heading": "Naming the start and end events in the measure",
+        "paragraphs": [
+          "Order cycle time is only meaningful when the measure states which events it spans. An order may be created in a client system, accepted by the warehouse, and dispatched on three different dates. A cycle-time figure that does not name its boundaries can be interpreted in several ways, making it difficult to compare orders or discuss performance with a warehouse partner.",
+          "A practical approach is to write the measure as a pair of named events, for example from order creation to dispatch, or from warehouse acceptance to dispatch. Each definition answers a different question. Creation-to-dispatch includes the time before the warehouse is involved, while acceptance-to-dispatch focuses on the period the warehouse controls. Neither is inherently better; the choice should match the decision the measure is meant to support.",
+          "The same discipline applies to the end event. Dispatch might mean the moment a parcel is scanned onto a carrier vehicle, the moment a manifest is closed, or the moment a shipment leaves the dock. These are not interchangeable. The measure should state which one is used and apply it consistently, so a change in warehouse practice does not silently alter the meaning of the reported cycle time."
+        ]
+      },
+      {
+        "heading": "Recording warehouse acceptance as its own timestamp",
+        "paragraphs": [
+          "Warehouse acceptance is often the most useful boundary because it separates client-side activity from warehouse work. If acceptance is not recorded as a distinct timestamp, it may be inferred from the order creation time or the first pick scan, which can distort the measure. A separate acceptance timestamp gives the warehouse a clear starting point for its own processing time and gives the client a clear point at which responsibility for the order moved.",
+          "Acceptance should not be confused with receipt of an order file. An order may arrive in a system but remain unaccepted because instructions are incomplete or because the warehouse has not yet reviewed it. Recording acceptance as its own event makes that distinction visible. It also allows a business to ask how long orders wait between arrival and acceptance without mixing that wait into active warehouse processing.",
+          "When acceptance is recorded, the measure should state whether it refers to the whole order or to individual lines. An order with several lines may be partially accepted, and a single acceptance timestamp may not reflect that. The chosen definition should be documented alongside the measure so that anyone reading a cycle-time figure knows what the acceptance event represents."
+        ]
+      },
+      {
+        "heading": "Separating instruction wait time from active processing",
+        "paragraphs": [
+          "Some orders wait because the warehouse is busy; others wait because the customer has not supplied a complete instruction. These two kinds of waiting have different causes and different remedies, so a cycle-time measure should keep them distinguishable. If they are combined, a long cycle time may be attributed to warehouse processing when the real constraint was an incomplete instruction.",
+          "A practical way to separate them is to record when an order is placed on hold for missing information and when it is released back into the workflow. The time between those events is instruction wait time, not active processing. The measure can then report active processing separately, or report total cycle time with a note that it includes instruction wait. Either approach is workable as long as the definition is explicit and applied consistently.",
+          "This separation also supports clearer conversations between a client and a warehouse. A client can see how quickly it supplies missing information, and the warehouse can show how quickly it acts once an order is complete. Neither party is asked to infer the other's contribution from a single combined figure."
+        ]
+      },
+      {
+        "heading": "Keeping event definitions and observation windows consistent for comparisons",
+        "paragraphs": [
+          "Comparisons are only valid when the same event definitions and the same observation window are used. An order measured from creation to dispatch in one period should not be compared with an order measured from acceptance to dispatch in another. Similarly, a window that includes a peak week may not be comparable with a quiet week unless the difference is acknowledged.",
+          "Before comparing orders or periods, it helps to write down the measure as a short definition: the start event, the end event, how instruction wait is treated, and the observation window. That definition can be attached to any report or discussion so that readers do not have to guess. When the definition changes, the change should be recorded and the old and new figures should not be presented as if they were the same measure.",
+          "The observation window should also be stated in terms of which orders are included. Orders created within the window but dispatched after it may be excluded, included, or reported separately. Each choice affects the result. The important point is that the choice is deliberate and consistent, so that a comparison reflects a real change in performance rather than a change in measurement."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should order cycle time start at order creation or warehouse acceptance?",
+        "answer": "Either can be appropriate, but the measure should name which one it uses. Creation-to-dispatch includes client-side time before the warehouse is involved, while acceptance-to-dispatch focuses on the period the warehouse controls. The choice should match the decision the measure supports, and it should be applied consistently."
+      },
+      {
+        "question": "How should an order that waits for missing customer information be treated?",
+        "answer": "The wait should be recorded separately from active warehouse processing, for example by noting when the order was placed on hold and when it was released. The cycle-time measure can then report active processing separately or report total time with a clear note that instruction wait is included."
+      },
+      {
+        "question": "Can cycle times be compared if the definition changed between periods?",
+        "answer": "They should not be presented as directly comparable without acknowledging the change. The definition, including start and end events and the observation window, should be recorded. When it changes, the old and new figures should be labelled so readers do not assume they measure the same thing."
+      }
+    ],
+    "searchIntent": "How should order cycle time be measured when order creation, warehouse acceptance and dispatch occur at different times?"
+  },
+  {
     "briefId": "slotting-velocity-review",
     "slug": "reviewing-product-slotting-using-pick-frequency-unit-volume",
     "category": "3PL & Warehousing",
