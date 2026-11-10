@@ -22,6 +22,78 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "blank-zero-stock-fields",
+    "slug": "reading-blank-stock-field-versus-explicit-zero-balance",
+    "category": "3PL & Warehousing",
+    "title": "Reading a Blank Stock Field Versus an Explicit Zero Balance",
+    "description": "A blank stock field and an explicit zero can mean different things, so the interface should define what each value represents before records are changed.",
+    "excerpt": "Blank and zero stock values are not interchangeable; define what each means before a balance is cleared.",
+    "keywords": [
+      "blank stock field meaning",
+      "explicit zero inventory balance",
+      "omitted field versus zero",
+      "stock interface empty-value rules",
+      "missing data clearing balance"
+    ],
+    "publishedAt": "2026-11-12",
+    "modifiedAt": "2026-11-12",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A stock interface should define whether a blank value means unknown, unchanged or absent.",
+      "An explicit zero should be distinguished from a field omitted by the sender.",
+      "Sample messages should verify that missing data does not silently clear a known balance."
+    ],
+    "sources": [],
+    "keyAnswer": "A blank inventory field should be read according to what the interface says it means, such as unknown, unchanged or absent, rather than being treated as a zero balance. An explicit zero is a stated balance, while an omitted field is simply data the sender did not include. Sample messages can show whether missing data would silently clear a known balance.",
+    "sections": [
+      {
+        "heading": "Why a blank field and a zero are not the same message",
+        "paragraphs": [
+          "In a stock interface, a blank field and an explicit zero can look similar on a screen but carry different meanings. A blank field may indicate that the sender did not include the value, that the value is unknown, or that no change is intended. An explicit zero, by contrast, is a stated balance: the sender is saying the quantity is zero. Treating a blank as a zero can therefore clear a known balance without any instruction to do so.",
+          "The distinction matters because stock records drive decisions about availability, replenishment and order release. If a blank field is read as zero, a product that is actually in stock may appear unavailable, or a balance that should remain unchanged may be overwritten. The interface should make the meaning of each value clear before any record is changed."
+        ]
+      },
+      {
+        "heading": "Choosing a defined meaning for blank values in the stock interface",
+        "paragraphs": [
+          "A stock interface should define whether a blank value means unknown, unchanged or absent. Each choice leads to different handling. If blank means unknown, the receiving system should not overwrite an existing balance and may need to flag the record for review. If blank means unchanged, the system should leave the current balance as it is. If blank means absent, the system should treat the field as not supplied and avoid inferring a quantity.",
+          "The definition should be documented and applied consistently across all messages that update stock. It should also be visible to the teams who build and maintain the interface, so that a blank field is not interpreted differently by different systems. Without a defined meaning, a blank field becomes an invitation to guess, and guesses about stock quantities can lead to incorrect records."
+        ],
+        "bullets": [
+          "Unknown: the value is not known; do not overwrite an existing balance.",
+          "Unchanged: the value is intentionally omitted; keep the current balance.",
+          "Absent: the field was not supplied; do not infer a quantity."
+        ]
+      },
+      {
+        "heading": "Separating an explicit zero from a field the sender left out",
+        "paragraphs": [
+          "An explicit zero should be distinguished from a field omitted by the sender. An explicit zero is a deliberate statement that the balance is zero, and it may be appropriate to update the record accordingly. A field omitted by the sender is not a statement about the balance at all; it is simply data that was not included. The interface should be able to tell these two cases apart, for example by requiring a zero to be sent as a value rather than by leaving the field empty.",
+          "This separation protects against silent clearing of stock. If a sender omits a field because of a formatting error or a partial message, the receiving system should not treat that omission as a zero. The interface should either reject the message, hold the existing balance, or flag the omission for review, depending on the agreed rules. The key is that an omission is not read as a balance statement."
+        ]
+      },
+      {
+        "heading": "Using sample messages to check that missing data does not clear a known balance",
+        "paragraphs": [
+          "Sample messages should verify that missing data does not silently clear a known balance. Before a stock interface is put into routine use, test it with sample messages that include a blank field, an explicit zero, and a field that is omitted entirely. Check how the receiving system responds in each case. If a blank or omitted field results in a cleared balance, the interface needs adjustment.",
+          "The samples should also cover common message variations, such as partial updates or fields that are optional in the message format. The goal is to confirm that the system behaves as defined and that a known balance is only changed when an explicit value is supplied. This testing is a practical step that can be done with representative data before the interface is relied upon for live stock records."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should happen if a stock message contains a blank field for an item that already has a balance?",
+        "answer": "According to the interface definition, a blank field should not be treated as a zero. The system should either leave the existing balance unchanged, flag the record as unknown, or reject the message, depending on the agreed meaning of blank. The important point is that the balance is not cleared without an explicit zero."
+      },
+      {
+        "question": "How can we tell whether a sender intended to send a zero or simply left the field out?",
+        "answer": "The message format should require an explicit zero to be sent as a value. If the field is empty, it should be treated as omitted, not as zero. Sample messages can confirm that the receiving system makes this distinction correctly."
+      }
+    ],
+    "searchIntent": "How should a blank inventory field be interpreted differently from an explicit zero?"
+  },
+  {
     "briefId": "order-cycle-time-boundaries",
     "slug": "measuring-order-cycle-time-creation-acceptance-dispatch-differ",
     "category": "Fulfillment",
