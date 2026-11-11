@@ -22,6 +22,74 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "warehouse-shift-task-continuity",
+    "slug": "task-details-carry-across-warehouse-shift-change",
+    "category": "3PL & Warehousing",
+    "title": "Task Details to Carry Across a Warehouse Shift Change",
+    "description": "What an unfinished-task handover should record so the next shift can resume work without repeating completed steps.",
+    "excerpt": "A handover for unfinished warehouse work should name the completed step, the next physical action, and the stock, location and instruction references.",
+    "keywords": [
+      "warehouse shift handover",
+      "unfinished task handover",
+      "completed step and next action",
+      "stock and location references",
+      "work-instruction reference",
+      "task condition confirmation"
+    ],
+    "publishedAt": "2026-11-13",
+    "modifiedAt": "2026-11-13",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An unfinished task handover should identify the completed step and the next physical action still required.",
+      "The handover should preserve the relevant stock, location and work-instruction references.",
+      "The receiving shift should confirm the current task condition before repeating a step described as complete."
+    ],
+    "sources": [],
+    "keyAnswer": "An unfinished task handover should identify the completed step and the next physical action still required, and should preserve the relevant stock, location and work-instruction references. The receiving shift should confirm the current task condition before repeating a step described as complete.",
+    "sections": [
+      {
+        "heading": "Naming the completed step and the next physical action",
+        "paragraphs": [
+          "When warehouse work stops partway through a shift, the handover note has to do more than say the task is unfinished. It should state which step was completed and what physical action remains. For example, a hypothetical putaway task might record that the pallet was moved from the receiving dock to the staging lane but not yet placed in the assigned bin. The next action would be to move the pallet from staging to the bin and confirm placement.",
+          "This distinction matters because a vague status such as in progress can be read in different ways. One person may assume the pallet is still on the dock; another may assume it is already in the bin. Naming the completed step and the next physical action gives the receiving shift a clear starting point and reduces the chance that work is repeated or skipped. The handover should use plain language that describes the physical state of the task, not just a system status code."
+        ]
+      },
+      {
+        "heading": "Carrying stock, location and work-instruction references",
+        "paragraphs": [
+          "The handover should preserve the relevant stock, location and work-instruction references. Stock references identify the item and quantity involved, such as a SKU and the number of units or cases. Location references identify where the stock is now and where it is meant to go, including any staging lane, bin or dock position. Work-instruction references point to the current version of the instruction that governs the task, so the receiving shift knows which steps and conditions apply.",
+          "Without these references, the next shift may have to search for the task or may act on an outdated instruction. A hypothetical example is a picking task that was paused after two of five order lines were picked. The handover should list the order reference, the picked lines, the remaining lines, the pick locations and the work instruction version in use. If a revised instruction was issued during the shift, the handover should say which version applies to the remaining work."
+        ]
+      },
+      {
+        "heading": "Confirming task condition before repeating a step",
+        "paragraphs": [
+          "The receiving shift should confirm the current task condition before repeating a step described as complete. This is a check against the physical state of the work, not just a reread of the handover note. For instance, if the handover says a pallet was wrapped, the receiving shift should verify that the wrap is intact and covers the correct load before deciding whether to wrap it again. Repeating a completed step can waste material and time, and in some cases can disturb the work that was already done.",
+          "Confirmation also protects against handover errors. A note may say a step was completed when it was only started, or the physical state may have changed after the note was written. The receiving shift should compare the handover description with what is actually visible at the location. If there is a mismatch, the task should be treated as needing review rather than being automatically repeated or assumed complete. The confirmation step is a normal part of resuming work, not a sign of distrust in the previous shift."
+        ]
+      },
+      {
+        "heading": "Recording the handover so both shifts share one task view",
+        "paragraphs": [
+          "A handover works best when both shifts refer to the same recorded task view. The record should be written at the point of handover, using the stock, location and instruction references already in use for the task. It should be specific enough that someone who did not perform the earlier work can understand the state of the task without asking informal questions. The record should also show who wrote it and when, so later questions can be traced to the source.",
+          "The handover record should be updated if the task condition changes before the next shift starts. For example, if a supervisor moves a staged pallet to a different lane after the handover was written, the record should reflect the new location. Both shifts should know where the handover is kept and how to update it. A shared task view reduces the risk of two people working from different assumptions about the same unfinished task."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a handover note repeat the full work instruction?",
+        "answer": "No. The handover should reference the current work instruction rather than copying it in full. The reference should identify the instruction version so the receiving shift can check the applicable steps without working from a partial copy."
+      },
+      {
+        "question": "What if the receiving shift finds the task in a different condition than described?",
+        "answer": "The task should be treated as needing review before work continues. The receiving shift should record the observed condition and compare it with the handover note, rather than repeating a step or assuming the task is complete."
+      }
+    ],
+    "searchIntent": "Which task details should carry across a shift change when warehouse work is unfinished?"
+  },
+  {
     "briefId": "blank-zero-stock-fields",
     "slug": "reading-blank-stock-field-versus-explicit-zero-balance",
     "category": "3PL & Warehousing",
