@@ -22,6 +22,99 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "invoice-credit-reference-links",
+    "slug": "references-connect-invoice-credit-warehouse-charge",
+    "category": "3PL & Warehousing",
+    "title": "References That Connect an Invoice Credit to the Warehouse Charge",
+    "description": "A warehouse invoice credit should point back to the original charge line, state the correction reason and show whether quantity or rate changed.",
+    "excerpt": "Link each invoice credit to the original charge line, name the correction reason and keep the original billing history intact.",
+    "keywords": [
+      "invoice credit reference",
+      "original invoice line link",
+      "quantity versus rate correction",
+      "credited amount reconciliation",
+      "warehouse billing history"
+    ],
+    "publishedAt": "2026-11-14",
+    "modifiedAt": "2026-11-14",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A credit record should identify the original invoice line and the reason its amount is being corrected.",
+      "The credit should distinguish a quantity correction from a rate correction.",
+      "The remaining charge and credited amount should reconcile without deleting the original billing history."
+    ],
+    "sources": [],
+    "keyAnswer": "A credit record should identify the original invoice line it corrects and state the reason the amount is being adjusted. It should also show whether the correction concerns quantity or rate, so the credited amount and remaining charge reconcile without deleting the original billing history.",
+    "sections": [
+      {
+        "heading": "Pointing the credit back to the original invoice line",
+        "paragraphs": [
+          "A warehouse invoice credit is only useful if it can be traced to the charge it corrects. The credit record should carry the original invoice number, the specific line reference and the billing period involved. Without that link, a credit becomes a standalone amount that is difficult to reconcile against the work it relates to.",
+          "The reference should be precise enough that someone reviewing the account can move from the credit to the original charge without guessing. If the original invoice line covered a handling task, a storage period or a value-added service, the credit should name that line rather than referring only to a general invoice total. This keeps the correction anchored to the operational event that produced the charge."
+        ],
+        "bullets": [
+          "Record the original invoice number and line reference on every credit.",
+          "Name the billing period and the service or task the original line described.",
+          "Avoid credits that reference only a customer account or invoice total."
+        ]
+      },
+      {
+        "heading": "Stating the reason the charge is being corrected",
+        "paragraphs": [
+          "A credit without a stated reason is hard to review and easy to dispute. The record should explain why the amount is being adjusted: for example, a quantity was billed that did not match the work performed, or a rate was applied that differed from the agreed basis. The reason should be specific enough that a reviewer can confirm it against the original charge.",
+          "The reason also supports consistency. If similar corrections recur, the stated reasons show whether the issue sits in the original billing instruction, the task record or the rate reference. That visibility helps the warehouse and the client decide whether a process change is needed, rather than treating each credit as an isolated adjustment."
+        ]
+      },
+      {
+        "heading": "Separating a quantity correction from a rate correction",
+        "paragraphs": [
+          "A credit should make clear whether the correction concerns the quantity billed or the rate applied. A quantity correction changes the number of units or tasks charged, while a rate correction changes the price per unit without altering the quantity. Mixing the two in a single unexplained amount makes it difficult to verify which part of the original charge was wrong.",
+          "Where both quantity and rate are affected, the credit can be split into separate lines or clearly labelled components. This distinction matters for reconciliation: a quantity correction should reconcile against the task or stock records, while a rate correction should reconcile against the agreed rate reference. Keeping them separate helps both parties confirm the correction on the right basis."
+        ],
+        "bullets": [
+          "Label each credit as a quantity correction, a rate correction or a combination with separate components.",
+          "For quantity corrections, reference the task or stock record that supports the revised quantity.",
+          "For rate corrections, reference the agreed rate basis that the original charge did not follow."
+        ]
+      },
+      {
+        "heading": "Reconciling the credited amount with the remaining charge",
+        "paragraphs": [
+          "The credit and the remaining charge should add up to the corrected amount without ambiguity. The credit record should show the original charge, the credited amount and the resulting balance, so a reviewer can see the arithmetic in one place. This is easier when the credit references the original line directly rather than sitting as a separate adjustment elsewhere on the account.",
+          "Reconciliation also means checking that the credit does not exceed the original charge and that any partial credit leaves a clear remaining amount. If the original charge was already settled, the credit should state how the balance is being handled. These details prevent the credit from becoming a source of confusion in later billing reviews."
+        ]
+      },
+      {
+        "heading": "Keeping the original billing history readable after the credit",
+        "paragraphs": [
+          "A credit should correct the billing record without erasing it. The original invoice line should remain visible, with the credit linked to it as a subsequent adjustment. Deleting or overwriting the original charge removes the audit trail and makes it harder to understand what was billed and why it changed.",
+          "Keeping the history readable means that anyone reviewing the account can see the sequence: the original charge, the credit and the reason for the correction. This supports later questions about the account and helps the warehouse and client agree on what was corrected. The credit is an addition to the record, not a replacement for it."
+        ],
+        "bullets": [
+          "Leave the original invoice line intact and attach the credit as a linked adjustment.",
+          "Show the correction reason and the quantity or rate basis alongside the credit.",
+          "Ensure the final balance reflects both the original charge and the credit without removing either."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a credit ever replace the original invoice line?",
+        "answer": "No. The original line should remain visible so the billing history stays readable. The credit should be linked to it as a separate adjustment that explains the correction."
+      },
+      {
+        "question": "What if a credit covers both a quantity and a rate error?",
+        "answer": "The credit should separate the two components or clearly label the combined correction, so each part can be reconciled against the relevant task or rate reference."
+      },
+      {
+        "question": "How detailed should the correction reason be?",
+        "answer": "Specific enough that a reviewer can confirm it against the original charge, such as a quantity that did not match the task record or a rate that differed from the agreed basis."
+      }
+    ],
+    "searchIntent": "What references should connect an invoice credit to the warehouse charge it corrects?"
+  },
+  {
     "briefId": "warehouse-shift-task-continuity",
     "slug": "task-details-carry-across-warehouse-shift-change",
     "category": "3PL & Warehousing",
