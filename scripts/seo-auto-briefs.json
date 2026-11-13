@@ -1,6 +1,6 @@
 {
   "version": 1,
-  "refillPending": false,
+  "refillPending": true,
   "consecutiveFailures": 0,
   "briefs": [
     {
@@ -93,6 +93,100 @@
         "model": "deepseek-v4-flash",
         "at": "2026-10-12T19:47:16.289Z",
         "rationale": "Every evidence statement is a reasonable conditional deduction from the cited foundations: retry-continuity directly supports preserving the original business request identity, distinguishing accepted from pending work, and not creating a second physical task; interface-contracts supports distinguishing successful transmission from accepted business processing. The decision is distinct from published and unused briefs such as order-import-deduplication, partial-file-import-results, incremental-export-watermarks and failed-message-quarantine, which cover resubmitted order files, partial row acceptance, export boundaries and quarantined messages, but not checking a retried warehouse task message against already accepted work to avoid a duplicate physical task."
+      }
+    },
+    {
+      "id": "auto-should-availability-statement-read-some-quantities-not",
+      "area": "Interpreting an availability statement that mixes confirmed and unconfirmed stock",
+      "readerQuestion": "How should an availability statement be read when some quantities are confirmed and others are not?",
+      "evidence": [
+        "An availability statement should separate known, unconfirmed, committed and physically observed quantities.",
+        "Missing confirmation should not be converted into an assumed positive availability.",
+        "A commitment should be based on the quantity basis and observation boundary stated, not on a total that mixes categories."
+      ],
+      "foundationRefs": [
+        "availability-qualifications",
+        "quantity-basis",
+        "reporting-boundaries"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-should-availability-statement-read-some-quantities-not",
+        "title": "Reading Availability When Confirmed and Unconfirmed Quantities Are Mixed",
+        "description": "A conditional method for separating confirmed, unconfirmed and committed quantities before acting on an availability statement.",
+        "excerpt": "Split known, unconfirmed, committed and observed quantities, avoid treating missing confirmation as available, and state the observation boundary.",
+        "keywords": [
+          "availability statement",
+          "confirmed versus unconfirmed",
+          "committed quantity",
+          "observation boundary",
+          "missing confirmation"
+        ],
+        "keyAnswer": "An availability statement should separate known, unconfirmed, committed and physically observed quantities rather than presenting one total. Missing confirmation should not be read as available stock, and any commitment should rest on the stated quantity basis and observation boundary.",
+        "operationalBasis": [
+          "An availability statement should separate known, unconfirmed, committed and physically observed quantities.",
+          "Missing confirmation should not be converted into an assumed positive availability.",
+          "A commitment should be based on the quantity basis and observation boundary stated, not on a total that mixes categories."
+        ],
+        "searchIntent": "How should an availability statement be read when some quantities are confirmed and others are not?",
+        "outline": [
+          "Splitting the availability categories",
+          "Why missing confirmation is not availability",
+          "Stating the observation boundary",
+          "Basing commitments on the right category"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-13T20:29:37.442Z",
+        "rationale": "Each evidence statement is a reasonable conditional deduction from availability-qualifications, quantity-basis and reporting-boundaries. The decision—how to read an availability statement that mixes confirmed, unconfirmed, committed and physically observed quantities, and refuse to treat missing confirmation as available—is a distinct operational decision not covered by the published stock-reservation, blank-zero-field or reporting briefs."
+      }
+    },
+    {
+      "id": "auto-shared-warehouse-work-assignment-changes-should-show-has",
+      "area": "Keeping client ownership distinct when a shared work assignment changes",
+      "readerQuestion": "When a shared warehouse work assignment changes, what should show that stock ownership has not moved?",
+      "evidence": [
+        "Client ownership and access should remain distinguishable from physical product identity and location.",
+        "Changing a contact or shared work assignment should not itself transfer stock ownership.",
+        "Where ownership is unclear, the question should be resolved before stock is treated as another client's."
+      ],
+      "foundationRefs": [
+        "client-ownership",
+        "entity-identity",
+        "reference-context"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-shared-warehouse-work-assignment-changes-should-show-has",
+        "title": "Keeping Stock Ownership Clear When Work Assignments Change",
+        "description": "A conditional check that separates a change in work assignment or contact from any change in stock ownership.",
+        "excerpt": "Treat assignment and contact changes as operational, keep ownership tied to its original reference, and resolve unclear ownership before reassigning stock.",
+        "keywords": [
+          "client ownership",
+          "shared work assignment",
+          "contact change",
+          "ownership reference",
+          "stock reassignment check"
+        ],
+        "keyAnswer": "A change in a shared work assignment or client contact should not by itself move stock ownership. Ownership should stay tied to its original business reference, and unclear ownership should be resolved before stock is treated as belonging to another client.",
+        "operationalBasis": [
+          "Client ownership and access should remain distinguishable from physical product identity and location.",
+          "Changing a contact or shared work assignment should not itself transfer stock ownership.",
+          "Where ownership is unclear, the question should be resolved before stock is treated as another client's."
+        ],
+        "searchIntent": "When a shared warehouse work assignment changes, what should show that stock ownership has not moved?",
+        "outline": [
+          "What a work assignment change does and does not do",
+          "Keeping ownership with its reference",
+          "Resolving unclear ownership first",
+          "Recording the assignment change separately"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-13T20:29:37.442Z",
+        "rationale": "Grounded in client-ownership and entity-identity; the statements follow conditionally from the foundation. The decision—separating a work-assignment or contact change from any transfer of stock ownership, and resolving unclear ownership before reassignment—is distinct from the approved client-access-removal-review and inventory-owner-separation briefs, which address access removal and identical-goods ownership respectively rather than assignment-change ownership confusion."
       }
     }
   ]
