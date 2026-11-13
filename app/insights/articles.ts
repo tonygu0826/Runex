@@ -22,6 +22,94 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "extra-work-authorisation-ceilings",
+    "slug": "stating-limit-approval-extra-warehouse-work",
+    "category": "3PL & Warehousing",
+    "title": "Stating the Limit on an Approval for Extra Warehouse Work",
+    "description": "An extra-work approval should name the task and its quantity, time or cost boundary so reaching that limit prompts a new decision.",
+    "excerpt": "How to write an extra-work approval that names the authorised task, sets a quantity, time or cost boundary, and keeps additions separately recorded.",
+    "keywords": [
+      "extra warehouse work approval",
+      "approval boundary limit",
+      "authorised task quantity time cost",
+      "new decision at approval limit",
+      "separately approved additions record"
+    ],
+    "publishedAt": "2026-11-15",
+    "modifiedAt": "2026-11-15",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An extra-work approval should identify the authorised task and the agreed quantity, time or cost boundary.",
+      "Reaching the approval boundary should trigger a new decision rather than an assumed extension.",
+      "The completed work record should distinguish activity within the original approval from separately approved additions."
+    ],
+    "sources": [],
+    "keyAnswer": "An extra-work approval should identify the authorised task together with the agreed quantity, time or cost boundary, so the limit is visible to the people doing the work. Reaching that boundary should trigger a new decision rather than an assumed extension. The completed work record should then distinguish activity within the original approval from additions approved separately.",
+    "sections": [
+      {
+        "heading": "Naming the authorised task and its boundary",
+        "paragraphs": [
+          "An approval for extra warehouse work is only useful if the people performing the task can tell what has been authorised and where the authorisation stops. The approval should name the specific task, such as relabelling a defined batch, repacking a set of cartons or conducting an additional inspection, and it should state the agreed quantity, time or cost boundary. For example, a hypothetical approval might authorise relabelling up to 200 cartons or up to four hours of work, with a stated cost ceiling. The boundary should be expressed in the unit that the warehouse will actually measure, so the limit is visible at the point of work rather than buried in a separate document.",
+          "The choice between a quantity, time or cost boundary depends on what can be observed and controlled most reliably. A quantity boundary suits work where each unit is countable, such as cartons or pallets. A time boundary suits tasks where the effort varies by condition, such as inspection or rework. A cost boundary may be appropriate when rates are agreed and the main concern is total spend. In practice, an approval may combine more than one boundary, but each should be explicit and tied to the named task. The approval should also identify who authorised it and when, so the record is traceable."
+        ],
+        "bullets": [
+          "Name the task in terms the warehouse team recognises.",
+          "State the boundary in a unit that can be measured during the work.",
+          "Record who approved the work and the date of approval."
+        ]
+      },
+      {
+        "heading": "What reaching the boundary should prompt",
+        "paragraphs": [
+          "When the agreed quantity, time or cost boundary is reached, the approval should not be treated as open-ended. Reaching the approval boundary should trigger a new decision rather than an assumed extension. The warehouse team should pause or complete the current unit of work and refer the matter back to the person who authorised the original task, or to another named decision owner. The new decision might be to extend the approval with a revised boundary, to stop the work, or to change the approach. The important point is that the extension is a conscious decision, not an inference from the fact that work has already started.",
+          "This pause can feel disruptive, particularly when the work is mid-task. A practical way to reduce friction is to define in advance what information should accompany the request for a new decision: the quantity or time already used, the remaining work as understood, and any change in condition that caused the boundary to be reached. A hypothetical example is a repacking approval limited to 50 cartons where the team discovers that a further 30 cartons need the same treatment; the request for a new decision would state the original approval, the 50 cartons completed and the additional 30 identified. That record supports a clear decision without reopening the whole task."
+        ]
+      },
+      {
+        "heading": "Recording work inside the original approval",
+        "paragraphs": [
+          "The completed work record should show what was done within the original approval, separate from anything approved later. This means recording the task reference, the quantity or time actually used, and the boundary that applied. If the work stopped at the boundary, the record should show that the limit was reached and that a new decision was sought. If the work finished within the boundary, the record should show the final quantity or time against the approved limit. Keeping this record distinct from later additions makes it possible to see how much of the original authorisation was consumed and whether the boundary was respected.",
+          "A common pitfall is to record only the total work performed, which blurs the line between the original approval and any extension. For example, if an approval covered four hours and the work ultimately took six, a single record of six hours does not show that two hours were separately authorised. The work record should preserve the original approval reference and the actual usage against it, so that any later review can distinguish the two. This is also useful when the same task is repeated, because the pattern of boundary usage can inform future approvals."
+        ]
+      },
+      {
+        "heading": "Recording separately approved additions",
+        "paragraphs": [
+          "When a new decision extends the work, the addition should be recorded as a separate approval linked to the original. The record should identify the additional task, the new boundary, who approved it and when, and how it relates to the original approval. This separation matters for several reasons. It keeps the audit trail clear, it allows the original approval to be closed on its own terms, and it prevents an extension from being mistaken for part of the original scope. If the work is billed, the separate record also supports a clear link between the charge and the approval that authorised it.",
+          "The separately approved addition should not overwrite or delete the original approval record. Instead, the two records should sit alongside each other, with the original showing what was authorised first and the addition showing what was authorised later. A hypothetical example is an inspection approval for 100 units that is later extended by 25 units; the record would show the original 100-unit approval and a linked 25-unit addition, each with its own boundary and decision owner. This approach keeps the history intact and makes it easier to answer questions about what was approved and why."
+        ],
+        "bullets": [
+          "Link each addition to the original approval reference.",
+          "Record the new boundary and the decision owner for the addition.",
+          "Do not amend the original approval to absorb the addition."
+        ]
+      },
+      {
+        "heading": "Questions to ask before work begins",
+        "paragraphs": [
+          "Before extra warehouse work starts, it is worth confirming a few practical points with the person requesting it. What exactly is the task, and how will the team know when it is complete? Which boundary applies, and in what unit will it be measured? Who is authorised to approve an extension if the boundary is reached, and how quickly can that decision be made? How should the work be recorded so that the original approval and any additions remain distinct? These questions help avoid ambiguity later and make the approval a working tool rather than a formality.",
+          "It is also useful to agree what happens if the work cannot be completed within the boundary because of a condition discovered during the task. For instance, if inspection reveals that more units need attention than expected, the team should know whether to stop at the boundary or to seek a decision before continuing. The approval should state the expected behaviour, and the record should capture any deviation. This does not remove the need for judgement, but it gives the team a clear reference point when the situation changes."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can an extra-work approval use more than one type of boundary?",
+        "answer": "Yes. An approval may combine a quantity boundary with a time or cost boundary, provided each is stated explicitly and tied to the named task. The team should know which boundary applies first and what to do when any one of them is reached."
+      },
+      {
+        "question": "What should happen if the boundary is reached but the work is nearly finished?",
+        "answer": "The approval should still prompt a new decision. The team can present the remaining work and seek an extension, but the extension should be recorded separately rather than assumed because the work is close to completion."
+      },
+      {
+        "question": "How should the work record handle an extension that is approved after the boundary is reached?",
+        "answer": "The extension should be recorded as a separate approval linked to the original, with its own boundary and decision owner. The original record should show the work done within its boundary, and the addition should show the work authorised afterwards."
+      }
+    ],
+    "searchIntent": "How should an approval for extra warehouse work state the limit beyond which a new decision is needed?"
+  },
+  {
     "briefId": "invoice-credit-reference-links",
     "slug": "references-connect-invoice-credit-warehouse-charge",
     "category": "3PL & Warehousing",
