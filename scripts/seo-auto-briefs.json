@@ -1,7 +1,7 @@
 {
   "version": 1,
   "refillPending": true,
-  "consecutiveFailures": 0,
+  "consecutiveFailures": 1,
   "briefs": [
     {
       "id": "auto-should-putaway-task-recorded-only-part-received-quantity",
@@ -189,5 +189,6 @@
         "rationale": "Grounded in client-ownership and entity-identity; the statements follow conditionally from the foundation. The decision—separating a work-assignment or contact change from any transfer of stock ownership, and resolving unclear ownership before reassignment—is distinct from the approved client-access-removal-review and inventory-owner-separation briefs, which address access removal and identical-goods ownership respectively rather than assignment-change ownership confusion."
       }
     }
-  ]
+  ],
+  "lastFailure": "No automatic brief was approved after 6 requests. auto-stock-record-corrected-should-correction-stay-second: Evidence is a reasonable deduction from physical-record-alignment and evidence-provenance. However the decision substantially overlaps published briefs receipt-reversal-links (distinguishing record correction from physical units to avoid double counting) and proof-of-delivery-corrections (linking a correction to the original observation and citing the version reviewed). The framing is a generic restatement of those frameworks rather than a distinct operational decision.; auto-should-receiving-party-confirm-taking-over-unfinished: Grounded in handover-continuity and partial-completion. But published brief warehouse-shift-task-continuity already covers completed step versus next action, preserving stock/location/instruction references, and the receiver confirming condition before repeating a step. This candidate restates the same framework with only a change of actor wording, whic"
 }
