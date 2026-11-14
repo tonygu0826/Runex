@@ -211,3 +211,38 @@ test("keeps legacy insight slugs out of the sitemap", async () => {
   assert.doesNotMatch(body, /returns-disposition-workflow-decision-ownership/);
   assert.doesNotMatch(body, /building-a-returns-disposition-workflow-with-clear-decision-ownership/);
 });
+
+test("renders native mobile navigation and responsive hero assets", async () => {
+  const html = await (await render("/")).text();
+  assert.match(html, /<details[^>]*class="mobile-menu"/);
+  assert.match(html, /<summary[^>]*aria-label="Toggle navigation"/);
+  assert.match(html, /aria-label="Mobile primary navigation"/);
+  assert.match(html, /hero-production-640\.webp 640w/);
+  assert.match(html, /hero-production-1586\.webp 1586w/);
+  assert.match(html, /fetchPriority="high"|fetchpriority="high"/);
+  assert.doesNotMatch(html, /hero-production\.png/);
+});
+
+test("service quote paths preselect the relevant requested work", async () => {
+  for (const [slug, query] of [["fba-ecommerce-prep-canada", "fba"], ["transportation-cross-docking-canada", "crossdock"]]) {
+    const html = await (await render(`/solutions/${slug}`)).text();
+    assert.match(html, new RegExp(`href="/contact\\?service=${query}"`));
+    assert.match(html, /What to include/);
+  }
+});
+
+test("only the revised evidence-reviewed priority guide becomes indexable", async () => {
+  const slug = "carton-pallet-standards-outbound-operations";
+  const html = await (await render(`/insights/${slug}`)).text();
+  assert.match(html, /four cartons in the layer/);
+  assert.match(html, /UPS Canada/);
+  assert.doesNotMatch(html, /content="noindex, follow"/);
+  assert.match(html, new RegExp(`href="https://runexlogi.com/insights/${slug}"`));
+  const sitemap = await (await render("/sitemap.xml")).text();
+  assert.match(sitemap, new RegExp(slug));
+  for (const legacy of ["cross-docking-faster-canadian-distribution", "building-clear-warehouse-returns-disposition-process"]) {
+    const legacyHtml = await (await render(`/insights/${legacy}`)).text();
+    assert.match(legacyHtml, /content="noindex, follow"/);
+    assert.doesNotMatch(sitemap, new RegExp(legacy));
+  }
+});

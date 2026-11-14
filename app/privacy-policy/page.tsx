@@ -75,6 +75,10 @@ export default function PrivacyPolicyPage() {
         <section className="legal-section" aria-labelledby="privacy-policy">
           <h2 id="privacy-policy">{"10. Privacy Policy"}</h2>
           <p>{"The Runex Privacy Policy governs the collection, use, and protection of information acquired from you through the Runex website."}</p>
+          <h3 id="website-inquiries">Website inquiries</h3>
+          <p>When you submit a quote request, we process the contact and business details you provide to respond to your inquiry. Our website stores a submission reference and notification status with the inquiry in Runex&apos;s Cloudflare-hosted database so a failed email notification does not erase the request. The inquiry is also sent to our team&apos;s existing email inbox.</p>
+          <p>We include limited source context with submitted inquiries: the first and most recent relevant page in the current browsing session, a general referring source and supported campaign labels. This tab-scoped context is used only within the current browsing session, resets after 30 minutes of inactivity when you next visit a page, and is sent to Runex only when you submit a request. We exclude full URL queries, advertising click IDs, IP addresses and device fingerprints from inquiry records. Please do not include sensitive personal information in your message.</p>
+          <p>We use inquiry and source records to manage responses, troubleshoot notification failures and understand demand for our services. Inquiry content and contact details are not included in our advertising measurement events. Contact <a href="mailto:info@runexlogi.com">info@runexlogi.com</a> with questions about your inquiry or to request correction or deletion. You can also ask how long your inquiry is kept. This website does not automatically delete inquiry records.</p>
           <p>{"No mobile information will be shared or sold with third parties or affiliates for marketing or promotional purposes."}</p>
           <p>{"All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties."}</p>
         </section>

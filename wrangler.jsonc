@@ -3,13 +3,18 @@
   "name": "runex-logistics",
   "main": "dist/server/index.js",
   "compatibility_date": "2026-05-15",
-  "compatibility_flags": ["nodejs_compat"],
+  "compatibility_flags": [
+    "nodejs_compat"
+  ],
   "no_bundle": true,
   "find_additional_modules": true,
   "rules": [
     {
       "type": "ESModule",
-      "globs": ["**/*.js", "**/*.mjs"]
+      "globs": [
+        "**/*.js",
+        "**/*.mjs"
+      ]
     }
   ],
   "assets": {
@@ -19,10 +24,23 @@
     {
       "name": "CONTACT_EMAIL",
       "destination_address": "tonygu0826@gmail.com",
-      "allowed_sender_addresses": ["info@runexlogi.com"]
+      "allowed_sender_addresses": [
+        "info@runexlogi.com"
+      ]
     }
   ],
   "observability": {
     "enabled": true
+  },
+  "d1_databases": [
+    {
+      "binding": "LEADS_DB",
+      "database_name": "runex-leads",
+      "database_id": "2a1cb525-830f-4bfa-bb0e-7dabacff3069",
+      "migrations_dir": "./migrations"
+    }
+  ],
+  "vars": {
+    "LEAD_REVIEW_AFTER_DAYS": "90"
   }
 }

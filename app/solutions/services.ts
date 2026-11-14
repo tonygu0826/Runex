@@ -16,6 +16,8 @@ export type LogisticsService = {
   items: string[];
   idealFor: string[];
   planningInputs: string[];
+  quoteQuery: string;
+  quoteLabel: string;
   sections: ServiceSection[];
   faq: Array<{ question: string; answer: string }>;
 };
@@ -24,6 +26,8 @@ export const services: LogisticsService[] = [
   {
     slug: "warehousing-fulfillment-canada",
     number: "01",
+    quoteQuery: "warehousing",
+    quoteLabel: "Request a warehouse quote",
     title: "Warehousing and fulfillment in Canada",
     shortTitle: "Warehousing & fulfillment",
     metaTitle: "Warehousing & Fulfillment Canada | Runex Logistics",
@@ -66,6 +70,8 @@ export const services: LogisticsService[] = [
   {
     slug: "fba-ecommerce-prep-canada",
     number: "02",
+    quoteQuery: "fba",
+    quoteLabel: "Request an FBA prep quote",
     title: "FBA and e-commerce preparation in Canada",
     shortTitle: "FBA & e-commerce prep",
     metaTitle: "FBA & E-commerce Prep Canada | Runex Logistics",
@@ -74,7 +80,7 @@ export const services: LogisticsService[] = [
     keyAnswer: "FBA and e-commerce preparation turns inbound inventory into shipment-ready units, cartons or pallets. Runex can connect receiving, quantity verification, inspection, labeling, repacking, quality control, staging and dispatch while using the seller's current marketplace shipment plan as the final reference.",
     items: ["Inbound verification", "Inspection and labeling", "Kitting and repacking", "Carton and pallet prep", "Dispatch staging"],
     idealFor: ["Marketplace sellers importing into Canada", "Brands needing labeling or repacking", "Inventory with product-specific preparation", "Sellers planning replenishment shipments"],
-    planningInputs: ["Product list and expected quantities", "Current marketplace shipment plan", "Labeling, packaging and inspection instructions", "Target dispatch timing and exception contacts"],
+    planningInputs: ["Product/SKU list, unit counts and inbound carton or pallet profile", "Current marketplace shipment plan and destination", "Labels, packaging, inspection and kitting instructions", "Expected arrival, target dispatch date and exception contact"],
     sections: [
       {
         heading: "Verify inventory before preparation",
@@ -100,6 +106,9 @@ export const services: LogisticsService[] = [
       },
     ],
     faq: [
+      { question: "What information is needed for an FBA prep quote?", answer: "Send the product and SKU list, unit and carton counts, arrival timing, required prep steps and current marketplace shipment plan. Flag inspection, kitting, repacking, storage or returns work so the scope can be discussed separately." },
+      { question: "How are FBA preparation costs and timing confirmed?", answer: "The work depends on product quantities, prep instructions, packaging and inspection needs, storage and dispatch requirements. Request an itemized scope and confirm timing for your shipment before booking transport; this page does not promise a fixed price or turnaround." },
+      { question: "Where in Canada can my shipment be handled?", answer: "Include the inbound origin and planned Canadian destination in your inquiry. Confirm the receiving location and onward transport arrangement with Runex before routing freight." },
       { question: "What services are included in FBA preparation?", answer: "Common services include receiving, quantity checks, inspection, labeling, repacking, protective preparation, carton or pallet preparation, staging and dispatch coordination." },
       { question: "Who confirms current marketplace requirements?", answer: "The seller's current marketplace account and shipment plan should be the final reference because requirements can vary by product, shipment and destination." },
       { question: "Can an FBA prep warehouse handle returns?", answer: "Returns can follow an agreed process for receiving, inspection, relabeling, repacking, restocking or another disposition." },
@@ -108,6 +117,8 @@ export const services: LogisticsService[] = [
   {
     slug: "transportation-cross-docking-canada",
     number: "03",
+    quoteQuery: "crossdock",
+    quoteLabel: "Request a cross-docking quote",
     title: "Transportation and cross-docking in Canada",
     shortTitle: "Transportation & cross-docking",
     metaTitle: "Transportation & Cross-Docking Canada | Runex",
@@ -116,7 +127,7 @@ export const services: LogisticsService[] = [
     keyAnswer: "Transportation and cross-docking connects inbound unloading with sorting, consolidation, brief staging and the next freight movement. It works best when quantities, destinations, pickup timing and exception rules are confirmed before arrival, giving every warehouse and carrier handoff a clear owner.",
     items: ["Inbound unloading", "Sorting and consolidation", "Short-term staging", "Pickup and transfer coordination", "Delivery scheduling"],
     idealFor: ["Import freight with confirmed destinations", "Warehouse-to-warehouse transfers", "Time-sensitive distribution", "Hybrid loads combining transfer and storage"],
-    planningInputs: ["Origin, destination and delivery constraints", "Pallet, carton, weight and dimension details", "Transfer, storage or cross-dock requirements", "Pickup timing, documents and exception contacts"],
+    planningInputs: ["Origin, destination and receiving appointment constraints", "Pallet/carton counts, dimensions, weight and whether freight is floor-loaded", "Unloading, sorting, repalletizing or short-term storage needs", "Inbound/outbound time windows, documents and exception contact"],
     sections: [
       {
         heading: "Plan inbound and outbound together",
@@ -142,6 +153,9 @@ export const services: LogisticsService[] = [
       },
     ],
     faq: [
+      { question: "What should I send for a cross-docking quote?", answer: "Include origin and destination, pallet or carton counts, dimensions, weight, loading method, handling tasks and inbound/outbound windows. Identify any appointment restrictions, paperwork and the contact who can approve exceptions." },
+      { question: "Can I book a same-day transfer or assume a fixed handling rate?", answer: "Confirm the handling scope, receiving location, timing and quote for the specific movement before dispatch. Sorting, unloading, pallet work, temporary storage and transport coordination can change the work required; this page does not promise a fixed rate or same-day availability." },
+      { question: "What if outbound transport is not ready?", answer: "Flag that uncertainty before arrival. The plan needs to distinguish freight ready to transfer from freight requiring a separate storage workflow, and identify who decides the next step." },
       { question: "What is the difference between cross-docking and warehousing?", answer: "Cross-docking prioritizes fast inbound-to-outbound transfer with little storage. Warehousing receives inventory into storage so it can wait, be controlled, picked or prepared later." },
       { question: "Can one shipment use cross-docking and storage?", answer: "Yes. Freight with a confirmed outbound plan can transfer quickly while the remaining inventory enters storage." },
       { question: "Can one provider coordinate the warehouse and transportation?", answer: "Yes. A connected provider can align warehouse readiness with pickup, transfer and delivery planning while keeping responsibility for updates clear." },
