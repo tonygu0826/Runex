@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import { InquiryContext } from "./components/inquiry-context";
 
 const openAIAdsPixelId = "9MPjBuNd4aM4F6unct8oQ8";
 
@@ -83,6 +84,7 @@ export default function RootLayout({
       </head>
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([organizationJsonLd, websiteJsonLd]) }} />
+        <InquiryContext />
         {children}
       </body>
     </html>

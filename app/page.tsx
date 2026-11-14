@@ -59,11 +59,15 @@ export default function Home() {
             Warehousing, 3PL fulfillment, FBA prep and transportation managed by one responsive logistics team.
           </p>
           <div className="hero-actions">
-            <a className="button button-primary" href="/contact">Get a Quote <Arrow /></a>
-            <a className="button button-secondary" href="/solutions">Explore Solutions <Arrow /></a>
+            <Link className="button button-primary" href="/contact">Get a Quote <Arrow /></Link>
+            <Link className="button button-secondary" href="/solutions">Explore Solutions <Arrow /></Link>
           </div>
         </div>
-        <div className="hero-image" role="img" aria-label="Modern distribution warehouse with forklift and loading dock">
+        <div className="hero-image">
+          <picture>
+            <source type="image/webp" srcSet="/hero-production-640.webp 640w, /hero-production-960.webp 960w, /hero-production-1586.webp 1586w" sizes="(max-width: 980px) 100vw, 50vw" />
+            <img src="/hero-production.jpg" alt="Distribution warehouse illustration with forklift and loading dock" width={1586} height={992} fetchPriority="high" decoding="async" />
+          </picture>
           <div className="image-status">
             <span className="pulse" />
             <div><small>OPERATIONAL STATUS</small><strong>READY TO MOVE</strong></div>
@@ -120,7 +124,7 @@ export default function Home() {
           <p className="eyebrow"><span /> One connected workflow</p>
           <h2 id="operations-title">From arrival to final delivery, every step has an owner.</h2>
           <p>Runex keeps warehouse work and transportation aligned, so freight does not sit waiting for the next team to take over.</p>
-          <a className="button button-primary" href="/contact">Plan your workflow <Arrow /></a>
+          <Link className="button button-primary" href="/contact">Plan your workflow <Arrow /></Link>
         </div>
         <div className="process" aria-label="Runex logistics process">
           <div><b>01</b><span /><h3>Receive</h3><p>Confirm arrival and match freight to the operating plan.</p></div>

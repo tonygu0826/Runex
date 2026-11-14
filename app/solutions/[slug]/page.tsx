@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { Arrow, SiteFooter, SiteHeader } from "../../components/site-chrome";
 import { getPublishedArticles } from "../../insights/publications";
+import { featuredServiceInsights } from "../../insights/inquiry-paths";
 import { getService, services } from "../services";
 
 type PageProps = { params: Promise<{ slug: string }> };
@@ -46,9 +47,15 @@ export default async function ServicePage({ params }: PageProps) {
     "fba-ecommerce-prep-canada": ["FBA & E-commerce", "Fulfillment"],
     "transportation-cross-docking-canada": ["Distribution", "Supply Chain"],
   };
-  const relatedInsights = getPublishedArticles()
-    .filter((article) => categoryMap[service.slug]?.includes(article.category))
-    .slice(0, 3);
+  const publishedArticles = getPublishedArticles();
+  const featuredSlugs = featuredServiceInsights[service.slug] ?? [];
+  const featured = featuredSlugs.flatMap((slug) => {
+    const article = publishedArticles.find((item) => item.slug === slug);
+    return article ? [article] : [];
+  });
+  const relatedInsights = [...featured, ...publishedArticles.filter((article) =>
+    categoryMap[service.slug]?.includes(article.category) && !featuredSlugs.includes(article.slug))].slice(0, 3);
+  const quoteHref = `/contact?service=${service.quoteQuery}`;
   const jsonLd = [
     {
       "@context": "https://schema.org",
@@ -87,6 +94,10 @@ export default async function ServicePage({ params }: PageProps) {
         <p className="eyebrow"><span /> Canadian logistics solutions</p>
         <h1>{service.title}</h1>
         <p>{service.summary}</p>
+        <div className="service-hero-actions">
+          <Link className="button button-primary" href={quoteHref}>{service.quoteLabel} <Arrow /></Link>
+          <a className="button button-secondary" href="#quote-preparation">What to include</a>
+        </div>
         <div className="service-tags" aria-label="Core service capabilities">
           {service.items.map((item) => <span key={item}>{item}</span>)}
         </div>
@@ -104,7 +115,7 @@ export default async function ServicePage({ params }: PageProps) {
           {service.sections.map((section, index) => <a href={`#section-${index + 1}`} key={section.heading}>0{index + 1} {section.heading}</a>)}
           <a href="#faq">Common questions</a>
           {relatedInsights.length > 0 && <a href="#operational-insights">Related insights</a>}
-          <Link className="side-cta" href="/contact">Discuss your operation <Arrow /></Link>
+          <Link className="side-cta" href={quoteHref}>Discuss your operation <Arrow /></Link>
         </aside>
 
         <div className="service-main">
@@ -127,6 +138,7 @@ export default async function ServicePage({ params }: PageProps) {
             <h2 id="quote-preparation-title">Information that makes the plan more useful</h2>
             <p>A useful operating plan starts with the freight profile, expected activity and known exceptions. Exact requirements can be confirmed after the first conversation.</p>
             <ul>{service.planningInputs.map((item) => <li key={item}>{item}</li>)}</ul>
+            <Link className="button button-primary" href={quoteHref}>{service.quoteLabel} <Arrow /></Link>
           </section>
 
           {service.sections.map((section, index) => (
@@ -183,7 +195,7 @@ export default async function ServicePage({ params }: PageProps) {
 
       <section className="page-cta">
         <div><small>READY TO PLAN THE WORKFLOW?</small><h2>Tell us what you receive, store, prepare and deliver.</h2></div>
-        <Link className="button button-primary" href="/contact">Contact Runex <Arrow /></Link>
+        <Link className="button button-primary" href={quoteHref}>Contact Runex <Arrow /></Link>
       </section>
       <SiteFooter />
     </main>

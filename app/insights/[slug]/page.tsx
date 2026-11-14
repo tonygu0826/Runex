@@ -4,6 +4,7 @@ import { notFound, redirect } from "next/navigation";
 import { Arrow, SiteFooter, SiteHeader } from "../../components/site-chrome";
 import { getService } from "../../solutions/services";
 import { getArticle, getPublishedArticles } from "../publications";
+import { inquiryPaths } from "../inquiry-paths";
 
 type PageProps = { params: Promise<{ slug: string }> };
 
@@ -35,6 +36,7 @@ export default async function ArticlePage({ params }: PageProps) {
   if (!article) notFound();
   if (slug !== article.slug) redirect(`/insights/${article.slug}`);
 
+  const inquiryPath = inquiryPaths[article.slug];
   const articleUrl = `https://runexlogi.com/insights/${article.slug}`;
   const serviceByCategory: Record<string, string> = {
     "3PL & Warehousing": "warehousing-fulfillment-canada",
@@ -94,6 +96,13 @@ export default async function ArticlePage({ params }: PageProps) {
           </aside>
           <div className="article-body">
             <section className="key-answer" aria-labelledby="key-answer"><small>QUICK ANSWER</small><h2 id="key-answer">What you need to know</h2><p>{article.keyAnswer}</p></section>
+            {inquiryPath && (
+              <section className="article-inquiry" aria-label="Plan this work with Runex">
+                <h2>{inquiryPath.title}</h2>
+                <p>{inquiryPath.text}</p>
+                <p><Link href={`/solutions/${inquiryPath.serviceSlug}`}>Review the service scope</Link> or <Link href={`/contact?service=${inquiryPath.query}`}>send your requirements</Link>.</p>
+              </section>
+            )}
             {article.sections.map((section, index) => (
               <section id={`section-${index + 1}`} className="article-section" key={section.heading}>
                 <span>0{index + 1}</span><h2>{section.heading}</h2>

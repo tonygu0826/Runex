@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { MobileNavigation } from "./mobile-navigation";
 
 export const Arrow = () => (
   <svg aria-hidden="true" viewBox="0 0 20 20">
@@ -30,13 +31,14 @@ export function SiteHeader({ current }: { current?: NavigationLabel }) {
   return (
     <header className="site-header">
       <Logo />
-      <nav aria-label="Primary navigation">
+      <nav className="desktop-nav" aria-label="Primary navigation">
         {navigation.map((item) => (
           <Link href={item.href} aria-current={current === item.label ? "page" : undefined} key={item.label}>
             {item.label}
           </Link>
         ))}
       </nav>
+      <MobileNavigation navigation={navigation} current={current} />
       <Link className="button button-primary header-cta" href="/contact">
         Get a Quote <Arrow />
       </Link>
