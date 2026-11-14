@@ -22,6 +22,81 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "first-carrier-scan-delays",
+    "slug": "reviewing-shipment-only-label-has-been-created",
+    "category": "Distribution",
+    "title": "Reviewing a Shipment When Only a Label Has Been Created",
+    "description": "A label record is not a carrier acceptance event, so compare the missing first scan with pickup and handoff details.",
+    "excerpt": "Separate label creation from an observed carrier scan and check the recorded pickup and handoff before updating customers.",
+    "keywords": [
+      "label creation versus carrier scan",
+      "missing first carrier scan",
+      "carrier acceptance event",
+      "recorded pickup and handoff",
+      "shipment tracking update wording"
+    ],
+    "publishedAt": "2026-11-16",
+    "modifiedAt": "2026-11-16",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Label creation should be distinguished from an observed carrier acceptance event.",
+      "A missing first scan should be compared with the recorded pickup and physical handoff details.",
+      "Customer updates should state the observed event rather than describe label creation as confirmed movement."
+    ],
+    "sources": [],
+    "keyAnswer": "Label creation should be treated as a document event, not as evidence that a carrier has accepted the freight. When no first scan appears, compare the tracking record with the recorded pickup and physical handoff details. Customer updates should describe the event actually observed rather than presenting label creation as confirmed movement.",
+    "sections": [
+      {
+        "heading": "What a label record does and does not show",
+        "paragraphs": [
+          "A label record shows that a shipping document was produced for a parcel or freight unit. It may include a tracking number, a destination address and a service type, but it does not by itself show that a carrier has taken possession of the goods. The label is a document event, and the tracking number it carries is only useful once a carrier scan is associated with it.",
+          "This distinction matters when a tracking page shows a label as created but no first carrier scan. The absence of a scan is not proof that the shipment has not moved, and the presence of a label is not proof that it has. The two records answer different questions: the label answers what was prepared, while the carrier acceptance event answers what was physically handed over and observed by the carrier.",
+          "A practical review starts by naming the events separately. Note the label creation time, the tracking number and the shipment reference. Then note whether any carrier scan has been recorded against that tracking number. Keeping these as separate entries prevents a label record from being read as confirmed movement in later updates or internal reports."
+        ]
+      },
+      {
+        "heading": "Checking the recorded pickup and physical handoff",
+        "paragraphs": [
+          "When the first carrier scan is missing, the next step is to compare the tracking record with the recorded pickup and physical handoff details. These details may include a booked pickup window, a carrier arrival record, a signed handover document or a warehouse readiness note. Each of these is a separate observation, and none of them should be treated as a substitute for a carrier scan.",
+          "The comparison should ask whether the shipment was actually handed to the carrier and whether that handoff was recorded. If a pickup was booked but no arrival was recorded, the missing scan may reflect a pickup that did not occur. If a handoff was recorded but no scan followed, the question shifts to whether the carrier has processed the acceptance event in its own system. The point is not to guess the cause but to identify which recorded facts are present and which are missing.",
+          "A useful record at this stage lists the shipment reference, the label creation time, the booked pickup window, any carrier arrival record and any handoff document. Where one of these is absent, it should be marked as absent rather than assumed. This keeps the review grounded in what was observed and gives the next person a clear starting point."
+        ]
+      },
+      {
+        "heading": "Recording the missing first scan as an open item",
+        "paragraphs": [
+          "A missing first scan should be recorded as an open item against the shipment rather than left as an unexplained gap. The open item should identify the shipment, the tracking number, the label creation time and the fact that no carrier acceptance event has been observed. It should also note what pickup and handoff details were checked and what remains unconfirmed.",
+          "Treating the missing scan as an open item has two practical effects. First, it prevents the shipment from being closed or reported as dispatched on the strength of the label alone. Second, it gives a clear trigger for follow-up: the item stays open until a carrier scan is observed or until the handoff details are corrected to reflect what actually happened.",
+          "The open item should not be resolved by editing the label record or by adding a scan that was not observed. If a handoff did occur but the carrier scan is delayed, the record should say that a handoff was recorded and the carrier scan is still awaited. If no handoff occurred, the record should say that. In both cases the distinction between the document event and the carrier acceptance event is preserved."
+        ]
+      },
+      {
+        "heading": "Wording customer updates around the observed event",
+        "paragraphs": [
+          "Customer updates should describe the event actually observed rather than presenting label creation as confirmed movement. A message that says a shipment has been dispatched when only a label exists overstates what is known. A more accurate update states that a label has been created and that a carrier scan has not yet been recorded, or that a handoff was recorded and a carrier scan is awaited.",
+          "The wording should match the record. If the review found a recorded handoff but no carrier scan, the update can say that the shipment was handed to the carrier and that tracking has not yet shown a scan. If the review found no handoff, the update should say that the shipment is still being reviewed and that no carrier acceptance has been confirmed. This keeps the customer informed without implying movement that has not been observed.",
+          "It also helps to state what happens next. An update can note that the shipment remains open for review and that a further update will follow when a carrier scan is observed or the handoff details are confirmed. This gives the customer a clear expectation without promising a delivery date or a carrier outcome that has not been recorded."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Does a label creation record mean the carrier has the shipment?",
+        "answer": "No. Label creation is a document event and should be distinguished from an observed carrier acceptance event. The carrier acceptance is shown by a scan or a recorded handoff, not by the label alone."
+      },
+      {
+        "question": "What should be checked when the first carrier scan is missing?",
+        "answer": "Compare the tracking record with the recorded pickup and physical handoff details. Note which details are present, which are absent and whether a handoff was actually recorded."
+      },
+      {
+        "question": "How should a customer update describe a shipment with only a label?",
+        "answer": "The update should state the observed event, such as label creation with no carrier scan yet, rather than describing the label as confirmed movement."
+      }
+    ],
+    "searchIntent": "What should be reviewed when tracking shows label creation but no first carrier scan?"
+  },
+  {
     "briefId": "extra-work-authorisation-ceilings",
     "slug": "stating-limit-approval-extra-warehouse-work",
     "category": "3PL & Warehousing",
