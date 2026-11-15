@@ -22,6 +22,118 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "delivery-attempt-versus-receipt",
+    "slug": "separating-attempted-delivery-confirmed-receipt",
+    "category": "Distribution",
+    "title": "Separating an Attempted Delivery From Confirmed Receipt",
+    "description": "An attempted delivery records a failed event, not proof that the recipient received the freight. Keep the two distinct in your records.",
+    "excerpt": "Keep failed delivery attempts distinct from confirmed receipt, and link any new arrangement to the attempt and current freight location.",
+    "keywords": [
+      "attempted delivery record",
+      "confirmed receipt distinction",
+      "failed delivery reason",
+      "delivery event time",
+      "rebooking link to attempt",
+      "freight location reference"
+    ],
+    "publishedAt": "2026-11-17",
+    "modifiedAt": "2026-11-17",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An attempted-delivery event should preserve the reported reason and event time.",
+      "A failed attempt should not be recorded as the recipient's confirmed receipt.",
+      "A new delivery arrangement should be linked to the unsuccessful attempt and the current freight location."
+    ],
+    "sources": [],
+    "keyAnswer": "An attempted-delivery event should be recorded with its reported reason and event time, and it should not be treated as the recipient's confirmed receipt. When a new delivery arrangement is made, it should be linked to the unsuccessful attempt and to the current freight location so the record shows what happened and where the freight is now.",
+    "sections": [
+      {
+        "heading": "What an attempted-delivery event should record",
+        "paragraphs": [
+          "When a delivery cannot be completed, the record should capture the event as an attempt, not as a receipt. At minimum, it should preserve the reported reason for the failure and the time the attempt occurred. The reason might be that no one was available to receive the freight, the address was inaccessible, or the delivery was refused. The specific reason matters because it shapes what happens next and who needs to act.",
+          "The event time is equally important. It establishes when the attempt took place, which helps when coordinating a new arrangement or answering questions later. Without a clear time stamp, it becomes difficult to sequence events or verify that a subsequent delivery was indeed a new attempt rather than a delayed confirmation of the first.",
+          "The record should also identify the shipment and the party that reported the attempt, so the information can be traced back to its source. This does not mean assigning blame; it means keeping the record complete enough that anyone reviewing it can understand what happened without relying on memory or informal messages."
+        ],
+        "bullets": [
+          "Record the reported reason for the failed attempt.",
+          "Record the date and time the attempt occurred.",
+          "Identify the shipment and the reporting party.",
+          "Keep the attempt separate from any receipt confirmation."
+        ]
+      },
+      {
+        "heading": "Why a failed attempt is not confirmed receipt",
+        "paragraphs": [
+          "A failed delivery attempt is evidence that the freight was not received. Treating it as a receipt creates a false record that can mislead inventory, billing, and customer service decisions. For example, if an attempt is recorded as a receipt, the system may show stock as available when it is still with the carrier or in transit. That can lead to overselling or incorrect fulfillment promises.",
+          "The distinction also matters for financial and contractual processes. A confirmed receipt typically triggers payment, inventory ownership transfer, or service-level measurements. An attempted delivery does not meet those conditions. Keeping the two events separate ensures that downstream processes are based on what actually happened, not on an assumption that an attempt is equivalent to a completed delivery.",
+          "In practice, this means the system or record should have distinct statuses or event types for attempted delivery and confirmed receipt. If a single field is used, it should be clear that an attempt is a failure event, not a success event. Training and documentation should reinforce this distinction so that data entry does not blur the line."
+        ],
+        "bullets": [
+          "Do not mark an order as received based on an attempted delivery.",
+          "Use separate statuses or event codes for attempt and receipt.",
+          "Review any process that automatically treats a delivery event as a receipt."
+        ]
+      },
+      {
+        "heading": "Linking a new delivery arrangement to the earlier attempt",
+        "paragraphs": [
+          "When a new delivery arrangement is made after a failed attempt, the new arrangement should be linked to the original attempt. This link creates a chain of events that shows the attempt, the reason it failed, and the subsequent action taken. Without the link, the new arrangement appears as an isolated event, and it becomes harder to understand why it was necessary or to verify that the correct shipment is being delivered.",
+          "The link can be as simple as a reference field that points to the attempt record. It should be created at the time the new arrangement is made, not added later as an afterthought. This is especially important when multiple attempts occur or when different teams handle the rebooking. A clear reference helps avoid confusion and ensures that anyone reviewing the shipment history can follow the sequence.",
+          "The new arrangement should also record what changed. For example, if the delivery address was corrected, the new record should note that change. If the delivery window was adjusted, that should be captured. The goal is to show that the new arrangement is a deliberate response to the failed attempt, not a duplicate or unrelated booking."
+        ],
+        "bullets": [
+          "Reference the original attempt when creating a new delivery arrangement.",
+          "Record what was changed in the new arrangement.",
+          "Ensure the link is visible to anyone reviewing the shipment history."
+        ]
+      },
+      {
+        "heading": "Keeping the current freight location visible alongside the attempt",
+        "paragraphs": [
+          "An attempted delivery record tells you what happened at a point in time, but it does not tell you where the freight is now. After a failed attempt, the freight may be returned to a depot, held at a local facility, or remain on the vehicle. The current location should be recorded and kept visible alongside the attempt record so that the next action can be planned with accurate information.",
+          "Visibility of the current location is particularly important when the freight is time-sensitive or when multiple parties are involved. If the location is not clear, teams may waste time contacting the wrong party or making assumptions about where the freight is. A simple location reference, updated as the freight moves, prevents this confusion.",
+          "The location reference should be linked to the shipment and, where possible, to the attempt record. This creates a complete picture: the attempt happened, the freight is now at a known location, and a new arrangement is linked to both. That level of traceability supports better decisions and clearer communication with the recipient and the carrier."
+        ],
+        "bullets": [
+          "Record the freight's location after a failed attempt.",
+          "Update the location as the freight moves.",
+          "Link the location reference to the attempt and the new arrangement."
+        ]
+      },
+      {
+        "heading": "Questions to ask when reviewing your process",
+        "paragraphs": [
+          "If you are reviewing how your operation handles attempted deliveries, start by asking how the event is recorded. Is there a distinct status for an attempt? Does the record capture the reason and time? Can you trace a new arrangement back to the original attempt? These questions help identify gaps that could lead to confusion or incorrect records.",
+          "Also ask who is responsible for updating the record and how the current freight location is communicated. Clear ownership and a simple handoff process reduce the risk of information getting lost. Finally, consider how the record is used downstream: does any system treat an attempt as a receipt? If so, that is a priority to fix.",
+          "The answers will vary by operation, but the principle is consistent: keep the attempt and the receipt separate, and maintain a clear link between the attempt, the new arrangement, and the freight's current location. This approach supports accurate records and better decision-making without relying on assumptions."
+        ],
+        "bullets": [
+          "How is an attempted delivery recorded in your system?",
+          "Does the record include the reason and time of the attempt?",
+          "Can you link a new arrangement to the original attempt?",
+          "Is the current freight location visible and up to date?",
+          "Does any downstream process treat an attempt as a receipt?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can an attempted delivery ever be used as proof of delivery?",
+        "answer": "No. An attempted delivery indicates that the freight was not received. Proof of delivery requires evidence that the recipient took possession, such as a signed receipt or an equivalent confirmation. An attempt should be recorded as a failed event, not as a successful delivery."
+      },
+      {
+        "question": "What should we do if our system only has one status for delivery events?",
+        "answer": "If your system cannot distinguish between an attempt and a receipt, consider adding a separate status or using a reference field to flag attempts. In the meantime, document the distinction in your procedures and train staff to avoid treating an attempt as a receipt. Review any automated processes that might misinterpret the event."
+      },
+      {
+        "question": "How long should we keep attempted-delivery records?",
+        "answer": "Retention periods depend on your business requirements and any agreements with customers or carriers. There is no single rule. Keep the records long enough to support dispute resolution, audit, and operational review, and align with your organization's data retention policy."
+      }
+    ],
+    "searchIntent": "How should an attempted-delivery event be distinguished from confirmation that the recipient received the freight?"
+  },
+  {
     "briefId": "first-carrier-scan-delays",
     "slug": "reviewing-shipment-only-label-has-been-created",
     "category": "Distribution",
