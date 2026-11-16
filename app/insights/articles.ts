@@ -22,6 +22,95 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "carrier-service-code-mapping",
+    "slug": "mapping-client-shipping-choice-carrier-service-code",
+    "category": "Fulfillment",
+    "title": "Mapping a Client Shipping Choice to a Carrier Service Code",
+    "description": "Map client shipping choices to carrier service codes by separating the requested choice from the configured code and confirming unmapped choices.",
+    "excerpt": "Map client shipping choices to carrier service codes by separating the requested choice from the configured code and confirming unmapped choices.",
+    "keywords": [
+      "carrier service code mapping",
+      "client shipping choice",
+      "configured service code",
+      "similar display names",
+      "unmapped shipping choice"
+    ],
+    "publishedAt": "2026-11-18",
+    "modifiedAt": "2026-11-18",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A shipping-service mapping should distinguish the client's requested choice from the carrier's configured code.",
+      "Similar display names should not be treated as evidence that two configured services are equivalent.",
+      "An unmapped choice should require a confirmed instruction before a carrier label is purchased."
+    ],
+    "sources": [],
+    "keyAnswer": "Record the client's requested shipping choice as its own reference, then link it to the specific carrier service code configured for that choice. Treat similar display names as no evidence of equivalence, and hold any unmapped choice until a confirmed instruction is recorded before a carrier label is purchased.",
+    "sections": [
+      {
+        "heading": "Separating the Requested Choice From the Configured Code",
+        "paragraphs": [
+          "A client's shipping choice is the instruction the client gives for a shipment, such as a named service level or delivery expectation. The carrier service code is the configured value the warehouse or fulfillment system uses to purchase a label from a specific carrier. These are two different records with two different owners, and a mapping should keep them distinct rather than treating the client's wording as if it were already a carrier code.",
+          "In practice, the client choice should be stored as its own reference, with the client's own label or description preserved. The configured carrier service code should be stored separately, along with the carrier it belongs to and the conditions under which it applies. The link between them is the mapping. When a client changes wording or a carrier renames a service, the mapping can be reviewed without rewriting the client's original instruction or silently reinterpreting past shipments.",
+          "This separation also helps when several clients use similar language for different services. One client's standard ground choice may not correspond to the same configured code as another client's standard ground choice, because the underlying carrier account, service scope or delivery expectation may differ. Keeping the client reference and the configured code as separate fields makes those differences visible instead of collapsing them into a single display name."
+        ]
+      },
+      {
+        "heading": "Why Similar Display Names Are Not Evidence of Equivalence",
+        "paragraphs": [
+          "Carrier service names and client shipping labels often look alike. Two configured services might both include words such as express, standard or economy, and a client choice might use the same words again. A similar display name is not evidence that two configured services are equivalent. The name is a label, not a definition of the service scope, the carrier account it draws on, or the handling it implies.",
+          "Treating similar names as equivalent can lead to a label being purchased for a service the client did not request, or to two different configured services being merged in a mapping table because they read the same way. The safer approach is to require an explicit link between each client choice and one configured carrier service code, supported by the client's instruction and the carrier configuration. Where names are similar, the mapping should record why the chosen code is the correct one, so a later reviewer can see the basis rather than guessing from the label.",
+          "This does not mean every similar name hides a difference. It means similarity alone should not be used to create or change a mapping. If a client asks for a service that sounds like an existing configured code, the question to resolve is whether the client's instruction actually matches that code, not whether the words look close enough."
+        ]
+      },
+      {
+        "heading": "What to Record in the Mapping Reference",
+        "paragraphs": [
+          "A useful mapping reference should be readable by someone who did not create it. At minimum, it should identify the client, the client's requested shipping choice as stated, the carrier, and the configured carrier service code that the choice links to. It should also record the date the mapping was confirmed and who confirmed it, so that later changes can be traced to a decision rather than to an unexplained edit.",
+          "The reference should distinguish the client choice from the configured code in separate fields, even if the two values happen to look similar. Where a client uses more than one shipping choice, each choice should have its own entry rather than a shared note. Where a configured code is used for more than one client, the mapping should still show each client's choice separately, because the client instruction is the reason the code is being used.",
+          "It is also worth recording any conditions attached to the mapping, such as the shipment types or destinations the client choice applies to, if the client has stated them. The reference should not invent conditions the client has not given. Its purpose is to preserve the confirmed link and its basis, not to expand the client's instruction."
+        ],
+        "bullets": [
+          "Client identifier and the client's requested shipping choice, recorded as stated.",
+          "Carrier and the configured carrier service code linked to that choice.",
+          "Date and source of the confirmation that established the link.",
+          "Any client-stated conditions that limit when the choice applies."
+        ]
+      },
+      {
+        "heading": "Handling a Choice That Has No Confirmed Mapping",
+        "paragraphs": [
+          "An unmapped choice should require a confirmed instruction before a carrier label is purchased. This is the point where many errors are introduced: a shipment arrives with a client choice that has no confirmed link, and someone selects the closest-looking configured code to keep the order moving. The result may be a label for a service the client did not request, and the correction afterwards is more difficult than the hold would have been.",
+          "The hold does not need to be elaborate. The shipment can be flagged as having an unmapped shipping choice, the client's wording can be recorded, and the question can be directed to the person who can confirm the intended carrier service. Once a confirmed instruction is recorded, the mapping can be created and the label purchased against it. Until then, the choice remains visibly unresolved rather than being quietly converted into an assumed code.",
+          "This approach also creates a useful record. Repeated unmapped choices from the same client may indicate that a new mapping is needed, or that the client's instruction has changed. Either way, the resolution should be recorded in the mapping reference so the same question does not have to be answered from scratch on the next shipment."
+        ]
+      },
+      {
+        "heading": "Checking the Mapping Before a Label Is Purchased",
+        "paragraphs": [
+          "Before a carrier label is purchased, the shipment's client shipping choice should be checked against the mapping reference. The check should confirm that a mapping exists, that it links to a configured carrier service code, and that the shipment details are consistent with any conditions recorded for that mapping. A mapping that exists but does not apply to the shipment is not a confirmed mapping for that shipment.",
+          "The check should also confirm that the configured code is active and belongs to the carrier intended for the shipment. If the mapping points to a code that has been retired or replaced, the mapping should be reviewed rather than bypassed. The purchase step should not be the place where a mapping is first created or silently changed; those decisions belong in the mapping reference, where they can be reviewed.",
+          "Keeping the check at the point of label purchase makes the mapping useful rather than decorative. A mapping that is never consulted before purchase does not prevent a similar display name from being treated as equivalent, and it does not hold an unmapped choice. The operational value comes from using the reference at the moment the carrier service is selected."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a client shipping choice be mapped to more than one carrier service code?",
+        "answer": "A single client choice should link to the configured code that matches the client's confirmed instruction. If the client has stated that a choice applies differently in different situations, those situations should be recorded as separate mappings rather than one entry with several codes."
+      },
+      {
+        "question": "What should happen when a carrier renames a service?",
+        "answer": "The configured code should be reviewed against the client's original choice. A rename is not by itself evidence that the service is unchanged, so the mapping should be confirmed before it is used for new labels."
+      },
+      {
+        "question": "Who should confirm an unmapped shipping choice?",
+        "answer": "The confirmation should come from the party responsible for the client's shipping instruction. The mapping reference should record who confirmed it and when, so the link can be traced later."
+      }
+    ],
+    "searchIntent": "How should a client shipping choice be mapped to a carrier service code without relying on its display name?"
+  },
+  {
     "briefId": "delivery-attempt-versus-receipt",
     "slug": "separating-attempted-delivery-confirmed-receipt",
     "category": "Distribution",
