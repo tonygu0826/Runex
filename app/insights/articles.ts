@@ -22,6 +22,99 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "booked-equipment-access-fit",
+    "slug": "delivery-access-check",
+    "category": "Distribution",
+    "title": "Checking Booked Vehicle Access Against Receiving Site Constraints",
+    "description": "A practical check of recorded receiving access details against the booked vehicle before dispatch instructions are confirmed.",
+    "excerpt": "Record the site's stated vehicle and unloading constraints, compare them with the booked equipment, and resolve mismatches before dispatch.",
+    "keywords": [
+      "delivery access check",
+      "booked equipment comparison",
+      "receiving site vehicle constraints",
+      "unloading constraints record",
+      "access mismatch before dispatch"
+    ],
+    "publishedAt": "2026-11-19",
+    "modifiedAt": "2026-11-19",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A delivery access check should record the receiving site's stated vehicle and unloading constraints.",
+      "The booked equipment should be compared with those instructions rather than inferred from an earlier delivery.",
+      "An unresolved access mismatch should be reviewed before dispatch instructions are confirmed."
+    ],
+    "sources": [],
+    "keyAnswer": "A delivery access check should record the receiving site's stated vehicle and unloading constraints, then compare the booked equipment with those instructions rather than inferring access from an earlier delivery. If the comparison leaves an unresolved mismatch, it should be reviewed before dispatch instructions are confirmed.",
+    "sections": [
+      {
+        "heading": "Recording the site's stated vehicle and unloading constraints",
+        "paragraphs": [
+          "A delivery access check begins with a written record of what the receiving site has stated about vehicle access and unloading. This record should capture the site's own description of the vehicle types it can accept, any restrictions on vehicle size or configuration, and the unloading arrangements it expects. The purpose is to create a reference that can be compared with the booked equipment, rather than relying on assumptions about what the site can handle.",
+          "The record should be specific enough to support a meaningful comparison. For example, if the site states that only vehicles below a certain height can pass under an overhead structure, that height should be recorded as a stated constraint. If the site requires unloading from a specific side of the vehicle, or states that a loading dock is unavailable and goods must be unloaded from ground level, those details belong in the record. The record should also note who provided the information and when, so that later questions can be traced to a source.",
+          "This record is not a substitute for the site's own confirmation at the time of delivery, but it provides a documented basis for planning. Without it, the comparison with booked equipment becomes a matter of recollection or guesswork, which is where mismatches can go unnoticed until the vehicle arrives."
+        ],
+        "bullets": [
+          "Record the site's stated vehicle size or type limits, including any height, width or length restrictions.",
+          "Note the unloading method the site expects, such as dock levellers, forklift availability or ground-level unloading.",
+          "Identify any access restrictions on the approach to the site, such as narrow entrances or weight-limited surfaces, as stated by the site.",
+          "Keep the source and date of the information with the record."
+        ]
+      },
+      {
+        "heading": "Comparing booked equipment with the recorded instructions",
+        "paragraphs": [
+          "Once the site's constraints are recorded, the next step is a direct comparison with the equipment that has been booked. This means checking the booked vehicle's stated dimensions and configuration against each recorded constraint. The comparison should be done field by field, not as a general impression that the vehicle is 'about right'. A vehicle that meets most constraints but exceeds one stated limit is still a mismatch that needs attention.",
+          "The comparison should also consider the unloading arrangements. If the site expects to unload from the rear of the vehicle but the booked equipment requires side unloading, that is a mismatch even if the vehicle dimensions are acceptable. Similarly, if the site has stated that a forklift is not available, the booked equipment should be checked to confirm that the vehicle's own unloading capability, if any, is sufficient for the goods. The point is to compare what has been booked with what the site has stated, not to assume that a standard vehicle will fit.",
+          "A practical way to document this comparison is a simple checklist that lists each recorded constraint alongside the corresponding detail of the booked equipment, with a clear indication of whether they match. This checklist becomes part of the dispatch record and shows that the check was performed before instructions were confirmed."
+        ],
+        "bullets": [
+          "Compare vehicle height, width and length against the site's stated limits.",
+          "Check that the unloading method expected by the site matches the equipment booked.",
+          "Confirm that any site-specific access restrictions are addressed by the booked vehicle or by an agreed alternative.",
+          "Record the outcome of each comparison as match, mismatch or unresolved."
+        ]
+      },
+      {
+        "heading": "Why an earlier delivery is not access evidence",
+        "paragraphs": [
+          "It is tempting to treat a previous successful delivery to the same site as evidence that the booked equipment will be acceptable. That inference is not reliable. The earlier delivery may have used different equipment, a different vehicle configuration, or may have taken place under different conditions at the site. The site's constraints may also have changed since that delivery, or the earlier delivery may have proceeded despite a mismatch that was not recorded.",
+          "The approved operational basis for this check is clear: the booked equipment should be compared with the recorded instructions rather than inferred from an earlier delivery. An earlier delivery can be noted as context, but it does not replace the comparison with the site's stated constraints. If the earlier delivery used the same equipment and the site's constraints have not changed, the comparison may be straightforward, but it still needs to be performed and recorded.",
+          "Relying on an earlier delivery also creates a risk that a mismatch is discovered only when the vehicle arrives, which is the situation the check is intended to prevent. The check is a forward-looking comparison, not a retrospective assumption."
+        ]
+      },
+      {
+        "heading": "Reviewing an unresolved mismatch before dispatch is confirmed",
+        "paragraphs": [
+          "If the comparison identifies a mismatch that cannot be resolved from the recorded information, that mismatch should be reviewed before dispatch instructions are confirmed. The review should involve the party who can clarify the site's constraints or authorize a change to the booked equipment. The outcome of the review should be recorded, whether it results in a change to the booking, a confirmation from the site that the constraint does not apply as recorded, or a decision to proceed with a documented exception.",
+          "The review should not be treated as a formality. An unresolved mismatch means that the booked equipment may not be able to access or unload at the site, which could lead to a failed delivery attempt or additional handling. Addressing it before dispatch gives the parties time to make alternative arrangements, such as changing the vehicle type or agreeing a different unloading method.",
+          "A useful question to ask during the review is whether the site's stated constraint is current and complete. If the site cannot confirm, the mismatch remains unresolved and should be treated as such. The dispatch instruction should not be confirmed until the review has produced a clear outcome that is recorded alongside the access check."
+        ],
+        "bullets": [
+          "Identify the specific constraint and the booked equipment detail that do not match.",
+          "Ask the site to confirm or clarify the constraint, and record the response.",
+          "If the constraint is confirmed, consider whether the booking can be changed or whether an alternative arrangement is needed.",
+          "Record the review outcome and the basis for proceeding or holding the dispatch."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if the site has not provided any vehicle or unloading constraints?",
+        "answer": "The absence of stated constraints is itself a gap in the record. The check should note that the site has not provided constraints and treat the comparison as unresolved until the information is obtained or a decision is made to proceed without it. Proceeding without recorded constraints increases the risk of a mismatch at the receiving point."
+      },
+      {
+        "question": "Can a previous delivery to the same site be used to skip the comparison?",
+        "answer": "No. An earlier delivery does not establish that the booked equipment matches the site's current stated constraints. The comparison should still be performed against the recorded instructions, and any differences in equipment or site conditions should be considered."
+      },
+      {
+        "question": "Who should review an unresolved mismatch?",
+        "answer": "The review should involve someone who can clarify the site's constraints or authorize a change to the booking. The specific role depends on the operating arrangement, but the review should be recorded with the outcome and the basis for the decision."
+      }
+    ],
+    "searchIntent": "Which access details should be checked before a booked vehicle is sent to the delivery location?"
+  },
+  {
     "briefId": "carrier-service-code-mapping",
     "slug": "mapping-client-shipping-choice-carrier-service-code",
     "category": "Fulfillment",
