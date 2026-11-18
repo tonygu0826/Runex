@@ -210,3 +210,14 @@ shared topic words. If no suitable whole phrase fits, the full title slug is kep
 64 characters is a preference, not a truncation limit. Existing published URLs
 are not regenerated. Automatic brief IDs retain their original algorithm so
 stored approved briefs remain valid.
+
+### Refill retry feedback
+
+Refill proposals are limited to three complete plans per request. Each retry
+rotates its exploration focus through the approved foundation, favouring less-used
+principles first; this hint never substitutes for archive comparison or review.
+Rejections identify the reader question and retain up to 5,000 characters of
+recent objections across attempts and failed daily runs. Credentials are redacted.
+The six-request/eight-minute budget, duplicate checks and separate semantic
+review remain mandatory. A pending refill continues on subsequent runs; this
+change cannot guarantee new coverage if the approved foundation is exhausted.
