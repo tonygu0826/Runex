@@ -22,6 +22,95 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "count-cutoff-transactions",
+    "slug": "reconciling-stock-movements-cross-inventory-count-cutoff",
+    "category": "3PL & Warehousing",
+    "title": "Reconciling Stock Movements That Cross an Inventory Count Cutoff",
+    "description": "A practical way to separate units moved before counting from transactions recorded after the cutoff before posting a variance.",
+    "excerpt": "Define the count cutoff, separate post-cutoff transactions from pre-count physical moves, and explain timing differences before posting a variance.",
+    "keywords": [
+      "inventory count cutoff",
+      "count variance reconciliation",
+      "post-cutoff stock movements",
+      "transaction timing difference",
+      "counted balance boundary"
+    ],
+    "publishedAt": "2026-11-20",
+    "modifiedAt": "2026-11-20",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A count cutoff should identify the time or transaction boundary used for the counted balance.",
+      "Movements recorded after the cutoff should be distinguished from units physically moved before counting.",
+      "The reconciliation should explain the timing difference before a count variance is posted."
+    ],
+    "sources": [],
+    "keyAnswer": "A count cutoff should name the time or transaction boundary that the counted balance refers to. Movements recorded after that cutoff should be separated from units that were physically moved before counting, and the reconciliation should explain the timing difference before any count variance is posted.",
+    "sections": [
+      {
+        "heading": "Recording the cutoff that the counted balance refers to",
+        "paragraphs": [
+          "Before counting begins, the count instruction should state the time or transaction boundary that the counted balance will represent. This boundary is the count cutoff. It tells everyone whether the count is meant to reflect stock at the start of the shift, at the moment the count sheet is printed, or at some other defined point. Without a recorded cutoff, a counted quantity has no clear reference point, and later movements cannot be classified as before or after it.",
+          "The cutoff should be written down in the count record itself, not left in a conversation. It should identify the date and time, and where relevant the transaction reference or sequence number that marks the boundary. If the count is taken over several hours or across locations, the record should show whether one cutoff applies to the whole count or whether each area has its own. A clear cutoff makes it possible to compare the counted balance with the transaction history and to explain any difference."
+        ],
+        "bullets": [
+          "State the cutoff as a specific time or transaction reference in the count instruction.",
+          "Record whether the same cutoff applies to all locations or only part of the count.",
+          "Keep the cutoff with the count results so the basis of the counted balance remains visible."
+        ]
+      },
+      {
+        "heading": "Separating units moved before counting from transactions recorded after the cutoff",
+        "paragraphs": [
+          "Physical movement and system recording often happen at different moments. A pallet may be moved from a pick face to a reserve location before the count, while the transfer transaction is entered after the cutoff. If the counted balance is compared directly with the current system balance, that movement can look like a shortage or an overage when it is only a timing difference. The reconciliation should therefore separate two things: units that were physically moved before counting, and transactions that were recorded after the cutoff.",
+          "A practical way to do this is to list the movements that occurred around the cutoff and classify each one. For each movement, record the item, quantity, from and to locations, the time of physical movement, and the time the transaction was recorded. Where the physical move happened before the count but the transaction was posted after the cutoff, the movement belongs to the pre-count physical position and should be reflected in the reconciliation rather than treated as a new movement after counting. Where both the move and the transaction happened after the cutoff, the movement is a post-cutoff transaction and should be excluded from the counted balance comparison.",
+          "This classification is not about assigning blame. It is about making the timing visible so the counted quantity and the transaction record can be compared on the same basis. The reconciliation should show the counted balance, the post-cutoff transactions that are excluded, and the pre-count physical moves that explain part of the difference. Any remaining difference is the candidate variance."
+        ],
+        "bullets": [
+          "List movements around the cutoff with item, quantity, locations and both physical and recording times.",
+          "Classify each movement as pre-count physical movement or post-cutoff transaction.",
+          "Show excluded post-cutoff transactions separately from the counted balance."
+        ]
+      },
+      {
+        "heading": "Documenting the timing difference in the reconciliation",
+        "paragraphs": [
+          "The reconciliation should be a written explanation, not just a net figure. It should start with the counted balance and the cutoff it refers to. It should then show the post-cutoff transactions that have been excluded, with references to the transaction records. It should also show any pre-count physical movements that were recorded after the cutoff, with references to the movement documents or transfer records. The result is an adjusted comparison that puts the counted quantity and the transaction record on the same time basis.",
+          "Each line in the reconciliation should be traceable. A reader should be able to see which count sheet, which transaction, and which movement record support each adjustment. Where a movement cannot be fully explained, it should be listed as an open item rather than forced into the variance. The reconciliation should also state who prepared it and who reviewed it, so the explanation has an owner. This record becomes the basis for deciding whether a variance exists and whether it can be posted."
+        ],
+        "bullets": [
+          "Begin with the counted balance and its recorded cutoff.",
+          "List excluded post-cutoff transactions with their references.",
+          "List pre-count physical movements recorded after the cutoff with their references.",
+          "Identify any unexplained movement as an open item before posting a variance."
+        ]
+      },
+      {
+        "heading": "Deciding when a variance can be posted",
+        "paragraphs": [
+          "A variance should be posted only after the timing differences have been explained or explicitly set aside as unresolved. If the reconciliation shows that the difference is fully accounted for by post-cutoff transactions and pre-count physical moves, there may be no variance to post at all. If a residual difference remains after those adjustments, it should be reviewed against the count record and the movement evidence before any adjustment is made.",
+          "The decision to post should be recorded with the reconciliation. The record should state what was reviewed, what was excluded, and what remains unexplained. Where the residual difference is small and the evidence is clear, the approval owner can decide to post. Where the difference is material or the evidence is incomplete, the item should remain open until further review. Posting a variance without this explanation risks turning a timing difference into a permanent stock adjustment that cannot be traced back to its cause."
+        ],
+        "bullets": [
+          "Post only after post-cutoff transactions and pre-count physical moves have been addressed.",
+          "Record the reviewer, the evidence used and any remaining open items.",
+          "Keep unresolved differences open rather than posting them as unexplained variances."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if a movement happens during the count itself?",
+        "answer": "The count instruction should state how movements during counting are handled. If the cutoff is a single point in time, movements after that point are post-cutoff transactions and should be excluded from the counted balance comparison. If counting is paused or locations are frozen, that should be recorded so the cutoff remains meaningful."
+      },
+      {
+        "question": "Does every timing difference need a formal reconciliation?",
+        "answer": "The reconciliation should be proportionate to the size and complexity of the count. A small count with few movements may need only a short note. A larger count with many movements around the cutoff benefits from a line-by-line record that shows each excluded transaction and each pre-count physical move."
+      }
+    ],
+    "searchIntent": "How should stock movements that cross a count cutoff be reconciled with the counted balance?"
+  },
+  {
     "briefId": "booked-equipment-access-fit",
     "slug": "delivery-access-check",
     "category": "Distribution",
