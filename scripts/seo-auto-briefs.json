@@ -1,7 +1,7 @@
 {
   "version": 1,
   "refillPending": true,
-  "consecutiveFailures": 4,
+  "consecutiveFailures": 5,
   "briefs": [
     {
       "id": "auto-should-putaway-task-recorded-only-part-received-quantity",
@@ -190,5 +190,5 @@
       }
     }
   ],
-  "lastFailure": "No automatic brief was approved after 6 requests. A new brief must cite 2-6 distinct approved foundation IDs.; auto-warehouse-record-corrected-should-staff-confirm-no: Evidence is reasonably grounded in physical-record-alignment, evidence-provenance and quantity-basis. However, the decision substantially overlaps published coverage: receipt-reversal-links already addresses distinguishing physical units from a record correction to avoid a second stock increase, and proof-of-delivery-corrections covers keeping corrections linked to originals. The added 'check downstream balances' step is a generic extension rather than a distinct decision.; auto-should-late-arriving-warehouse-event-handled-later: Evidence is well grounded in event-order and evidence-provenance. But the decision is already covered by the published brief out-of-order-events, which addresses late-arriving events not overwriting newer status and retaining event history with both times. This candidate restates the same framew"
+  "lastFailure": "No automatic brief was approved after 6 requests. A new brief must cite 2-6 distinct approved foundation IDs.; auto-stock-record-corrected-should-correction-kept-being-read: Evidence is reasonably grounded in physical-record-alignment and evidence-provenance. However the decision substantially overlaps published coverage: receipt-reversal-links ('identify the erroneous entry and its replacement as a linked pair', 'physical units distinguished from the record correction so they are not received a second time', 'downstream allocations checked before reversing') and proof-of-delivery-corrections ('original observation distinguishable from a later correction'). The proposed brief restates the same linked-pair / physical-vs-record / downstream-check framework with only wording and entity changes; not a distinct decision.; auto-should-confirmed-received-quantity-reported-available: Grounded in availability-qualifications and partial-completion. But the decision overlaps the unused approved b"
 }
