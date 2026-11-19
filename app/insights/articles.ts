@@ -22,6 +22,83 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "auto-carrier-booking-request-times-out-no-confirmation-should",
+    "slug": "checking-timed-out-carrier-booking-rebooking",
+    "category": "Distribution",
+    "title": "Checking a Timed-Out Carrier Booking Before Rebooking",
+    "description": "A method for treating a carrier booking timeout as unconfirmed and preventing the same shipment from being tendered twice.",
+    "excerpt": "A missing carrier response is unconfirmed, not failed. Keep the original request reference and confirm acceptance before rebooking.",
+    "keywords": [
+      "carrier booking retry",
+      "unconfirmed booking response",
+      "duplicate shipment tender",
+      "booking request reference",
+      "timeout versus rejection"
+    ],
+    "publishedAt": "2026-11-21",
+    "modifiedAt": "2026-11-21",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A retried booking should carry the original shipment and booking request reference so the carrier response can be matched to the first attempt rather than treated as a new request.",
+      "A timeout or missing response should be treated as unconfirmed, not as a failed booking, until the carrier's acceptance or rejection is established.",
+      "If a second booking is confirmed, the record should distinguish the accepted booking from the earlier unconfirmed attempt so the shipment is not tendered twice."
+    ],
+    "sources": [],
+    "keyAnswer": "A carrier booking request that times out without a response should be treated as unconfirmed rather than failed until the carrier's acceptance or rejection is established. The retry should carry the original shipment and booking request reference so any response can be matched to the first attempt. If a second booking is confirmed, the record should distinguish it from the earlier unconfirmed attempt so the shipment is not tendered twice.",
+    "sections": [
+      {
+        "heading": "Why a timeout is not a rejection",
+        "paragraphs": [
+          "A carrier booking request that ends without a response is not the same as a refusal. The carrier may not have processed the request, may have processed it but failed to return a confirmation, or may still be working on it. Until the carrier's acceptance or rejection is established, the correct status is unconfirmed. Treating the timeout as a failure can lead to a second booking for the same shipment while the first is still live.",
+          "The practical risk is a duplicate tender: the shipment is offered to the carrier twice, and both offers may be accepted. That can create two booking records, two sets of instructions, and confusion about which one governs the pickup. The timeout itself does not tell you which outcome occurred, so the first step is to preserve the original request details rather than overwrite them with a new attempt."
+        ]
+      },
+      {
+        "heading": "Keeping the original shipment and booking request reference on retry",
+        "paragraphs": [
+          "When a retry is necessary, it should carry the original shipment reference and the original booking request reference. This allows any response from the carrier to be matched to the first attempt rather than treated as a new request. Without that link, a late acceptance from the first attempt can look like a separate booking, and the shipment may appear to have two valid bookings.",
+          "The retry record should also note that it is a retry, not a fresh booking. That distinction helps the person reviewing the carrier's response understand which request is being answered. If the carrier returns a reference for the retry, the record should show both references and the relationship between them."
+        ],
+        "bullets": [
+          "Preserve the original shipment reference on the retry.",
+          "Carry the original booking request reference so responses can be matched.",
+          "Mark the retry as a retry rather than a new booking."
+        ]
+      },
+      {
+        "heading": "Establishing carrier acceptance or rejection before rebooking",
+        "paragraphs": [
+          "Before a second booking is confirmed, the carrier's acceptance or rejection of the first request should be established. This may require checking the carrier's portal, contacting the carrier's booking desk, or reviewing any response that arrives after the timeout. The goal is to know whether the first request is still active, was rejected, or was never received.",
+          "If the first request is still active, a second booking should not be created. If the first request was rejected, the rejection should be recorded and the retry can proceed as a new request with the original references attached. If the carrier cannot confirm either way, the shipment remains unconfirmed and the decision to retry should be made with that uncertainty visible."
+        ]
+      },
+      {
+        "heading": "Recording a confirmed second booking apart from the unconfirmed attempt",
+        "paragraphs": [
+          "If a second booking is confirmed, the record should distinguish the accepted booking from the earlier unconfirmed attempt. The accepted booking should have its own reference, and the earlier attempt should be marked as unconfirmed or superseded rather than deleted. This prevents the shipment from being tendered twice and gives a clear audit trail if the carrier later asks about the first request.",
+          "The record should also show which booking is active for the shipment. Any instructions sent to the warehouse or the carrier should reference the active booking, not the unconfirmed attempt. If the first attempt later produces an acceptance, that response should be reconciled against the record rather than treated as a second active booking."
+        ],
+        "bullets": [
+          "Give the confirmed second booking its own reference.",
+          "Mark the earlier attempt as unconfirmed or superseded.",
+          "Ensure active instructions reference the confirmed booking."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "How long should I wait after a timeout before retrying?",
+        "answer": "There is no universal wait time. The decision should be based on the carrier's stated response expectations and the shipment's urgency. Before retrying, make an attempt to establish whether the first request is still active, and record the outcome of that check."
+      },
+      {
+        "question": "What if the carrier confirms both the first and second bookings?",
+        "answer": "If both are confirmed, the shipment has been tendered twice. The record should show both bookings and the steps taken to resolve the duplication, such as cancelling one booking with the carrier and confirming which one remains active. The earlier unconfirmed attempt should not be deleted."
+      }
+    ],
+    "searchIntent": "When a carrier booking request times out with no confirmation, what should be checked before the same shipment is booked again?"
+  },
+  {
     "briefId": "count-cutoff-transactions",
     "slug": "reconciling-stock-movements-cross-inventory-count-cutoff",
     "category": "3PL & Warehousing",
