@@ -1,7 +1,7 @@
 {
   "version": 1,
   "refillPending": true,
-  "consecutiveFailures": 6,
+  "consecutiveFailures": 0,
   "briefs": [
     {
       "id": "auto-should-putaway-task-recorded-only-part-received-quantity",
@@ -188,7 +188,144 @@
         "at": "2026-11-13T20:29:37.442Z",
         "rationale": "Grounded in client-ownership and entity-identity; the statements follow conditionally from the foundation. The decision—separating a work-assignment or contact change from any transfer of stock ownership, and resolving unclear ownership before reassignment—is distinct from the approved client-access-removal-review and inventory-owner-separation briefs, which address access removal and identical-goods ownership respectively rather than assignment-change ownership confusion."
       }
+    },
+    {
+      "id": "auto-carrier-booking-request-times-out-no-confirmation-should",
+      "area": "Retrying a carrier booking after an unconfirmed response",
+      "readerQuestion": "When a carrier booking request times out with no confirmation, what should be checked before the same shipment is booked again?",
+      "evidence": [
+        "A retried booking should carry the original shipment and booking request reference so the carrier response can be matched to the first attempt rather than treated as a new request.",
+        "A timeout or missing response should be treated as unconfirmed, not as a failed booking, until the carrier's acceptance or rejection is established.",
+        "If a second booking is confirmed, the record should distinguish the accepted booking from the earlier unconfirmed attempt so the shipment is not tendered twice."
+      ],
+      "foundationRefs": [
+        "retry-continuity",
+        "interface-contracts"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-carrier-booking-request-times-out-no-confirmation-should",
+        "title": "Rechecking a Carrier Booking After an Unconfirmed Response",
+        "description": "How to treat a timed-out carrier booking as unconfirmed and avoid tendering the same shipment twice on retry.",
+        "excerpt": "A missing carrier response is not a failed booking. Preserve the original request reference and confirm acceptance before rebooking.",
+        "keywords": [
+          "carrier booking retry",
+          "unconfirmed booking response",
+          "duplicate shipment tender",
+          "booking request reference",
+          "transmission versus acceptance"
+        ],
+        "keyAnswer": "A booking request without a confirmed response should be treated as unconfirmed rather than failed. The retry should carry the original request and shipment reference so any carrier acceptance can be matched to the first attempt. Only after the earlier attempt is established as not accepted should a second booking be confirmed, and the accepted booking should be distinguishable from the unconfirmed one.",
+        "operationalBasis": [
+          "A retried booking should carry the original shipment and booking request reference so the carrier response can be matched to the first attempt rather than treated as a new request.",
+          "A timeout or missing response should be treated as unconfirmed, not as a failed booking, until the carrier's acceptance or rejection is established.",
+          "If a second booking is confirmed, the record should distinguish the accepted booking from the earlier unconfirmed attempt so the shipment is not tendered twice."
+        ],
+        "searchIntent": "When a carrier booking request times out with no confirmation, what should be checked before the same shipment is booked again?",
+        "outline": [
+          "Why a timeout is not a rejection",
+          "Keeping the original request and shipment reference on retry",
+          "Confirming carrier acceptance before rebooking",
+          "Recording the accepted booking apart from the unconfirmed attempt"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-19T21:28:48.087Z",
+        "rationale": "Each evidence statement follows from retry-continuity (preserve original request identity, distinguish accepted from pending, avoid a second physical task) and interface-contracts (distinguish successful transmission from accepted business processing). The decision—treating a timeout as unconfirmed rather than failed and preventing duplicate tender—is a specific operational judgment not covered by published briefs on retries of warehouse task messages, incremental export watermarks, voided-label manifests, or pickup no-shows, which address different artifacts and failure modes."
+      }
+    },
+    {
+      "id": "auto-two-exception-reports-show-different-counts-same-issue",
+      "area": "Comparing two exception reports with different scopes",
+      "readerQuestion": "When two exception reports show different counts for the same warehouse issue, what should be checked before treating the difference as a real change?",
+      "evidence": [
+        "Each exception report should state its observation window, included locations or statuses and the calculation basis before its count is compared with another.",
+        "A difference between reports should first be attributed to scope or definition differences rather than assumed to reflect a change in the underlying exceptions.",
+        "If the definitions cannot be made compatible, the comparison should be reported as not comparable instead of presenting a trend."
+      ],
+      "foundationRefs": [
+        "reporting-boundaries",
+        "exception-resolution"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-two-exception-reports-show-different-counts-same-issue",
+        "title": "Comparing Exception Counts When Two Reports Disagree",
+        "description": "A method for checking whether differing exception counts come from scope or definition differences before treating them as a trend.",
+        "excerpt": "Two exception reports can differ because of window, scope or calculation basis. Confirm definitions match before reading a change.",
+        "keywords": [
+          "exception report comparison",
+          "report observation window",
+          "included scope mismatch",
+          "calculation basis difference",
+          "non-comparable metrics"
+        ],
+        "keyAnswer": "Before reading a difference between two exception reports as a real change, each report's observation window, included scope and calculation basis should be compared. A mismatch in any of these should be resolved or stated as the explanation. Where definitions cannot be aligned, the reports should be described as not comparable rather than shown as a trend.",
+        "operationalBasis": [
+          "Each exception report should state its observation window, included locations or statuses and the calculation basis before its count is compared with another.",
+          "A difference between reports should first be attributed to scope or definition differences rather than assumed to reflect a change in the underlying exceptions.",
+          "If the definitions cannot be made compatible, the comparison should be reported as not comparable instead of presenting a trend."
+        ],
+        "searchIntent": "When two exception reports show different counts for the same warehouse issue, what should be checked before treating the difference as a real change?",
+        "outline": [
+          "Checking observation windows first",
+          "Comparing included locations and statuses",
+          "Aligning the calculation basis",
+          "Reporting a non-comparable result honestly"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-19T21:28:48.087Z",
+        "rationale": "The evidence is grounded in reporting-boundaries (state observation window, included scope, calculation basis; do not compare on matching column names alone) and exception-resolution (identify the exact information still needed). The decision—attributing a count difference to scope/definition before reading it as a trend, and declaring non-comparability—is distinct from published exception-reporting briefs that cover item/quantity/condition/escalation ownership, and from order-cycle-time and storage-billing snapshot briefs that address different measurement questions."
+      }
+    },
+    {
+      "id": "auto-incremental-stock-export-retried-should-receiving-report",
+      "area": "Reconciling a retried export against a reporting window",
+      "readerQuestion": "When an incremental stock export is retried, how should the receiving report avoid counting the same transactions twice in its window?",
+      "evidence": [
+        "The retried export should preserve the original batch boundary and transaction references so the receiver can recognise transactions already accepted.",
+        "The receiving report should state its observation window and exclude transactions already accepted under the earlier batch rather than summing both deliveries.",
+        "If the boundary of the retry cannot be matched to the earlier batch, the affected window should be flagged as uncertain instead of reported as a clean total."
+      ],
+      "foundationRefs": [
+        "retry-continuity",
+        "reporting-boundaries"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-incremental-stock-export-retried-should-receiving-report",
+        "title": "Keeping a Retried Stock Export From Doubling a Report Window",
+        "description": "How a receiving report should treat a retried incremental export so already accepted transactions are not counted twice.",
+        "excerpt": "A retried export can repeat transactions. Match the batch boundary and exclude already accepted rows before reporting a window total.",
+        "keywords": [
+          "retried stock export",
+          "incremental export boundary",
+          "duplicate transaction in report",
+          "report observation window",
+          "accepted versus redelivered batch"
+        ],
+        "keyAnswer": "A retried export should keep the original batch boundary and transaction references so the receiver can identify rows already accepted. The report should exclude those accepted transactions from its window total rather than adding both deliveries. Where the retry boundary cannot be matched to the earlier batch, the window should be flagged as uncertain rather than presented as a clean total.",
+        "operationalBasis": [
+          "The retried export should preserve the original batch boundary and transaction references so the receiver can recognise transactions already accepted.",
+          "The receiving report should state its observation window and exclude transactions already accepted under the earlier batch rather than summing both deliveries.",
+          "If the boundary of the retry cannot be matched to the earlier batch, the affected window should be flagged as uncertain instead of reported as a clean total."
+        ],
+        "searchIntent": "When an incremental stock export is retried, how should the receiving report avoid counting the same transactions twice in its window?",
+        "outline": [
+          "Why a retry can repeat transactions",
+          "Matching the retry to the original batch boundary",
+          "Excluding already accepted rows from the window",
+          "Flagging an unmatched boundary as uncertain"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-19T21:28:48.087Z",
+        "rationale": "The evidence follows from retry-continuity (preserve original request identity, distinguish accepted from pending) and reporting-boundaries (state observation window and calculation basis; flag incompatible definitions). The decision—excluding already-accepted transactions from a report window on retry and flagging an unmatched boundary as uncertain—is distinct from the published incremental-export-watermarks brief, which addresses the sender's boundary advance and skip prevention, not the receiver's window-total reconciliation."
+      }
     }
-  ],
-  "lastFailure": "No automatic brief was approved after 6 requests. o they are not received a second time', 'downstream allocations checked before reversing') and proof-of-delivery-corrections ('original observation distinguishable from a later correction'). The proposed brief restates the same linked-pair / physical-vs-record / downstream-check framework with only wording and entity changes; not a distinct decision.; auto-should-confirmed-received-quantity-reported-available: Grounded in availability-qualifications and partial-completion. But the decision overlaps the unused approved b\nauto-scanned-code-matches-both-carton-item-record-should-scan: Evidence is a reasonable deduction from entity-identity and reference-context, but the decision overlaps existing coverage: barcode-scan-diagnosis already covers comparing a scanned value with the expected item and pack-level mapping before replacing a label, and entity-identity already states one identifier should not silently stand for a different entity. The added framing (expected entity type for the handling step) is a modest restatement rather than a distinct useful decision.; auto-should-client-supplied-reference-stored-not-mistaken-s: Grounded in reference-context and entity-identity, but the answer is essentially a restatement of those foundations (retain source/owner context; text match does not establish same entity). No distinct operational decision beyond the approved guidance and existing reference-handling briefs such as order-import-deduplication and sku-alias-mapping.; auto-two-clients-use-same-order-reference-format-should-links: Supported by reference-context and client-ownership, but it largely restates those foundations and overlaps existing coverage (inventory-owner-separation, order-import-deduplication). The 'shared reference format' framing does not add a materially distinct decision beyond attributing a reference to its source before linking.\nauto-count-quantity-corrected-after-posting-should-corrected: Evidence is a reasonable deduction from quantity-basis, evidence-provenance and physical-record-alignment. However the decision substantially overlaps published coverage: proof-of-delivery-corrections already covers linking a corrected record to the original observation and citing the reviewed version; count-cutoff-transactions and inventory-reconciliation cover count variance and adjustment linkage; receipt-reversal-links covers avoiding double-counting on correction. The added 'restate unit/scope/boundary' is a generic application of quantity-basis rather than a distinct decision.; auto-stock-record-corrected-any-new-physical-movement-should: Grounded in physical-record-alignment and evidence-provenance. But the core decision—distinguishing a record correction from a second physical movement—is already the explicit basis of published receipt-reversal-links ('physical units distinguished from the record correction so they are not received a second time') and proof-of-delivery-corrections. The quantity-basis restatement is generic filler, not a new decision.; auto-unfinished-work-handed-over-should-outstanding-quantity: Grounded in partial-completion, quantity-basis and handover-continuity. But published warehouse-shift-task-continuity already covers unfinished-task handover (completed step, next action, references, receiver confirmation), and partial-completion/partial-shipment-permissions cover separating completed from outstanding quantities. Adding 'unit and scope' is a generic quantity-basis restatement, not a distinct useful decision.\nBefore a failed warehouse task message is retried, what should confirm that the retry will not create a second physical task?: Topic overlaps with existing article \"Checking a Retried Task Message Before It Repeats Work\": the title, keywords and search intent are too similar. Choose another editorial brief or a materially different search intent.; auto-data-exchange-batch-only-partly-accepted-should-sender: Evidence is a reasonable deduction from interface-contracts and retry-continuity. However, the decision overlaps existing coverage: partial-file-import-results already addresses resubmitting a partially accepted file while preserving original row references so accepted work is not recreated, and incremental-export-watermarks plus the retry-continuity brief cover transmission-versus-acceptance and retry identity. The proposal reframes the same accepted/rejected-row resubmission boundary in interface language without a distinct new decision.; auto-partially-completed-task-passes-new-owner-through-data: Evidence is a fair deduction from partial-completion, handover-continuity and interface-contracts. But the operational decision largely restates warehouse-shift-task-continuity (completed step, outstanding balance, references, receiving-party confirmation) combined with warehouse-export-field-mapping (field meanings, units, empty-value treatment). The cross-system framing does not establish a genuinely new decision beyon"
+  ]
 }
