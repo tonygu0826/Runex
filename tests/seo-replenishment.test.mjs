@@ -5,7 +5,7 @@ import { manualEditorialBriefs, legacyBriefs } from "../scripts/seo-editorial-br
 import { editorialFoundation } from "../scripts/seo-editorial-foundation.mjs";
 import { extractExistingArticleSignals } from "../scripts/seo-quality.mjs";
 import { inspectEditorialPool } from "../scripts/seo-editorial-health.mjs";
-import { acceptedSemanticReviews, replenishEditorialPool, validateAutoStore, validatePendingPool, validateProposedBrief } from "../scripts/seo-replenishment.mjs";
+import { refillFeedback, proposalFocus, acceptedSemanticReviews, replenishEditorialPool, validateAutoStore, validatePendingPool, validateProposedBrief } from "../scripts/seo-replenishment.mjs";
 import { refillCandidates } from "./fixtures/seo-refill.mjs";
 
 const source = await readFile(new URL("../app/insights/articles.ts", import.meta.url), "utf8");
@@ -153,4 +153,37 @@ test("the final remote recheck protects approved history and newly consumed ques
   const newArticle = { ...second.reviewedPlan, slug: "recently-covered", publishedAt: "2026-10-12" };
   const changedSource = beforeAuto.replace(marker, `${marker}\n${JSON.stringify(newArticle, null, 2)},`);
   assert.throws(() => validatePendingPool({ baseStore, nextStore, source: changedSource }), /overlaps existing coverage|Topic overlaps/);
+});
+
+
+test("refill preserves prior-run and per-attempt objections and changes exploration focus", async () => {
+  const h = harness({ manualBriefs: legacyBriefs, store: { ...empty(), refillPending: true, consecutiveFailures: 4,
+    lastFailure: "Previous run: avoid record correction and shift handover duplicates." },
+    responder: (request, number, candidates) => {
+      const prompt = request.messages[1].content;
+      if (prompt.startsWith("PROPOSE")) {
+        assert.match(prompt, /Previous run: avoid record correction/);
+        assert.match(prompt, /Propose at most [123] genuinely new/);
+        if (number === 1) return { briefs: [{ ...refillCandidates()[0], foundationRefs: ["invented"] }] };
+        assert.match(prompt, /2-6 distinct approved foundation IDs/);
+        assert.ok(prompt.includes(refillCandidates()[0].readerQuestion));
+        return { briefs: refillCandidates() };
+      }
+      return reviews(candidates);
+    } });
+  assert.equal((await h.run()).added, 2);
+  const prompts = h.calls.filter(c => c.messages[1].content.startsWith("PROPOSE"));
+  const focus = p => p.messages[1].content.match(/Exploration focus for this attempt: (.*?). Look/)[1];
+  assert.notEqual(focus(prompts[0]), focus(prompts[1]));
+  assert.equal(h.pool.consecutiveFailures, 0);
+  assert.equal(h.pool.lastFailure, undefined);
+});
+
+test("refill feedback is bounded and redacts credentials; focus favours less-used foundations", () => {
+  const feedback = refillFeedback("x".repeat(6_000), new Error("provider secret-key failure"), "secret-key");
+  assert.ok(feedback.length <= 5_000);
+  assert.ok(!feedback.includes("secret-key"));
+  assert.match(feedback, /\[redacted\]/);
+  const foundation = [{ id: "used" }, { id: "fresh-a" }, { id: "fresh-b" }];
+  assert.deepEqual(proposalFocus(foundation, [{ foundationRefs: ["used"] }], 0), ["fresh-a", "fresh-b"]);
 });

@@ -18,10 +18,10 @@ const defaultStorePath = path.join(root, "scripts", "seo-auto-briefs.json");
 const defaultArticlesPath = path.join(root, "app", "insights", "articles.ts");
 const scopeExclusions = /\b(Runex|our (?:warehouse|clients?|customers?|facilit\w*|systems?)|we (?:offer|provide|have|operate)|CBSA|customs|tariffs?|regulat\w*|statutory|legally required|certif\w*|hazmat|hazardous|flammable|food.grade|pharmaceutical|medical|temperature.control|GS1|Amazon|Shopify|Microsoft|SAP)\b/i;
 
-function safeError(error, apiKey) {
+function safeError(error, apiKey, limit = 1_000) {
   let message = String(error.message || error);
   if (apiKey) message = message.replaceAll(apiKey, "[redacted]");
-  return message.replace(/(DeepSeek request failed \(\d+\)).*/s, "$1; provider request failed.").slice(0, 1_000);
+  return message.replace(/(DeepSeek request failed \(\d+\)).*/s, "$1; provider request failed.").slice(0, limit);
 }
 
 function text(value, name, min, max) {
@@ -87,9 +87,26 @@ export function acceptedSemanticReviews(response, candidates) {
   return { accepted, rejected, rationales };
 }
 
-function proposalPrompt({ count, foundation, existingArticles, existingBriefs, feedback }) {
+// Keep full, bounded objections across attempts and daily runs. A failed
+// batch must not erase the earlier editor feedback and start the same loop.
+export function refillFeedback(previous, next, apiKey) {
+  return [previous, safeError(next, apiKey, 2_500)].filter(Boolean).join("\n").slice(-5_000);
+}
+
+export function proposalFocus(foundation, existingBriefs, attempt) {
+  const usage = new Map(foundation.map(({ id }) => [id, 0]));
+  for (const brief of existingBriefs) for (const id of brief.foundationRefs || []) {
+    if (usage.has(id)) usage.set(id, usage.get(id) + 1);
+  }
+  const ranked = foundation.map(({ id }) => id).sort((a, b) => usage.get(a) - usage.get(b));
+  const start = (attempt * 2) % Math.max(1, ranked.length);
+  return [...ranked.slice(start), ...ranked.slice(0, start)].slice(0, 2);
+}
+
+function proposalPrompt({ count, foundation, existingArticles, existingBriefs, feedback, focus }) {
   return `PROPOSE_NEW_BRIEFS: Propose at most ${count} genuinely new reader questions for general warehouse, fulfillment, data-exchange or freight operating decisions.
 Use only this reviewed operating foundation. Derive narrowly scoped conditional recommendations, not new external facts. Cite the foundation IDs supporting each candidate. Do not merely rename an existing question, copy its answer structure or manufacture novelty through a different ID. Do not invent customers, results, prices, facilities, legal rules, certifications, named-platform requirements or numeric service limits. If the foundation does not support a genuinely useful new question, return an empty briefs array and explain why.
+Exploration focus for this attempt: ${JSON.stringify(focus)}. Look for an uncovered concrete decision supported by these principles; other approved principles may support it too. This is a discovery hint, never proof of novelty. If it overlaps existing coverage, abstain or choose a different decision.
 Approved foundation: ${JSON.stringify(foundation)}
 Existing published coverage, including retired pages: ${formatExistingCoverage(existingArticles)}
 Existing briefs, including unused questions that must not be duplicated: ${JSON.stringify(existingBriefs.map((item) => ({ id: item.id, question: item.readerQuestion || item.area, evidence: item.evidence })))}
@@ -135,7 +152,8 @@ export async function replenishEditorialPool({ env = process.env, readSource = r
   const model = env.DEEPSEEK_MODEL || "deepseek-v4-flash";
   const newBriefs = [];
   let requests = 0;
-  let feedback = "";
+  let feedback = store.lastFailure ? safeError(store.lastFailure, env.DEEPSEEK_API_KEY, 5_000) : "";
+  let proposalAttempt = store.consecutiveFailures;
   const ask = async (prompt) => {
     const remaining = deadline - now();
     if (remaining <= 0) throw new Error("Automatic replenishment exhausted its eight-minute budget.");
@@ -149,24 +167,26 @@ export async function replenishEditorialPool({ env = process.env, readSource = r
   while (newBriefs.length < desired && requests < 5 && now() < deadline) {
     try {
       const coverage = [...existingBriefs, ...newBriefs];
-      const count = Math.min(12, desired - newBriefs.length);
-      const response = await ask(proposalPrompt({ count, foundation, existingArticles, existingBriefs: coverage, feedback }));
+      const count = Math.min(3, desired - newBriefs.length);
+      const focus = proposalFocus(foundation, coverage, proposalAttempt++);
+      const response = await ask(proposalPrompt({ count, foundation, existingArticles, existingBriefs: coverage, feedback, focus }));
       if (!Array.isArray(response.briefs) || response.briefs.length > count) throw new Error("Proposal must contain a bounded briefs array.");
       const candidates = [];
       const errors = [];
       for (const raw of response.briefs) {
         try { candidates.push(validateProposedBrief(raw, { existingArticles, existingBriefs: [...coverage, ...candidates], foundation })); }
-        catch (error) { errors.push(error.message); }
+        catch (error) { errors.push(`${String(raw?.readerQuestion || "Invalid candidate").slice(0, 240)}: ${safeError(error, env.DEEPSEEK_API_KEY)}`); }
       }
       if (!candidates.length) throw new Error(errors.join("; ") || `No supported novel topic: ${String(response.reason || "the approved foundation is insufficient").slice(0, 600)}`);
       const review = acceptedSemanticReviews(await ask(reviewPrompt({ candidates, foundation, existingArticles, existingBriefs: coverage })), candidates);
       for (const brief of candidates) if (review.accepted.has(brief.id)) {
         newBriefs.push({ ...brief, review: { approved: true, model, at: new Date(now()).toISOString(), rationale: review.rationales.get(brief.id) } });
       }
-      feedback = [...errors, ...review.rejected].join("; ");
-      if (!review.accepted.size) throw new Error(feedback || "The independent reviewer approved no candidate.");
+      const objections = [...errors, ...review.rejected].join("; ");
+      if (!review.accepted.size) throw new Error(objections || "The independent reviewer approved no candidate.");
+      if (objections) feedback = refillFeedback(feedback, objections, env.DEEPSEEK_API_KEY);
     } catch (error) {
-      feedback = safeError(error, env.DEEPSEEK_API_KEY);
+      feedback = refillFeedback(feedback, error, env.DEEPSEEK_API_KEY);
       logger.warn(`Automatic replenishment attempt rejected: ${feedback}`);
       if (requests < 5 && now() + retryDelayMs < deadline) await wait(1, retryDelayMs);
     }
@@ -219,7 +239,7 @@ async function main() {
     const store = validateAutoStore(JSON.parse(await readFile(storePath, "utf8")));
     const health = inspectEditorialPool(await readFile(articlesPath, "utf8"), [...manualEditorialBriefs, ...store.briefs]);
     const failures = store.consecutiveFailures + 1;
-    const next = { ...store, consecutiveFailures: failures, lastFailure: safeError(error, process.env.DEEPSEEK_API_KEY),
+    const next = { ...store, consecutiveFailures: failures, lastFailure: safeError(error, process.env.DEEPSEEK_API_KEY, 5_000),
       refillPending: store.refillPending || health.remaining <= REPLENISH_AT };
     await writeFile(storePath, `${JSON.stringify(next, null, 2)}\n`, "utf8");
     result = { status: "deferred", added: 0, remaining: health.remaining, needsReview: failures >= 2 || health.remaining <= 7 };
