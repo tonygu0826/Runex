@@ -22,6 +22,95 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "blind-recount-independence",
+    "slug": "arranging-blind-recount-stays-independent-first-count",
+    "category": "3PL & Warehousing",
+    "title": "Arranging a Blind Recount That Stays Independent of the First Count",
+    "description": "A blind recount keeps the second counter unaware of the first result so the two observations can be compared honestly.",
+    "excerpt": "How to scope a blind recount, record the second observation first, and investigate any disagreement between counts.",
+    "keywords": [
+      "blind recount instruction",
+      "second inventory count independence",
+      "count disagreement investigation",
+      "recount stock scope",
+      "comparing two counts"
+    ],
+    "publishedAt": "2026-11-22",
+    "modifiedAt": "2026-11-22",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A blind recount instruction should identify the same stock scope without supplying the first counter's result.",
+      "The second observation should be recorded before the two counts are compared.",
+      "A disagreement between counts should be investigated rather than resolved by selecting the preferred number."
+    ],
+    "sources": [],
+    "keyAnswer": "A blind recount instruction should define the same stock scope as the first count without disclosing the first counter's result. The second observation should be recorded before the two counts are compared, and any disagreement should be investigated rather than settled by choosing the preferred number.",
+    "sections": [
+      {
+        "heading": "Defining the recount scope without revealing the first result",
+        "paragraphs": [
+          "A blind recount begins with a written instruction that describes what is to be counted in the same terms as the first count, but leaves out the quantity the first counter reported. The instruction should name the items, locations and inventory statuses included in the original scope, because a recount that covers a different set of units cannot be compared with the first observation on equal terms. If the first count covered a specific bin, lot or status, the recount instruction should carry those same boundaries forward.",
+          "The practical test is whether a second counter could complete the work without seeing or inferring the first number. That means removing the first count sheet, the expected quantity field and any annotation that hints at the earlier result from the material handed to the second counter. A recount instruction that includes the first quantity, even as a reference point, is no longer blind and tends to reproduce the earlier figure rather than produce an independent observation.",
+          "A buyer or operations lead should ask who prepares the recount instruction, how the scope is copied from the first count, and what is removed before the second counter begins. The instruction should also state the unit of measure and the counting method so the two observations describe the same thing. Where the first count used a particular handling step, such as weighing or counting sealed cartons, the recount instruction should say whether the same method applies."
+        ],
+        "bullets": [
+          "Name the items, locations and statuses in scope, matching the first count.",
+          "Remove the first count sheet, expected quantity and any hint of the earlier result.",
+          "State the unit of measure and counting method so both observations are comparable.",
+          "Confirm who prepares the instruction and what is withheld from the second counter."
+        ]
+      },
+      {
+        "heading": "Recording the second observation before any comparison",
+        "paragraphs": [
+          "The second counter's observation should be written down and time-stamped before anyone opens the first count record. This ordering matters because once the first result is visible, the second figure is easy to adjust, consciously or not, toward the earlier number. A recount record that is completed after the comparison has begun cannot show whether the second observation was independent.",
+          "In practice, the recount record should identify the counter, the time, the scope covered and the quantity observed, in the same structure as the first count. The record should be closed and stored before the comparison step starts. If the second counter notices something unusual, such as damaged packaging or mixed units in a location, that observation should be recorded as part of the recount rather than used to change the scope mid-count.",
+          "A useful question for a buyer is how the warehouse demonstrates that the second observation was captured before the comparison. The answer should point to a record with its own timestamp and a clear separation between the counting step and the comparison step, not a single sheet where both numbers were entered together."
+        ]
+      },
+      {
+        "heading": "Investigating a disagreement instead of picking a number",
+        "paragraphs": [
+          "When the two counts differ, the disagreement is information about the stock or the process, not a choice between two preferences. Selecting the more convenient number hides the reason for the difference and leaves the underlying cause in place. The investigation should start from the two recorded observations and work back toward the physical units, the locations and the movements that could explain the gap.",
+          "A practical investigation looks at whether the scope was truly the same, whether units moved between the two counts, whether packaging or unit-of-measure handling differed, and whether either counter recorded an exception. The outcome should be a documented explanation or a documented unresolved difference, not a silent adjustment. If the difference remains unexplained, the record should say so and identify who is responsible for the next decision.",
+          "Buyers should ask what happens after a disagreement is found: who reviews it, what evidence is gathered, and how the final record distinguishes a resolved explanation from an open question. A process that resolves every disagreement by choosing a number is not a blind recount process, even if the second count was originally blind."
+        ],
+        "bullets": [
+          "Compare the two recorded observations before touching either figure.",
+          "Check scope, timing, unit handling and any recorded exceptions.",
+          "Document the explanation or record the difference as unresolved.",
+          "Name the person responsible for the next decision."
+        ]
+      },
+      {
+        "heading": "Questions to settle before the recount starts",
+        "paragraphs": [
+          "Before a blind recount is arranged, the parties involved should agree on the scope, the instruction format, the recording step and the disagreement path. These are process decisions, not legal or regulatory requirements, and they should be written into the count plan rather than left to the counter's judgement on the day. A short pre-count check can confirm that the instruction is genuinely blind and that the second observation will be captured before comparison.",
+          "It is also worth agreeing how the recount record will be stored and who can see it before the comparison. If the first count result is visible in the same system the second counter uses, the blindness depends on access controls rather than on the instruction alone. The count plan should state how that separation is maintained and what happens if it cannot be."
+        ],
+        "bullets": [
+          "Is the recount instruction free of the first counter's result?",
+          "Does the scope match the first count in items, locations and statuses?",
+          "Where and when is the second observation recorded?",
+          "Who investigates a disagreement, and how is an unresolved difference recorded?",
+          "How is the first result kept out of the second counter's view?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can a blind recount use the same counter as the first count?",
+        "answer": "The brief does not set a rule on who may count, but the purpose of a blind recount is an independent second observation. Using the same counter with the first result withheld still depends on that person not recalling or inferring the earlier figure, so the count plan should state how independence is maintained and recorded."
+      },
+      {
+        "question": "What should happen if the two counts agree?",
+        "answer": "Agreement is recorded as two matching observations within the defined scope. The record should still show that the second observation was captured before comparison, so the agreement can be relied on later if the count is reviewed."
+      }
+    ],
+    "searchIntent": "How should a blind recount be arranged so it does not merely repeat the first reported quantity?"
+  },
+  {
     "briefId": "auto-carrier-booking-request-times-out-no-confirmation-should",
     "slug": "checking-timed-out-carrier-booking-rebooking",
     "category": "Distribution",
