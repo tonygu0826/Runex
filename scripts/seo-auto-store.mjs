@@ -1,3 +1,4 @@
+import { validateGroundedSources } from "./seo-source-grounding.mjs";
 import { editorialFoundation } from "./seo-editorial-foundation.mjs";
 import { slugifyBriefId } from "./seo-quality.mjs";
 import { validateTopicPlan } from "./seo-topic-planner.mjs";
@@ -19,6 +20,7 @@ export function validateAutoStore(store) {
     ids.add(brief.id);
     validateTopicPlan(brief.reviewedPlan, [brief], []);
     validateFoundationRefs(brief.foundationRefs);
+    validateGroundedSources(brief, editorialFoundation);
   }
   return store;
 }

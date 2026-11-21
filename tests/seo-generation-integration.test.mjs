@@ -204,3 +204,32 @@ test("planning and final generation use complete keyword slugs without changing 
   assert.deepEqual(extractExistingArticleSignals(h.writes[0]).slice(1), archive);
   assert.throws(() => validateTopicPlan(plan, granularBriefs, [{ title: "Unrelated", slug: result.article.slug }]), /existing URL slug/);
 });
+
+test('curated citation transport cannot launder claims, omit citations or substitute URLs', async () => {
+  const { foundationSources } = await import('../scripts/seo-source-grounding.mjs');
+  const { editorialFoundation } = await import('../scripts/seo-editorial-foundation.mjs');
+  // Transport-only synthetic fixture, not evidence of semantic approval for this topic.
+  const foundationRefs = ['joined-unit-dispatch-identity', 'quantity-basis'];
+  const sources = foundationSources(foundationRefs, editorialFoundation);
+  const brief = { ...granularBriefs[0], foundationRefs, sources };
+  const run = draft => harness((_request, number) => number === 1 ? unitPlan : draft, {
+    briefs: [brief], env: { DEEPSEEK_API_KEY: 'mock-only', DEEPSEEK_RETRY_DELAY_MS: '1', SEO_MAX_GENERATION_ATTEMPTS: '3' },
+  });
+  const good = run({ ...unitDraft(), sources });
+  const result = await good.run();
+  assert.deepEqual(result.article.sources, sources);
+  assert.match(good.calls[1].messages[1].content, /Source support and limits/);
+  for (const draft of [
+    { ...unitDraft(), sources: [] },
+    { ...unitDraft(), sources: [{ name: 'fabricated', url: 'https://example.com' }] },
+  ]) {
+    const bad = run(draft);
+    await assert.rejects(bad.run());
+    assert.equal(bad.writes.length, 0);
+  }
+  const unsupported = { ...unitDraft(), sources };
+  unsupported.sections[0].paragraphs[0] += ' Customs regulations require this procedure.';
+  const bad = run(unsupported);
+  await assert.rejects(bad.run());
+  assert.equal(bad.writes.length, 0);
+});

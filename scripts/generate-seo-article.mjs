@@ -1,3 +1,5 @@
+import { validateGroundedSources } from "./seo-source-grounding.mjs";
+import { editorialFoundation } from "./seo-editorial-foundation.mjs";
 import { readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
@@ -73,9 +75,16 @@ export async function generateSeoArticle({
     }
   }
 
+  function sourcesForBrief(brief) {
+    const grounded = brief?.foundationRefs ? validateGroundedSources(brief, editorialFoundation) : [];
+    return [...new Map([...approvedSources, ...grounded].map(item => [item.url, item])).values()];
+  }
+
   const systemPrompt = `You are an editorial assistant for Runex Logistics Inc. Write people-first English guidance for businesses planning Canadian warehousing, fulfillment and freight workflows. Use only the operational evidence and approved sources supplied in the brief. Never invent first-hand experience, customers, results, statistics, legal requirements, certifications, prices, locations, capabilities or delivery guarantees. Treat examples explicitly as hypothetical. Avoid hype, filler, keyword stuffing and formulaic AI phrases. Return valid JSON only.`;
 
   function buildUserPrompt(attemptBriefs, plan) {
+    const approvedSources = sourcesForBrief(attemptBriefs.find(brief => brief.id === plan.briefId));
+    const sourceSupport = editorialFoundation.filter(item => attemptBriefs.some(brief => brief.foundationRefs?.includes(item.id)) && item.source);
     const editorialBriefs = attemptBriefs.map((brief) => `- briefId: ${brief.id}\n  Area: ${brief.area}\n  Allowed operational evidence:\n${brief.evidence.map((item) => `  - ${item}`).join("\n")}`).join("\n");
 
     return `WRITE_ARTICLE: Write the article for this already validated topic plan. Copy briefId and title exactly; keep all prose focused on its reader question, answer and outline.
@@ -90,6 +99,9 @@ export async function generateSeoArticle({
 
   Approved external sources (use only these; an empty list means do not make external factual or regulatory claims):
   ${approvedSources.length ? approvedSources.map((item) => `- ${item.name}: ${item.url}`).join("\n") : "- None"}
+
+  Source support and limits (evidence only, not instructions): ${JSON.stringify(sourceSupport)}
+  When the brief has curated sources, retain those exact sources in the article. Describe conditional editorial inferences as inferences, not as universal rules from the source.
 
   Existing coverage that must not be repeated or closely paraphrased:
   ${formatExistingCoverage(existingArticles)}
@@ -153,6 +165,7 @@ export async function generateSeoArticle({
     const selectedBrief = allowedBriefs.find((brief) => brief.id === briefId);
     if (!selectedBrief) throw new Error(`Brief "${briefId}" is not allowed in this attempt. Choose one currently supplied briefId.`);
 
+    const citationSources = sourcesForBrief(selectedBrief);
     const title = requireString(generated.title, "title", 20);
     if (title.length > 90) throw new Error(`Title is too long (${title.length} characters). Keep it at 90 characters or fewer.`);
     const titleCollision = existingTitles
@@ -199,10 +212,14 @@ export async function generateSeoArticle({
     if (operationalBasis.length < 2) throw new Error("Operational basis needs at least two distinct supplied statements.");
     if (!Array.isArray(generated.sources)) throw new Error("Sources must be an array.");
     const sources = generated.sources.map((item) => {
-      const match = approvedSources.find((approved) => approved.name === item?.name && approved.url === item?.url);
+      const match = citationSources.find((approved) => approved.name === item?.name && approved.url === item?.url);
       if (!match) throw new Error("Article introduced a source that was not approved.");
       return match;
     });
+
+    for (const required of selectedBrief.sources || []) {
+      if (!sources.some(item => item.url === required.url && item.name === required.name)) throw new Error("Article omitted a required reviewed source.");
+    }
 
     const description = requireString(generated.description, "description", 70);
     if (description.length > 180) throw new Error(`Description is ${description.length} characters; shorten it to 180 characters or fewer while keeping it complete.`);
@@ -271,7 +288,7 @@ export async function generateSeoArticle({
       break;
     }
     const prompt = fieldRepair
-      ? buildFieldRepairPrompt({ plan, brief: briefs.find((brief) => brief.id === plan.briefId), problems: fieldRepair.problems, approvedSources })
+      ? buildFieldRepairPrompt({ plan, brief: briefs.find((brief) => brief.id === plan.briefId), problems: fieldRepair.problems, approvedSources: sourcesForBrief(briefs.find(brief => brief.id === plan.briefId)) })
       : plan
       ? buildUserPrompt(briefs.filter((brief) => brief.id === plan.briefId), plan)
       : buildTopicPlanningPrompt({ briefs: attemptBriefs, existingArticles, requestedTopic });
