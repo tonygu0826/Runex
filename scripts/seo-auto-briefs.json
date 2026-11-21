@@ -1,7 +1,7 @@
 {
   "version": 1,
   "refillPending": true,
-  "consecutiveFailures": 1,
+  "consecutiveFailures": 0,
   "briefs": [
     {
       "id": "auto-should-putaway-task-recorded-only-part-received-quantity",
@@ -326,7 +326,147 @@
         "at": "2026-11-19T21:28:48.087Z",
         "rationale": "The evidence follows from retry-continuity (preserve original request identity, distinguish accepted from pending) and reporting-boundaries (state observation window and calculation basis; flag incompatible definitions). The decision—excluding already-accepted transactions from a report window on retry and flagging an unmatched boundary as uncertain—is distinct from the published incremental-export-watermarks brief, which addresses the sender's boundary advance and skip prevention, not the receiver's window-total reconciliation."
       }
+    },
+    {
+      "id": "auto-held-stock-handed-new-responsible-party-should-handover",
+      "area": "Confirming a handover of held stock between responsible parties",
+      "readerQuestion": "When held stock is handed to a new responsible party, what should the handover state so the hold is not treated as released?",
+      "evidence": [
+        "A handover of held stock should restate the hold reason, the affected units and the approving owner rather than only the physical location.",
+        "The receiving party should confirm the stock condition and hold status before any movement or release is treated as authorised.",
+        "A change of responsible party should not itself be recorded as a status change or approval to release."
+      ],
+      "foundationRefs": [
+        "handover-continuity",
+        "permissions-boundaries",
+        "entity-identity"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-held-stock-handed-new-responsible-party-should-handover",
+        "title": "Handing Over Held Stock Without Implied Release",
+        "description": "Defines what a handover of held stock must restate so a change of responsible party is not read as approval to release.",
+        "excerpt": "A handover of held stock should carry the hold reason, affected units and approving owner, and the receiver confirms status before any release.",
+        "keywords": [
+          "held stock handover",
+          "hold status confirmation",
+          "release approval boundary",
+          "responsible party change",
+          "stock condition confirmation"
+        ],
+        "keyAnswer": "A handover of held stock should restate the hold reason, the affected units and the approving owner, not just where the stock sits. The receiving party confirms the condition and hold status before any movement or release is treated as authorised. A change of responsible party is not itself a status change or a release approval.",
+        "operationalBasis": [
+          "A handover of held stock should restate the hold reason, the affected units and the approving owner rather than only the physical location.",
+          "The receiving party should confirm the stock condition and hold status before any movement or release is treated as authorised.",
+          "A change of responsible party should not itself be recorded as a status change or approval to release."
+        ],
+        "searchIntent": "When held stock is handed to a new responsible party, what should the handover state so the hold is not treated as released?",
+        "outline": [
+          "What a held-stock handover must restate",
+          "Why a new responsible party is not a release approval",
+          "Confirming condition and status before movement",
+          "Recording the handover separately from a status change"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-21T20:04:34.671Z",
+        "rationale": "Each evidence statement is a reasonable conditional deduction from the cited foundations: handover-continuity supports restating hold reason/units/owner and receiver confirmation; permissions-boundaries supports that a responsible-party change is not a release approval; entity-identity supports separating status from physical location. The decision—how a held-stock handover avoids implied release—is distinct from published inventory-status (status definitions and approval owners) and warehouse-shift-task-continuity (unfinished task handover), since it specifically addresses hold status surviving a change of responsible party."
+      }
+    },
+    {
+      "id": "auto-correction-approved-should-approval-state-whether-stock",
+      "area": "Scoping a permission to correct records versus move stock",
+      "readerQuestion": "When a correction is approved, how should the approval state whether physical stock movement is also permitted?",
+      "evidence": [
+        "A correction approval should name the record being amended and whether any physical movement is included in the same permission.",
+        "A record correction should not be read as authorisation to move or re-handle the physical units it describes.",
+        "If physical handling is also needed, that should be a separately recorded decision with its own scope."
+      ],
+      "foundationRefs": [
+        "permissions-boundaries",
+        "physical-record-alignment",
+        "instruction-scope"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-correction-approved-should-approval-state-whether-stock",
+        "title": "Separating a Record-Correction Approval From Stock Movement",
+        "description": "Sets out how an approval to correct a warehouse record should state whether physical stock movement is also permitted.",
+        "excerpt": "A correction approval should name the record amended and whether physical movement is included; record fixes do not authorise handling.",
+        "keywords": [
+          "record correction approval",
+          "physical movement permission",
+          "approval scope boundary",
+          "separate handling decision",
+          "correction versus movement"
+        ],
+        "keyAnswer": "A correction approval should name the record being amended and state whether any physical movement is included in the same permission. A record correction should not be read as authorisation to move or re-handle the units it describes. If handling is also needed, that should be a separately recorded decision with its own scope.",
+        "operationalBasis": [
+          "A correction approval should name the record being amended and whether any physical movement is included in the same permission.",
+          "A record correction should not be read as authorisation to move or re-handle the physical units it describes.",
+          "If physical handling is also needed, that should be a separately recorded decision with its own scope."
+        ],
+        "searchIntent": "When a correction is approved, how should the approval state whether physical stock movement is also permitted?",
+        "outline": [
+          "What a correction approval should name",
+          "Why a record fix is not a handling permission",
+          "Recording a separate movement decision",
+          "Keeping the correction and movement traceable"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-21T20:04:34.671Z",
+        "rationale": "Evidence is grounded: permissions-boundaries supports naming the permitted action/scope and requiring a separate decision for extension; physical-record-alignment supports distinguishing record correction from physical movement; instruction-scope supports naming the task and completion criteria. The decision—whether a correction approval also authorises stock movement—is distinct from receipt-reversal-links (correcting a wrong-reference receipt) and inventory-status (status change approval), focusing specifically on the record-versus-movement permission boundary."
+      }
+    },
+    {
+      "id": "auto-approved-task-handed-another-party-should-confirm-still",
+      "area": "Confirming an approval still applies after a handover",
+      "readerQuestion": "When an approved task is handed to another party, what should confirm the approval still covers the remaining work?",
+      "evidence": [
+        "A handover of approved work should state the approved action, its scope and how much of it was already completed.",
+        "The receiving party should confirm that the remaining work falls within the recorded approval before continuing.",
+        "If the remaining work exceeds the approved scope, a further recorded decision should be obtained rather than assumed."
+      ],
+      "foundationRefs": [
+        "handover-continuity",
+        "permissions-boundaries",
+        "partial-completion"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-approved-task-handed-another-party-should-confirm-still",
+        "title": "Checking an Approval Still Covers Work After Handover",
+        "description": "Explains how a handover of approved work should confirm the remaining scope is still within the recorded approval.",
+        "excerpt": "A handover of approved work should state the approved scope and completed portion, and the receiver confirms the balance is still covered.",
+        "keywords": [
+          "approval scope handover",
+          "remaining work confirmation",
+          "approved action boundary",
+          "completed versus outstanding",
+          "further decision needed"
+        ],
+        "keyAnswer": "A handover of approved work should state the approved action, its scope and how much was already completed. The receiving party confirms the remaining work falls within the recorded approval before continuing. If the balance exceeds the approved scope, a further recorded decision should be obtained rather than assumed.",
+        "operationalBasis": [
+          "A handover of approved work should state the approved action, its scope and how much of it was already completed.",
+          "The receiving party should confirm that the remaining work falls within the recorded approval before continuing.",
+          "If the remaining work exceeds the approved scope, a further recorded decision should be obtained rather than assumed."
+        ],
+        "searchIntent": "When an approved task is handed to another party, what should confirm the approval still covers the remaining work?",
+        "outline": [
+          "What the handover states about approved scope",
+          "Confirming the remaining balance is covered",
+          "When a further decision is required",
+          "Recording completion against the original approval"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-21T20:04:34.671Z",
+        "rationale": "Evidence is grounded: handover-continuity supports stating completed and remaining work plus receiver confirmation; permissions-boundaries supports that exceeding the approved scope needs a further recorded decision; partial-completion supports distinguishing completed from outstanding quantities. The decision—confirming an approval still covers remaining work after handover—is distinct from extra-work-authorisation-ceilings (stating the limit for new extra work) and warehouse-shift-task-continuity (generic unfinished-task handover), because it specifically tests whether a pre-existing approval's scope survives a change of party."
+      }
     }
-  ],
-  "lastFailure": "No automatic brief was approved after 6 requests. auto-work-instruction-revised-mid-task-should-warehouse-which: Evidence is a reasonable deduction from instruction-revisions, instruction-scope and partial-completion. However, the decision is already covered by the published brief kit-instruction-revisions ('How should a changed kit specification be introduced when some units have already been assembled?'), which uses the same version-boundary, identify-earlier-units and separately-authorised-rework framework. Changing 'kit specification' to 'work instruction' and adding the open-balance split is rewording, not a distinct decision.; auto-warehouse-task-instruction-names-quantity-step-should: Evidence is a reasonable deduction from instruction-scope, permissions-boundaries and partial-completion. But the decision substantially overlaps the published extra-work-authorisation-ceilings brief (authorised task and quantity/time/cost boundary, new decision at the boundary, completed record distinguishing original from separately approved additions). The 'adjacent work' framing does not establish a distinct operational decision.; auto-shift-handover-should-staff-describe-unfinished-task-was: Evidence is a reasonable deduction from handover-continuity, instruction-revisions and partial-completion. However, it is a combination of two already-published briefs: warehouse-shift-task-continuity (handover of unfinished work with completed step, references and receiving-shift confirmation) and kit-instruction-revisions (version boundary and separately authorised rework). Merging those frameworks into a handover scenario is not a new decision.\nInvalid review reason: use 20-800 characters.\nauto-task-approved-only-up-stated-quantity-handed-over-mid: Evidence is a reasonable deduction from the cited foundations (handover-continuity, permissions-boundaries, partial-completion). However, the decision is not distinct: it is a mechanical combination of two already-published briefs — extra-work-authorisation-ceilings (approval boundary triggers a new decision; completed work distinguished from separately approved additions) and warehouse-shift-task-continuity (handover states completed step and next action; receiving party confirms condition). The only added element is relocating the approval boundary into a handover, which is a generic recombination rather than a new operational decision.; auto-client-contact-who-held-shared-warehouse-work-leaves: Evidence is grounded in client-ownership, permissions-boundaries and handover-continuity. But the decision substantially overlaps published coverage: client-access-removal-review already covers removing a departing contact's access, reassigning shared operational work without retaining personal access, and distinguishing removed access from remaining accounts; auto-shared-warehouse-work-assignment-changes-should-show-has already covers that assignment changes do not transfer ownership. The handover-condition element duplicates warehouse-shift-task-continuity. No distinct new decision remains.; auto-approved-exception-passed-different-team-should-team-s: Evidence is a reasonable deduction from permissions-boundaries, exception-resolution and handover-continuity. However, it overlaps the first candidate's handover-of-approved-scope framework and the published exception-resolution and handover-continuity briefs; the distinguishing feature (a different team receives the exception) does not create a new decision beyond 'state approved scope, state what is still needed, keep history linked' — a generic handover restatement rather than a distinct useful decision."
+  ]
 }
