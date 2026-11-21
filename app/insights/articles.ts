@@ -22,6 +22,77 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "auto-two-exception-reports-show-different-counts-same-issue",
+    "slug": "checking-two-exception-reports-reading-count-difference",
+    "category": "3PL & Warehousing",
+    "title": "Checking Two Exception Reports Before Reading a Count Difference",
+    "description": "A method for checking whether differing exception counts come from scope or definition differences before treating them as a trend.",
+    "excerpt": "Two exception reports can differ because of window, scope or calculation basis. Confirm definitions match before reading a change.",
+    "keywords": [
+      "exception report comparison",
+      "report observation window",
+      "included scope mismatch",
+      "calculation basis difference",
+      "non-comparable metrics"
+    ],
+    "publishedAt": "2026-11-23",
+    "modifiedAt": "2026-11-23",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "Each exception report should state its observation window, included locations or statuses and the calculation basis before its count is compared with another.",
+      "A difference between reports should first be attributed to scope or definition differences rather than assumed to reflect a change in the underlying exceptions.",
+      "If the definitions cannot be made compatible, the comparison should be reported as not comparable instead of presenting a trend."
+    ],
+    "sources": [],
+    "keyAnswer": "Before reading a difference between two exception reports as a real change, compare each report's observation window, included locations or statuses, and calculation basis. A mismatch in any of these should be resolved or stated as the explanation. Where the definitions cannot be aligned, describe the reports as not comparable rather than presenting a trend.",
+    "sections": [
+      {
+        "heading": "Start with the observation window",
+        "paragraphs": [
+          "When two exception reports show different counts for what looks like the same warehouse issue, the first question is not which number is right. It is whether the two numbers describe the same period. One report may cover a single shift, another a rolling week, and a third a calendar month that ends mid-week. A count difference between them may reflect nothing more than the boundaries of the window.",
+          "Read each report's stated window before comparing counts. Check the start and end points, whether the window is fixed or rolling, and whether the report was generated at a different time from the one it describes. A report run this morning over last week and a report run last Friday over the same week can differ simply because the underlying records changed after the first run. If the windows do not match, the difference should be attributed to the window rather than read as a change in the exceptions themselves.",
+          "A practical test is to ask what a count would mean if the windows were identical. If the answer is unclear, the comparison is not yet ready to be read as a trend. Adjusting the window of one report, or restating both over a common period, is usually the cheapest way to make the comparison meaningful."
+        ]
+      },
+      {
+        "heading": "Compare included locations and statuses",
+        "paragraphs": [
+          "Two reports can share a window and still count different things. One may include every location in a building, while another covers only a designated picking area. One may include stock in a held or pending-review status, while another counts only available inventory. A difference in included locations or statuses is a scope difference, and it should be identified before any count is interpreted.",
+          "The check is to list what each report says it includes. Look for named locations, excluded areas, status filters and any stated conditions such as open versus closed exceptions. Where the inclusion rules are not written down, ask the report owner to confirm them rather than inferring from the numbers. A count that rises because a second area was added to the report is not evidence that exceptions increased in the original area.",
+          "If the scopes overlap only partly, the honest comparison is between the overlapping portion, not the totals. Where the overlap cannot be established from the report definitions, the comparison should wait until it can."
+        ]
+      },
+      {
+        "heading": "Align the calculation basis",
+        "paragraphs": [
+          "Even with the same window and the same included locations, two reports may calculate differently. One may count exception events, another may count affected units, and a third may count distinct orders touched by an exception. A single event involving several units can therefore appear as one in one report and several in another without any change in what happened on the floor.",
+          "Check the calculation basis each report states: what is being counted, at what level, and whether duplicates are collapsed. Look at whether a report counts an exception once when opened or again when it is updated, and whether resolved exceptions remain in the count. These choices are definitional, not errors, but they make the totals non-comparable if left unstated.",
+          "A useful discipline is to write down the basis of each report in one line before comparing counts. If the two lines differ, the difference in counts should be explained by that difference first. Only when window, scope and basis all match does a remaining gap become a question about the underlying exceptions."
+        ]
+      },
+      {
+        "heading": "Report a non-comparable result honestly",
+        "paragraphs": [
+          "Sometimes the definitions cannot be made compatible within the time available, or the report owners cannot confirm what a report includes. In that situation, the useful output is a statement that the two reports are not comparable, with the specific reason. Presenting a difference as a trend when the definitions do not align invites decisions based on a change that may not exist.",
+          "A short note is usually enough: which reports were compared, which definition differed, and what would be needed to make them comparable. That note protects the reader from drawing a conclusion the data cannot support, and it gives the report owners a clear task. It also keeps the question open rather than closing it with a misleading number.",
+          "Where a comparison is needed regularly, the better fix is upstream: have each report state its window, included locations or statuses and calculation basis as a matter of routine. That makes future comparisons faster and reduces the chance that a definitional gap is mistaken for an operational change."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "If the counts differ but the definitions match, does that mean exceptions really changed?",
+        "answer": "A matching window, scope and calculation basis removes the definitional explanations, so a remaining difference becomes a question about the underlying records. It still needs to be investigated against the source data before it is described as a trend."
+      },
+      {
+        "question": "Who should confirm what a report includes?",
+        "answer": "The owner of the report is usually best placed to confirm its window, included locations or statuses and calculation basis. Where ownership is unclear, that gap is itself worth resolving before the comparison is relied on."
+      }
+    ],
+    "searchIntent": "When two exception reports show different counts for the same warehouse issue, what should be checked before treating the difference as a real change?"
+  },
+  {
     "briefId": "blind-recount-independence",
     "slug": "arranging-blind-recount-stays-independent-first-count",
     "category": "3PL & Warehousing",
