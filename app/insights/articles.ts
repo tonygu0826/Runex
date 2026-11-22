@@ -22,6 +22,90 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "unmarked-inner-cartons",
+    "slug": "matching-unmarked-inner-cartons-product-relying-appearance",
+    "category": "3PL & Warehousing",
+    "title": "Matching Unmarked Inner Cartons to a Product Without Relying on Appearance",
+    "description": "Explains tracing an unmarked inner carton through its outer package and supplier packing reference instead of judging by look-alike contents.",
+    "excerpt": "An unmarked inner carton should be traced through its outer package and supplier packing reference, with the confirmed identification kept linked to that evidence.",
+    "keywords": [
+      "unmarked inner carton identification",
+      "outer package trace",
+      "supplier packing reference",
+      "look-alike contents",
+      "identification evidence link"
+    ],
+    "publishedAt": "2026-11-24",
+    "modifiedAt": "2026-11-24",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "An unmarked inner carton should be traced through its outer package and supplier packing reference.",
+      "Look-alike contents should not be assigned a product code solely from appearance.",
+      "The confirmed identification should remain linked to the evidence used to establish it."
+    ],
+    "sources": [],
+    "keyAnswer": "An unmarked inner carton should be traced through its outer package and the supplier packing reference rather than identified from how the contents look. Look-alike contents should not be assigned a product code solely from appearance. The confirmed identification should remain linked to the evidence used to establish it.",
+    "sections": [
+      {
+        "heading": "Why appearance alone is not identification",
+        "paragraphs": [
+          "When an inner carton arrives without a product label, the contents may look identical to another item already in the warehouse. Similar shape, colour or packaging can suggest a match, but appearance does not establish which product code the carton belongs to. Treating a visual match as identification creates a risk that the carton is recorded under the wrong code, and that error can travel into stock balances, pick instructions and dispatch records.",
+          "The operational rule is straightforward: look-alike contents should not be assigned a product code solely from appearance. A warehouse team member may recognise a pattern from previous receipts, but recognition is not evidence. The identification decision should rest on a traceable link to the supplier's packing information, not on a comparison of how the units look."
+        ]
+      },
+      {
+        "heading": "Tracing the carton through its outer package",
+        "paragraphs": [
+          "An unmarked inner carton should be traced through its outer package and supplier packing reference. The outer package usually carries the supplier's shipping label, carton marking or packing list reference that connects the contents to a specific purchase or delivery. Before the inner carton is separated from that outer package, the identifying details on the outside should be recorded and kept with the carton.",
+          "In practice, this means checking the outer package for a supplier reference, a carton number or a packing list that describes what the outer package contains. If the outer package has already been opened and the inner cartons separated, the trace becomes harder. The warehouse should note which outer package the inner carton came from, and avoid mixing inner cartons from different outer packages before their references are captured. A hypothetical example: an outer carton labelled with a supplier packing reference is opened, and the inner cartons inside carry no product code. The outer reference is recorded against each inner carton before they are moved to storage."
+        ],
+        "bullets": [
+          "Record the outer package reference before separating inner cartons.",
+          "Keep inner cartons grouped with their outer package until the reference is captured.",
+          "Do not rely on the unloading sequence to reconstruct which carton came from which outer package."
+        ]
+      },
+      {
+        "heading": "Using the supplier packing reference",
+        "paragraphs": [
+          "The supplier packing reference is the document or label that states what the supplier packed into the outer package. It may be a packing list, a carton content label or a reference number that links to the supplier's dispatch information. The warehouse should compare the inner carton's contents with that reference rather than with another product that looks similar.",
+          "If the packing reference is missing, incomplete or does not clearly describe the inner carton, the identification should not be forced. The carton should be held separately and the question raised with the party that supplied the packing information. Assigning a code from appearance to keep the receipt moving creates a record that cannot be supported later. A hypothetical example: two inner cartons contain items of the same size and colour, but the supplier packing reference lists only one of them for the delivery. The second carton should not be given the same code until its own reference is confirmed."
+        ]
+      },
+      {
+        "heading": "Recording the confirmed code with its supporting evidence",
+        "paragraphs": [
+          "Once the product code is confirmed, the identification should remain linked to the evidence used to establish it. That means the stock record or receipt note should reference the outer package and the supplier packing reference that supported the match, not just the final code. If the identification is later questioned, the warehouse can show how the decision was reached.",
+          "This link also helps when the same supplier sends similar products in future. A record that connects the code to a specific packing reference gives the next receipt a starting point for verification, rather than a precedent for guessing. The confirmed identification should remain linked to the evidence used to establish it, so that the record is auditable and the reasoning is visible to anyone who reviews the stock later."
+        ],
+        "bullets": [
+          "Record the outer package reference and the supplier packing reference alongside the confirmed product code.",
+          "Note who confirmed the identification and when, if the warehouse's process requires it.",
+          "Keep the evidence link with the receipt record rather than only in a separate email or note."
+        ]
+      },
+      {
+        "heading": "Questions to ask before accepting an unmarked carton",
+        "paragraphs": [
+          "A buyer or warehouse manager reviewing this process should ask whether the outer package reference is captured before inner cartons are separated, and whether the supplier packing reference is available for each delivery. They should also ask what happens when the reference is missing: is there a hold area, and who is responsible for resolving the question?",
+          "Another useful question is how the confirmed identification is recorded and whether it can be traced back to the evidence. If the warehouse cannot show the link between the product code and the packing reference, the identification is effectively based on appearance, even if the team believes it is correct. The process should make the evidence visible without requiring anyone to remember a conversation."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What should happen if the outer package has already been discarded?",
+        "answer": "The trace through the outer package is no longer available, so the carton should be held and the supplier packing reference checked directly with the party that provided the delivery. The product code should not be assigned from appearance while that reference is unresolved."
+      },
+      {
+        "question": "Can a photo of the contents be used as identification evidence?",
+        "answer": "A photo shows appearance, which is the basis the process is designed to avoid relying on. It may support a record, but it does not replace the outer package reference and supplier packing reference as the evidence for the product code."
+      }
+    ],
+    "searchIntent": "How should unmarked inner cartons be matched to a product without using appearance alone?"
+  },
+  {
     "briefId": "auto-two-exception-reports-show-different-counts-same-issue",
     "slug": "checking-two-exception-reports-reading-count-difference",
     "category": "3PL & Warehousing",
