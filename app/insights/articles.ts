@@ -22,6 +22,82 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "auto-incremental-stock-export-retried-should-receiving-report",
+    "slug": "reading-retried-stock-export-doubling-report-window",
+    "category": "3PL & Warehousing",
+    "title": "Reading a Retried Stock Export Without Doubling the Report Window",
+    "description": "Match a retried export to its original batch boundary, exclude already accepted rows, and flag an unmatched boundary as uncertain.",
+    "excerpt": "Match a retried export to its original batch boundary, exclude already accepted rows, and flag an unmatched boundary as uncertain.",
+    "keywords": [
+      "retried stock export",
+      "incremental export batch boundary",
+      "duplicate transaction in report",
+      "report observation window",
+      "accepted versus redelivered batch"
+    ],
+    "publishedAt": "2026-11-26",
+    "modifiedAt": "2026-11-26",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "The retried export should preserve the original batch boundary and transaction references so the receiver can recognise transactions already accepted.",
+      "The receiving report should state its observation window and exclude transactions already accepted under the earlier batch rather than summing both deliveries.",
+      "If the boundary of the retry cannot be matched to the earlier batch, the affected window should be flagged as uncertain instead of reported as a clean total."
+    ],
+    "sources": [],
+    "keyAnswer": "A retried export should preserve the original batch boundary and transaction references so the receiver can recognise transactions already accepted. The receiving report should state its observation window and exclude those accepted transactions rather than summing both deliveries. Where the retry boundary cannot be matched to the earlier batch, the affected window should be flagged as uncertain instead of reported as a clean total.",
+    "sections": [
+      {
+        "heading": "Why a retried export can repeat transactions",
+        "paragraphs": [
+          "An incremental stock export is usually built around a boundary: a point in the transaction stream up to which records have been delivered. When a delivery is retried, the sender may resend the same batch because the first attempt was not confirmed as accepted. From the receiver's side, the retry can look like new activity unless the batch boundary and transaction references travel with it.",
+          "The practical risk is not that the retry is wrong to send. It is that the receiving report may treat the redelivered rows as additional transactions and add them to the same observation window. The result is a report that appears to show more movement than actually occurred, with no obvious signal that the same transactions were counted twice."
+        ]
+      },
+      {
+        "heading": "Matching the retry to the original batch boundary",
+        "paragraphs": [
+          "Before a retried export is loaded into a report, compare its stated batch boundary with the boundary of the earlier delivery. The retry should identify the same boundary and carry the same transaction references, so the receiver can recognise which rows were already accepted. If the retry carries a later boundary, it is not a simple resend and should be treated as a separate delivery rather than merged into the earlier window.",
+          "A useful check is to ask three questions of the incoming file: what boundary does it claim, which transaction references does it repeat, and which of those references were already accepted under the earlier batch. Where the answers line up, the retry can be reconciled against the accepted set. Where they do not, the file should not be assumed to be a clean continuation."
+        ],
+        "bullets": [
+          "Confirm the batch boundary stated on the retry matches the earlier delivery.",
+          "Compare transaction references against the set already accepted.",
+          "Treat a retry with a different boundary as a separate delivery, not a resend."
+        ]
+      },
+      {
+        "heading": "Excluding already accepted rows from the window total",
+        "paragraphs": [
+          "The receiving report should state its observation window explicitly, including the start and end of the period it covers. Within that window, transactions already accepted under the earlier batch should be excluded rather than summed with the redelivered rows. This keeps the window total tied to distinct transactions instead of deliveries.",
+          "Exclusion should be recorded, not silent. A reader should be able to see that a retry was received, which references were recognised as already accepted, and which rows were treated as new. That record supports later review if the window total is questioned, and it prevents a future retry from being mistaken for fresh activity."
+        ]
+      },
+      {
+        "heading": "Flagging an unmatched boundary as uncertain",
+        "paragraphs": [
+          "Sometimes the retry cannot be matched to the earlier batch. The boundary may be missing, the transaction references may not align, or the earlier acceptance record may be incomplete. In that situation, the affected window should be flagged as uncertain rather than reported as a clean total. An uncertain flag tells the reader that the figure depends on an unresolved match, which is more useful than a number that looks complete.",
+          "The flag should identify the window affected and the reason the match failed, so the issue can be resolved with the sender. Until it is resolved, the window should not be used as a settled figure for downstream decisions. This is a limitation of the record, not a failure of the retry process, and stating it plainly keeps the report honest about what it can support."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Should a retried export ever be summed with the original delivery?",
+        "answer": "No. The retry should be matched to the original batch boundary, and transactions already accepted under the earlier batch should be excluded from the window total rather than added to it."
+      },
+      {
+        "question": "What should a receiving report state about its window?",
+        "answer": "It should state the observation window it covers and show which transactions were excluded as already accepted, so the total reflects distinct transactions rather than deliveries."
+      },
+      {
+        "question": "What if the retry cannot be matched to the earlier batch?",
+        "answer": "The affected window should be flagged as uncertain instead of reported as a clean total, and the reason for the failed match should be recorded for resolution with the sender."
+      }
+    ],
+    "searchIntent": "When an incremental stock export is retried, how should the receiving report avoid counting the same transactions twice in its window?"
+  },
+  {
     "briefId": "order-edit-version-control",
     "slug": "checking-concurrent-order-edits-one-update-overwrites-another",
     "category": "3PL & Warehousing",
