@@ -22,6 +22,97 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "loading-order-stop-sequence",
+    "slug": "checking-multi-stop-load-sequence-freight-staged",
+    "category": "Distribution",
+    "title": "Checking a Multi-Stop Load Sequence Before Freight Is Staged",
+    "description": "A practical check of how freight groups, delivery stops and unloading order line up before loading begins.",
+    "excerpt": "Link each freight group to its delivery stop, stage around the agreed unloading sequence, and recheck staged freight if the stop order changes.",
+    "keywords": [
+      "multi-stop load sequence",
+      "freight group to delivery stop",
+      "unloading sequence staging",
+      "changed stop sequence review",
+      "staged freight check"
+    ],
+    "publishedAt": "2026-11-27",
+    "modifiedAt": "2026-11-27",
+    "readTime": "6 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A multi-stop load plan should link each freight group to its intended delivery stop.",
+      "The staging instruction should account for the unloading sequence agreed with the carrier.",
+      "A changed stop sequence should be reviewed against staged freight before loading is completed."
+    ],
+    "sources": [],
+    "keyAnswer": "A multi-stop load plan should tie each freight group to its intended delivery stop before anything is staged. Staging should follow the unloading sequence agreed with the carrier, and if the stop order changes, the staged freight should be reviewed against the new sequence before loading is completed.",
+    "sections": [
+      {
+        "heading": "Linking each freight group to its delivery stop",
+        "paragraphs": [
+          "Before any freight is moved to a staging area, the load plan should make the connection between each freight group and its intended delivery stop explicit. A freight group might be a set of pallets, cartons or a single oversized item, but its identity should be tied to a specific stop on the route. This link is the foundation for every later check, because it tells the team which units are expected to leave the vehicle at which point.",
+          "In practice, this means the load plan should not rely on memory, informal labels or the physical order in which freight happens to be sitting in the warehouse. Each group should carry a reference that matches the stop sequence, and that reference should be visible to the people staging and loading. If a group cannot be matched to a stop, that is a decision point: the freight should be held or clarified rather than assumed to belong to the nearest stop.",
+          "A useful question for a buyer or operations lead to ask is whether the load plan distinguishes freight groups by stop in a way that survives a shift change or a handover. If the only record is a verbal instruction or a handwritten note, the link between freight and stop is fragile. The plan should be checkable by someone who was not present when it was created."
+        ],
+        "bullets": [
+          "Confirm that each freight group has a reference that matches a specific delivery stop.",
+          "Check that the reference is visible on the freight or its staging label, not only in a separate document.",
+          "Decide in advance what happens when a group cannot be matched to a stop."
+        ]
+      },
+      {
+        "heading": "Using the carrier-agreed unloading sequence to guide staging",
+        "paragraphs": [
+          "The staging instruction should account for the unloading sequence agreed with the carrier. This is not simply the order in which stops appear on a route plan; it is the sequence that has been confirmed for the actual movement, including any constraints the carrier has identified. Staging freight in a different order can create unnecessary handling at the first stop or force rework before the vehicle is loaded.",
+          "The practical implication is that staging should be organised around the agreed sequence, not around warehouse convenience or the order in which freight was received. If the first stop requires certain groups to be accessible first, those groups should be positioned accordingly. The staging instruction should state the sequence clearly enough that a team member can arrange freight without guessing.",
+          "A trade-off may arise when the agreed sequence conflicts with the physical layout of the staging area. In that case, the conflict should be resolved before loading begins, not worked around informally. The question to ask is whether the staging instruction names the sequence and whether the team has confirmed that the staged arrangement reflects it."
+        ],
+        "bullets": [
+          "Confirm that the staging instruction states the unloading sequence agreed with the carrier.",
+          "Check that staged freight is arranged to match that sequence rather than the order of receipt.",
+          "Resolve any conflict between the sequence and the staging layout before loading starts."
+        ]
+      },
+      {
+        "heading": "What to recheck when the stop order changes before loading finishes",
+        "paragraphs": [
+          "A changed stop sequence should be reviewed against staged freight before loading is completed. Stop orders can change for reasons outside the warehouse's control, and when they do, the link between freight groups and stops may no longer hold. The review should compare the new sequence with what is already staged, rather than assuming the original arrangement remains valid.",
+          "This recheck is not a full restart. It is a focused comparison: which freight groups are already staged, which stops they were linked to, and whether the new sequence changes that link. If a group now belongs to a different position in the sequence, it may need to be moved or re-labelled before loading continues. The review should be recorded so that the reason for any change is visible to the loading team.",
+          "A common risk is that a verbal change to the stop order is acted on for some freight but not all. The question to ask is whether the changed sequence has been checked against every staged group, not just the ones that are easy to move. If the change cannot be fully reviewed before loading must finish, that limitation should be stated rather than glossed over."
+        ],
+        "bullets": [
+          "Compare the new stop sequence with the freight already staged.",
+          "Identify which groups need to be moved or re-labelled before loading continues.",
+          "Record the review so the loading team can see what changed and why."
+        ]
+      },
+      {
+        "heading": "Questions to ask before the load is released",
+        "paragraphs": [
+          "Before loading is completed, a short set of questions can confirm that the sequence check has been done. These questions are not a substitute for the operational steps above, but they help a buyer or supervisor verify that the plan and the physical arrangement agree. The answers should be available from the records, not reconstructed after the fact.",
+          "The first question is whether every freight group is linked to a delivery stop in the load plan. The second is whether the staging instruction reflects the unloading sequence agreed with the carrier. The third is whether any change to the stop order has been reviewed against staged freight. If any answer is unclear, that is a signal to pause and clarify rather than proceed on assumption.",
+          "These questions also help when responsibilities are split between a client, a warehouse team and a carrier. Each party may hold part of the picture, and the check should confirm that the same sequence is understood across them. A limitation to acknowledge is that no check can remove the need for clear communication when a change occurs late; the review is only as good as the information available at the time."
+        ],
+        "bullets": [
+          "Is every freight group linked to a delivery stop in the load plan?",
+          "Does the staging instruction reflect the carrier-agreed unloading sequence?",
+          "Has any changed stop order been reviewed against the freight already staged?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if the carrier changes the stop order after some freight is already loaded?",
+        "answer": "The changed sequence should be reviewed against the freight that is staged or loaded before loading is completed. The review should identify which groups are affected and whether any repositioning is needed. If the change cannot be fully reviewed in time, that limitation should be recorded rather than assumed away."
+      },
+      {
+        "question": "Can the warehouse rely on the route plan alone to stage multi-stop freight?",
+        "answer": "The route plan is not the same as the staging instruction. Staging should account for the unloading sequence agreed with the carrier, which may include constraints not visible on a route plan. The load plan should link each freight group to its stop, and the staging instruction should translate that link into a physical arrangement."
+      }
+    ],
+    "searchIntent": "How should a multi-stop load sequence be checked before freight is staged for loading?"
+  },
+  {
     "briefId": "auto-incremental-stock-export-retried-should-receiving-report",
     "slug": "reading-retried-stock-export-doubling-report-window",
     "category": "3PL & Warehousing",
