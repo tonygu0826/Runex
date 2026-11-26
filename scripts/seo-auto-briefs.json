@@ -1,7 +1,7 @@
 {
   "version": 1,
   "refillPending": true,
-  "consecutiveFailures": 4,
+  "consecutiveFailures": 0,
   "briefs": [
     {
       "id": "auto-should-putaway-task-recorded-only-part-received-quantity",
@@ -467,7 +467,98 @@
         "at": "2026-11-21T20:04:34.671Z",
         "rationale": "Evidence is grounded: handover-continuity supports stating completed and remaining work plus receiver confirmation; permissions-boundaries supports that exceeding the approved scope needs a further recorded decision; partial-completion supports distinguishing completed from outstanding quantities. The decision—confirming an approval still covers remaining work after handover—is distinct from extra-work-authorisation-ceilings (stating the limit for new extra work) and warehouse-shift-task-continuity (generic unfinished-task handover), because it specifically tests whether a pre-existing approval's scope survives a change of party."
       }
+    },
+    {
+      "id": "auto-work-instruction-s-completion-criteria-cannot-observed",
+      "area": "Resolving a work instruction whose completion criteria cannot be observed",
+      "readerQuestion": "When a work instruction's completion criteria cannot be observed at the task location, what should be recorded before the task is treated as finished?",
+      "evidence": [
+        "If the stated completion criterion cannot be observed at the task location, the instruction should be treated as unresolved rather than satisfied by the nearest available check.",
+        "The unresolved item should name the specific missing criterion and the party able to confirm it, and any later confirmation should stay linked to that open item.",
+        "Work already performed under the ambiguous criterion should be recorded separately from the balance held pending confirmation."
+      ],
+      "foundationRefs": [
+        "instruction-scope",
+        "exception-resolution"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-work-instruction-s-completion-criteria-cannot-observed",
+        "title": "Recording an Unobservable Completion Criterion Before Closing a Task",
+        "description": "How to hold a task open when its stated completion criterion cannot be checked at the location where the work is done.",
+        "excerpt": "When a completion criterion cannot be observed, record the specific gap and the confirming party instead of closing the task on a substitute check.",
+        "keywords": [
+          "unobservable completion criterion",
+          "task close hold",
+          "missing confirmation record",
+          "instruction scope gap",
+          "linked resolution record"
+        ],
+        "keyAnswer": "A task should not be closed on a substitute check when the instruction's completion criterion cannot be observed where the work happens. The gap should name the exact criterion and the party able to confirm it, and completed work should be kept separate from the balance awaiting that confirmation.",
+        "operationalBasis": [
+          "If the stated completion criterion cannot be observed at the task location, the instruction should be treated as unresolved rather than satisfied by the nearest available check.",
+          "The unresolved item should name the specific missing criterion and the party able to confirm it, and any later confirmation should stay linked to that open item.",
+          "Work already performed under the ambiguous criterion should be recorded separately from the balance held pending confirmation."
+        ],
+        "searchIntent": "When a work instruction's completion criteria cannot be observed at the task location, what should be recorded before the task is treated as finished?",
+        "outline": [
+          "Why a nearby check is not the stated completion criterion",
+          "Naming the exact missing criterion and confirming party",
+          "Separating work done from work held pending confirmation",
+          "Linking the later confirmation to the original open item"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-26T22:18:09.385Z",
+        "rationale": "Grounded in instruction-scope (completion criteria) and exception-resolution (naming exact missing info and linking resolution). The decision—holding a task open when its stated completion criterion is unobservable and recording the gap plus confirming party—is a specific operational decision not covered by existing briefs on instruction revisions, partial completion, or handover, which address versioning, quantity balances, and shift transfer rather than unobservable acceptance criteria."
+      }
+    },
+    {
+      "id": "auto-only-part-work-instruction-s-scope-has-been-confirmed",
+      "area": "Handing over an instruction whose scope was only partly confirmed",
+      "readerQuestion": "When only part of a work instruction's scope has been confirmed, what should a handover state so the next party does not act on the unconfirmed part?",
+      "evidence": [
+        "The handover should state which parts of the instruction scope were confirmed, by whom, and which parts remain unconfirmed.",
+        "The receiving party should confirm the confirmed scope before continuing, and should not extend work into the unconfirmed part without a further recorded decision.",
+        "Work completed under the confirmed part should be recorded separately from the scope still awaiting confirmation."
+      ],
+      "foundationRefs": [
+        "handover-continuity",
+        "permissions-boundaries"
+      ],
+      "reviewedPlan": {
+        "briefId": "auto-only-part-work-instruction-s-scope-has-been-confirmed",
+        "title": "Handing Over a Partly Confirmed Instruction Scope",
+        "description": "What a shift handover should state when only part of a work instruction's scope has been confirmed and the rest is still open.",
+        "excerpt": "State the confirmed scope, its confirming party and the unconfirmed remainder so the next party does not extend work past the recorded approval.",
+        "keywords": [
+          "partly confirmed instruction scope",
+          "handover confirmed scope",
+          "unconfirmed remainder",
+          "approval boundary handover",
+          "next party confirmation"
+        ],
+        "keyAnswer": "A handover of partly confirmed instruction scope should name what was confirmed, who confirmed it and what remains unconfirmed. The receiving party should confirm that scope before continuing and should not treat the unconfirmed remainder as authorised work.",
+        "operationalBasis": [
+          "The handover should state which parts of the instruction scope were confirmed, by whom, and which parts remain unconfirmed.",
+          "The receiving party should confirm the confirmed scope before continuing, and should not extend work into the unconfirmed part without a further recorded decision.",
+          "Work completed under the confirmed part should be recorded separately from the scope still awaiting confirmation."
+        ],
+        "searchIntent": "When only part of a work instruction's scope has been confirmed, what should a handover state so the next party does not act on the unconfirmed part?",
+        "outline": [
+          "Stating the confirmed scope and its confirming party",
+          "Marking the unconfirmed remainder as not yet authorised",
+          "What the receiving party confirms before continuing",
+          "Recording completed work apart from the open scope"
+        ]
+      },
+      "review": {
+        "approved": true,
+        "model": "deepseek-v4-flash",
+        "at": "2026-11-26T22:18:09.385Z",
+        "rationale": "Grounded in handover-continuity (state completed, remaining, next party confirms) and permissions-boundaries (extension beyond approved scope needs further recorded decision). The decision—a handover that distinguishes confirmed scope, confirming party, and unconfirmed remainder so the next party does not extend work—is distinct from existing handover briefs (warehouse-shift-task-continuity, held-stock handover) and approval-ceiling briefs, which cover task-step continuity and quantity/time/cost limits rather than partly confirmed instruction scope."
+      }
     }
-  ],
-  "lastFailure": "No automatic brief was approved after 5 requests.  'reports' to 'total vs lines' is a wording/entity shift, not a new decision.; auto-revised-instruction-arrives-after-part-work-done-should: Well grounded in instruction-revisions and partial-completion, but it overlaps published kit-instruction-revisions (version identifier, effective work-order boundary, units assembled under earlier version identified before revision) and order-edit-version-control. The 'remaining balance confirmed physically' step is a generic addition; the core decision is already covered.\nauto-work-instruction-names-affected-units-omits-quantity: The evidence is a reasonable deduction from instruction-scope and exception-resolution, but the decision overlaps existing coverage. instruction-scope already requires a working instruction to identify affected units and required inputs, and exception-resolution already requires an unresolved discrepancy to name the exact information needed with the resolution linked to it. This candidate applies those same principles to a missing quantity basis without adding a distinct operational decision beyond the generic 'record the gap and link the resolution' pattern used in several published briefs.; auto-work-instruction-states-task-units-not-counts-complete: Supported by instruction-scope and partial-completion, but not distinct. instruction-scope already requires completion criteria, and partial-completion already requires separating completed work from the outstanding balance. The candidate merely restates those two foundations for a missing completion criterion, which is the same 'record the gap, separate completed from open, link the resolution' framework already covered by published briefs such as kit-instruction-revisions and the missing-quantity-basis candidate. No new decision boundary is introduced.; auto-revised-instruction-arrives-should-work-already-recorded: Grounded in instruction-revisions and exception-resolution, but the decision is already covered. Published brief kit-instruction-revisions addresses introducing a revised instruction after work has started, including version identifier, effective boundary, identifying units assembled under the earlier version, and separately authorising rework. The added 'record conflict as linked open item' is the generic exception-resolution pattern already used elsewhere. This is a wording/scope variant of existin\nNo supported novel topic: After reviewing the approved foundation against existing coverage, no genuinely new reader question is supported under the reference-context and quantity-basis focus. The candidate decisions in this space—matching text not establishing identity, confirming unit/scope/owner before applying a quantity, and reconciling totals to line detail—are already covered by sku-alias-mapping, unmarked-inner-cartons, blank-zero-stock-fields, decimal-separator-imports, unit-of-measure-conversions, receipt-reference-splits, and auto-two-exception-reports-show-different-counts-same-issue. Prior attempts confirm\nauto-working-instruction-names-affected-units-not-which-task: Grounded in instruction-scope and exception-resolution: naming units without a task step leaves the instruction incomplete, and the gap should be recorded as a specific open item. However, the decision overlaps substantially with published coverage on instruction scope and revisions (e.g., kit-instruction-revisions, extra-work-authorisation-ceilings) and with the approved brief on recording a resolution for an ambiguous instruction scope; the 'missing task step as linked open item, later supplied step as revision' framing is a generic application of the same scope/revision principles rather than a distinct new decision.; auto-discrepancy-blocked-because-instruction-exists-its-scope: Consistent with exception-resolution (name the exact information needed, link resolution to the discrepancy) and instruction-scope. But the core decision—distinguishing an ambiguous instruction from a missing one and holding work until the clarified boundary is recorded—is essentially the same answer framework as the approved brief on instruction-scope gaps and the published exception-resolution briefs; it changes the scenario wording without introducing a materially distinct operational decision.; auto-completed-task-found-have-been-done-against-superseded: Well grounded in instruction-revisions (separate completed vs open work, version boundary) and physical-record-alignment (a record correction is not evidence of a second physical movement). The rework-versus-record-fix distinction is a reasonable deduction. However, it substantially overlaps published coverage: kit-instruction-revisions already addresses separately authorised rework of earlier units, and receipt-reversal-links and proof-of-delivery-corrections cover linked record corrections without implying a second physical event. The combination is a recombination of existing answer frameworks rather than a distinct new decis"
+  ]
 }
