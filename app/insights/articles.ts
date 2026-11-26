@@ -22,6 +22,73 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "auto-should-putaway-task-recorded-only-part-received-quantity",
+    "slug": "recording-partial-putaway-closing-receipt",
+    "category": "3PL & Warehousing",
+    "title": "Recording a Partial Putaway Without Closing the Receipt",
+    "description": "How to record a putaway task when only part of a received quantity has moved to storage, keeping the receipt open.",
+    "excerpt": "Show placed and unplaced quantities separately, keep the putaway task linked to its receipt, and leave the parent receipt open.",
+    "keywords": [
+      "partial putaway record",
+      "unplaced putaway balance",
+      "placed versus unplaced quantity",
+      "putaway task receipt link",
+      "parent receipt completion"
+    ],
+    "publishedAt": "2026-11-28",
+    "modifiedAt": "2026-11-28",
+    "readTime": "4 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "A putaway record should distinguish the quantity already placed in storage from the balance still awaiting a destination, rather than closing the receipt when the first movement is recorded.",
+      "The receiving record and the putaway task should remain linked so the same physical units are not counted as both received and still outstanding.",
+      "A parent receipt should not be marked complete while a child putaway task still shows an unplaced balance."
+    ],
+    "sources": [],
+    "keyAnswer": "A putaway task that has moved only part of a received quantity should record the quantity placed in storage and the balance still awaiting a destination. The receiving record and the putaway task should stay linked so the same physical units are not counted as both received and outstanding. The parent receipt should not be marked complete while a child putaway task still shows an unplaced balance.",
+    "sections": [
+      {
+        "heading": "Separating placed quantity from the unplaced balance",
+        "paragraphs": [
+          "When a putaway task covers only part of a received quantity, the record needs two distinct figures: the quantity that has actually been placed in a storage location, and the quantity that remains without a destination. Treating the first movement as the end of the task hides the unplaced balance and makes it difficult to see what still needs to be moved. The putaway record should show both values explicitly, rather than collapsing them into a single completed quantity.",
+          "This separation matters because the unplaced balance is still physically present in the receiving area or a temporary location. If the record does not show it, the next person looking at the task may assume all units are stored and stop looking for the remainder. The placed quantity should be tied to a specific destination, while the unplaced balance should remain visible as work still to be done. A hypothetical example: a receipt for 100 units generates a putaway task, but only 60 units are moved to a bin. The task should record 60 placed and 40 unplaced, not 100 placed or 60 received."
+        ]
+      },
+      {
+        "heading": "Keeping the putaway task linked to its receipt",
+        "paragraphs": [
+          "The receiving record and the putaway task should remain linked so the same physical units are not counted as both received and still outstanding. If the link is broken, a later review of the receipt might show the full quantity as received while the putaway task still shows an unplaced balance, creating a double count. The link also allows anyone checking the receipt to see that part of the quantity has moved and part has not.",
+          "In practice, this means the putaway task should carry a reference to the receipt it belongs to, and the receipt should show that a putaway task is open against it. When the remaining units are eventually moved, the same task or a linked follow-on task should record the additional placed quantity. The receipt should not be closed until every unit on it has a confirmed destination or an explicit instruction for what to do with the balance."
+        ]
+      },
+      {
+        "heading": "Why the parent receipt stays open",
+        "paragraphs": [
+          "A parent receipt should not be marked complete while a child putaway task still shows an unplaced balance. Closing the receipt early can make the outstanding units invisible to inventory reporting and to anyone expecting the receipt to reflect the full received quantity. The receipt represents the whole inbound quantity, and it should remain open until the putaway work is finished or the remaining units are otherwise accounted for.",
+          "Keeping the receipt open is not about delaying closure for its own sake. It is a way to ensure that the unplaced balance stays visible and that the receipt's status matches the physical reality. If the receipt is closed while units are still waiting for a destination, those units may be treated as available for allocation or picking even though they are not in a storage location. The open receipt acts as a flag that the inbound process is not yet complete."
+        ]
+      },
+      {
+        "heading": "Confirming the destination balance before closing",
+        "paragraphs": [
+          "Before the receipt is closed, the destination balance should be confirmed. This means checking that the quantity recorded as placed matches the quantity physically in the storage location, and that the unplaced balance is either zero or has a documented next step. If the unplaced balance is not zero, the receipt should stay open and the remaining units should have a clear instruction for where they are to go.",
+          "A practical check is to compare the putaway task's placed quantity with the storage location's recorded contents, and to confirm that the unplaced quantity is still physically present in the receiving area. Any discrepancy should be investigated before the receipt is closed. The goal is to avoid a situation where the receipt shows complete while units are still waiting, or where units are recorded as placed but cannot be found in the destination."
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "Can the receipt be closed if the unplaced balance is zero but the putaway task is still open?",
+        "answer": "If the unplaced balance is zero, the putaway task should be completed to reflect that all units have a destination. The receipt can then be closed once the task is marked complete and the placed quantities are confirmed. Leaving the task open with a zero balance can cause confusion about whether work remains."
+      },
+      {
+        "question": "What should happen if the unplaced balance cannot be moved to storage immediately?",
+        "answer": "The unplaced balance should remain visible on the putaway task, and the receipt should stay open. The units should have a documented temporary location or holding instruction so they are not lost or mistakenly counted as available. The task should be updated when the units are eventually moved."
+      }
+    ],
+    "searchIntent": "How should a putaway task be recorded when only part of a received quantity has been moved to storage?"
+  },
+  {
     "briefId": "loading-order-stop-sequence",
     "slug": "checking-multi-stop-load-sequence-freight-staged",
     "category": "Distribution",
