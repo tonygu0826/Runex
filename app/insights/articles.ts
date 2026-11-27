@@ -22,6 +22,106 @@ export type Article = {
 
 export const articles: Article[] = [
   {
+    "briefId": "multi-piece-parcel-counts",
+    "slug": "checking-multi-piece-shipment-one-order-has-several-labels",
+    "category": "Fulfillment",
+    "title": "Checking a Multi-Piece Shipment When One Order Has Several Labels",
+    "description": "A practical way to reconcile parcel identifiers, packing results and carrier bookings when one order produces several tracking labels.",
+    "excerpt": "Link each parcel to its parent shipment and reconcile counts across packing, booking and handoff.",
+    "keywords": [
+      "multi-piece shipment record",
+      "parcel identifier to parent shipment",
+      "parcel count reconciliation",
+      "missing parcel visibility",
+      "carrier booking parcel count"
+    ],
+    "publishedAt": "2026-11-29",
+    "modifiedAt": "2026-11-29",
+    "readTime": "5 min read",
+    "qualityGatePassed": true,
+    "operationalBasis": [
+      "When one order produces several tracking labels, a multi-piece shipment record should link each parcel identifier to the parent shipment.",
+      "The parcel count should be reconciled across the packing result, carrier booking and physical handoff.",
+      "A missing parcel should remain visible even when another parcel on the same shipment receives a scan."
+    ],
+    "sources": [],
+    "keyAnswer": "Each parcel identifier should be linked to the parent shipment so the order's parcels can be reviewed as one set. The parcel count should then be reconciled across the packing result, the carrier booking and the physical handoff, and a missing parcel should stay visible even when another parcel on the same shipment receives a scan.",
+    "sections": [
+      {
+        "heading": "Linking each parcel identifier to the parent shipment",
+        "paragraphs": [
+          "When an order is packed into several parcels, each parcel receives its own tracking label. Without a shared reference, those labels can appear as unrelated shipments. A multi-piece shipment record should link every parcel identifier to the parent order or shipment, so the set can be reviewed together. This parent-child link is the foundation for every later count check.",
+          "The link should be created at packing, when the parcel is closed and labelled. Record the parent shipment reference, the parcel identifier and the label number in one place. If a parcel is re-packed or a label is replaced, update the link rather than creating a new parent. This keeps the parcel set stable even when individual labels change."
+        ],
+        "bullets": [
+          "Assign one parent shipment reference for the order before packing begins.",
+          "Record each parcel identifier and its carrier label against that parent.",
+          "When a label is voided or replaced, keep the parcel identifier linked to the parent and note the replacement."
+        ]
+      },
+      {
+        "heading": "Comparing the packing result with the carrier booking",
+        "paragraphs": [
+          "The packing result states how many parcels were actually packed for the order. The carrier booking states how many parcels were declared for transport. These two counts should be compared before the shipment leaves the warehouse. A difference may mean a parcel was packed but not booked, or booked but not packed.",
+          "The comparison should use the parent shipment reference, not the individual labels. If the packing result shows three parcels and the booking shows two, the third parcel needs to be identified and either added to the booking or held back with a clear reason. The booking should not be treated as complete until the parcel count matches the packing result or the difference is explained."
+        ],
+        "bullets": [
+          "Use the parent shipment reference to pull both the packing result and the carrier booking.",
+          "Compare the number of parcel identifiers in each record.",
+          "Investigate any difference before the shipment is released to the carrier."
+        ]
+      },
+      {
+        "heading": "Reconciling the booked count against the physical handoff",
+        "paragraphs": [
+          "The carrier booking is a record of intent; the physical handoff is the moment parcels change custody. The booked parcel count should be checked against the parcels actually handed to the carrier. This check should happen at the handoff point, with the carrier's representative or the driver confirming the count.",
+          "If the physical count differs from the booking, record the discrepancy at the handoff. A parcel that was booked but not handed over should remain visible as outstanding. A parcel handed over but not booked may need a booking amendment. The handoff record should reference the parent shipment and list each parcel identifier included in the handoff, so the count can be verified later."
+        ],
+        "bullets": [
+          "Count parcels physically at the handoff, not from the booking document alone.",
+          "Record the handoff against the parent shipment and list each parcel identifier.",
+          "Note any difference between booked and handed-over counts before the carrier departs."
+        ]
+      },
+      {
+        "heading": "Keeping a missing parcel visible when other parcels scan",
+        "paragraphs": [
+          "Carrier scans often arrive parcel by parcel. When one parcel on a multi-piece shipment receives a scan, it is tempting to treat the whole shipment as moving. But a scan on one parcel does not confirm that every parcel on the parent shipment was handed over or is in transit. A missing parcel should remain visible as an open item even when another parcel on the same shipment scans.",
+          "The shipment record should show the status of each parcel identifier separately, while also showing the parent shipment's overall status. If two of three parcels have scans and one does not, the record should flag the unscanned parcel as outstanding. Customer updates should describe the observed events per parcel rather than implying the whole shipment is complete."
+        ],
+        "bullets": [
+          "Track scan status at the parcel level, not only at the parent shipment level.",
+          "Keep an unscanned parcel visible as outstanding until a scan or handoff confirmation is recorded.",
+          "When communicating with the customer, state which parcels have been observed and which remain unconfirmed."
+        ]
+      },
+      {
+        "heading": "Questions to ask before relying on a multi-piece count",
+        "paragraphs": [
+          "A multi-piece shipment check is only as good as the records behind it. Before trusting a parcel count, ask how the parent shipment reference is assigned, where the packing result is stored, and how the carrier booking is linked to the same parent. Ask what happens when a label is replaced or a parcel is re-packed, and how the handoff count is recorded.",
+          "Also ask how the system displays a missing parcel when other parcels on the same shipment have scans. The answer should show that the missing parcel remains visible and that the parent shipment is not marked complete until every parcel is accounted for. These questions help confirm that the count reconciliation is a routine part of the workflow, not an after-the-fact investigation."
+        ],
+        "bullets": [
+          "How is the parent shipment reference created and shared across packing, booking and handoff?",
+          "Where is the packing result recorded, and how is it compared with the carrier booking?",
+          "What happens when a parcel label is voided or replaced?",
+          "How does the system show an unscanned parcel when other parcels on the same shipment have scans?"
+        ]
+      }
+    ],
+    "faq": [
+      {
+        "question": "What if the carrier booking shows more parcels than were packed?",
+        "answer": "The booking should be amended to match the packing result before handoff, or the extra booked parcel should be identified and held with a clear reason. The parent shipment record should show the corrected count and the reason for the change."
+      },
+      {
+        "question": "Should a multi-piece shipment be marked complete when the first parcel is delivered?",
+        "answer": "No. Completion should be based on the status of every parcel linked to the parent shipment. A delivered parcel is one observed event; the parent shipment remains open until all parcels are accounted for or an exception is recorded."
+      }
+    ],
+    "searchIntent": "How should a multi-piece shipment be checked when one order produces several tracking labels?"
+  },
+  {
     "briefId": "auto-should-putaway-task-recorded-only-part-received-quantity",
     "slug": "recording-partial-putaway-closing-receipt",
     "category": "3PL & Warehousing",
