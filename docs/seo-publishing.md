@@ -221,3 +221,26 @@ recent objections across attempts and failed daily runs. Credentials are redacte
 The six-request/eight-minute budget, duplicate checks and separate semantic
 review remain mandatory. A pending refill continues on subsequent runs; this
 change cannot guarantee new coverage if the approved foundation is exhausted.
+
+### Reviewed decision sources (November 2026)
+
+Automatic exploration prioritizes concrete decisions in `seo-source-grounding.mjs`
+when available, rather than repeatedly recombining abstract principles. The register
+is manually curated: each entry retains its source, review date, support boundary,
+and conditional editorial inference. No live crawling or model-supplied URLs are
+accepted. Source presence does not establish novelty or authorize new factual,
+regulatory, platform-specific, or company claims. Existing scope restrictions,
+full-archive duplicate checks, independent semantic review, request budgets, and
+final article quality gates remain in force.
+
+Sources are derived from cited foundation IDs and verified when the auto store is
+loaded. For a source-backed brief the writer receives the support boundaries and
+must retain its exact reviewed citations. Historical general-principle briefs and
+manual briefs keep their previous behavior; general recommendations need not carry
+unrelated decorative citations. Reviewed inputs should be revisited when their
+support changes. This is not a claim of ranking, indexing or AI citation eligibility.
+
+Offline fixtures can show deterministic topic validation, not independent editorial
+approval or successful production replenishment. Do not add fixture candidates to
+the live pool or reset failure counters. A later authorized real run must demonstrate
+accepted, independently reviewed additions before declaring recovery.

@@ -1,7 +1,9 @@
+import { reviewedDecisionFoundations } from "./seo-source-grounding.mjs";
 // Reviewed general operating principles. The model may derive conditional
 // recommendations from these; it may not create external facts or Runex claims.
 // A separate semantic review checks every derived recommendation and question.
 export const editorialFoundation = [
+  ...reviewedDecisionFoundations,
   { id: "entity-identity", guidance: "Records should distinguish the physical item, package, shipment, order and business reference being identified; one identifier should not silently stand for a different entity." },
   { id: "reference-context", guidance: "An identifier should retain the business context needed to interpret it, such as its owner, sender or original source; matching text alone does not establish that two records describe the same entity." },
   { id: "quantity-basis", guidance: "A quantity should state its unit, scope and observation boundary; totals should reconcile to the underlying observations without counting the same physical units twice." },
